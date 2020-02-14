@@ -6,8 +6,8 @@
 package Service;
 
 import DB.DataBase;
+import Entities.Enfant;
 import Entities.Responsable;
-import Entities.Tuteur;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,32 +28,31 @@ import javax.swing.ImageIcon;
  *
  * @author Alfa Shel
  */
-public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
+public class ServiceEnfant implements IService.IServiceEnfant<Enfant>{
+
+     private Connection con;
+     private Statement ste;
     
-    private Connection con;
-    private Statement ste;
-    
-    public ServiceTuteur() {
+    public ServiceEnfant() {
                 con = DataBase.getInstance().getConnection();    
     }
-
+    
     @Override
-    public void ajouter(Tuteur t) throws SQLException {
+    public void ajouter(Enfant t) throws SQLException {
 
-         PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`tuteur`  VALUES (?,?,?,?,now(),?,?,?,?);");
+PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`, `sexe`, `cin_p`, `age`, `photo`)"
+        + " VALUES (?,?,?,?,?,?);");
     
         try {
             InputStream is= new FileInputStream(new File(t.getPhoto()));
         
     
-    pre.setString(1, t.getCin());
-    pre.setString(2, t.getNom());
-    pre.setString(3, t.getPrenom());
-    pre.setString(4, t.getSexe());
-    pre.setString(5, t.getEmail());
-    pre.setString(6, t.getPassword());
-    pre.setString(7, t.getNum_tel());
-    pre.setBlob(8, is);
+    pre.setString(1, t.getNom());
+    pre.setString(2, t.getPrenom());
+    pre.setString(3, t.getSexe());
+    pre.setString(4, t.getCin_p());
+    pre.setString(5, t.getAge());
+    pre.setBlob(6, is);
     
     pre.executeUpdate();
     
@@ -61,54 +60,51 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
     catch (FileNotFoundException ex) {
             Logger.getLogger(ServiceResponsable.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @Override
-    public boolean delete(Tuteur t) throws SQLException {
-PreparedStatement pre=con.prepareStatement(" delete from `pionnersapp`.`tuteur` where cin_t =?;");
+    public boolean delete(Enfant t) throws SQLException {
+        
+        PreparedStatement pre=con.prepareStatement(" delete from `pionnersapp`.`enfant` where id_e =?;");
     
-    pre.setString(1, t.getCin());
+    pre.setInt(1, t.getId_e());
     
      return pre.executeUpdate()==0;
     }
 
     @Override
-    public boolean update(Tuteur t) throws SQLException {
+    public boolean update(Enfant t) throws SQLException {
         
-        PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`tuteur`SET `nom`=?,`prenom`=?,"
-            + "                                                `email`=?,`password`=?,`tel_tuteur`=?,`sexe`=? WHERE cin_t=?;");
+        PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`enfant` SET `nom`=?,`prenom`=?,"
+                                                    + " `sexe`=?,`age`=? WHERE id_e=?;");
     
     
     pre.setString(1, t.getNom());
     pre.setString(2, t.getPrenom());
-    pre.setString(3, t.getEmail());
-    pre.setString(4, t.getPassword());
-    pre.setString(5, t.getNum_tel());
-    pre.setString(6, t.getSexe());
-    pre.setString(7, t.getCin());
+    pre.setString(3, t.getSexe());
+    pre.setString(4, t.getAge());
+    pre.setInt(5, t.getId_e());
+      
      
     return pre.executeUpdate()==0;
-
     }
 
     @Override
-    public List<Tuteur> readAll() throws SQLException {
+    public List<Enfant> readAll() throws SQLException {
+        
+    List<Enfant> arr=new ArrayList<>();
 
-        List<Tuteur> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from tuteur");
+    ResultSet rs=ste.executeQuery("select * from enfant");
      while (rs.next()) {                
-               String cin=rs.getString(1);
+               int id_e=rs.getInt(1);
                String nom=rs.getString(2);
                String prenom=rs.getString(3);
                String sexe=rs.getString(4);
-               String date=rs.getDate(5).toString();
-               String email=rs.getString(6);
-               String password=rs.getString(7);
-               String num_tel=rs.getString(8);
+               String cin_p=rs.getString(5);
+               String age=rs.getString(6);
                
-               byte[] img=rs.getBytes(9);
+               byte[] img=rs.getBytes(7);
                ImageIcon image = new ImageIcon(img);
                Image im = image.getImage();
                
@@ -120,7 +116,7 @@ PreparedStatement pre=con.prepareStatement(" delete from `pionnersapp`.`tuteur` 
                
                */
                
-               Tuteur c =new Tuteur (cin, nom, prenom,sexe,date,email,password,num_tel,im);
+                Enfant c =new Enfant (id_e, nom, prenom,sexe,cin_p,age,im);
      arr.add(c);
      }
     return arr;

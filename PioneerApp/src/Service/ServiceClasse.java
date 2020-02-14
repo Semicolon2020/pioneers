@@ -81,7 +81,7 @@ public class ServiceClasse implements IService.IServiceClasse<Classe>{
     public List<Classe> readAll() throws SQLException {
 
         
-        List<Classe> arr=new ArrayList<>();
+     List<Classe> arr=new ArrayList<>();
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from classe");
      while (rs.next()) {                

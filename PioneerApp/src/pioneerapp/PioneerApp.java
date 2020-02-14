@@ -5,10 +5,15 @@
  */
 package pioneerapp;
 
+import Entities.Actualite;
 import Entities.Classe;
-import Entities.Responsable;
+import Entities.Enfant;
+import Entities.Parent;
 import Entities.Tuteur;
+import Service.ServiceActualite;
 import Service.ServiceClasse;
+import Service.ServiceEnfant;
+import Service.ServiceParent;
 import Service.ServiceResponsable;
 import Service.ServiceTuteur;
 import java.sql.SQLException;
@@ -34,12 +39,23 @@ public class PioneerApp {
 
         ServiceClasse sc=new ServiceClasse();
         
-        //Responsable r=new Responsable("12345678", "Shel", "Fadhel", "sds", "123", "527788");      
+        //Responsable r=new Responsable("12315678", "Shellllll", "Fadhkhkhel", "sdlkjkljs", "1xzd23", "588");      
         ServiceResponsable sr = new ServiceResponsable();
         
-       Tuteur t = new Tuteur("32356", "FF", "SS", "ss", "F", "sdsd", "333");
+     //   Tuteur t = new Tuteur("323", "FFA", "SSa", "sAs", "M", "sdaAsd", "3A33");
         ServiceTuteur st = new ServiceTuteur();
+
+            //    Parent p=new Parent ("221","aaa","aa","@a","aa","99999",1,"C");
+        ServiceParent sp=new ServiceParent();
         
+        
+        
+        Enfant e=new Enfant("ff", "qqq", "F", "221", "3");
+        ServiceEnfant se= new ServiceEnfant();
+        
+        Actualite a= new Actualite("Today is gonna rain please stay at home :)");
+        
+        ServiceActualite sa=new ServiceActualite();
         
         
         
@@ -47,11 +63,18 @@ public class PioneerApp {
           //  sc.ajouter(c);
            // sc.delete(c1);
           //  sc.updateTuteur(c2);
-         sc.updateActivite(c2);
-        // sr.ajouter(r);
+         //sc.updateActivite(c2);
+       //  sr.delete(r);
         
-             st.ajouter(t);
-            System.out.println(st.readAll());
+       //sp.update(p);
+     //  se.ajouter(e);
+       
+    Actualite aa = sa.readAll().get(0);
+    aa.setDescription("It is sunny :(");
+     sa.update(aa);
+   //  sa.delete(sa.readAll().get(0));
+          //   st.delete(t);
+            System.out.println(sa.readAll());
             
         } catch (SQLException ex) {
             Logger.getLogger(PioneerApp.class.getName()).log(Level.SEVERE, null, ex);

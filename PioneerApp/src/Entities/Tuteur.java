@@ -37,7 +37,7 @@ public class Tuteur {
         this.password = password;
         this.num_tel = num_tel;
         
-         JFileChooser file = new JFileChooser();
+        JFileChooser file = new JFileChooser();
         file.setCurrentDirectory(new File(System.getProperty("user.home")));
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png","jpeg");
         file.addChoosableFileFilter(filter);
