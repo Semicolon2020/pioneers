@@ -5,6 +5,8 @@
  */
 package IService;
 
+
+import Entities.Parent;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,6 +19,7 @@ public interface IServiceParent <T> {
     boolean delete(T t) throws SQLException;
     boolean update(T t) throws SQLException;
     List<T> readAll() throws SQLException;
-    
+    Parent read(T t) throws SQLException;
+
     void approve(T t) throws SQLException;
 }

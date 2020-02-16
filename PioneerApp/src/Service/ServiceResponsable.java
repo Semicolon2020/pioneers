@@ -42,19 +42,22 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
 
     
 
-        PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`responsable`  VALUES (?,?,?,?,?,?,?);");
+       PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user`  VALUES (`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
+                 + "    VALUES (?,?,'R',?,?,?,?,'1',?,?,?,?,now();");
     
         try {
             InputStream is= new FileInputStream(new File(t.getPhoto()));
         
     
     pre.setString(1, t.getCin());
-    pre.setString(2, t.getNom());
-    pre.setString(3, t.getPrenom());
-    pre.setString(4, t.getEmail());
-    pre.setString(5, t.getPassword());
+    pre.setString(2, t.getPassword());
+    pre.setString(3, t.getNom());   
+    pre.setString(4, t.getPrenom());
+    pre.setString(9, t.getSexe());
+    pre.setString(5, t.getEmail());
     pre.setString(6, t.getNum_tel());
-    pre.setBlob(7, is);
+    pre.setString(7, t.getEtat_civil());    
+    pre.setBlob(8, is);
     
     pre.executeUpdate();
     
@@ -68,7 +71,7 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
     @Override
     public boolean delete(Responsable t) throws SQLException {
 
-    PreparedStatement pre=con.prepareStatement(" delete from `pionnersapp`.`responsable` where cin_resp =?;");
+    PreparedStatement pre=con.prepareStatement(" delete from `pionnersapp`.`user` where cin =?;");
     
     pre.setString(1, t.getCin());
     
@@ -79,16 +82,21 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
     @Override
     public boolean update(Responsable t) throws SQLException {
 
-    PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`responsable`SET `nom`=?,`prenom`=?,"
-            + "                                                `email`=?,`password`=?,`num_tel`=? WHERE cin_resp=?;");
+    PreparedStatement     pre=con.prepareStatement("update `pionnersapp`.`user`SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,"
+                + "             `num_tel`=?,`etat_compte`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=? and role='R';");
     
     
-    pre.setString(1, t.getNom());
-    pre.setString(2, t.getPrenom());
-    pre.setString(3, t.getEmail());
-    pre.setString(4, t.getPassword());
-    pre.setString(5, t.getNum_tel());
-    pre.setString(6, t.getCin());
+    pre.setString(1, t.getCin());  
+    pre.setString(2, t.getPassword()); 
+    pre.setString(3, t.getNom());
+    pre.setString(4, t.getPrenom());
+    pre.setString(5, t.getEmail());
+    pre.setString(6, t.getNum_tel());
+    pre.setString(7, t.getEtat_compte());
+    pre.setString(8, t.getEtat_civil());
+    pre.setString(9, t.getPhoto());
+    pre.setString(10, t.getSexe());
+    pre.setString(11, t.getCin());
      
     return pre.executeUpdate()==0;
     }
@@ -98,14 +106,18 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
         
     List<Responsable> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from responsable");
+    ResultSet rs=ste.executeQuery("select * from user where role='R' ");
      while (rs.next()) {                
-               String cin=rs.getString(1);
-               String nom=rs.getString(2);
-               String prenom=rs.getString(3);
-               String email=rs.getString(4);
-               String password=rs.getString(5);
-               String num_tel=rs.getString(6);
+               String cin=rs.getString(2);
+               String nom=rs.getString(5);
+               String prenom=rs.getString(6);
+               String sexe=rs.getString(12);
+               String date=rs.getDate(13).toString();
+               String email=rs.getString(7);
+               String password=rs.getString(3);
+               String num_tel=rs.getString(8);
+               String etat_compte=rs.getString(9);
+               String etat_civil=rs.getString(10);
                
                byte[] img=rs.getBytes(7);
                ImageIcon image = new ImageIcon(img);
@@ -119,7 +131,7 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
                
                */
                
-               Responsable c =new Responsable (cin, nom, prenom,email,password,num_tel,im);
+               Responsable c =new Responsable (cin, nom, prenom,sexe,date,email,password,num_tel,im,etat_compte,etat_civil);
      arr.add(c);
      }
     return arr;

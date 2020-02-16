@@ -27,8 +27,10 @@ public class Tuteur {
     private String photo;
     private Image icon;
     private String dateEmbauche;
+    private String etat_compte;
+    private String etat_civil;
 
-    public Tuteur(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel) {
+    public Tuteur(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -36,6 +38,7 @@ public class Tuteur {
         this.email = email;
         this.password = password;
         this.num_tel = num_tel;
+        this.etat_civil=etat_civil;
         
         JFileChooser file = new JFileChooser();
         file.setCurrentDirectory(new File(System.getProperty("user.home")));
@@ -48,7 +51,7 @@ public class Tuteur {
              this.photo = selecteFile.getAbsolutePath();
         }
     }
-        public Tuteur(String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon) {
+        public Tuteur(String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -58,6 +61,30 @@ public class Tuteur {
         this.password = password;
         this.num_tel = num_tel;
         this.icon = icon;
+        this.etat_compte=etat_compte;
+        this.etat_civil=etat_civil;
+    }
+        
+        public Tuteur (String cin)
+        {
+            this.cin=cin;
+        }
+        public Tuteur(){}
+
+    public String getEtat_compte() {
+        return etat_compte;
+    }
+
+    public void setEtat_compte(String etat_compte) {
+        this.etat_compte = etat_compte;
+    }
+
+    public String getEtat_civil() {
+        return etat_civil;
+    }
+
+    public void setEtat_civil(String etat_civil) {
+        this.etat_civil = etat_civil;
     }
         
         
@@ -146,8 +173,10 @@ public class Tuteur {
 
     @Override
     public String toString() {
-        return "Tuteur{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo + ", dateEmbauche=" + dateEmbauche + '}';
+        return "Tuteur{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo + ", icon=" + icon + ", dateEmbauche=" + dateEmbauche + ", etat_compte=" + etat_compte + ", etat_civil=" + etat_civil + '}';
     }
+
+    
     
     
     

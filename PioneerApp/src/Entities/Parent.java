@@ -20,23 +20,27 @@ public class Parent {
     private String nom;
     private String prenom;
     private String email;
+    private String sexe;
     private String password;
     private String num_tel;
     private String photo;
-    private String etat_compte;
     private Image icon;
-    private int nb_enf;
+    private String dateEmbauche;
+    private String etat_compte;
     private String etat_civil;
+    
+    public Parent(String cin){this.cin=cin;}
+    public Parent(){}
 
-    public Parent(String cin, String nom, String prenom, String email, String password, String num_tel, int nb_enf, String etat_civil) {
+    public Parent(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
+        this.sexe=sexe;
         this.email = email;
         this.password = password;
         this.num_tel = num_tel;
-        this.nb_enf = nb_enf;
-        this.etat_civil = etat_civil;
+        this.etat_civil=etat_civil;
         
         JFileChooser file = new JFileChooser();
         file.setCurrentDirectory(new File(System.getProperty("user.home")));
@@ -53,18 +57,19 @@ public class Parent {
         
     }
 
-    public Parent(String cin, String nom, String prenom, String email, int nb_enf, String etat_civil, String etat_compte, String password, String num_tel, Image im) {
+    public Parent(String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
         
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
+        this.sexe = sexe;
+        this.dateEmbauche = dateEmbauche;
         this.email = email;
         this.password = password;
         this.num_tel = num_tel;
-        this.nb_enf = nb_enf;
-        this.etat_civil = etat_civil;
-        icon =im;
+        this.icon = icon;
         this.etat_compte=etat_compte;
+        this.etat_civil=etat_civil;
 
     }
 
@@ -140,13 +145,7 @@ public class Parent {
         this.icon = icon;
     }
 
-    public int getNb_enf() {
-        return nb_enf;
-    }
-
-    public void setNb_enf(int nb_enf) {
-        this.nb_enf = nb_enf;
-    }
+   
 
     public String getEtat_civil() {
         return etat_civil;
@@ -156,10 +155,28 @@ public class Parent {
         this.etat_civil = etat_civil;
     }
 
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getDateEmbauche() {
+        return dateEmbauche;
+    }
+
+    public void setDateEmbauche(String dateEmbauche) {
+        this.dateEmbauche = dateEmbauche;
+    }
+
     @Override
     public String toString() {
-        return "Parent{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", password=" + password + ", num_tel=" + num_tel + ", etat_compte=" + etat_compte + ", nb_enf=" + nb_enf + ", etat_civil=" + etat_civil + '}';
+        return "Parent{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo + ", icon=" + icon + ", dateEmbauche=" + dateEmbauche + ", etat_compte=" + etat_compte + ", etat_civil=" + etat_civil + '}';
     }
+
+    
     
     
 }

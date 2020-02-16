@@ -5,6 +5,7 @@
  */
 package IService;
 
+import Entities.Tuteur;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,5 +18,7 @@ public interface IServiceTuteur  <T> {
     boolean delete(T t) throws SQLException;
     boolean update(T t) throws SQLException;
     List<T> readAll() throws SQLException;
+    Tuteur read(T t) throws SQLException;
+
     
 }

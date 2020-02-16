@@ -20,19 +20,27 @@ public class Responsable {
     private String nom;
     private String prenom;
     private String email;
+    private String sexe;
     private String password;
     private String num_tel;
     private String photo;
     private Image icon;
+    private String dateEmbauche;
+    private String etat_compte;
+    private String etat_civil;
     
     
-    public Responsable(String cin, String nom, String prenom, String email, String password, String num_tel) {
+    public Responsable(){}
+    public Responsable(String cin){this.cin=cin;}
+    public Responsable(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
+        this.sexe=sexe;
         this.email = email;
         this.password = password;
         this.num_tel = num_tel;
+        this.etat_civil=etat_civil;
         
         JFileChooser file = new JFileChooser();
         file.setCurrentDirectory(new File(System.getProperty("user.home")));
@@ -47,14 +55,50 @@ public class Responsable {
        
     }
 
-    public Responsable(String cin, String nom, String prenom, String email, String password, String num_tel, Image icon) {
+    public Responsable(String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
+        this.sexe = sexe;
+        this.dateEmbauche = dateEmbauche;
         this.email = email;
         this.password = password;
         this.num_tel = num_tel;
         this.icon = icon;
+        this.etat_compte=etat_compte;
+        this.etat_civil=etat_civil;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getDateEmbauche() {
+        return dateEmbauche;
+    }
+
+    public void setDateEmbauche(String dateEmbauche) {
+        this.dateEmbauche = dateEmbauche;
+    }
+
+    public String getEtat_compte() {
+        return etat_compte;
+    }
+
+    public void setEtat_compte(String etat_compte) {
+        this.etat_compte = etat_compte;
+    }
+
+    public String getEtat_civil() {
+        return etat_civil;
+    }
+
+    public void setEtat_civil(String etat_civil) {
+        this.etat_civil = etat_civil;
     }
 
     public Image getIcon() {
@@ -124,8 +168,10 @@ public class Responsable {
 
     @Override
     public String toString() {
-        return "Responsable{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", password=" + password + ", num_tel=" + num_tel + '}';
+        return "Responsable{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo + ", icon=" + icon + ", dateEmbauche=" + dateEmbauche + ", etat_compte=" + etat_compte + ", etat_civil=" + etat_civil + '}';
     }
+
+   
     
     
     
