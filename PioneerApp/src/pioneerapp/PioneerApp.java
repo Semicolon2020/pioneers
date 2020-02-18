@@ -9,6 +9,7 @@ import Entities.Actualite;
 import Entities.Classe;
 import Entities.Enfant;
 import Entities.Parent;
+import Entities.Responsable;
 import Entities.Tuteur;
 import Service.ServiceActualite;
 import Service.ServiceClasse;
@@ -39,18 +40,18 @@ public class PioneerApp {
 
         ServiceClasse sc=new ServiceClasse();
         
-        //Responsable r=new Responsable("12315678", "Shellllll", "Fadhkhkhel", "sdlkjkljs", "1xzd23", "588");      
+        Responsable r= new Responsable("00000000", "Shel", "Fadhel", "fadhel.shel@yahoo.com", "M", "0", "52775279", "C");
         ServiceResponsable sr = new ServiceResponsable();
         
      //   Tuteur t = new Tuteur("323", "FFA", "SSa", "sAs", "M", "sdaAsd", "3A33");
-        ServiceTuteur st = new ServiceTuteur();
+     //   ServiceTuteur st = new ServiceTuteur();
 
             //    Parent p=new Parent ("221","aaa","aa","@a","aa","99999",1,"C");
-        ServiceParent sp=new ServiceParent();
+      //  ServiceParent sp=new ServiceParent();
         
         
         
-        Enfant e=new Enfant("ff", "qqq", "F", "221", "3");
+     //   Enfant e=new Enfant("ff", "qqq", "F", "221", "3");
         ServiceEnfant se= new ServiceEnfant();
         
         Actualite a= new Actualite("Today is gonna rain please stay at home :)");
@@ -68,10 +69,10 @@ public class PioneerApp {
         
        //sp.update(p);
      //  se.ajouter(e);
-       
-    Actualite aa = sa.readAll().get(0);
-    aa.setDescription("It is sunny :(");
-     sa.update(aa);
+       sr.ajouter(r);
+  //  Actualite aa = sa.readAll().get(0);
+    //aa.setDescription("It is sunny :(");
+     //sa.update(aa);
    //  sa.delete(sa.readAll().get(0));
           //   st.delete(t);
             System.out.println(sa.readAll());

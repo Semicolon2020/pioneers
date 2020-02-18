@@ -30,6 +30,8 @@ public class Tuteur {
     private String etat_compte;
     private String etat_civil;
 
+    public Tuteur(String cin , String password){this.cin=cin;this.password=password;}
+
     public Tuteur(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil) {
         this.cin = cin;
         this.nom = nom;

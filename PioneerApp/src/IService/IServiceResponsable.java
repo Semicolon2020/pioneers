@@ -5,6 +5,7 @@
  */
 package IService;
 
+import Entities.Responsable;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,5 +18,7 @@ public interface IServiceResponsable <T> {
     boolean delete(T t) throws SQLException;
     boolean update(T t) throws SQLException;
     List<T> readAll() throws SQLException;
+    Responsable read(T t) throws SQLException;
+    int LoginResponsable(Responsable t) throws SQLException;
     
 }

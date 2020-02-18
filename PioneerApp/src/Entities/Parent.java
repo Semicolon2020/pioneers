@@ -31,6 +31,7 @@ public class Parent {
     
     public Parent(String cin){this.cin=cin;}
     public Parent(){}
+    public Parent(String cin,String password){this.cin=cin;this.password=password;}
 
     public Parent(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil) {
         this.cin = cin;

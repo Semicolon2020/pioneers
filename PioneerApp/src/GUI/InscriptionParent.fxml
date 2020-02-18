@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="820.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.InscriptionParentController">
+   <children>
+      <TextField fx:id="cinText" layoutX="574.0" layoutY="87.0" promptText="Cin..." />
+      <TextField fx:id="nomText" layoutX="574.0" layoutY="142.0" promptText="Nom..." />
+      <TextField fx:id="prenomText" layoutX="574.0" layoutY="196.0" promptText="Prenom..." />
+      <TextField fx:id="pwdText" layoutX="574.0" layoutY="258.0" promptText="Mot De Passe..." />
+      <TextField fx:id="mailText" layoutX="574.0" layoutY="313.0" promptText="E-mail..." />
+      <TextField fx:id="tlfText" layoutX="574.0" layoutY="362.0" promptText="Telephone..." />
+      <ComboBox fx:id="comboboxEtat" layoutX="376.0" layoutY="87.0" prefHeight="31.0" prefWidth="175.0" promptText="Situation Familiale" />
+      <Button fx:id="btnpdp" layoutX="108.0" layoutY="393.0" mnemonicParsing="false" onAction="#btnpdp" prefHeight="31.0" prefWidth="106.0" text="Photo" />
+      <ImageView fx:id="imagepdp" fitHeight="280.0" fitWidth="270.0" layoutX="27.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="comboboxSexe" layoutX="597.0" layoutY="409.0" prefHeight="31.0" prefWidth="141.0" promptText="Sexe" visibleRowCount="2" />
+      <Button fx:id="btnValider" layoutX="392.0" layoutY="425.0" mnemonicParsing="false" onAction="#btnValiderAction" text="Valider" />
+   </children>
+</AnchorPane>

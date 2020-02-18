@@ -42,8 +42,8 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
 
     
 
-       PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user`  VALUES (`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
-                 + "    VALUES (?,?,'R',?,?,?,?,'1',?,?,?,?,now();");
+       PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user` ( `cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
+                 + "    VALUES (?,?,'R',?,?,?,?,'1',?,?,?,now());");
     
         try {
             InputStream is= new FileInputStream(new File(t.getPhoto()));
@@ -138,6 +138,68 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
 
 
     }
+    
+    
+     @Override
+    public  Responsable read(Responsable t) throws SQLException
+    {
+        PreparedStatement pre=con.prepareStatement(" select * from user where role='R' and cin=?;");
+         pre.setString(1, t.getCin());
+       Responsable c=new Responsable();  
+    ResultSet rs=pre.executeQuery();
+     while (rs.next()) {                
+               c.setCin(rs.getString(2));
+               c.setNom(rs.getString(5));
+               c.setPrenom(rs.getString(6));
+               c.setSexe(rs.getString(12));
+               c.setDateEmbauche(rs.getDate(13).toString());
+               c.setEmail(rs.getString(7));
+               c.setPassword(rs.getString(3));
+               c.setNum_tel(rs.getString(8));
+               c.setEtat_compte(rs.getString(9));
+               c.setEtat_civil(rs.getString(10));
+               
+               byte[] img=rs.getBytes(11);
+               ImageIcon image = new ImageIcon(img);
+               Image im = image.getImage();
+               c.setIcon(im);
+     
+             
+
+     
+                  }
+     
+     return c;
+    }
+    
+     @Override
+    public  int  LoginResponsable(Responsable t) throws SQLException
+    {
+        PreparedStatement pre=con.prepareStatement(" select * from user where   cin=? and password=? ;");
+         pre.setString(1, t.getCin());
+         pre.setString(2, t.getPassword());
+      
+    ResultSet rs=pre.executeQuery();
+     while (rs.next()) {
+         if(rs.getString(9).equals("0")){return 3;}
+         
+            switch (rs.getString(4)) {
+                case "R":
+                    return 0;
+                case "T":
+                    return 1;
+                case "P":
+                    return 2;
+                default:
+                    break;
+            }
+         
+                         }
+     
+     return -1;
+    }
+    
+    
 
     
     

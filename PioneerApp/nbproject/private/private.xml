@@ -3,27 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Service/ServiceClasse.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Entities/Classe.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/IService/IServiceClasse.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/IService/IServiceActualite.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Entities/Actualite.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/IService/IServiceTuteur.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Service/ServiceParent.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Entities/Tuteur.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Entities/Responsable.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/IService/IServiceResponsable.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Entities/Parent.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Service/ServiceActualite.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Service/ServiceTuteur.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/IService/IServiceParent.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/DB/DataBase.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/IService/IServiceEnfant.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Service/ServiceEnfant.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/pioneerapp/PioneerApp.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/pioneerapp/JFrame.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Service/ServiceResponsable.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Entities/Enfant.java</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/HomeFX.java</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/ResponsableMain.fxml</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/Login.fxml</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/LoginController.java</file>
         </group>
     </open-files>
 </project-private>

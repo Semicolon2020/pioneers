@@ -40,8 +40,8 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
     @Override
     public void ajouter(Tuteur t) throws SQLException {
 
-         PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user`  VALUES (`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
-                 + "    VALUES (?,?,'T',?,?,?,?,'1',?,?,?,?,now();");
+         PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user`  (`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
+                 + "    VALUES (?,?,'T',?,?,?,?,'1',?,?,?,now());");
     
         try {
             InputStream is= new FileInputStream(new File(t.getPhoto()));
@@ -168,7 +168,20 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
      return c;
     }
     
-    
+     @Override
+    public  boolean LoginTuteur(Tuteur t) throws SQLException
+    {
+        PreparedStatement pre=con.prepareStatement(" select * from user where role='T' and cin=? and password=? ;");
+         pre.setString(1, t.getCin());
+         pre.setString(2, t.getPassword());
+       
+    ResultSet rs=pre.executeQuery();
+     while (rs.next()) {
+         return true;
+                         }
+     
+     return false;
+    }
 
     
 }

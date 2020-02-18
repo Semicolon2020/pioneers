@@ -20,6 +20,7 @@ public interface IServiceParent <T> {
     boolean update(T t) throws SQLException;
     List<T> readAll() throws SQLException;
     Parent read(T t) throws SQLException;
+    boolean LoginParent(T t) throws SQLException;
 
     void approve(T t) throws SQLException;
 }
