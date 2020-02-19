@@ -25,23 +25,23 @@ public class Enfant {
     private String photo;
     private Image icon;
 
-    public Enfant(String nom, String prenom, String sexe, String cin_p, String age) {
+    public Enfant(String nom, String prenom, String sexe, String cin_p, String age,String photo) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
         this.cin_p = cin_p;
         this.age = age;
-        
-        JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png","jpeg");
-        file.addChoosableFileFilter(filter);
-        int result = file.showSaveDialog(null);
-        if(result== JFileChooser.APPROVE_OPTION)
-        {
-            File selecteFile = file.getSelectedFile();
-             this.photo = selecteFile.getAbsolutePath();
-        }
+        this.photo=photo;
+//        JFileChooser file = new JFileChooser();
+//        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+//        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png","jpeg");
+//        file.addChoosableFileFilter(filter);
+//        int result = file.showSaveDialog(null);
+//        if(result== JFileChooser.APPROVE_OPTION)
+//        {
+//            File selecteFile = file.getSelectedFile();
+//             this.photo = selecteFile.getAbsolutePath();
+//        }
     }
         
        public Enfant(int id_e,String nom, String prenom, String sexe, String cin_p, String age,Image icon) {

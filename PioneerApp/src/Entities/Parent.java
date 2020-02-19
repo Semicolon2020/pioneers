@@ -33,7 +33,7 @@ public class Parent {
     public Parent(){}
     public Parent(String cin,String password){this.cin=cin;this.password=password;}
 
-    public Parent(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil) {
+    public Parent(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil,String photo) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -42,8 +42,8 @@ public class Parent {
         this.password = password;
         this.num_tel = num_tel;
         this.etat_civil=etat_civil;
-        
-        JFileChooser file = new JFileChooser();
+        this.photo=photo;
+      /*  JFileChooser file = new JFileChooser();
         file.setCurrentDirectory(new File(System.getProperty("user.home")));
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png","jpeg");
         file.addChoosableFileFilter(filter);
@@ -52,7 +52,7 @@ public class Parent {
         {
             File selecteFile = file.getSelectedFile();
              this.photo = selecteFile.getAbsolutePath();
-        }
+        }*/
         
         
         

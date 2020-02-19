@@ -6,18 +6,25 @@
 package GUI;
 
 import Entities.Parent;
+import Service.ServiceParent;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.swing.JFileChooser;
@@ -37,6 +44,8 @@ public class InscriptionParentController implements Initializable {
     ObservableList<String> listComboEtat= FXCollections.observableArrayList("Marié(e)","Veuf(ve)","Divorcé(e)");
 
     ObservableList<String> listCombo= FXCollections.observableArrayList("Femme","Homme");
+    ObservableList<String> listComboNBR= FXCollections.observableArrayList("1","2","3","4");
+
     @FXML
     private ImageView imagepdp;
     @FXML
@@ -51,12 +60,19 @@ public class InscriptionParentController implements Initializable {
     private TextField nomText;
     @FXML
     private TextField prenomText;
-    @FXML
-    private TextField pwdText;
+    
     @FXML
     private TextField mailText;
     @FXML
     private TextField tlfText;
+    @FXML
+    private Label labelErreur;
+    @FXML
+    private Label labelexiste;
+    @FXML
+    private PasswordField pawdText;
+    @FXML
+    private ComboBox<String> nbrE;
 
     /**
      * Initializes the controller class.
@@ -66,7 +82,7 @@ public class InscriptionParentController implements Initializable {
         
         comboboxSexe.setItems(listCombo);
         comboboxEtat.setItems(listComboEtat);
-        
+        nbrE.setItems(listComboNBR);
     }    
 
     @FXML
@@ -98,16 +114,50 @@ public class InscriptionParentController implements Initializable {
     @FXML
     private void btnValiderAction(ActionEvent event) {
        
-       
-        if(comboboxEtat.getValue()==null || comboboxSexe.getValue()==null ||cinText.equals("") || cinText.getLength()!=8 || nomText.equals("") || prenomText.equals("") || tlfText.equals("") || pwdText.equals("") || mailText.equals("") || imagepdp.getImage() ==null)
+        if( nbrE.getValue()==null || comboboxEtat.getValue()==null || comboboxSexe.getValue()==null ||cinText.equals("") || cinText.getLength()!=8 || nomText.equals("") || prenomText.equals("") || tlfText.equals("") || pawdText.equals("") || mailText.equals("") || imagepdp.getImage() ==null)
         {
-            System.out.println("Verifier les champs");
+            labelexiste.setVisible(false);
+            labelErreur.setVisible(true);
+          
         }
         
         else 
-        {
-            System.out.println("SUCESS");
-        }
+        { 
+           Parent p=new Parent(cinText.getText(), nomText.getText(), prenomText.getText(), mailText.getText(), comboboxSexe.getValue(), pawdText.getText(), tlfText.getText(), comboboxEtat.getValue(),photopath);
+           Service.ServiceParent sp=new ServiceParent();
+            
+            try {
+                sp.ajouter(p);
+                ///Transition interface
+                
+                 FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("InscriptionEnfant.fxml"));
+            
+                javafx.scene.Parent root;
+               try {
+                   root = loader.load();
+                   InscriptionEnfantController apc = loader.getController();
+                   apc.SetCin(cinText.getText());
+                   apc.SetnbrE(nbrE.getValue());
+                   apc.SetlabelAff(Integer.parseInt(nbrE.getValue()), 1);
+                imagepdp.getScene().setRoot(root);
+               } catch (IOException ex) {
+                   Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+               }
+                
+           
+        
+                
+                
+                
+            } catch (SQLException ex) {
+               labelexiste.setVisible(true);
+               labelErreur.setVisible(false);
+            }
+            
+        
     }
     
+}
 }
