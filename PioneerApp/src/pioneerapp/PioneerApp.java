@@ -34,7 +34,7 @@ public class PioneerApp {
     public static void main(String[] args) {
        
         
-        try {
+      //  try {
             /*   Classe c=new Classe("Mr Mahdi","jogging");
             Classe c1= new Classe ("7");
             Classe c2= new Classe ("7","Fadhel","Creating");
@@ -83,11 +83,12 @@ public class PioneerApp {
             }
             
             }*/
+           
             
-            JavaMail.SendMail("fadhel.shel@gmail.com");
+           /* JavaMail.SendMail("fadhel.shel@gmail.com");
         } catch (Exception ex) {
             Logger.getLogger(PioneerApp.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
              
              }
 }

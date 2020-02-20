@@ -24,7 +24,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class JavaMail {
     
-    public static void SendMail(String recepient) throws Exception {
+    public static void SendMail(String recepient,String subject) throws Exception {
         
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
@@ -43,7 +43,7 @@ public class JavaMail {
             }          
         });
         
-        Message message= prepareMessage(session,MyEmail,recepient);
+        Message message= prepareMessage(session,MyEmail,recepient,subject);
 
         Transport.send(message);
         System.out.println("Message sent :)");
@@ -51,13 +51,13 @@ public class JavaMail {
     
 }
 
-    private static Message prepareMessage(Session session,String MyEmail,String recepient) {
+    private static Message prepareMessage(Session session,String MyEmail,String recepient,String subject) {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(MyEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("TEST JAVA");
-            message.setText("HIIII");
+            message.setSubject("Pioneers: Inscription");
+            message.setText(subject);
             return message;
         } catch (Exception ex) {
             Logger.getLogger(JavaMail.class.getName()).log(Level.SEVERE, null, ex);

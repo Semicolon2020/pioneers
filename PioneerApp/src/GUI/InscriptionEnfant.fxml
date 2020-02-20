@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -18,7 +19,7 @@
       <TextArea editable="false" layoutX="38.0" layoutY="66.0" prefHeight="290.0" prefWidth="280.0" />
       <ImageView fx:id="imagepdpE" fitHeight="280.0" fitWidth="270.0" layoutX="43.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="Photopdp" layoutX="118.0" layoutY="408.0" mnemonicParsing="false" onAction="#photopdpAction" prefHeight="31.0" prefWidth="103.0" text="Photo" />
-      <Button fx:id="ValiderE" layoutX="395.0" layoutY="424.0" mnemonicParsing="false" onAction="#validerEAction" prefHeight="31.0" prefWidth="88.0" text="Valider" />
+      <Button fx:id="ValiderE" layoutX="395.0" layoutY="424.0" mnemonicParsing="false" onAction="#validerEAction" onMousePressed="#validerPressed" prefHeight="31.0" prefWidth="88.0" text="Valider" />
       <Label fx:id="labelErreur" layoutX="358.0" layoutY="387.0" prefHeight="31.0" prefWidth="163.0" text="Vérifiez les champs !" textFill="#c63131" visible="false">
          <font>
             <Font size="16.0" />
@@ -29,5 +30,10 @@
             <Font name="Berlin Sans FB" size="24.0" />
          </font>
       </Label>
+      <ImageView fx:id="attendezimg" fitHeight="210.0" fitWidth="420.0" layoutX="185.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../JavaFx/1x/Attendezimg.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

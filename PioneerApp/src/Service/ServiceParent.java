@@ -7,11 +7,14 @@ package Service;
 
 import DB.DataBase;
 import Entities.Parent;
-import java.awt.Image;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -105,12 +108,12 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
         
         List<Parent> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from user where role='P'");
+    ResultSet rs=ste.executeQuery("select * from user where role='P' order by id,etat_compte,date_embauche");
      while (rs.next()) {     
          
          
          
-         
+               String id=rs.getString(1);
                String cin=rs.getString(2);
                String nom=rs.getString(5);
                String prenom=rs.getString(6);
@@ -122,21 +125,32 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
                String etat_compte=rs.getString(9);
                String etat_civil=rs.getString(10);
                
+                Image im;
+//               InputStream is=rs.getBinaryStream(11);
+//                OutputStream os;
+//                
+//            try {
+//                os = new FileOutputStream(new File("pic.jpg"));
+//                 byte[] content= new byte[1024];
+//                int size=0;
+//                   try {
+//                       while((size = is.read(content))!=-1){
+//                           
+//                           os.write(content, 0,size);
+//                       } } catch (IOException ex) {
+//                       Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
+//                   }
+// 
+//                        } catch (FileNotFoundException ex) {
+//                            Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
+//                        }
+//               
+//            Image   im = new Image("file:pic.jpg");
                 
                
-               byte[] img=rs.getBytes(11);
-               ImageIcon image = new ImageIcon(img);
-               Image im = image.getImage();
+
                
-              /* 
-                Image MyImg= im.getScaledInstance(label.getWidh(), label.getHeight(),Image.SCALE_SMOOTH);
-               ImageIcon newImage = new ImageIcon(MyImg);
-               label.setIcon(newImage);
-               
-               
-               */
-               
-               Parent c =new Parent (cin, nom, prenom,sexe,date,email,password,num_tel,im,etat_compte,etat_civil);
+               Parent c =new Parent (id,cin, nom, prenom,sexe,date,email,password,num_tel,etat_compte,etat_civil);
      arr.add(c);
      }
     return arr;
@@ -156,11 +170,13 @@ PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user`SET `etat
     @Override
     public  Parent read(Parent t) throws SQLException{
         
-        PreparedStatement pre=con.prepareStatement(" select * from user where role='P' and cin=?;");
+        PreparedStatement pre=con.prepareStatement(" select * from user where role='P' and cin=? ;");
          pre.setString(1, t.getCin());
        Parent c=new Parent();  
     ResultSet rs=pre.executeQuery();
-     while (rs.next()) {                
+     while (rs.next()) {
+         
+               c.setId(rs.getString(1));
                c.setCin(rs.getString(2));
                c.setNom(rs.getString(5));
                c.setPrenom(rs.getString(6));
@@ -172,10 +188,27 @@ PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user`SET `etat
                c.setEtat_compte(rs.getString(9));
                c.setEtat_civil(rs.getString(10));
                
-               byte[] img=rs.getBytes(11);
-               ImageIcon image = new ImageIcon(img);
-               Image im = image.getImage();
-               c.setIcon(im);
+                InputStream is=rs.getBinaryStream(11);
+                OutputStream os;
+                
+            try {
+                os = new FileOutputStream(new File("pic.jpg"));
+                 byte[] content= new byte[1024];
+                int size=0;
+                   try {
+                       while((size = is.read(content))!=-1){
+                           
+                           os.write(content, 0,size);
+                       } } catch (IOException ex) {
+                       Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+ 
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+               
+                    Image   im = new Image("file:pic.jpg");
+                    c.setIcon(im);
      
              
 

@@ -26,8 +26,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javax.swing.JFileChooser;
+import javax.swing.SpringLayout;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import pioneerapp.JavaMail;
 
 /**
  * FXML Controller class
@@ -60,7 +63,11 @@ public class InscriptionEnfantController implements Initializable {
     private Label labelErreur;
     @FXML
     private Label labelnbrE;
-
+    
+    private String EmailText;
+    private String mail;
+    @FXML
+    private ImageView attendezimg;
     /**
      * Initializes the controller class.
      */
@@ -70,6 +77,11 @@ public class InscriptionEnfantController implements Initializable {
         
         comboboxSexe.setItems(listCombo);
         ComboboxAge.setItems(listComboAge);
+        
+      Image FrontImg= new Image("/Image/Attendezimg.png");
+      attendezimg.setImage(FrontImg);
+      attendezimg.setVisible(false);
+     
     }    
 
     @FXML
@@ -118,6 +130,15 @@ public class InscriptionEnfantController implements Initializable {
         labelnbrE.setText(labelnbrE.getText()+"  "+counter+"/"+nbr);
     }
     
+    public void SetEmailText(String text)
+    {
+        EmailText=text;
+    }
+    
+    public void Setmail(String mail)
+    {
+        this.mail=mail;
+    }
 
     @FXML
     private void validerEAction(ActionEvent event) {
@@ -125,16 +146,21 @@ public class InscriptionEnfantController implements Initializable {
                 if(comboboxSexe.getValue()==null || NomText.equals("") || prenomText.equals("") || imagepdpE.getImage() ==null || ComboboxAge.getValue()==null)
                 {
                      labelErreur.setVisible(true);
+                     attendezimg.setVisible(false);
+                                     
                 }
                 else
                 {
-                      //  Enfant(String nom, String prenom, String sexe, String cin_p, String age)
+                    
+                    
+                        EmailText+="Enfant: "+NomText.getText()+" "+prenomText.getText()+"\n"+"Age: "+ComboboxAge.getValue()+"\n"+ "Sexe: "+comboboxSexe.getValue()+"\n \n \n ";
                             
                          Enfant e=new Enfant(NomText.getText(),prenomText.getText(),comboboxSexe.getValue(),cin,ComboboxAge.getValue(),photopath);
                          Service.ServiceEnfant se=new ServiceEnfant();
                           try {
+                                
                                 se.ajouter(e);
-                               }      catch (SQLException ex) {
+                              }      catch (SQLException ex) {
                                                              Logger.getLogger(InscriptionEnfantController.class.getName()).log(Level.SEVERE, null, ex);
                                                          }  
            
@@ -150,10 +176,12 @@ public class InscriptionEnfantController implements Initializable {
                                  try {
                                     root = loader.load();
                                   InscriptionEnfantController apc = loader.getController();
-                                     apc.SetCin(cin);
+                                    apc.SetCin(cin);
                                     apc.SetnbrEint(nbrE);
                                     apc.SetCounter(Counter);
                                     apc.SetlabelAff(nbrE, Counter);
+                                    apc.SetEmailText(EmailText);
+                                    apc.Setmail(mail);
                                      prenomText.getScene().setRoot(root);
                                     } catch (IOException ex) {
                                         Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -163,6 +191,14 @@ public class InscriptionEnfantController implements Initializable {
                                 
                                 else
                                 {
+                                   
+                                  
+                                      
+                                            try {
+                                                JavaMail.SendMail(mail,EmailText);
+                                            } catch (Exception ex) {
+                                                Logger.getLogger(InscriptionEnfantController.class.getName()).log(Level.SEVERE, null, ex);
+                                            }
                                     FXMLLoader loader = new FXMLLoader
                                 (getClass()
                                  .getResource("Login.fxml"));
@@ -180,7 +216,15 @@ public class InscriptionEnfantController implements Initializable {
                         
                 }
                 
-
+               
     }
+
+    @FXML
+    private void validerPressed(MouseEvent event) {
+        attendezimg.setVisible(true); 
+    }
+
+
+    
     
 }

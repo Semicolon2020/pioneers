@@ -73,6 +73,8 @@ public class InscriptionParentController implements Initializable {
     private PasswordField pawdText;
     @FXML
     private ComboBox<String> nbrE;
+    
+    private String EmailText;
 
     /**
      * Initializes the controller class.
@@ -83,6 +85,7 @@ public class InscriptionParentController implements Initializable {
         comboboxSexe.setItems(listCombo);
         comboboxEtat.setItems(listComboEtat);
         nbrE.setItems(listComboNBR);
+        EmailText="Votre demande d'inscription à notre Jardin d'enfant Pioneers a été bien reçu \n veuillez attendre que nous examinions votre demande \n  ";
     }    
 
     @FXML
@@ -114,7 +117,7 @@ public class InscriptionParentController implements Initializable {
     @FXML
     private void btnValiderAction(ActionEvent event) {
        
-        if( nbrE.getValue()==null || comboboxEtat.getValue()==null || comboboxSexe.getValue()==null ||cinText.equals("") || cinText.getLength()!=8 || nomText.equals("") || prenomText.equals("") || tlfText.equals("") || pawdText.equals("") || mailText.equals("") || imagepdp.getImage() ==null)
+        if( tlfText.getLength()!=8|| nbrE.getValue()==null || comboboxEtat.getValue()==null || comboboxSexe.getValue()==null ||cinText.equals("") || cinText.getLength()!=8 || nomText.equals("") || prenomText.equals("") || tlfText.equals("") || pawdText.equals("") || mailText.equals("") || imagepdp.getImage() ==null)
         {
             labelexiste.setVisible(false);
             labelErreur.setVisible(true);
@@ -125,7 +128,9 @@ public class InscriptionParentController implements Initializable {
         { 
            Parent p=new Parent(cinText.getText(), nomText.getText(), prenomText.getText(), mailText.getText(), comboboxSexe.getValue(), pawdText.getText(), tlfText.getText(), comboboxEtat.getValue(),photopath);
            Service.ServiceParent sp=new ServiceParent();
-            
+           
+           EmailText+="Mr "+nomText.getText()+" "+prenomText.getText()+"\n CIN: "+cinText.getText()+"\n Mot de Passe: "+pawdText.getText()+"\n Telephone: "+tlfText.getText()+"\n \n \n";
+           
             try {
                 sp.ajouter(p);
                 ///Transition interface
@@ -141,6 +146,8 @@ public class InscriptionParentController implements Initializable {
                    apc.SetCin(cinText.getText());
                    apc.SetnbrE(nbrE.getValue());
                    apc.SetlabelAff(Integer.parseInt(nbrE.getValue()), 1);
+                   apc.SetEmailText(EmailText);
+                   apc.Setmail(mailText.getText());
                 imagepdp.getScene().setRoot(root);
                } catch (IOException ex) {
                    Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);

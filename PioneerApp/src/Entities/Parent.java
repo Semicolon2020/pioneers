@@ -5,10 +5,10 @@
  */
 package Entities;
 
-import java.awt.Image;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import javafx.scene.image.Image;
+
+
+
 
 /**
  *
@@ -16,6 +16,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Parent {
     
+    private String id;
     private String cin;
     private String nom;
     private String prenom;
@@ -58,8 +59,9 @@ public class Parent {
         
     }
 
-    public Parent(String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
+    public Parent(String id,String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
         
+        this.id=id;
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -74,6 +76,26 @@ public class Parent {
 
     }
 
+    ////Oberv table view
+    
+     public Parent(String id,String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel,String etat_compte,String etat_civil) {
+        
+        this.id=id;
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.sexe = sexe;
+        this.dateEmbauche = dateEmbauche;
+        this.email = email;
+        this.password = password;
+        this.num_tel = num_tel;
+        this.icon = icon;
+        this.etat_compte=etat_compte;
+        this.etat_civil=etat_civil;
+
+    }
+    
+    
     public String getCin() {
         return cin;
     }
@@ -175,6 +197,14 @@ public class Parent {
     @Override
     public String toString() {
         return "Parent{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo + ", icon=" + icon + ", dateEmbauche=" + dateEmbauche + ", etat_compte=" + etat_compte + ", etat_civil=" + etat_civil + '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     

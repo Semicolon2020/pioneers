@@ -23,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -46,6 +47,8 @@ public class LoginController implements Initializable {
     private TextField cinText;
     @FXML
     private PasswordField mdpText;
+    @FXML
+    private Label LabelErreur;
 
     /**
      * Initializes the controller class.
@@ -55,6 +58,9 @@ public class LoginController implements Initializable {
         
       Image FrontImg= new Image("/Image/Wlcimage.jpg");
       FrontImage.setImage(FrontImg);
+      
+      LabelErreur.setVisible(false);
+      
     
        
     }    
@@ -65,6 +71,9 @@ public class LoginController implements Initializable {
        if(cinText.getText().equals("") || mdpText.getText().equals("") || cinText.getLength()!=8 )
         {
             System.out.println("erreur");
+            LabelErreur.setText("Cin ou mot de passe incorrect!");
+            LabelErreur.setVisible(true);
+            
         }
        else
         {
@@ -74,18 +83,39 @@ public class LoginController implements Initializable {
                 Service.ServiceResponsable sr =new ServiceResponsable();
                 
                 if(sr.LoginResponsable(r)==0)
-                {System.out.println(" Responsable SUCCESSSSSSS");}
+                {System.out.println(" Responsable ");
+                
+                                                    FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("ResponsableMain.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               ResponsableMainController apc = loader.getController();
+                                               apc.setCin(cinText.getText());
+                                              
+                                            cinText.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+                
+                
+                }
                 
                 else if(sr.LoginResponsable(r)==1)
-                {System.out.println(" Tuteur SUCCESSSSSSS");}
+                {System.out.println(" Tuteur ");}
                 
                 else if (sr.LoginResponsable(r)==2)
-                {System.out.println(" Parent SUCCESSSSSSS");}
+                {System.out.println(" Parent ");}
                 
                 else if(sr.LoginResponsable(r)==3)
-                {System.out.println("Compte Non active");}
+                {   LabelErreur.setText("Compte Non activé!");
+                    LabelErreur.setVisible(true);
+                    }
                 
-                else {System.out.println("Utilisateur non trouve verifier your credentials");}
+                else {LabelErreur.setText("Vérifiez les champs !");
+                    LabelErreur.setVisible(true);}
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
