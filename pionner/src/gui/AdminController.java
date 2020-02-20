@@ -154,6 +154,7 @@ public class AdminController implements Initializable {
     
      @FXML
     public void ajoutbus(ActionEvent event) throws SQLException{
+         if(!bname.getText().equals("") &&  !bcapacite.getText().equals("") &&  !bchauffeur.getText().equals("")){
         Bus b = new Bus(5,bname.getText(),Integer.valueOf(bcapacite.getText()),bchauffeur.getText());
        
          try{ Statement stm= mdb.getConnection().createStatement();
@@ -172,7 +173,7 @@ public class AdminController implements Initializable {
         }
      
        
-       }
+       }}
     
         @FXML
       private void suppbus(ActionEvent event) throws SQLException{  
@@ -329,6 +330,7 @@ DataBase mdb = new DataBase();
      
       public void ajouttrajet(ActionEvent event) throws SQLException{
              
+          if(!Tname.getText().equals("")){
                          DataBase mdb = new DataBase();
      Connection  con = DataBase.getInstance().getConnection();
           int idbus=0;
@@ -359,10 +361,11 @@ DataBase mdb = new DataBase();
                suppst.setDisable(false);
         Sname.setText(""); 
        
-       }
+       }}
       
       
     public void ajoutstation(ActionEvent event) throws SQLException{
+         if(!Sname.getText().equals("")){
    int id=0;
    
     DataBase mdb = new DataBase();
@@ -378,7 +381,7 @@ DataBase mdb = new DataBase();
        String requeteInsert = "INSERT INTO `pioneer`.`station` (`name`,`idtrajet`,`longtitude`,`altitude`) VALUES ('" +s.getName()+ "','"+s.getIdtrajet()+"','"+s.getLongtitude()+ "','"+s.getAltitude()+ "');";
        stm.executeUpdate(requeteInsert);
        refreshstation();
-       Sname.setText("");
+       Sname.setText("");}
     
     }
     

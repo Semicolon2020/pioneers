@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.awt.Image;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,7 @@ public class HomePage extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+       
         try {
             Parent root = FXMLLoader
         .load(getClass().getResource("login.fxml"));
