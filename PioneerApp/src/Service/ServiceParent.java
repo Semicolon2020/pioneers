@@ -79,12 +79,17 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
     }
 
     @Override
-    public boolean update(Parent t) throws SQLException {
-
-    PreparedStatement     pre=con.prepareStatement("update `pionnersapp`.`user`SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,"
-                + "             `num_tel`=?,`etat_compte`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=? and role='P';");
+    public boolean update(Parent t,String cin) throws SQLException {
+        
+if(t.getPhoto()!=null)
+{
+PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user` SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,`num_tel`=?,`etat_compte`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=?;");
     
     
+    
+        try {
+    InputStream  is = new FileInputStream(new File(t.getPhoto()));
+        
     pre.setString(1, t.getCin());  
     pre.setString(2, t.getPassword());
     
@@ -94,11 +99,48 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
     pre.setString(6, t.getNum_tel());
     pre.setString(7, t.getEtat_compte());
     pre.setString(8, t.getEtat_civil());
-    pre.setString(9, t.getPhoto());
+   
     pre.setString(10, t.getSexe());
-    pre.setString(11, t.getCin());
+    pre.setString(11, cin);
+    pre.setBlob(9, is);
      
     return pre.executeUpdate()==0;
+ } catch (FileNotFoundException ex) {
+            Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+}
+
+else 
+{
+    PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user` SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,`num_tel`=?,`etat_compte`=?,`etat_civil`=?,`sexe`=? WHERE cin=?;");
+    
+    
+    
+       
+    
+        
+    pre.setString(1, t.getCin());  
+    pre.setString(2, t.getPassword());
+    
+    pre.setString(3, t.getNom());
+    pre.setString(4, t.getPrenom());
+    pre.setString(5, t.getEmail());
+    pre.setString(6, t.getNum_tel());
+    pre.setString(7, t.getEtat_compte());
+    pre.setString(8, t.getEtat_civil());
+   
+    pre.setString(9, t.getSexe());
+    pre.setString(10, cin);
+    
+     
+    return pre.executeUpdate()==0;
+
+}
+    
+    
+   
+        return false ;
     }
 
     
@@ -108,7 +150,7 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
         
         List<Parent> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from user where role='P' order by id,etat_compte,date_embauche");
+    ResultSet rs=ste.executeQuery("select * from user where role='P' order by id ");
      while (rs.next()) {     
          
          
@@ -158,13 +200,14 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
     }
 
     @Override
-    public void approve(Parent t) throws SQLException {
+    public void approve(Parent t,String cin) throws SQLException {
 
 PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user`SET `etat_compte`='1' WHERE cin=?;");
       
-    pre.setString(1, t.getCin());
+    
+    pre.setString(1,cin);
      
-     pre.executeUpdate();
+        System.out.println(pre.executeUpdate());
     }
     
     @Override
@@ -232,6 +275,69 @@ PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user`SET `etat
      
      return false;
     }
+
+     @Override
+    public List<Parent> readRecherche(String Word) throws SQLException {
+        
+        List<Parent> arr=new ArrayList<>();
+    ste=con.createStatement();
+     String requeteInsert = " select * from user where role='P' and nom LIKE '%" + Word + "%' order by id;";
+     ResultSet rs =  ste.executeQuery(requeteInsert);
+        
+     while (rs.next()) {     
+         
+         
+                
+               String id=rs.getString(1);
+               String cin=rs.getString(2);
+               String nom=rs.getString(5);
+               String prenom=rs.getString(6);
+               String sexe=rs.getString(12);
+               String date=rs.getDate(13).toString();
+               String email=rs.getString(7);
+               String password=rs.getString(3);
+               String num_tel=rs.getString(8);
+               String etat_compte=rs.getString(9);
+               String etat_civil=rs.getString(10);
+               
+                Image im;
+
+                
+               
+
+               
+               Parent c =new Parent (id,cin, nom, prenom,sexe,date,email,password,num_tel,etat_compte,etat_civil);
+     arr.add(c);
+     }
+    return arr;
+
+    }
     
     
+    public List<Integer> StatSexe() throws SQLException {
+        
+        List<Integer> arr=new ArrayList<>();
+    ste=con.createStatement();
+     String requeteInsert = "select count(*) Tout FROM user WHERE etat_compte='1' and role='P'\n" +
+                                    "UNION ALL\n" +
+                                    "select COUNT(*) femme from user WHERE sexe='Femme' and etat_compte='1' and role='P'\n" +
+                                    "UNION ALL\n" +
+                                    "select COUNT(*) homme from user WHERE sexe='Homme' and etat_compte='1' and role='P'\n" +
+                                    ";";
+     ResultSet rs =  ste.executeQuery(requeteInsert);
+        
+     while (rs.next()) {     
+         
+         
+                
+               int all=rs.getInt(1);
+               
+               
+    arr.add(all);
+   
+     }
+        System.out.println(arr);
+    return arr;
+    
+}
 }

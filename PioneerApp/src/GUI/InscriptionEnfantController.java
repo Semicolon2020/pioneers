@@ -155,7 +155,7 @@ public class InscriptionEnfantController implements Initializable {
                     
                         EmailText+="Enfant: "+NomText.getText()+" "+prenomText.getText()+"\n"+"Age: "+ComboboxAge.getValue()+"\n"+ "Sexe: "+comboboxSexe.getValue()+"\n \n \n ";
                             
-                         Enfant e=new Enfant(NomText.getText(),prenomText.getText(),comboboxSexe.getValue(),cin,ComboboxAge.getValue(),photopath);
+                         Enfant e=new Enfant(1,NomText.getText(),prenomText.getText(),comboboxSexe.getValue(),cin,ComboboxAge.getValue(),photopath);
                          Service.ServiceEnfant se=new ServiceEnfant();
                           try {
                                 
@@ -192,8 +192,6 @@ public class InscriptionEnfantController implements Initializable {
                                 else
                                 {
                                    
-                                  
-                                      
                                             try {
                                                 JavaMail.SendMail(mail,EmailText);
                                             } catch (Exception ex) {

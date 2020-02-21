@@ -159,10 +159,7 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
                c.setEtat_compte(rs.getString(9));
                c.setEtat_civil(rs.getString(10));
                
-               byte[] img=rs.getBytes(11);
-               ImageIcon image = new ImageIcon(img);
-               Image im = image.getImage();
-               c.setIcon(im);
+               
      
              
 
@@ -182,6 +179,7 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
     ResultSet rs=pre.executeQuery();
      while (rs.next()) {
          if(rs.getString(9).equals("0")){return 3;}
+         else if (rs.getString(9).equals("2")) return 5;
          
             switch (rs.getString(4)) {
                 case "R":

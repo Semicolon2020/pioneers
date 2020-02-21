@@ -18,6 +18,10 @@ public interface IServiceEnfant <T> {
     boolean delete(T t) throws SQLException;
     boolean update(T t) throws SQLException;
     List<T> readAll() throws SQLException;
+    List<T> readParent(String cin) throws SQLException;
+    T read(T t) throws SQLException;
+    int NombreEnfInscri() throws SQLException ;
+
     
     
     

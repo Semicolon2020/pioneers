@@ -30,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -42,13 +43,19 @@ public class LoginController implements Initializable {
     @FXML
     private ImageView FrontImage ;
     @FXML
-    private Button btnConnecter;
-    @FXML
     private TextField cinText;
     @FXML
     private PasswordField mdpText;
     @FXML
     private Label LabelErreur;
+    @FXML
+    private ImageView seConnecter;
+    @FXML
+    private ImageView sinscrire;
+    @FXML
+    private ImageView iconpioneers;
+    @FXML
+    private ImageView pioneers;
 
     /**
      * Initializes the controller class.
@@ -56,19 +63,26 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-      Image FrontImg= new Image("/Image/Wlcimage.jpg");
-      FrontImage.setImage(FrontImg);
       
+      FrontImage.setImage(new Image("/Image/Wlcimage.jpg"));
+      seConnecter.setImage(new Image("/Image/seconnecter.png"));
+      sinscrire.setImage(new Image("/Image/sinscrire.png"));
+      iconpioneers.setImage(new Image("/Image/iconPioneers.png"));
+      pioneers.setImage(new Image("/Image/pioneers.png"));       
       LabelErreur.setVisible(false);
       
     
        
     }    
 
+    
+
+   
+
     @FXML
-    private void btnConnecterAction(ActionEvent event) {
-      
-       if(cinText.getText().equals("") || mdpText.getText().equals("") || cinText.getLength()!=8 )
+    private void LoginSeconnecterAction(MouseEvent event) {
+        
+         if(cinText.getText().equals("") || mdpText.getText().equals("") || cinText.getLength()!=8 )
         {
             System.out.println("erreur");
             LabelErreur.setText("Cin ou mot de passe incorrect!");
@@ -81,18 +95,20 @@ public class LoginController implements Initializable {
                 
                 Responsable r=new Responsable(cinText.getText(), mdpText.getText());
                 Service.ServiceResponsable sr =new ServiceResponsable();
-                
-                if(sr.LoginResponsable(r)==0)
+                int login=sr.LoginResponsable(r);
+                if(login==0)
                 {System.out.println(" Responsable ");
                 
                                                     FXMLLoader loader = new FXMLLoader
                                                     (getClass()
                                                      .getResource("ResponsableMain.fxml"));
 
-                                                     javafx.scene.Parent root;
+                                                    
                                            try {
+                                                javafx.scene.Parent root;
                                                root = loader.load();
                                                ResponsableMainController apc = loader.getController();
+                                              
                                                apc.setCin(cinText.getText());
                                               
                                             cinText.getScene().setRoot(root);
@@ -103,16 +119,36 @@ public class LoginController implements Initializable {
                 
                 }
                 
-                else if(sr.LoginResponsable(r)==1)
+                else if(login==1)
                 {System.out.println(" Tuteur ");}
                 
-                else if (sr.LoginResponsable(r)==2)
+                else if (login==2)
                 {System.out.println(" Parent ");}
                 
-                else if(sr.LoginResponsable(r)==3)
+                else if(login==3)
                 {   LabelErreur.setText("Compte Non activé!");
                     LabelErreur.setVisible(true);
                     }
+                else if (login==5)
+                {
+                                        FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("NewTuteurMdp.fxml"));
+
+                                                     
+                                           try {
+                                               javafx.scene.Parent root;
+                                               root = loader.load();
+                                               NewTuteurMdpController apc = loader.getController();
+                                              
+                                               apc.SetCin(cinText.getText());
+                                              
+                                            cinText.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+                    
+                }
                 
                 else {LabelErreur.setText("Vérifiez les champs !");
                     LabelErreur.setVisible(true);}
@@ -121,13 +157,10 @@ public class LoginController implements Initializable {
             }
           
          } 
-          
-        
     }
 
     @FXML
-    private void inscriptionaction(ActionEvent event) throws IOException {
-        
+    private void inscriAction(MouseEvent event) {
         ///////////move between scenes
          FXMLLoader loader = new FXMLLoader
                         (getClass()
@@ -140,7 +173,7 @@ public class LoginController implements Initializable {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
                 }
-    
+        
     }
     
        

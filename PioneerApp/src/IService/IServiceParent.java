@@ -17,10 +17,12 @@ import java.util.List;
 public interface IServiceParent <T> {
     void ajouter(T t) throws SQLException;
     boolean delete(T t) throws SQLException;
-    boolean update(T t) throws SQLException;
+    boolean update(T t,String cin) throws SQLException;
     List<T> readAll() throws SQLException;
     Parent read(T t) throws SQLException;
     boolean LoginParent(T t) throws SQLException;
+    void approve(T t,String cin) throws SQLException;
+   public List<T> readRecherche(String Word) throws SQLException;
+   public List<Integer> StatSexe() throws SQLException;
 
-    void approve(T t) throws SQLException;
 }

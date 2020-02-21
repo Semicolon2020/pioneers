@@ -82,7 +82,7 @@ public class InscriptionParentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        comboboxSexe.setItems(listCombo);
+        comboboxSexe.setItems(listCombo); 
         comboboxEtat.setItems(listComboEtat);
         nbrE.setItems(listComboNBR);
         EmailText="Votre demande d'inscription à notre Jardin d'enfant Pioneers a été bien reçu \n veuillez attendre que nous examinions votre demande \n  ";

@@ -5,9 +5,9 @@
  */
 package Entities;
 
-import java.awt.Image;
 import java.io.File;
 import java.sql.Date;
+import javafx.scene.image.Image;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -17,6 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Tuteur {
     
+    private String id;
     private String cin;
     private String nom;
     private String prenom;
@@ -31,8 +32,9 @@ public class Tuteur {
     private String etat_civil;
 
     public Tuteur(String cin , String password){this.cin=cin;this.password=password;}
-
-    public Tuteur(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil) {
+    public Tuteur(){}
+    
+    public Tuteur(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil,String photo) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -41,17 +43,9 @@ public class Tuteur {
         this.password = password;
         this.num_tel = num_tel;
         this.etat_civil=etat_civil;
+        this.photo=photo;
         
-        JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png","jpeg");
-        file.addChoosableFileFilter(filter);
-        int result = file.showSaveDialog(null);
-        if(result== JFileChooser.APPROVE_OPTION)
-        {
-            File selecteFile = file.getSelectedFile();
-             this.photo = selecteFile.getAbsolutePath();
-        }
+        
     }
         public Tuteur(String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
         this.cin = cin;
@@ -65,13 +59,37 @@ public class Tuteur {
         this.icon = icon;
         this.etat_compte=etat_compte;
         this.etat_civil=etat_civil;
+        
     }
+        public Tuteur(String id,String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel,String etat_compte,String etat_civil) {
+        this.cin = cin;
+        this.nom = nom;
+        this.id=id;
+        this.prenom = prenom;
+        this.sexe = sexe;
+        this.dateEmbauche = dateEmbauche;
+        this.email = email;
+        this.password = password;
+        this.num_tel = num_tel;
+       
+        this.etat_compte=etat_compte;
+        this.etat_civil=etat_civil;
+    }
+        
         
         public Tuteur (String cin)
         {
             this.cin=cin;
         }
-        public Tuteur(){}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+        
 
     public String getEtat_compte() {
         return etat_compte;

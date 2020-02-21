@@ -5,8 +5,9 @@
  */
 package Entities;
 
-import java.awt.Image;
+
 import java.io.File;
+import javafx.scene.image.Image;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -25,7 +26,8 @@ public class Enfant {
     private String photo;
     private Image icon;
 
-    public Enfant(String nom, String prenom, String sexe, String cin_p, String age,String photo) {
+    public Enfant(int id_e,String nom, String prenom, String sexe, String cin_p, String age,String photo) {
+        this.id_e=id_e;
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
@@ -56,6 +58,20 @@ public class Enfant {
         
         
          }
+       
+       public Enfant(int id_e,String nom, String prenom, String sexe, String cin_p, String age) {
+       
+        this.id_e=id_e;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.sexe = sexe;
+        this.cin_p = cin_p;
+        this.age = age;
+        
+        
+        
+         }
+       public Enfant(){}
 
     public int getId_e() {
         return id_e;

@@ -196,8 +196,10 @@ public class Parent {
 
     @Override
     public String toString() {
-        return "Parent{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo + ", icon=" + icon + ", dateEmbauche=" + dateEmbauche + ", etat_compte=" + etat_compte + ", etat_civil=" + etat_civil + '}';
+        return "Parent{" + "id=" + id + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo + ", dateEmbauche=" + dateEmbauche + ", etat_compte=" + etat_compte + ", etat_civil=" + etat_civil + '}';
     }
+
+   
 
     public String getId() {
         return id;

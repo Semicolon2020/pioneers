@@ -6,13 +6,17 @@
 package Service;
 
 import DB.DataBase;
+import Entities.Parent;
 import Entities.Responsable;
 import Entities.Tuteur;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,7 +45,7 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
     public void ajouter(Tuteur t) throws SQLException {
 
          PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user`  (`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
-                 + "    VALUES (?,?,'T',?,?,?,?,'1',?,?,?,now());");
+                 + "    VALUES (?,?,'T',?,?,?,?,'2',?,?,?,now());");
     
         try {
             InputStream is= new FileInputStream(new File(t.getPhoto()));
@@ -105,7 +109,8 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
     List<Tuteur> arr=new ArrayList<>();
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from user where role='T'");
-     while (rs.next()) {                
+     while (rs.next()) {   
+                 String id=rs.getString(1);
                String cin=rs.getString(2);
                String nom=rs.getString(5);
                String prenom=rs.getString(6);
@@ -117,9 +122,7 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
                String etat_compte=rs.getString(9);
                String etat_civil=rs.getString(10);
                
-               byte[] img=rs.getBytes(11);
-               ImageIcon image = new ImageIcon(img);
-               Image im = image.getImage();
+            
                
               /* 
                 Image MyImg= im.getScaledInstance(label.getWidh(), label.getHeight(),Image.SCALE_SMOOTH);
@@ -129,21 +132,23 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
                
                */
                
-               Tuteur c =new Tuteur (cin, nom, prenom,sexe,date,email,password,num_tel,im,etat_compte,etat_civil);
+               Tuteur c =new Tuteur (id,cin, nom, prenom,sexe,date,email,password,num_tel,etat_compte,etat_civil);
      arr.add(c);
      }
     return arr;
 
     }
     
-    @Override
-    public  Tuteur read(Tuteur t) throws SQLException
-    {
-        PreparedStatement pre=con.prepareStatement(" select * from user where role='T' and cin=?;");
+   @Override
+    public  Tuteur read(Tuteur t) throws SQLException{
+        
+        PreparedStatement pre=con.prepareStatement(" select * from user where role='T' and cin=? ;");
          pre.setString(1, t.getCin());
        Tuteur c=new Tuteur();  
     ResultSet rs=pre.executeQuery();
-     while (rs.next()) {                
+     while (rs.next()) {
+         
+               c.setId(rs.getString(1));
                c.setCin(rs.getString(2));
                c.setNom(rs.getString(5));
                c.setPrenom(rs.getString(6));
@@ -155,10 +160,28 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
                c.setEtat_compte(rs.getString(9));
                c.setEtat_civil(rs.getString(10));
                
-               byte[] img=rs.getBytes(11);
-               ImageIcon image = new ImageIcon(img);
-               Image im = image.getImage();
-               c.setIcon(im);
+                
+                
+            try {
+                InputStream is=rs.getBinaryStream(11);
+                OutputStream os;
+                os = new FileOutputStream(new File("pic.jpg"));
+                 byte[] content= new byte[1024];
+                int size=0;
+                   try {
+                       while((size = is.read(content))!=-1){
+                           
+                           os.write(content, 0,size);
+                       } } catch (IOException ex) {
+                       Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+ 
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+               
+                    javafx.scene.image.Image   im = new javafx.scene.image.Image("file:pic.jpg");
+                    c.setIcon(im);
      
              
 
