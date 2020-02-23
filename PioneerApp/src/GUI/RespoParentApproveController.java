@@ -283,7 +283,7 @@ public class RespoParentApproveController implements Initializable {
         
         
         try {
-             pdpParent.setImage(sp.read(parent).getIcon()); 
+             pdpParent.setImage(new Image(sp.read(parent).getPhoto())); 
         } catch (SQLException ex) {
             Logger.getLogger(RespoParentApproveController.class.getName()).log(Level.SEVERE, null, ex);
         }

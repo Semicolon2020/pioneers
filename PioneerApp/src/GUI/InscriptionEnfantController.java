@@ -98,12 +98,12 @@ public class InscriptionEnfantController implements Initializable {
             Image image;
             photopath=selectedFile.getAbsolutePath();
             
-            image = new Image(selectedFile.toURI().toString(),270,280,true,true); 
+             image = new Image(selectedFile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);
-            imagepdpE.setImage(image);
-            imagepdpE.setFitHeight(270);
-           imagepdpE.setFitHeight(280);
-          imagepdpE.setPreserveRatio(true);
+             imagepdpE.setImage(image);
+             imagepdpE.setFitHeight(270);
+             imagepdpE.setFitHeight(280);
+             imagepdpE.setPreserveRatio(true);
           
         }
     }

@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import pioneerapp.FTPUploader;
 
 /**
  *
@@ -47,9 +48,12 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
          PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user`  (`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
                  + "    VALUES (?,?,'T',?,?,?,?,'2',?,?,?,now());");
     
-        try {
-            InputStream is= new FileInputStream(new File(t.getPhoto()));
-        
+      
+            
+            
+            
+            FTPUploader ftp=new FTPUploader();
+            ftp.FTPTransfer(t.getFile());
     
     pre.setString(1, t.getCin());
     pre.setString(2, t.getPassword());
@@ -59,16 +63,14 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
     pre.setString(5, t.getEmail());
     pre.setString(6, t.getNum_tel());
     pre.setString(7, t.getEtat_civil());    
-    pre.setBlob(8, is);
+    pre.setString(8, t.getFile().toURI().toString());
     
     pre.executeUpdate();
     
         } 
-    catch (FileNotFoundException ex) {
-            Logger.getLogger(ServiceResponsable.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
 
-    }
+    
 
     @Override
     public boolean delete(Tuteur t) throws SQLException {
@@ -159,10 +161,10 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
                c.setNum_tel(rs.getString(8));
                c.setEtat_compte(rs.getString(9));
                c.setEtat_civil(rs.getString(10));
-               
+               c.setPhoto(rs.getString(11));
                 
                 
-            try {
+          /*  try {
                 InputStream is=rs.getBinaryStream(11);
                 OutputStream os;
                 os = new FileOutputStream(new File("pic.jpg"));
@@ -180,8 +182,8 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
                             Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
                         }
                
-                    javafx.scene.image.Image   im = new javafx.scene.image.Image("file:pic.jpg");
-                    c.setIcon(im);
+                    javafx.scene.image.Image   im = new javafx.scene.image.Image("file:pic.jpg");*/
+                    
      
              
 

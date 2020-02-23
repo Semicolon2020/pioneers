@@ -19,6 +19,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -49,6 +50,9 @@ public class InscriptionTuteurController implements Initializable {
     ObservableList<String> listCombo= FXCollections.observableArrayList("Femme","Homme");
     private String cin;
      private String photopath;
+     private File photoFile;
+    Thread UIChange; 
+      
     @FXML
     private TableView<Tuteur> table;
     @FXML
@@ -95,8 +99,20 @@ public class InscriptionTuteurController implements Initializable {
     private Label labelerreur;
     @FXML
     private ImageView suppicon;
+    @FXML
+    private ImageView parenticon;
+    @FXML
+    private ImageView tuteuricon;
+    @FXML
+    private ImageView homeicon;
+    @FXML
+    private ImageView bgicon;
+    @FXML
+    private ImageView homeMain;
+    @FXML
+    private ImageView LoadSpinner;
     
-       
+     
 
 
     /**
@@ -118,12 +134,20 @@ public class InscriptionTuteurController implements Initializable {
         table.setItems(GetTableParent());
         
         //photo.setVisible(false);
+        combosexe.setItems(listCombo);
+        comboEtat.setItems(listComboEtat);
         photo.setImage(new Image("/Image/photobtn.png"));
         ajoutericon.setImage(new Image("/Image/ajouter.png"));
         suppicon.setImage(new Image("/Image/suppbtn.png"));
+        parenticon.setImage(new Image("/Image/ParentInterface.png"));
+        tuteuricon.setImage(new Image("/Image/tuteurInterface.png"));
+        homeicon.setImage(new Image("/Image/logout.png"));
+        bgicon.setImage(new Image("/Image/bgmain.png"));
+        homeMain.setImage(new Image("/Image/home.png"));
+        LoadSpinner.setImage(new Image("/Image/Spinner.gif"));
+      
         
-        
-           combosexe.setItems(listCombo);
+        combosexe.setItems(listCombo);
         comboEtat.setItems(listComboEtat);
     }   
     
@@ -155,7 +179,7 @@ public class InscriptionTuteurController implements Initializable {
 
     @FXML
     private void SelectTuteurTableViewAction(MouseEvent event) {
-          Tuteur tuteur = table.getSelectionModel().getSelectedItem();
+        Tuteur tuteur = table.getSelectionModel().getSelectedItem();
         System.out.println(tuteur);
         SetCin(tuteur.getCin());
         ServiceTuteur sp=new ServiceTuteur();
@@ -164,13 +188,13 @@ public class InscriptionTuteurController implements Initializable {
         
         
         try {
-             pdptuteur.setImage(sp.read(tuteur).getIcon()); 
+             pdptuteur.setImage(new Image(sp.read(tuteur).getPhoto(),270,280,true,true)); 
         } catch (SQLException ex) {
             Logger.getLogger(RespoParentApproveController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
        
-        cinTextField.setText(tuteur.getCin());
+      /*  cinTextField.setText(tuteur.getCin());
         nomTextField.setText(tuteur.getNom());
         prenomTextField.setText(tuteur.getPrenom());
         mailTextField.setText(tuteur.getEmail());
@@ -179,31 +203,49 @@ public class InscriptionTuteurController implements Initializable {
         photo.setVisible(true); /// show button to select new prfile pic 
         //PhotoEnfant.setVisible(true);
         combosexe.setItems(listCombo);
-        comboEtat.setItems(listComboEtat);
+        comboEtat.setItems(listComboEtat);*/
 
     }
 
-    private void SetCin(String cin) {
+    public void SetCin(String cin) {
         this.cin=cin;
     }
+    
+    public void ActivateSpinner()
+    {
+     Platform.runLater(()->{
+        LoadSpinner.setVisible(true);  
+}); 
+     
+         try {
+             Thread.sleep(2000);
+         } catch (InterruptedException ex) {
+             Logger.getLogger(InscriptionTuteurController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
 
+    
     @FXML
     private void ajouterTuteur(MouseEvent event) {
-        
+       
         if( tlfTextField.getLength()!=8 || comboEtat.getValue()==null || combosexe.getValue()==null ||cinTextField.equals("") || cinTextField.getLength()!=8 || nomTextField.equals("") || prenomTextField.equals("") || tlfTextField.equals("")  || mailTextField.equals("") || pdptuteur.getImage() ==null)
         {
             labelerreur.setVisible(true);
+            
            
-          
         }
-        
+
         else 
-        {       Random rand = new Random(); 
+        {    
+                UIChange=new Thread(this::ActivateSpinner);
+                UIChange.start();
+                        
+                 Random rand = new Random(); 
                 
-                String PassRand= rand.nextInt(1000)+nomTextField.getText().toUpperCase()+rand.nextInt(100);
-                                                    //String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil)
-           Tuteur p=new Tuteur(cinTextField.getText(), nomTextField.getText(), prenomTextField.getText(), mailTextField.getText(), combosexe.getValue(), PassRand, tlfTextField.getText(), comboEtat.getValue(),photopath);
-           Service.ServiceTuteur sp=new ServiceTuteur();
+                 String PassRand= rand.nextInt(1000)+nomTextField.getText().toUpperCase()+rand.nextInt(100);                                   
+                 Tuteur p=new Tuteur(cinTextField.getText(), nomTextField.getText(), prenomTextField.getText(), mailTextField.getText(), combosexe.getValue(), PassRand, tlfTextField.getText(), comboEtat.getValue(),photopath);
+                 p.setFile(photoFile);
+                 Service.ServiceTuteur sp=new ServiceTuteur();
            
          String EmailText="Mr/Md "+nomTextField.getText()+" "+prenomTextField.getText()+"\n CIN: "+cinTextField.getText()+"\n Mot de Passe: "+PassRand+"\n Telephone: "+tlfTextField.getText()+"\n \n \n";
            
@@ -237,7 +279,7 @@ public class InscriptionTuteurController implements Initializable {
                 
             } catch (SQLException ex) {
                
-            }
+           }
             
         
     }
@@ -253,11 +295,11 @@ public class InscriptionTuteurController implements Initializable {
         int result = file.showSaveDialog(null);
         if(result== JFileChooser.APPROVE_OPTION)
         {
-            File selectedFile = file.getSelectedFile();
+            photoFile = file.getSelectedFile();
             Image image;
-            photopath=selectedFile.getAbsolutePath();
+            photopath=photoFile.getAbsolutePath();
             
-            image = new Image(selectedFile.toURI().toString(),270,280,true,true); 
+            image = new Image(photoFile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);
             pdptuteur.setImage(image);
             pdptuteur.setFitHeight(270);
@@ -298,6 +340,62 @@ public class InscriptionTuteurController implements Initializable {
                }
         
         
+        
+    }
+
+    @FXML
+    private void parentActionInterface(MouseEvent event) {
+         FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("RespoParentApprove.fxml"));
+            
+                javafx.scene.Parent root;
+               try {
+                   root = loader.load();
+                   RespoParentApproveController apc = loader.getController();
+                   
+                nomTextField.getScene().setRoot(root);
+               } catch (IOException ex) {
+                   Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+               }
+        
+        
+    }
+
+    @FXML
+    private void logoutAction(MouseEvent event) {
+        
+         FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("Login.fxml"));
+            
+                javafx.scene.Parent root;
+               try {
+                   root = loader.load();
+                   LoginController apc = loader.getController();
+                   
+                nomTextField.getScene().setRoot(root);
+               } catch (IOException ex) {
+                   Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+               }
+    }
+
+    @FXML
+    private void MainHomeAction(MouseEvent event) {
+          FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("ResponsableMain.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               ResponsableMainController apc = loader.getController();
+                                              
+                                              
+                                            table.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
         
     }
     

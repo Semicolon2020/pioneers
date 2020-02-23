@@ -26,7 +26,7 @@ public class Tuteur {
     private String password;
     private String num_tel;
     private String photo;
-    private Image icon;
+    private File file;
     private String dateEmbauche;
     private String etat_compte;
     private String etat_civil;
@@ -47,7 +47,7 @@ public class Tuteur {
         
         
     }
-        public Tuteur(String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
+        public Tuteur(String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, File file,String etat_compte,String etat_civil) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -56,7 +56,7 @@ public class Tuteur {
         this.email = email;
         this.password = password;
         this.num_tel = num_tel;
-        this.icon = icon;
+        this.file = file;
         this.etat_compte=etat_compte;
         this.etat_civil=etat_civil;
         
@@ -147,8 +147,8 @@ public class Tuteur {
         return photo;
     }
 
-    public Image getIcon() {
-        return icon;
+    public File getFile() {
+        return file;
     }
 
     public String getDateEmbauche() {
@@ -183,8 +183,8 @@ public class Tuteur {
         this.photo = photo;
     }
 
-    public void setIcon(Image icon) {
-        this.icon = icon;
+    public void setFile(File file) {
+        this.file = file;
     }
 
     public void setDateEmbauche(String dateEmbauche) {
@@ -193,7 +193,7 @@ public class Tuteur {
 
     @Override
     public String toString() {
-        return "Tuteur{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo + ", icon=" + icon + ", dateEmbauche=" + dateEmbauche + ", etat_compte=" + etat_compte + ", etat_civil=" + etat_civil + '}';
+        return "Tuteur{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo +  ", dateEmbauche=" + dateEmbauche + ", etat_compte=" + etat_compte + ", etat_civil=" + etat_civil + '}';
     }
 
     

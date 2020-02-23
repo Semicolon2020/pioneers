@@ -26,6 +26,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.image.Image;
 
+
 /**
  *
  * @author Alfa Shel
@@ -47,7 +48,7 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
     
         try {
             InputStream is= new FileInputStream(new File(t.getPhoto()));
-        
+            
     
     pre.setString(1, t.getCin());
     pre.setString(2, t.getPassword());
@@ -154,7 +155,7 @@ else
      while (rs.next()) {     
          
          
-         
+             
                String id=rs.getString(1);
                String cin=rs.getString(2);
                String nom=rs.getString(5);
@@ -230,28 +231,7 @@ PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user`SET `etat
                c.setNum_tel(rs.getString(8));
                c.setEtat_compte(rs.getString(9));
                c.setEtat_civil(rs.getString(10));
-               
-                InputStream is=rs.getBinaryStream(11);
-                OutputStream os;
-                
-            try {
-                os = new FileOutputStream(new File("pic.jpg"));
-                 byte[] content= new byte[1024];
-                int size=0;
-                   try {
-                       while((size = is.read(content))!=-1){
-                           
-                           os.write(content, 0,size);
-                       } } catch (IOException ex) {
-                       Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
-                   }
- 
-                        } catch (FileNotFoundException ex) {
-                            Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-               
-                    Image   im = new Image("file:pic.jpg");
-                    c.setIcon(im);
+               c.setPhoto(rs.getString(11));
      
              
 

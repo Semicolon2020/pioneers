@@ -68,7 +68,8 @@ public class LoginController implements Initializable {
       seConnecter.setImage(new Image("/Image/seconnecter.png"));
       sinscrire.setImage(new Image("/Image/sinscrire.png"));
       iconpioneers.setImage(new Image("/Image/iconPioneers.png"));
-      pioneers.setImage(new Image("/Image/pioneers.png"));       
+      pioneers.setImage(new Image("/Image/pioneers.png"));  
+
       LabelErreur.setVisible(false);
       
     

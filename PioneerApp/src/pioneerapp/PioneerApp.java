@@ -21,6 +21,20 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import javafx.scene.image.Image;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPReply;
+      
+import org.apache.commons.net.ProtocolCommandEvent;
+import org.apache.commons.net.ProtocolCommandListener;
 
 /**
  *
@@ -28,13 +42,21 @@ import java.util.logging.Logger;
  */
 public class PioneerApp {
 
-    /**
-     * @param args the command line arguments
-     */
+   
+    private static void showServerReply(FTPClient ftpClient) {
+        String[] replies = ftpClient.getReplyStrings();
+        if (replies != null && replies.length > 0) {
+            for (String aReply : replies) {
+                System.out.println("SERVER: " + aReply);
+            }
+        }
+    }
+    
     public static void main(String[] args) {
        
         
-      //  try {
+    //    try {
+            //  try {
             /*   Classe c=new Classe("Mr Mahdi","jogging");
             Classe c1= new Classe ("7");
             Classe c2= new Classe ("7","Fadhel","Creating");
@@ -83,12 +105,54 @@ public class PioneerApp {
             }
             
             }*/
+            
+            
+            /* JavaMail.SendMail("fadhel.shel@gmail.com");
+            } catch (Exception ex) {
+            Logger.getLogger(PioneerApp.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
+            
+            JFileChooser file = new JFileChooser();
+        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png","jpeg");
+        file.addChoosableFileFilter(filter);
+        int result = file.showSaveDialog(null);
+        if(result== JFileChooser.APPROVE_OPTION)
+        {
+            File selectedFile = file.getSelectedFile();
+            System.out.println(selectedFile.getAbsolutePath());
+            FTPUploader ftp= new FTPUploader();
+            System.out.println(selectedFile.getAbsoluteFile().toURI().toString());
+            System.out.println(selectedFile.getAbsoluteFile());
+            ftp.FTPTransfer(selectedFile);
+            
+          //  File selectedFile = file.getSelectedFile();
+           // Image image;
+          //  photopath=selectedFile.getAbsolutePath();  
            
             
-           /* JavaMail.SendMail("fadhel.shel@gmail.com");
-        } catch (Exception ex) {
-            Logger.getLogger(PioneerApp.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+         //   ftpClient.deleteFile(selectedFile.getName());
+           
+        }  
+       
+    }
+            
+            
+            
+          
+    }
+           
+    //    InputStream is= new FileInputStream(new File(t.getPhoto()));   
              
-             }
-}
+             
+/*
+ JFileChooser file = new JFileChooser();
+        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png","jpeg");
+        file.addChoosableFileFilter(filter);
+        int result = file.showSaveDialog(null);
+        if(result== JFileChooser.APPROVE_OPTION)
+        {
+            File selectedFile = file.getSelectedFile();
+            Image image;
+            photopath=selectedFile.getAbsolutePath();*/

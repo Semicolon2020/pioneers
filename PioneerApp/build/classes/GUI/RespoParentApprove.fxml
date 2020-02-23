@@ -45,13 +45,13 @@
       <Label layoutX="673.0" layoutY="380.0" prefHeight="21.0" prefWidth="139.0" text="Photo de l'enfant" textFill="#3c40b5" />
       <TextArea editable="false" layoutX="673.0" layoutY="401.0" prefHeight="250.0" prefWidth="244.0" />
       <ImageView fx:id="pdpEnfant" fitHeight="237.0" fitWidth="270.0" layoutX="677.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="cinTextField" layoutX="165.0" layoutY="408.0" promptText="Cin..." />
-      <TextField fx:id="mdpTextField" layoutX="165.0" layoutY="459.0" promptText="Mot De Passe..." />
-      <TextField fx:id="nomTextField" layoutX="165.0" layoutY="511.0" promptText="Nom..." />
-      <TextField fx:id="prenomTextField" layoutX="165.0" layoutY="564.0" promptText="Prenom..." />
-      <TextField fx:id="tlfTextField" layoutX="165.0" layoutY="614.0" promptText="Telephone..." />
-      <ComboBox fx:id="comboboxSexe" layoutX="407.0" layoutY="408.0" prefWidth="150.0" promptText="Sexe" />
-      <ComboBox fx:id="comboboxEtat" layoutX="407.0" layoutY="459.0" prefWidth="150.0" promptText="Etat Civil" />
+      <TextField fx:id="cinTextField" editable="false" layoutX="165.0" layoutY="408.0" promptText="Cin..." />
+      <TextField fx:id="mdpTextField" editable="false" layoutX="165.0" layoutY="459.0" promptText="Mot De Passe..." />
+      <TextField fx:id="nomTextField" editable="false" layoutX="165.0" layoutY="511.0" promptText="Nom..." />
+      <TextField fx:id="prenomTextField" editable="false" layoutX="165.0" layoutY="564.0" promptText="Prenom..." />
+      <TextField fx:id="tlfTextField" editable="false" layoutX="165.0" layoutY="614.0" promptText="Telephone..." />
+      <ComboBox fx:id="comboboxSexe" disable="true" layoutX="407.0" layoutY="408.0" prefWidth="150.0" promptText="Sexe" />
+      <ComboBox fx:id="comboboxEtat" disable="true" layoutX="407.0" layoutY="459.0" prefWidth="150.0" promptText="Etat Civil" />
       <ImageView fx:id="validerbtn" fitHeight="45.0" fitWidth="130.0" layoutX="375.0" layoutY="575.0" onMousePressed="#ValiderAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../JavaFx/1x/validerbtn.png" />
@@ -63,7 +63,7 @@
          </image>
       </ImageView>
       <ComboBox fx:id="comboboxCompte" layoutX="407.0" layoutY="511.0" prefWidth="150.0" promptText="Etat Compte" />
-      <TextField fx:id="mailTextField" layoutX="165.0" layoutY="660.0" promptText="E-mail...." />
+      <TextField fx:id="mailTextField" editable="false" layoutX="165.0" layoutY="660.0" promptText="E-mail...." />
       <ImageView fx:id="photo" fitHeight="31.0" fitWidth="113.0" layoutX="202.0" layoutY="351.0" onMousePressed="#selectNewpdp" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../../../JavaFx/1x/photobtn.png" />
@@ -85,10 +85,10 @@
             <Image url="@../../../../../JavaFx/1x/suppbtn.png" />
          </image>
       </ImageView>
-      <TextField fx:id="nomModifEnf" layoutX="1093.0" layoutY="676.0" promptText="Nom..." />
-      <TextField fx:id="prenomModifEnf" layoutX="1093.0" layoutY="711.0" promptText="Prenom..." />
-      <ComboBox fx:id="comboSexeEnf" layoutX="1089.0" layoutY="630.0" prefHeight="31.0" prefWidth="85.0" promptText="Sexe" />
-      <ComboBox fx:id="comboAgeEnf" layoutX="1187.0" layoutY="630.0" prefHeight="31.0" prefWidth="85.0" promptText="Age" />
+      <TextField fx:id="nomModifEnf" editable="false" layoutX="1093.0" layoutY="676.0" promptText="Nom..." />
+      <TextField fx:id="prenomModifEnf" editable="false" layoutX="1093.0" layoutY="711.0" promptText="Prenom..." />
+      <ComboBox fx:id="comboSexeEnf" disable="true" layoutX="1089.0" layoutY="630.0" prefHeight="31.0" prefWidth="85.0" promptText="Sexe" />
+      <ComboBox fx:id="comboAgeEnf" disable="true" layoutX="1187.0" layoutY="630.0" prefHeight="31.0" prefWidth="85.0" promptText="Age" />
       <Label fx:id="labelerrenf" layoutX="943.0" layoutY="631.0" prefHeight="21.0" prefWidth="146.0" text="Verifiez les champs!" textFill="#c62e2e" visible="false" />
       <TextField fx:id="RechercheText" layoutX="1052.0" layoutY="375.0" onKeyTyped="#RechercheAction" promptText="Recherche..." />
       <ImageView fx:id="parenticon" fitHeight="94.0" fitWidth="94.0" layoutX="20.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">

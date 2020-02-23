@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/IService/IServiceClasse.java</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Image/ajouter.png</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/ResponsableMainController.java</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Service/ServiceParent.java</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/NewTuteurMdp.fxml</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/InscriptionTuteurController.java</file>
@@ -15,7 +16,6 @@
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/NewTuteurMdpController.java</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/InscriptionEnfantController.java</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Service/ServiceEnfant.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/InscriptionTuteur.fxml</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/pioneerapp/PioneerApp.java</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/ActualiteInterfaceResController.java</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Entities/Enfant.java</file>
@@ -28,6 +28,8 @@
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/InscriptionParentController.java</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/ActualiteInterfaceRes.fxml</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/GUI/HomeFX.java</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/pioneerapp/FTPUploader.java</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneerApp/src/Service/ServiceResponsable.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,6 +5,7 @@
  */
 package Entities;
 
+import java.io.File;
 import javafx.scene.image.Image;
 
 
@@ -25,7 +26,7 @@ public class Parent {
     private String password;
     private String num_tel;
     private String photo;
-    private Image icon;
+    private File file;
     private String dateEmbauche;
     private String etat_compte;
     private String etat_civil;
@@ -59,7 +60,7 @@ public class Parent {
         
     }
 
-    public Parent(String id,String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
+    public Parent(String id,String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, File file,String etat_compte,String etat_civil) {
         
         this.id=id;
         this.cin = cin;
@@ -70,7 +71,7 @@ public class Parent {
         this.email = email;
         this.password = password;
         this.num_tel = num_tel;
-        this.icon = icon;
+        this.file = file;
         this.etat_compte=etat_compte;
         this.etat_civil=etat_civil;
 
@@ -88,8 +89,7 @@ public class Parent {
         this.dateEmbauche = dateEmbauche;
         this.email = email;
         this.password = password;
-        this.num_tel = num_tel;
-        this.icon = icon;
+        this.num_tel = num_tel;      
         this.etat_compte=etat_compte;
         this.etat_civil=etat_civil;
 
@@ -160,12 +160,12 @@ public class Parent {
         this.etat_compte = etat_compte;
     }
 
-    public Image getIcon() {
-        return icon;
+    public File getFile() {
+        return file;
     }
 
-    public void setIcon(Image icon) {
-        this.icon = icon;
+    public void setFile(File file) {
+        this.file = file;
     }
 
    
