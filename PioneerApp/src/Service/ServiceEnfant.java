@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import pioneerapp.FTPUploader;
 
 /**
  *
@@ -51,13 +52,15 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
         try {
             InputStream is= new FileInputStream(new File(t.getPhoto()));
         
-    
+    FTPUploader ftp=new FTPUploader();
+    ftp.FTPTransfer(t.getFile());
+            
     pre.setString(1, t.getNom());
     pre.setString(2, t.getPrenom());
     pre.setString(3, t.getSexe());
     pre.setString(4, t.getCin_p());
     pre.setString(5, t.getAge());
-    pre.setBlob(6, is);
+    pre.setString(6, t.getFile().toURI().toString());
     
     pre.executeUpdate();
     
@@ -88,12 +91,14 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
             try {
                 InputStream is= new FileInputStream(new File(t.getPhoto()));
             
-    
+    FTPUploader ftp=new FTPUploader();
+    ftp.FTPTransfer(t.getFile());
+   
     pre.setString(1, t.getNom());
     pre.setString(2, t.getPrenom());
     pre.setString(3, t.getSexe());
     pre.setString(4, t.getAge());
-    pre.setBlob(5, is);
+    pre.setString(5, t.getFile().toURI().toString());
     pre.setInt(6, t.getId_e());
       
      
@@ -109,7 +114,8 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
     
             
                
-            
+   FTPUploader ftp=new FTPUploader();
+   ftp.FTPTransfer(t.getFile());         
     
     pre.setString(1, t.getNom());
     pre.setString(2, t.getPrenom());
@@ -194,27 +200,7 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
                c.setSexe(rs.getString(4));            
                c.setAge(rs.getString(6));
                c.setCin_p(rs.getString(5));
-                InputStream is=rs.getBinaryStream(7);
-                OutputStream os;
-                
-            try {
-                os = new FileOutputStream(new File("pic.jpg"));
-                 byte[] content= new byte[1024];
-                int size=0;
-                   try {
-                       while((size = is.read(content))!=-1){
-                           
-                           os.write(content, 0,size);
-                       } } catch (IOException ex) {
-                       Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
-                   }
- 
-                        } catch (FileNotFoundException ex) {
-                            Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-               
-                    javafx.scene.image.Image   im = new javafx.scene.image.Image("file:pic.jpg");
-                    c.setIcon(im);
+                c.setPhoto(rs.getString(7));
      
              
 

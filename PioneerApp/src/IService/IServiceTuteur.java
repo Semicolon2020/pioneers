@@ -20,6 +20,8 @@ public interface IServiceTuteur  <T> {
     List<T> readAll() throws SQLException;
     Tuteur read(T t) throws SQLException;
     boolean LoginTuteur(T t) throws SQLException;
+    public boolean updateMdp(Tuteur t) throws SQLException ;
+
 
     
 }

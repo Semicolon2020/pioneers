@@ -45,16 +45,7 @@ public class Parent {
         this.num_tel = num_tel;
         this.etat_civil=etat_civil;
         this.photo=photo;
-      /*  JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png","jpeg");
-        file.addChoosableFileFilter(filter);
-        int result = file.showSaveDialog(null);
-        if(result== JFileChooser.APPROVE_OPTION)
-        {
-            File selecteFile = file.getSelectedFile();
-             this.photo = selecteFile.getAbsolutePath();
-        }*/
+     
         
         
         

@@ -24,7 +24,7 @@ public class Enfant {
     private String cin_p;
     private String age;
     private String photo;
-    private Image icon;
+    private File file;
 
     public Enfant(int id_e,String nom, String prenom, String sexe, String cin_p, String age,String photo) {
         this.id_e=id_e;
@@ -34,19 +34,11 @@ public class Enfant {
         this.cin_p = cin_p;
         this.age = age;
         this.photo=photo;
-//        JFileChooser file = new JFileChooser();
-//        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-//        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png","jpeg");
-//        file.addChoosableFileFilter(filter);
-//        int result = file.showSaveDialog(null);
-//        if(result== JFileChooser.APPROVE_OPTION)
-//        {
-//            File selecteFile = file.getSelectedFile();
-//             this.photo = selecteFile.getAbsolutePath();
-//        }
+
+        
     }
         
-       public Enfant(int id_e,String nom, String prenom, String sexe, String cin_p, String age,Image icon) {
+       public Enfant(int id_e,String nom, String prenom, String sexe, String cin_p, String age,File file) {
        
         this.id_e=id_e;
         this.nom = nom;
@@ -54,7 +46,7 @@ public class Enfant {
         this.sexe = sexe;
         this.cin_p = cin_p;
         this.age = age;
-        this.icon=icon;
+        this.file=file;
         
         
          }
@@ -129,12 +121,12 @@ public class Enfant {
         this.photo = photo;
     }
 
-    public Image getIcon() {
-        return icon;
+    public File getFile() {
+        return file;
     }
 
-    public void setIcon(Image icon) {
-        this.icon = icon;
+    public void setFile(File file) {
+        this.file = file;
     }
 
     @Override

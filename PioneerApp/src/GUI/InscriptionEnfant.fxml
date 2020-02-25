@@ -20,7 +20,7 @@
       <ImageView fx:id="imagepdpE" fitHeight="280.0" fitWidth="270.0" layoutX="260.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="Photopdp" layoutX="337.0" layoutY="403.0" mnemonicParsing="false" onAction="#photopdpAction" prefHeight="31.0" prefWidth="103.0" text="Photo" />
       <Button fx:id="ValiderE" layoutX="681.0" layoutY="432.0" mnemonicParsing="false" onAction="#validerEAction" onMousePressed="#validerPressed" prefHeight="31.0" prefWidth="88.0" text="Valider" />
-      <Label fx:id="labelErreur" layoutX="358.0" layoutY="387.0" prefHeight="31.0" prefWidth="163.0" text="Vérifiez les champs !" textFill="#c63131" visible="false">
+      <Label fx:id="labelErreur" layoutX="508.0" layoutY="432.0" prefHeight="31.0" prefWidth="163.0" text="Vérifiez les champs !" textFill="#c63131" visible="false">
          <font>
             <Font size="16.0" />
          </font>
@@ -30,10 +30,11 @@
             <Font name="Berlin Sans FB" size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="attendezimg" fitHeight="210.0" fitWidth="420.0" layoutX="550.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="attendezimg" fitHeight="84.0" fitWidth="88.0" layoutX="683.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../JavaFx/1x/Attendezimg.png" />
+            <Image url="@../../../../../JavaFx/Spinner-1s-200px.gif" />
          </image>
       </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="458.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

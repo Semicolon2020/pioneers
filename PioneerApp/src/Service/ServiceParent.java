@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.image.Image;
+import pioneerapp.FTPUploader;
 
 
 /**
@@ -46,9 +47,8 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
           PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user` (`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
                  + "    VALUES (?,?,'P',?,?,?,?,'0',?,?,?,now());");
     
-        try {
-            InputStream is= new FileInputStream(new File(t.getPhoto()));
-            
+   FTPUploader ftp=new FTPUploader();
+   ftp.FTPTransfer(t.getFile());
     
     pre.setString(1, t.getCin());
     pre.setString(2, t.getPassword());
@@ -58,14 +58,12 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
     pre.setString(5, t.getEmail());
     pre.setString(6, t.getNum_tel());
     pre.setString(7, t.getEtat_civil());    
-    pre.setBlob(8, is);
+    pre.setString(8, t.getFile().toURI().toString());
     
     pre.executeUpdate();
     
-        } 
-    catch (FileNotFoundException ex) {
-            Logger.getLogger(ServiceResponsable.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
+  
         
     }
 
@@ -84,12 +82,16 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
         
 if(t.getPhoto()!=null)
 {
-PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user` SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,`num_tel`=?,`etat_compte`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=?;");
+PreparedStatement pre;
     
     
-    
-        try {
-    InputStream  is = new FileInputStream(new File(t.getPhoto()));
+   if(t.getFile()!=null)
+   {
+       pre=con.prepareStatement("update `pionnersapp`.`user` SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,`num_tel`=?,`etat_compte`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=?;");
+
+   FTPUploader ftp=new FTPUploader();
+   ftp.FTPTransfer(t.getFile());
+  
         
     pre.setString(1, t.getCin());  
     pre.setString(2, t.getPassword());
@@ -103,12 +105,35 @@ PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user` SET `cin
    
     pre.setString(10, t.getSexe());
     pre.setString(11, cin);
-    pre.setBlob(9, is);
+    pre.setString(9, t.getFile().toURI().toString());
      
     return pre.executeUpdate()==0;
- } catch (FileNotFoundException ex) {
-            Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
-        }
+   }
+   else
+   {
+       pre=con.prepareStatement("update `pionnersapp`.`user` SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,`num_tel`=?,`etat_compte`=?,`etat_civil`=?,`sexe`=? WHERE cin=?;");
+   
+  
+        
+    pre.setString(1, t.getCin());  
+    pre.setString(2, t.getPassword());
+    
+    pre.setString(3, t.getNom());
+    pre.setString(4, t.getPrenom());
+    pre.setString(5, t.getEmail());
+    pre.setString(6, t.getNum_tel());
+    pre.setString(7, t.getEtat_compte());
+    pre.setString(8, t.getEtat_civil());
+   
+    pre.setString(9, t.getSexe());
+    pre.setString(10, cin);
+   
+     
+    return pre.executeUpdate()==0;
+   }
+      
+ 
+ 
 
 }
 
@@ -141,7 +166,7 @@ else
     
     
    
-        return false ;
+       
     }
 
     
@@ -168,27 +193,8 @@ else
                String etat_compte=rs.getString(9);
                String etat_civil=rs.getString(10);
                
-                Image im;
-//               InputStream is=rs.getBinaryStream(11);
-//                OutputStream os;
-//                
-//            try {
-//                os = new FileOutputStream(new File("pic.jpg"));
-//                 byte[] content= new byte[1024];
-//                int size=0;
-//                   try {
-//                       while((size = is.read(content))!=-1){
-//                           
-//                           os.write(content, 0,size);
-//                       } } catch (IOException ex) {
-//                       Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
-//                   }
-// 
-//                        } catch (FileNotFoundException ex) {
-//                            Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//               
-//            Image   im = new Image("file:pic.jpg");
+                
+
                 
                
 
@@ -280,12 +286,7 @@ PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user`SET `etat
                String etat_compte=rs.getString(9);
                String etat_civil=rs.getString(10);
                
-                Image im;
 
-                
-               
-
-               
                Parent c =new Parent (id,cin, nom, prenom,sexe,date,email,password,num_tel,etat_compte,etat_civil);
      arr.add(c);
      }

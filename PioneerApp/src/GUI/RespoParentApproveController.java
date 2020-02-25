@@ -46,6 +46,7 @@ import pioneerapp.JavaMail;
 public class RespoParentApproveController implements Initializable {
 
     private int id_e;
+    private File photoFile;
     
     @FXML
     private ImageView RespUI;
@@ -283,7 +284,7 @@ public class RespoParentApproveController implements Initializable {
         
         
         try {
-             pdpParent.setImage(new Image(sp.read(parent).getPhoto())); 
+             pdpParent.setImage(new Image(sp.read(parent).getPhoto(),270,280,true,true)); 
         } catch (SQLException ex) {
             Logger.getLogger(RespoParentApproveController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -329,7 +330,7 @@ public class RespoParentApproveController implements Initializable {
                 ServiceEnfant se=new ServiceEnfant();
                 
         try {
-            pdpEnfant.setImage(se.read(enf).getIcon());
+            pdpEnfant.setImage(new Image(se.read(enf).getPhoto()));
         } catch (SQLException ex) {
             Logger.getLogger(RespoParentApproveController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -365,7 +366,8 @@ public class RespoParentApproveController implements Initializable {
         {       
              
            Parent p=new Parent(cinTextField.getText(), nomTextField.getText(), prenomTextField.getText(), mailTextField.getText(), comboboxSexe.getValue(), mdpTextField.getText(), tlfTextField.getText(), comboboxEtat.getValue(),photopath);
-          if(comboboxCompte.getValue().equals("Activé")){ p.setEtat_compte("1");}
+                  p.setFile(photoFile);
+           if(comboboxCompte.getValue().equals("Activé")){ p.setEtat_compte("1");}
           else p.setEtat_compte("0");
            Service.ServiceParent sp=new ServiceParent();
            
@@ -460,11 +462,11 @@ public class RespoParentApproveController implements Initializable {
         int result = file.showSaveDialog(null);
         if(result== JFileChooser.APPROVE_OPTION)
         {
-            File selectedFile = file.getSelectedFile();
+             photoFile = file.getSelectedFile();
             
             
-            Setphotopath(selectedFile.getAbsolutePath());
-          Image  image = new Image(selectedFile.toURI().toString(),270,280,true,true); 
+            Setphotopath(photoFile.getAbsolutePath());
+          Image  image = new Image(photoFile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);
             pdpParent.setImage(image);
             pdpParent.setFitHeight(270);
@@ -484,12 +486,12 @@ public class RespoParentApproveController implements Initializable {
         int result = file.showSaveDialog(null);
         if(result== JFileChooser.APPROVE_OPTION)
         {
-            File selectedFile = file.getSelectedFile();
+             photoFile = file.getSelectedFile();
             
     
-            photopathEnfant=selectedFile.getAbsolutePath();
+            photopathEnfant=photoFile.getAbsolutePath();
             
-          Image  image = new Image(selectedFile.toURI().toString(),270,280,true,true); 
+          Image  image = new Image(photoFile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);
             pdpEnfant.setImage(image);
             pdpEnfant.setFitHeight(270);

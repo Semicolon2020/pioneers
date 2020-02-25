@@ -9,19 +9,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InscriptionTuteurController">
+<AnchorPane id="AnchorPane" prefHeight="748.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InscriptionTuteurController">
    <children>
-      <ImageView fx:id="bgicon" fitHeight="760.0" fitWidth="1290.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bgicon" fitHeight="815.0" fitWidth="1289.0" layoutX="1.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../JavaFx/1x/Asset%2015-8.png" />
          </image>
       </ImageView>
       <TextField fx:id="cinTextField" layoutX="190.0" layoutY="365.0" promptText="Cin..." />
-      <TextField fx:id="mdpTextField" editable="false" layoutX="190.0" layoutY="416.0" promptText="Mot de passe..." />
-      <TextField fx:id="nomTextField" layoutX="190.0" layoutY="471.0" promptText="Nom..." />
-      <TextField fx:id="prenomTextField" layoutX="190.0" layoutY="525.0" promptText="Prenom..." />
-      <TextField fx:id="tlfTextField" layoutX="190.0" layoutY="577.0" promptText="Telephone..." />
-      <TextField fx:id="mailTextField" layoutX="190.0" layoutY="623.0" promptText="E-mail..." />
+      <TextField fx:id="nomTextField" layoutX="190.0" layoutY="432.0" promptText="Nom..." />
+      <TextField fx:id="prenomTextField" layoutX="190.0" layoutY="495.0" promptText="Prenom..." />
+      <TextField fx:id="tlfTextField" layoutX="190.0" layoutY="555.0" promptText="Telephone..." />
+      <TextField fx:id="mailTextField" layoutX="190.0" layoutY="618.0" promptText="E-mail..." />
       <ComboBox fx:id="combosexe" layoutX="431.0" layoutY="372.0" prefWidth="150.0" promptText="Sexe" />
       <ComboBox fx:id="comboEtat" layoutX="431.0" layoutY="432.0" prefWidth="150.0" promptText="Etat Civil" />
       <TableView fx:id="table" layoutX="394.0" onMousePressed="#SelectTuteurTableViewAction" prefHeight="340.0" prefWidth="896.0">
@@ -53,7 +52,7 @@
             <Image url="@../../../../../JavaFx/1x/photobtn.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="ajoutericon" fitHeight="45.0" fitWidth="149.0" layoutX="431.0" layoutY="481.0" onMousePressed="#ajouterTuteur" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ajoutericon" fitHeight="45.0" fitWidth="149.0" layoutX="431.0" layoutY="481.0" onMouseClicked="#ActivateLoading" onMousePressed="#ajouterTuteur" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../JavaFx/1x/ajouter.png" />
          </image>

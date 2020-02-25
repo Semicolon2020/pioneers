@@ -40,6 +40,7 @@ public class InscriptionParentController implements Initializable {
     @FXML
     private Button btnpdp;
     private String photopath;
+    private File photoFile;
     
     ObservableList<String> listComboEtat= FXCollections.observableArrayList("Marié(e)","Veuf(ve)","Divorcé(e)");
 
@@ -100,13 +101,13 @@ public class InscriptionParentController implements Initializable {
         int result = file.showSaveDialog(null);
         if(result== JFileChooser.APPROVE_OPTION)
         {
-            File selectedFile = file.getSelectedFile();
+             photoFile = file.getSelectedFile();
             Image image;
-            photopath=selectedFile.getAbsolutePath();
+            photopath=photoFile.getAbsolutePath();
             
-            image = new Image(selectedFile.toURI().toString(),270,280,true,true); 
+            image = new Image(photoFile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);
-            System.out.println(selectedFile.toURI().toString());
+            System.out.println(photoFile.toURI().toString());
             imagepdp.setImage(image);
             imagepdp.setFitHeight(270);
            imagepdp.setFitHeight(280);
@@ -128,6 +129,7 @@ public class InscriptionParentController implements Initializable {
         else 
         { 
            Parent p=new Parent(cinText.getText(), nomText.getText(), prenomText.getText(), mailText.getText(), comboboxSexe.getValue(), pawdText.getText(), tlfText.getText(), comboboxEtat.getValue(),photopath);
+                  p.setFile(photoFile);
            Service.ServiceParent sp=new ServiceParent();
            
            EmailText+="Mr "+nomText.getText()+" "+prenomText.getText()+"\n CIN: "+cinText.getText()+"\n Mot de Passe: "+pawdText.getText()+"\n Telephone: "+tlfText.getText()+"\n \n \n";

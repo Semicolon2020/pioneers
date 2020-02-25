@@ -62,16 +62,7 @@ public class ResponsableMainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        Responsable r= new Responsable();
-            r.setCin(cin);
-            System.out.println(getCin());
-       ServiceResponsable sr= new ServiceResponsable();
-       
-        try {
-            RespName.setText("Mr/Md "+sr.read(r).getNom()+" "+sr.read(r).getPrenom());
-        } catch (SQLException ex) {
-            Logger.getLogger(ResponsableMainController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            
         
         RespUI.setImage( new Image("/Image/bgmain.png"));
         RespUI.setSmooth(true);
@@ -118,7 +109,18 @@ public class ResponsableMainController implements Initializable {
     
     public void setCin(String cin)
     {
-        this.cin=cin;
+       this.cin=cin;
+        Responsable r= new Responsable();
+            r.setCin(cin);
+           
+       ServiceResponsable sr= new ServiceResponsable();
+       
+        try {
+            RespName.setText("Mr/Md "+sr.read(r).getNom()+" "+sr.read(r).getPrenom());
+        } catch (SQLException ex) {
+            Logger.getLogger(ResponsableMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     public String getCin()

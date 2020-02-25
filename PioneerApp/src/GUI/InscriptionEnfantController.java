@@ -38,7 +38,8 @@ import pioneerapp.JavaMail;
  * @author Alfa Shel
  */
 public class InscriptionEnfantController implements Initializable {
-
+    
+    private File photofile;
     private String photopath;
     private int nbrE;
     private int Counter=1;
@@ -78,8 +79,8 @@ public class InscriptionEnfantController implements Initializable {
         comboboxSexe.setItems(listCombo);
         ComboboxAge.setItems(listComboAge);
         
-      Image FrontImg= new Image("/Image/Attendezimg.png");
-      attendezimg.setImage(FrontImg);
+      
+      attendezimg.setImage(new Image("/Image/Spinner.gif"));
       attendezimg.setVisible(false);
      
     }    
@@ -94,12 +95,13 @@ public class InscriptionEnfantController implements Initializable {
         int result = file.showSaveDialog(null);
         if(result== JFileChooser.APPROVE_OPTION)
         {
-            File selectedFile = file.getSelectedFile();
+             photofile = file.getSelectedFile();
             Image image;
-            photopath=selectedFile.getAbsolutePath();
+            photopath=photofile.getAbsolutePath();
             
-             image = new Image(selectedFile.toURI().toString(),270,280,true,true); 
+             image = new Image(photofile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);
+           
              imagepdpE.setImage(image);
              imagepdpE.setFitHeight(270);
              imagepdpE.setFitHeight(280);
@@ -156,6 +158,7 @@ public class InscriptionEnfantController implements Initializable {
                         EmailText+="Enfant: "+NomText.getText()+" "+prenomText.getText()+"\n"+"Age: "+ComboboxAge.getValue()+"\n"+ "Sexe: "+comboboxSexe.getValue()+"\n \n \n ";
                             
                          Enfant e=new Enfant(1,NomText.getText(),prenomText.getText(),comboboxSexe.getValue(),cin,ComboboxAge.getValue(),photopath);
+                                e.setFile(photofile);
                          Service.ServiceEnfant se=new ServiceEnfant();
                           try {
                                 

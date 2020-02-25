@@ -88,7 +88,7 @@ public class LoginController implements Initializable {
             System.out.println("erreur");
             LabelErreur.setText("Cin ou mot de passe incorrect!");
             LabelErreur.setVisible(true);
-            
+           
         }
        else
         {
@@ -98,24 +98,21 @@ public class LoginController implements Initializable {
                 Service.ServiceResponsable sr =new ServiceResponsable();
                 int login=sr.LoginResponsable(r);
                 if(login==0)
-                {System.out.println(" Responsable ");
+                {System.out.println("Responsable ");
                 
                                                     FXMLLoader loader = new FXMLLoader
-                                                    (getClass()
-                                                     .getResource("ResponsableMain.fxml"));
-
-                                                    
-                                           try {
-                                                javafx.scene.Parent root;
-                                               root = loader.load();
-                                               ResponsableMainController apc = loader.getController();
-                                              
-                                               apc.setCin(cinText.getText());
-                                              
-                                            cinText.getScene().setRoot(root);
-                                           } catch (IOException ex) {
-                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
-                                           }
+                                                                      (getClass()
+                                                                      .getResource("ResponsableMain.fxml"));
+                                                   javafx.scene.Parent root;
+                                 try {
+                                    root = loader.load();
+                                  ResponsableMainController apc = loader.getController();
+                                     
+                                     cinText.getScene().setRoot(root);
+                                     apc.setCin("00000000");
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
                 
                 
                 }

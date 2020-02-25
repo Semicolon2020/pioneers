@@ -78,8 +78,6 @@ public class InscriptionTuteurController implements Initializable {
     @FXML
     private TextField cinTextField;
     @FXML
-    private TextField mdpTextField;
-    @FXML
     private TextField nomTextField;
     @FXML
     private TextField prenomTextField;
@@ -227,62 +225,18 @@ public class InscriptionTuteurController implements Initializable {
     
     @FXML
     private void ajouterTuteur(MouseEvent event) {
-       
-        if( tlfTextField.getLength()!=8 || comboEtat.getValue()==null || combosexe.getValue()==null ||cinTextField.equals("") || cinTextField.getLength()!=8 || nomTextField.equals("") || prenomTextField.equals("") || tlfTextField.equals("")  || mailTextField.equals("") || pdptuteur.getImage() ==null)
+       if( tlfTextField.getLength()!=8 || comboEtat.getValue()==null || combosexe.getValue()==null ||cinTextField.equals("") || cinTextField.getLength()!=8 || nomTextField.equals("") || prenomTextField.equals("") || tlfTextField.equals("")  || mailTextField.equals("") || pdptuteur.getImage() ==null)
         {
             labelerreur.setVisible(true);
+            LoadSpinner.setVisible(false);
             
            
         }
-
         else 
-        {    
-                UIChange=new Thread(this::ActivateSpinner);
-                UIChange.start();
-                        
-                 Random rand = new Random(); 
-                
-                 String PassRand= rand.nextInt(1000)+nomTextField.getText().toUpperCase()+rand.nextInt(100);                                   
-                 Tuteur p=new Tuteur(cinTextField.getText(), nomTextField.getText(), prenomTextField.getText(), mailTextField.getText(), combosexe.getValue(), PassRand, tlfTextField.getText(), comboEtat.getValue(),photopath);
-                 p.setFile(photoFile);
-                 Service.ServiceTuteur sp=new ServiceTuteur();
-           
-         String EmailText="Mr/Md "+nomTextField.getText()+" "+prenomTextField.getText()+"\n CIN: "+cinTextField.getText()+"\n Mot de Passe: "+PassRand+"\n Telephone: "+tlfTextField.getText()+"\n \n \n";
-           
-            try {
-                sp.ajouter(p);
-                ///Transition interface
-                try {
-                                                JavaMail.SendMail( mailTextField.getText(),EmailText);
-                                            } catch (Exception ex) {
-                                                Logger.getLogger(InscriptionEnfantController.class.getName()).log(Level.SEVERE, null, ex);
-                                            }
-                
-                 FXMLLoader loader = new FXMLLoader
-                        (getClass()
-                         .getResource("InscriptionTuteur.fxml"));
-            
-                javafx.scene.Parent root;
-               try {
-                   root = loader.load();
-                   InscriptionTuteurController apc = loader.getController();
-                   
-                nomTextField.getScene().setRoot(root);
-               } catch (IOException ex) {
-                   Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
-               }
-                
-           
-        
-                
-                
-                
-            } catch (SQLException ex) {
-               
-           }
-            
-        
-    }
+        {
+             LoadSpinner.setVisible(true);
+        }
+     
         
     }
 
@@ -396,6 +350,68 @@ public class InscriptionTuteurController implements Initializable {
                                            } catch (IOException ex) {
                                                Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
                                            }
+        
+    }
+
+    @FXML
+    private void ActivateLoading(MouseEvent event) {
+        
+           if( tlfTextField.getLength()!=8 || comboEtat.getValue()==null || combosexe.getValue()==null ||cinTextField.equals("") || cinTextField.getLength()!=8 || nomTextField.equals("") || prenomTextField.equals("") || tlfTextField.equals("")  || mailTextField.equals("") || pdptuteur.getImage() ==null)
+        {
+            labelerreur.setVisible(true);
+            LoadSpinner.setVisible(false);
+            
+           
+        }
+
+        else 
+        {    
+                UIChange=new Thread(this::ActivateSpinner);
+                UIChange.start();
+                        
+                 Random rand = new Random(); 
+                
+                 String PassRand= rand.nextInt(1000)+nomTextField.getText().toUpperCase()+rand.nextInt(100);                                   
+                 Tuteur p=new Tuteur(cinTextField.getText(), nomTextField.getText(), prenomTextField.getText(), mailTextField.getText(), combosexe.getValue(), PassRand, tlfTextField.getText(), comboEtat.getValue(),photopath);
+                 p.setFile(photoFile);
+                 Service.ServiceTuteur sp=new ServiceTuteur();
+           
+         String EmailText="Mr/Md "+nomTextField.getText()+" "+prenomTextField.getText()+"\n CIN: "+cinTextField.getText()+"\n Mot de Passe: "+PassRand+"\n Telephone: "+tlfTextField.getText()+"\n \n \n";
+           
+            try {
+                sp.ajouter(p);
+                ///Transition interface
+                try {
+                                                JavaMail.SendMail( mailTextField.getText(),EmailText);
+                                            } catch (Exception ex) {
+                                                Logger.getLogger(InscriptionEnfantController.class.getName()).log(Level.SEVERE, null, ex);
+                                            }
+                
+                 FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("InscriptionTuteur.fxml"));
+            
+                javafx.scene.Parent root;
+               try {
+                   root = loader.load();
+                   InscriptionTuteurController apc = loader.getController();
+                   
+                nomTextField.getScene().setRoot(root);
+               } catch (IOException ex) {
+                   Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+               }
+                
+           
+        
+                
+                
+                
+            } catch (SQLException ex) {
+               
+           }
+            
+        
+    }
         
     }
     

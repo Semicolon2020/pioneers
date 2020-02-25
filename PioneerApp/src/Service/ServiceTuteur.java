@@ -52,8 +52,8 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
             
             
             
-            FTPUploader ftp=new FTPUploader();
-            ftp.FTPTransfer(t.getFile());
+   FTPUploader ftp=new FTPUploader();
+   ftp.FTPTransfer(t.getFile());
     
     pre.setString(1, t.getCin());
     pre.setString(2, t.getPassword());
@@ -162,30 +162,7 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
                c.setEtat_compte(rs.getString(9));
                c.setEtat_civil(rs.getString(10));
                c.setPhoto(rs.getString(11));
-                
-                
-          /*  try {
-                InputStream is=rs.getBinaryStream(11);
-                OutputStream os;
-                os = new FileOutputStream(new File("pic.jpg"));
-                 byte[] content= new byte[1024];
-                int size=0;
-                   try {
-                       while((size = is.read(content))!=-1){
-                           
-                           os.write(content, 0,size);
-                       } } catch (IOException ex) {
-                       Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
-                   }
- 
-                        } catch (FileNotFoundException ex) {
-                            Logger.getLogger(ServiceParent.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-               
-                    javafx.scene.image.Image   im = new javafx.scene.image.Image("file:pic.jpg");*/
-                    
      
-             
 
      
                   }
@@ -206,6 +183,21 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
                          }
      
      return false;
+    }
+    
+    @Override
+    public boolean updateMdp(Tuteur t) throws SQLException {
+        
+    PreparedStatement     pre=con.prepareStatement("update `pionnersapp`.`user`SET `password`=?, `etat_compte`='1' WHERE cin=? and role='T';");
+    
+    
+    pre.setString(2, t.getCin());  
+    pre.setString(1, t.getPassword());
+    
+   
+     
+    return pre.executeUpdate()==0;
+
     }
 
     
