@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LivreAdminController">
+   <children>
+      <TableView fx:id="tableLA" layoutX="386.0" layoutY="121.0" prefHeight="306.0" prefWidth="393.0">
+        <columns>
+          <TableColumn fx:id="id_l" prefWidth="97.0" text="Id_l" />
+          <TableColumn fx:id="titre_l" prefWidth="142.0" text="Titre_livre" />
+            <TableColumn fx:id="age_l" prefWidth="153.0" text="Age" />
+        </columns>
+      </TableView>
+      <Button fx:id="afficherL" layoutX="82.0" layoutY="156.0" mnemonicParsing="false" text="Afficher" />
+      <Button fx:id="ajouterL" layoutX="82.0" layoutY="223.0" mnemonicParsing="false" text="Ajouter" />
+      <Button fx:id="supprimerL" layoutX="78.0" layoutY="300.0" mnemonicParsing="false" text="Supprimer" />
+      <Button fx:id="misL" layoutX="82.0" layoutY="371.0" mnemonicParsing="false" text="MIS" />
+      <Button fx:id="modifierL" layoutX="84.0" layoutY="442.0" mnemonicParsing="false" text="Modifier" />
+      <Text layoutX="239.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion De Livre">
+         <font>
+            <Font name="Arial Black" size="34.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#e41111" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+   </children>
+</AnchorPane>
