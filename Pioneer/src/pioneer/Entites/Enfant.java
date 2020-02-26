@@ -11,13 +11,13 @@ package pioneer.Entites;
  */
 public class Enfant {
     
-    String nom,prenom,sexe;
-    int cin_p,age,id_e,id_c;
+    String cin_p,nom,prenom,sexe;
+    int age,id_e,id_c;
 
     public Enfant() {
     }
 
-    public Enfant(String nom, String prenom, String sexe, int cin_p, int age, int id_e, int id_c) {
+    public Enfant(String nom, String prenom, String sexe, String cin_p, int age, int id_e, int id_c) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
@@ -33,7 +33,7 @@ public class Enfant {
         return age;
     }
 
-    public int getCin_p() {
+    public String getCin_p() {
         return cin_p;
     }
 
@@ -62,7 +62,7 @@ public class Enfant {
         this.age = age;
     }
 
-    public void setCin_p(int cin_p) {
+    public void setCin_p(String cin_p) {
         this.cin_p = cin_p;
     }
 

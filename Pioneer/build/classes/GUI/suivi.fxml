@@ -8,17 +8,17 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1290.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SuiviController">
+<TabPane fx:id="TabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1290.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SuiviController">
   <tabs>
-    <Tab text="Ajouter Suivi">
+    <Tab fx:id="ajouterSuivi" text="Ajouter Suivi">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Text fill="#0e7ee8" layoutX="589.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter un suivi" underline="true" />
                   <ChoiceBox fx:id="tfClasse" layoutX="412.0" layoutY="228.0" prefWidth="150.0" />
                   <Label layoutX="330.0" layoutY="232.0" text="Classe" />
                   <Label layoutX="331.0" layoutY="284.0" text="Enfant" />
@@ -32,10 +32,11 @@
                   <Label layoutX="605.0" layoutY="280.0" text="Psychologie" />
                   <TextArea fx:id="tfPsy" layoutX="605.0" layoutY="307.0" prefHeight="101.0" prefWidth="355.0" />
                   <Button fx:id="bAjouter" layoutX="605.0" layoutY="441.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+                  <ImageView fx:id="Im1" fitHeight="150.0" fitWidth="200.0" layoutX="535.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Afficher Suivi">
+    <Tab fx:id="readSuivi" text="Afficher Suivi">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -49,11 +50,11 @@
                         <TableColumn fx:id="ID" minWidth="5.0" prefWidth="24.0" text="ID" />
                     </columns>
                   </TableView>
-                  <Button fx:id="bAfficher" layoutX="577.0" layoutY="662.0" mnemonicParsing="false" onAction="#afficher" text="Afficher/Rafraichir" />
+                  <Button fx:id="bAfficher" layoutX="590.0" layoutY="645.0" mnemonicParsing="false" onAction="#afficher" text="Afficher/Rafraichir" />
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Traiter Suivi">
+      <Tab fx:id="updateSuivi" text="Traiter Suivi">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -70,6 +71,9 @@
                               <Label layoutX="597.0" layoutY="260.0" text="Psychologie" />
                               <TextArea fx:id="tfPsy1" layoutX="597.0" layoutY="285.0" prefHeight="117.0" prefWidth="361.0" />
                               <Button fx:id="bValider" layoutX="596.0" layoutY="444.0" mnemonicParsing="false" onAction="#modifier" text="Valider" />
+                              <Label layoutX="331.0" layoutY="207.0" text="Enfant" />
+                              <TextField fx:id="tfNom1" editable="false" layoutX="399.0" layoutY="204.0" />
+                              <ImageView fx:id="IM1" fitHeight="150.0" fitWidth="200.0" layoutX="534.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </AnchorPane>
                      </content>
