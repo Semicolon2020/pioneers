@@ -107,7 +107,24 @@ public class ServiceEvaluation implements IService<Evaluation> {
     ObservableList<Evaluation> Data = FXCollections.observableArrayList();
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("SELECT v.id, score, remarque, (SELECT concat(e.nom,' ',e.prenom) WHERE e.id_e=v.id_e) nom, activite, v.id_c FROM evaluation v , enfant e WHERE e.id_e = v.id_e");
-     while (rs.next()) {                
+        while (rs.next()) {                
+               int id=rs.getInt(1);
+               int score=rs.getInt(2);
+               String remarque=rs.getString(3);
+               String nom =rs.getString(4);
+               String activite=rs.getString(5);
+               int id_c=rs.getInt(6);
+               Evaluation p = new Evaluation( id,score, nom, id_c, remarque, activite);
+     Data.add(p);
+     }
+    return Data;
+    }
+    
+    public ObservableList<Evaluation> readAllV3() throws SQLException {
+    ObservableList<Evaluation> Data = FXCollections.observableArrayList();
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select v.id , v.score ,v.remarque,(SELECT concat(e.nom,' ',e.prenom) FROM enfant e WHERE e.cin_p = 12121212 )nom , v.activite, v.id_c FROM evaluation v ");
+        while (rs.next()) {                
                int id=rs.getInt(1);
                int score=rs.getInt(2);
                String remarque=rs.getString(3);

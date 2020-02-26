@@ -36,6 +36,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableCell;
@@ -124,6 +125,10 @@ public class evaluationController implements Initializable {
     private ImageView Im1;
     @FXML
     private ImageView IM1;
+    @FXML
+    private Label a;
+    @FXML
+    private Label b;
 
     /*    @FXML
     private Button bValider;
@@ -202,9 +207,11 @@ public class evaluationController implements Initializable {
             
             Evaluation p = new Evaluation(score, ide,idc, remarque,activite);
             
-            if ((p.getScore() <= 20) && (p.getScore() >= 0)) {
+            if ((score <= 20) && (score >= 0)) {
+                a.setVisible(false);
                 sp.ajouter1(p);
             } else {
+                a.setVisible(true);
                 System.out.println("Score supérieur à 20");
             }
 
@@ -227,7 +234,16 @@ public class evaluationController implements Initializable {
            
             ServiceEvaluation sp = new ServiceEvaluation();
             Evaluation p = new Evaluation(score, id, remarque, activite);
-            sp.update(p);
+            
+            if ((score <= 20) && (score >= 0)) {
+                b.setVisible(false);
+                sp.update(p);            
+            } else {
+                b.setVisible(true);
+                System.out.println("Score supérieur à 20");
+            }
+            
+            
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

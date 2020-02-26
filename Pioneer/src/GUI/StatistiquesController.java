@@ -11,14 +11,21 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.Observable;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.util.Callback;
+import pioneer.Entites.Evaluation;
 import pioneer.Service.ServiceEvaluation;
 
 /**
@@ -32,47 +39,87 @@ public class StatistiquesController implements Initializable {
     private BarChart<String,Integer> barchar;
     @FXML
     private CategoryAxis Xaxis;
-ServiceEvaluation ser = new ServiceEvaluation();
+    
+    ServiceEvaluation ser = new ServiceEvaluation();
+    
+    @FXML
+    private Button bAfficher;
+    @FXML
+    private TableView<Evaluation> table;
+    @FXML
+    private TableColumn<Evaluation, String> Nom;
+    @FXML
+    private TableColumn<Evaluation, String> Score;
+    @FXML
+    private TableColumn<Evaluation, String> Remarque;
+    @FXML
+    private TableColumn<Evaluation, String> Activite;
+    @FXML
+    private TableColumn<Evaluation, String> ID;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        XYChart.Series<String , Integer> series  = new XYChart.Series<>();
+       
+         int j = 0;
+         int k =0;
+         int f = 0;
+        ID.setVisible(false);
+
          ObservableList<String> items = null;
+         ObservableList<Evaluation> moyenneScore = null;
         try {
             items = ser.readAct();
+            
+        
+            moyenneScore = ser.readAllV3();
         } catch (SQLException ex) {
             System.out.println(ex);
         }
         ObservableList<String> list = FXCollections.observableArrayList(items);
+         Xaxis.setCategories(list);
+        System.out.println(list);
         
-        ObservableList<String> list2 = null;
+        
+        for(int i =0 ; i<moyenneScore.size();i++){
+         if(moyenneScore.get(i).getActivite().equals(list.get(i))){
+         j += moyenneScore.get(i).getScore();
+         k++;
+         String pres = moyenneScore.get(i).getActivite();
+         
+         series.getData().add(new XYChart.Data<>(list.get(i), j/k));
+         
+         }
+         
+       
+         
+         barchar.getData().add(series);
+    }    
+    }
+    @FXML
+    private void afficher(ActionEvent event) {
         try {
-            list2 = ser.readAllA();
+
+            
+            ID.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getid()));
+            Nom.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNomEnfant()));
+            Score.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getscore()));
+            Remarque.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getRemarque()));
+            Activite.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getActivite()));
+            
+            
+            ObservableList<Evaluation> list = ser.readAllV3();
+            System.out.println("liste du control" + list);
+            
+            table.setItems(list);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        XYChart.Series<String , Integer> series  = new XYChart.Series<>();
-        Xaxis.setCategories(list);
-        /*for(i =0 ; i<list2.size();i++){
-         if(list2.get(i).substring(11,19).equals("09:00:00")){
-         j++;
-         }if(list2.get(i).substring(11,19).equals("10:45:00")){
-           k++;
-         }  switch (list2.get(i).substring(11,19)) {
-                case "13:30:00":
-                    l++;
-                    break;
-                case "15:00:00":
-                    m++;
-                    break;
-            }
-        }*/
-        /*series.getData().add(new XYChart.Data<>("9:00:00", j));
-         series.getData().add(new XYChart.Data<>("10:45:00", k));
-          series.getData().add(new XYChart.Data<>("13:30:00", l));
-           series.getData().add(new XYChart.Data<>("15:00:00", m));*/
-        // barchar.getData().add(series);
-    }    
+    }
+
+    
     
 }
