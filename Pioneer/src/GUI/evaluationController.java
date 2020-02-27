@@ -157,7 +157,7 @@ public class evaluationController implements Initializable {
         tfRemarque1.setItems(REMARQUES);
         
         try {
-            listA = ser.readAllA();
+            listA = ser.readAct();
             tfActivite.setItems(listA);
             tfActivite1.setItems(listA);
         } catch (Exception e) {

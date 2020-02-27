@@ -122,6 +122,24 @@ public class ServiceSuivi implements IService<Suivi> {
     return Data;
     }
     
+    public ObservableList<Suivi> readAllV3() throws SQLException {
+    ObservableList<Suivi> Data = FXCollections.observableArrayList();
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select v.id , nutrition,sommeil,sociabilite,psychologie,(SELECT concat(e.nom,' ',e.prenom) FROM enfant e WHERE e.cin_p = 12121212 )nom , v.id_c, v.id_c FROM suivi v ");
+     while (rs.next()) {                
+               int id=rs.getInt(1);
+               String nutrition=rs.getString(2);
+               String sommeil=rs.getString(3);
+               String sociabilite=rs.getString(4);
+               String psychologie=rs.getString(5);
+               String nom =rs.getString(6);
+               int id_c=rs.getInt(7);
+               Suivi p = new Suivi(id , nutrition,sommeil,sociabilite,psychologie,nom,id_c);
+     Data.add(p);
+     }
+    return Data;
+    }
+    
     
     public ObservableList<String> readNomEnfantClasse(String nom) throws SQLException {
         ObservableList<String> arr = FXCollections.observableArrayList();

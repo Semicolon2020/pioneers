@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.Observable;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +24,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
@@ -56,6 +59,8 @@ public class StatistiquesController implements Initializable {
     private TableColumn<Evaluation, String> Activite;
     @FXML
     private TableColumn<Evaluation, String> ID;
+    @FXML
+    private ChoiceBox<String> tfActivite;
     /**
      * Initializes the controller class.
      */
@@ -83,22 +88,28 @@ public class StatistiquesController implements Initializable {
          Xaxis.setCategories(list);
         System.out.println(list);
         
+         tfActivite.setItems(list);
+         
+         tfActivite.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+               
+                try {
+                    int i = 0;
+                    i= ser.readAllA(list.get(newValue.intValue()));
+                    series.getData().add(new XYChart.Data<>(list.get(newValue.intValue()), i));
+                } catch (SQLException ex) {
+                    System.out.println(ex);
+                }
+            }
+        });
+         
+         
         
-        for(int i =0 ; i<moyenneScore.size();i++){
-         if(moyenneScore.get(i).getActivite().equals(list.get(i))){
-         j += moyenneScore.get(i).getScore();
-         k++;
-         String pres = moyenneScore.get(i).getActivite();
-         
-         series.getData().add(new XYChart.Data<>(list.get(i), j/k));
-         
-         }
-         
-       
-         
+        
          barchar.getData().add(series);
     }    
-    }
+    
     @FXML
     private void afficher(ActionEvent event) {
         try {

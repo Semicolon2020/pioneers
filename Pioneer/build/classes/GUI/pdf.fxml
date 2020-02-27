@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1290.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PdfController">
+  <tabs>
+    <Tab text="Affichage Suivis">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="table" layoutX="72.0" layoutY="63.0" prefHeight="700.0" prefWidth="1290.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="Enfant" prefWidth="146.0" text="Enfant" />
+                      <TableColumn fx:id="Nutrition" prefWidth="193.0" text="Nutrition" />
+                        <TableColumn fx:id="Sommeil" prefWidth="211.0" text="Sommeil" />
+                        <TableColumn fx:id="Sociabilite" prefWidth="243.0" text="Sociabilite" />
+                        <TableColumn fx:id="Psychologie" prefWidth="473.0" text="Psychologie" />
+                        <TableColumn fx:id="ID" prefWidth="34.0" text="ID" visible="false" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="bAfficher" layoutX="561.0" layoutY="637.0" mnemonicParsing="false" onAction="#afficher" text="Afficher" />
+                  <Button fx:id="bPDF" layoutX="645.0" layoutY="637.0" mnemonicParsing="false" onAction="#generatePDF" text="Générer PDF" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

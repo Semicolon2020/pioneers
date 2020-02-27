@@ -4,6 +4,7 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -24,6 +25,7 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                   </BarChart>
+                  <ChoiceBox fx:id="tfActivite" layoutX="1139.0" prefWidth="150.0" />
                </children></AnchorPane>
       </content>
     </Tab>

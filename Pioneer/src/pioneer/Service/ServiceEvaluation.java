@@ -176,17 +176,14 @@ public class ServiceEvaluation implements IService<Evaluation> {
     return ClasseData;
     }
     
-    public ObservableList<String> readAllA() throws SQLException {
-    ObservableList<String> ClasseData = FXCollections.observableArrayList();
+    public int readAllA(String nom) throws SQLException {
+   int AVGScore = 0;
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select nom from activite");
+    ResultSet rs=ste.executeQuery("SELECT AVG(score) FROM evaluation e WHERE e.activite ='"+nom+"'");
     while (rs.next()) {
-        
-               String nom =rs.getString(1);
-
-     ClasseData.add(nom);
-     }
-    return ClasseData;
+    AVGScore =rs.getInt(1);
+    }
+    return AVGScore;
     }
     
     
