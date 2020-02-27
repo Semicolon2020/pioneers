@@ -21,6 +21,8 @@ public interface IServiceTuteur  <T> {
     Tuteur read(T t) throws SQLException;
     boolean LoginTuteur(T t) throws SQLException;
     public boolean updateMdp(Tuteur t) throws SQLException ;
+    public boolean updateProfile(Tuteur t) throws SQLException ;
+
 
 
     

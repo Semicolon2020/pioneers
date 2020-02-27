@@ -58,7 +58,7 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
     pre.setString(5, t.getEmail());
     pre.setString(6, t.getNum_tel());
     pre.setString(7, t.getEtat_civil());    
-    pre.setString(8, t.getFile().toURI().toString());
+    pre.setString(8, t.getPhoto());
     
     pre.executeUpdate();
     

@@ -60,7 +60,7 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
     pre.setString(3, t.getSexe());
     pre.setString(4, t.getCin_p());
     pre.setString(5, t.getAge());
-    pre.setString(6, t.getFile().toURI().toString());
+    pre.setString(6, t.getPhoto());
     
     pre.executeUpdate();
     

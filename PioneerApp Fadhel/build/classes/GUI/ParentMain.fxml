@@ -33,5 +33,30 @@
             <Image url="@../../../../JavaFx/1x/ActivImg-8.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="pdpimg" fitHeight="41.0" fitWidth="44.0" layoutX="1004.0" layoutY="29.0" onMouseClicked="#pdpChangeAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/profiileicon-8.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="244.0" layoutY="646.0" prefHeight="21.0" prefWidth="125.0" text="Reclamation" textFill="#cd8c2c">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="769.0" layoutY="646.0" prefHeight="35.0" prefWidth="94.0" text="Messages" textFill="#d01414">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="262.0" layoutY="463.0" text="Activite" textFill="#20c1c9">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="529.0" layoutY="646.0" text="Rappel" textFill="#ac19c3">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

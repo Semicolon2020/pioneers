@@ -43,6 +43,8 @@ public class TuteurMainController implements Initializable {
     private ImageView AddActBtn;
     @FXML
     private ImageView eventBtnimg;
+    @FXML
+    private ImageView pdpimg;
 
     /**
      * Initializes the controller class.
@@ -54,6 +56,7 @@ public class TuteurMainController implements Initializable {
         logoutBtn.setImage(new Image("/Image/logout.png"));  
         AddActBtn.setImage(new Image("/Image/ActivImg-8.png"));  
         eventBtnimg.setImage(new Image("/Image/eventimg-8.png"));  
+        pdpimg.setImage(new Image("/Image/profiileicon-8.png"));  
        
     }    
 
@@ -68,7 +71,7 @@ public class TuteurMainController implements Initializable {
         try {
             labelName.setText("Mr/Md "+sr.readUser(r).getNom()+" "+sr.readUser(r).getPrenom());
         } catch (SQLException ex) {
-            Logger.getLogger(ResponsableMainController.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
     
@@ -143,6 +146,28 @@ public class TuteurMainController implements Initializable {
                                            try {
                                                root = loader.load();
                                              AddEvenementController apc = loader.getController();
+                                             apc.SetCin(cin);
+                                              
+                                            logoutBtn.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
+    }
+
+    @FXML
+    private void pdpChangeAction(MouseEvent event) {
+        
+        
+                
+                                             FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("TuteurProfile.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                             TuteurProfileController apc = loader.getController();
                                              apc.SetCin(cin);
                                               
                                             logoutBtn.getScene().setRoot(root);

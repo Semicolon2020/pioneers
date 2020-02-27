@@ -44,6 +44,8 @@ public class ParentMainController implements Initializable {
     private ImageView mailBtn;
     @FXML
     private ImageView ActBtnimg;
+    @FXML
+    private ImageView pdpimg;
     /**
      * Initializes the controller class.
      */
@@ -169,6 +171,10 @@ public class ParentMainController implements Initializable {
                                                Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
                                            }
         
+    }
+
+    @FXML
+    private void pdpChangeAction(MouseEvent event) {
     }
     
     

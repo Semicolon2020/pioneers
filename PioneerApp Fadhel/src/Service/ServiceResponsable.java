@@ -83,7 +83,7 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
     public boolean update(Responsable t) throws SQLException {
 
     PreparedStatement     pre=con.prepareStatement("update `pionnersapp`.`user`SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,"
-                + "             `num_tel`=?,`etat_compte`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=? and role='R';");
+                + "             `num_tel`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=? and role='R';");
     
     
     pre.setString(1, t.getCin());  
@@ -92,11 +92,11 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
     pre.setString(4, t.getPrenom());
     pre.setString(5, t.getEmail());
     pre.setString(6, t.getNum_tel());
-    pre.setString(7, t.getEtat_compte());
-    pre.setString(8, t.getEtat_civil());
-    pre.setString(9, t.getPhoto());
-    pre.setString(10, t.getSexe());
-    pre.setString(11, t.getCin());
+    //pre.setString(7, t.getEtat_compte());
+    pre.setString(7, t.getEtat_civil());
+    pre.setString(8, t.getPhoto());
+    pre.setString(9, t.getSexe());
+    pre.setString(10, t.getCin());
      
     return pre.executeUpdate()==0;
     }
@@ -211,6 +211,7 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
                c.setNum_tel(rs.getString(8));
                c.setEtat_compte(rs.getString(9));
                c.setEtat_civil(rs.getString(10));
+               c.setPhoto(rs.getString(11));
                
                   }
      

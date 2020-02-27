@@ -60,6 +60,8 @@ public class ResponsableMainController implements Initializable {
     private ImageView nbrenfimg;
     @FXML
     private ImageView msgbtnimg;
+    @FXML
+    private ImageView profileChange;
     
     /**
      * Initializes the controller class.
@@ -79,7 +81,7 @@ public class ResponsableMainController implements Initializable {
         Homeicon.setImage(new Image("/Image/home.png"));
         nbrenfimg.setImage(new Image("/Image/nbEnf-8.png"));     
         msgbtnimg.setImage(new Image("/Image/RecParent-8.png"));  
-        
+        profileChange.setImage(new Image("/Image/profiileicon-8.png")); 
         
         Service.ServiceEnfant se=new ServiceEnfant();
         try {
@@ -121,7 +123,7 @@ public class ResponsableMainController implements Initializable {
        ServiceResponsable sr= new ServiceResponsable();
        
         try {
-            RespName.setText("Mr/Md "+sr.read(r).getNom()+" "+sr.read(r).getPrenom());
+            RespName.setText("Mr/Md "+sr.readUser(r).getNom()+" "+sr.readUser(r).getPrenom());
         } catch (SQLException ex) {
             Logger.getLogger(ResponsableMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -146,7 +148,8 @@ public class ResponsableMainController implements Initializable {
                                            try {
                                                root = loader.load();
                                                RespoParentApproveController apc = loader.getController();
-                                              
+                                               apc.SetCinR(cin);
+
                                               
                                             RespUI.getScene().setRoot(root);
                                            } catch (IOException ex) {
@@ -165,7 +168,7 @@ public class ResponsableMainController implements Initializable {
                                            try {
                                                root = loader.load();
                                                InscriptionTuteurController apc = loader.getController();
-                                              
+                                              apc.SetCinR(cin);
                                               
                                             RespUI.getScene().setRoot(root);
                                            } catch (IOException ex) {
@@ -213,6 +216,28 @@ public class ResponsableMainController implements Initializable {
                                                Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
                                            }
         
+        
+    }
+
+    @FXML
+    private void profileChangeAction(MouseEvent event) {
+        
+        
+                                                    FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("ResponsableProfile.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               ResponsableProfileController apc = loader.getController();
+                                               apc.SetCin(cin);
+                                              
+                                                 
+                                            RespUI.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
         
     }
     

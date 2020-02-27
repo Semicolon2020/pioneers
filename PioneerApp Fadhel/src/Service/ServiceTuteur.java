@@ -104,6 +104,30 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
     return pre.executeUpdate()==0;
 
     }
+    
+    @Override
+    public boolean updateProfile(Tuteur t) throws SQLException {
+        
+    PreparedStatement     pre=con.prepareStatement("update `pionnersapp`.`user`SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,"
+                + "             `num_tel`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=? and role='T';");
+    
+    
+    pre.setString(1, t.getCin());  
+    pre.setString(2, t.getPassword());
+    
+    pre.setString(3, t.getNom());
+    pre.setString(4, t.getPrenom());
+    pre.setString(5, t.getEmail());
+    pre.setString(6, t.getNum_tel());
+    pre.setString(7, t.getEtat_civil());
+    pre.setString(8, t.getPhoto());
+    pre.setString(9, t.getSexe());
+    pre.setString(10, t.getCin());
+     
+    return pre.executeUpdate()==0;
+
+    }
+    
 
     @Override
     public List<Tuteur> readAll() throws SQLException {

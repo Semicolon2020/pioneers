@@ -45,10 +45,12 @@ import pioneerapp.JavaMail;
  */
 public class InscriptionTuteurController implements Initializable {
 
+    
      ObservableList<Tuteur> Tuteurlist =FXCollections.observableArrayList();
      ObservableList<String> listComboEtat= FXCollections.observableArrayList("Marié(e)","Veuf(ve)","Divorcé(e)");
     ObservableList<String> listCombo= FXCollections.observableArrayList("Femme","Homme");
-    private String cin;
+     private String cinR;
+     private String cin;
      private String photopath;
      private File photoFile;
     Thread UIChange; 
@@ -147,7 +149,13 @@ public class InscriptionTuteurController implements Initializable {
         
         combosexe.setItems(listCombo);
         comboEtat.setItems(listComboEtat);
-    }   
+    }  
+    
+    public void SetCinR(String cinR)
+    {
+        this.cinR=cinR;
+    }
+    
     
      public  ObservableList<Tuteur> GetTableParent()
     {
@@ -311,7 +319,7 @@ public class InscriptionTuteurController implements Initializable {
                try {
                    root = loader.load();
                    RespoParentApproveController apc = loader.getController();
-                   
+                   apc.SetCinR(cin);
                 nomTextField.getScene().setRoot(root);
                } catch (IOException ex) {
                    Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -348,7 +356,7 @@ public class InscriptionTuteurController implements Initializable {
                                            try {
                                                root = loader.load();
                                                ResponsableMainController apc = loader.getController();
-                                              
+                                              apc.setCin(cinR);
                                               
                                             table.getScene().setRoot(root);
                                            } catch (IOException ex) {
@@ -399,6 +407,7 @@ public class InscriptionTuteurController implements Initializable {
                try {
                    root = loader.load();
                    InscriptionTuteurController apc = loader.getController();
+                   apc.SetCinR(cinR);
                    
                 nomTextField.getScene().setRoot(root);
                } catch (IOException ex) {

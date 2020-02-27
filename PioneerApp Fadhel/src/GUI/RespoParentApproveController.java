@@ -45,6 +45,7 @@ import pioneerapp.JavaMail;
  */
 public class RespoParentApproveController implements Initializable {
 
+    private String cin;
     private int id_e;
     private File photoFile;
     
@@ -207,6 +208,11 @@ public class RespoParentApproveController implements Initializable {
          homeicon.setImage(new Image("/Image/home.png"));
         
     }    
+    
+    public void SetCinR(String cin)
+    {
+        this.cin=cin;
+    }
     
     ////Fonction ParentTable View
     public  ObservableList<Parent> GetTableParent(String Word)
@@ -440,7 +446,7 @@ public class RespoParentApproveController implements Initializable {
                                            try {
                                                root = loader.load();
                                                RespoParentApproveController apc = loader.getController();
-                                              
+                                              apc.SetCinR(cin);
                                               
                                             RespUI.getScene().setRoot(root);
                                            } catch (IOException ex) {
@@ -526,7 +532,7 @@ public class RespoParentApproveController implements Initializable {
                                            try {
                                                root = loader.load();
                                                RespoParentApproveController apc = loader.getController();
-                                              
+                                              apc.SetCinR(cin);
                                               
                                             RespUI.getScene().setRoot(root);
                                            } catch (IOException ex) {
@@ -563,7 +569,7 @@ public class RespoParentApproveController implements Initializable {
                                            try {
                                                root = loader.load();
                                                RespoParentApproveController apc = loader.getController();
-                                              
+                                              apc.SetCinR(cin);
                                               
                                             RespUI.getScene().setRoot(root);
                                            } catch (IOException ex) {
@@ -591,7 +597,7 @@ public class RespoParentApproveController implements Initializable {
                                            try {
                                                root = loader.load();
                                                InscriptionTuteurController apc = loader.getController();
-                                              
+                                              apc.SetCinR(cin);
                                               
                                             RespUI.getScene().setRoot(root);
                                            } catch (IOException ex) {
@@ -630,7 +636,7 @@ public class RespoParentApproveController implements Initializable {
                                            try {
                                                root = loader.load();
                                                ResponsableMainController apc = loader.getController();
-                                              
+                                               apc.setCin(cin);
                                               
                                             RespUI.getScene().setRoot(root);
                                            } catch (IOException ex) {

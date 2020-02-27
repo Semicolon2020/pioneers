@@ -97,7 +97,9 @@ public class InscriptionEnfantController implements Initializable {
         {
              photofile = file.getSelectedFile();
             Image image;
-            photopath=photofile.getAbsolutePath();
+           
+            
+             photopath="file:/D:/programs/wamp64/www/Pioneers/images/"+photofile.getName();
             
              image = new Image(photofile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);

@@ -33,5 +33,25 @@
             <Image url="@../../../../JavaFx/1x/eventimg-8.png" />
          </image>
       </ImageView>
+      <Label layoutX="303.0" layoutY="640.0" prefHeight="21.0" prefWidth="70.0" text="Rappel" textFill="#b52e9f">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="552.0" layoutY="640.0" text="Activite" textFill="#34bed3">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="816.0" layoutY="640.0" text="Evenement" textFill="#dd781f">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="pdpimg" fitHeight="42.0" fitWidth="43.0" layoutX="965.0" layoutY="23.0" onMouseClicked="#pdpChangeAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/profiileicon-8.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
