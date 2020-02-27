@@ -22,6 +22,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,28 +44,20 @@ public class EmailController implements Initializable {
     @FXML
     private TextArea message;
     @FXML
-    private Button envoyer;
+    private ImageView envoyBtn;
+    @FXML
+    private ImageView bgimg;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+      
+        envoyBtn.setImage(new Image("/Image/EnvoyerMail-8.png"));  
+        bgimg.setImage(new Image("/Image/bgmain.png"));  
     }    
 
-    @FXML
-    private void envoyerAction(ActionEvent event) {
-        mail m = new mail();
-        
-        
-        
-        try {
-            mail.sendMail("jardin.pioneer@gmail.com", message.getText(),objet.getText(),nom,prenom);
-        } catch (Exception ex) {
-            Logger.getLogger(EmailController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
     
     public void SetCin(String cin)
@@ -80,6 +75,21 @@ public class EmailController implements Initializable {
             Logger.getLogger(ResponsableMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        
+    }
+
+    @FXML
+    private void envoyBtnAction(MouseEvent event) {
+        
+        mail m = new mail();
+        
+        
+        
+        try {
+            mail.sendMail("jardin.pioneer@gmail.com", message.getText(),objet.getText(),nom,prenom);
+        } catch (Exception ex) {
+            Logger.getLogger(EmailController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
   }

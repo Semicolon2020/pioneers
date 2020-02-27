@@ -23,6 +23,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -41,6 +43,8 @@ public class ArappelController implements Initializable {
     private TableColumn<Rappel, String> prenom;
     @FXML
     private TableColumn<Rappel, String> Rappel;
+    @FXML
+    private ImageView Rimg;
 
     /**
      * Initializes the controller class.
@@ -48,6 +52,7 @@ public class ArappelController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         Rimg.setImage(new Image("/Image/Wlcimage.jpg"));  
          ServiceRappel es = new ServiceRappel();
             ObservableList<Rappel> list = FXCollections.observableArrayList();
             
