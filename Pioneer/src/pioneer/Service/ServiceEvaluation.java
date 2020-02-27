@@ -35,12 +35,12 @@ public class ServiceEvaluation implements IService<Evaluation> {
    
     public void ajouter1(Evaluation p) throws SQLException
     {
-    PreparedStatement pre=con.prepareStatement("INSERT INTO `pioneersapp`.`evaluation` (`score`, `remarque`, `id_e`, `activite`, `id_c`) VALUES ( ?, ?, ?, ?, ?);");
+    PreparedStatement pre=con.prepareStatement("INSERT INTO `pioneersapp`.`evaluation` (`score`, `remarque`, `id_e`, `activite`) VALUES ( ?, ?, ?, ?);");
     pre.setInt(1, p.getScore());
     pre.setString(2, p.getRemarque());
     pre.setInt(3, p.getId_e());
     pre.setString(4,p.getActivite());
-    pre.setInt(5, p.getId_c());
+   // pre.setInt(5, p.getId_c());
     pre.executeUpdate();
     }
             
@@ -68,8 +68,9 @@ public class ServiceEvaluation implements IService<Evaluation> {
 
     @Override
     public boolean update(Evaluation t) throws SQLException {
-        System.out.println(t.getId());
+        //System.out.println(t.getId());
         ste = con.createStatement();
+        System.out.println(t);
         String requeteDelete = "UPDATE `evaluation` SET `score`= '"+ t.getScore() +"',`remarque`= '"+ t.getRemarque() +"',`activite`= '"+ t.getActivite() +"' WHERE id = '"+ t.getId() +"' ";
           
         
@@ -90,14 +91,14 @@ public class ServiceEvaluation implements IService<Evaluation> {
     public List<Evaluation> readAll() throws SQLException {
     List<Evaluation> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("SELECT `score`, `remarque`, `id_e`, `activite`, `id_c` FROM `evaluation`");
+    ResultSet rs=ste.executeQuery("SELECT `score`, `remarque`, `id_e`, `activite` FROM `evaluation`");
      while (rs.next()) {                
                int score=rs.getInt("score");
                String remarque=rs.getString(2);
                int id_e=rs.getInt("id_e");
                String activite=rs.getString(4);
-               int id_c=rs.getInt(5);
-               Evaluation p = new Evaluation(score, id_e,id_c, remarque,activite);
+              // int id_c=rs.getInt(5);
+               Evaluation p = new Evaluation(score, id_e, remarque,activite);
      arr.add(p);
      }
     return arr;
@@ -106,15 +107,15 @@ public class ServiceEvaluation implements IService<Evaluation> {
     public ObservableList<Evaluation> readAllV2() throws SQLException {
     ObservableList<Evaluation> Data = FXCollections.observableArrayList();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("SELECT v.id, score, remarque, (SELECT concat(e.nom,' ',e.prenom) WHERE e.id_e=v.id_e) nom, activite, v.id_c FROM evaluation v , enfant e WHERE e.id_e = v.id_e");
+    ResultSet rs=ste.executeQuery("SELECT v.id, score, remarque, (SELECT concat(e.nom,' ',e.prenom) WHERE e.id_e=v.id_e) nom, activite FROM evaluation v , enfant e WHERE e.id_e = v.id_e");
         while (rs.next()) {                
                int id=rs.getInt(1);
                int score=rs.getInt(2);
                String remarque=rs.getString(3);
                String nom =rs.getString(4);
                String activite=rs.getString(5);
-               int id_c=rs.getInt(6);
-               Evaluation p = new Evaluation( id,score, nom, id_c, remarque, activite);
+              // int id_c=rs.getInt(6);
+               Evaluation p = new Evaluation( id,score, nom,  remarque, activite);
      Data.add(p);
      }
     return Data;
@@ -123,32 +124,37 @@ public class ServiceEvaluation implements IService<Evaluation> {
     public ObservableList<Evaluation> readAllV3() throws SQLException {
     ObservableList<Evaluation> Data = FXCollections.observableArrayList();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select v.id , v.score ,v.remarque,(SELECT concat(e.nom,' ',e.prenom) FROM enfant e WHERE e.cin_p = 12121212 )nom , v.activite, v.id_c FROM evaluation v ");
+    ResultSet rs=ste.executeQuery("SELECT id ,score ,remarque ,(SELECT concat(e.nom,' ',e.prenom) FROM enfant e WHERE e.cin_p = 12121212 )nom , activite  from enfant e inner JOIN evaluation ev on e.id_e = ev.id_e where e.cin_p = 12121212  ");
         while (rs.next()) {                
                int id=rs.getInt(1);
                int score=rs.getInt(2);
                String remarque=rs.getString(3);
                String nom =rs.getString(4);
                String activite=rs.getString(5);
-               int id_c=rs.getInt(6);
-               Evaluation p = new Evaluation( id,score, nom, id_c, remarque, activite);
+               //int id_c=rs.getInt(6);
+               Evaluation p = new Evaluation( id,score, nom, remarque, activite);
      Data.add(p);
      }
     return Data;
     }
     
     
-    public ObservableList<String> readNomEnfantClasse(String nom) throws SQLException {
+    public ObservableList<String> readNomEnfantClasse() throws SQLException {
         ObservableList<String> arr = FXCollections.observableArrayList();
-        System.out.println("classe"+nom);
+        //System.out.println("classe"+nom);
         ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("SELECT Distinct e.nom FROM enfant e , classe c WHERE e.id_c = (SELECT id FROM classe WHERE nom ='"+nom+"')");
+        ResultSet rs=ste.executeQuery("SELECT Distinct nom FROM enfant");
         while (rs.next()) {
             String Nom = rs.getString(1);
             arr.add(Nom);
          }
         return arr;
         }
+    
+    //"SELECT Distinct e.nom FROM enfant e , classe c WHERE e.id_c = (SELECT id FROM classe WHERE nom ='"+nom+"')"
+    
+    
+    
     
     public ObservableList<String> readAllS() throws SQLException {
     ObservableList<String> ClasseData = FXCollections.observableArrayList();
@@ -179,8 +185,10 @@ public class ServiceEvaluation implements IService<Evaluation> {
     public int readAllA(String nom) throws SQLException {
    int AVGScore = 0;
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("SELECT AVG(score) FROM evaluation e WHERE e.activite ='"+nom+"'");
-    while (rs.next()) {
+    ResultSet rs=ste.executeQuery("SELECT AVG(score) FROM enfant e inner JOIN evaluation ev on ev.id_e = e.id_e where e.cin_p = 12121212 and ev.activite ='"+nom+"'");
+    while (rs.next()) { 
+
+ 
     AVGScore =rs.getInt(1);
     }
     return AVGScore;

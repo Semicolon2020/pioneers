@@ -95,9 +95,12 @@ public class StatistiquesController implements Initializable {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                
                 try {
+                    
                     int i = 0;
+                    
                     i= ser.readAllA(list.get(newValue.intValue()));
                     series.getData().add(new XYChart.Data<>(list.get(newValue.intValue()), i));
+                    
                 } catch (SQLException ex) {
                     System.out.println(ex);
                 }

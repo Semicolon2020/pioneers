@@ -22,15 +22,15 @@
                   <Accordion layoutX="65.0" layoutY="111.0" />
                   <Label layoutX="508.0" layoutY="242.0" text="Score" />
                   <Label layoutX="508.0" layoutY="291.0" text="Remarque" />
-                  <Label layoutX="509.0" layoutY="386.0" text="Enfant" />
+                  <Label layoutX="506.0" layoutY="338.0" text="Enfant" />
                   <Button fx:id="bAjouter" layoutX="630.0" layoutY="472.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
                   <TextField fx:id="tfScore" layoutX="592.0" layoutY="238.0" />
                   <ChoiceBox fx:id="tfRemarque" layoutX="589.0" layoutY="289.0" prefHeight="28.0" prefWidth="157.0" />
-                  <Label layoutX="510.0" layoutY="338.0" text="Classe" />
-                  <ChoiceBox fx:id="tfClasse" layoutX="589.0" layoutY="336.0" prefHeight="28.0" prefWidth="158.0" />
-                  <ChoiceBox fx:id="tfNom" layoutX="589.0" layoutY="382.0" prefHeight="28.0" prefWidth="159.0" />
-                  <Label layoutX="510.0" layoutY="428.0" text="Activité" />
-                  <ChoiceBox fx:id="tfActivite" layoutX="589.0" layoutY="425.0" prefHeight="28.0" prefWidth="159.0" />
+                  <Label layoutX="506.0" layoutY="430.0" text="Classe" visible="false" />
+                  <ChoiceBox fx:id="tfClasse" layoutX="590.0" layoutY="425.0" prefHeight="28.0" prefWidth="158.0" visible="false" />
+                  <ChoiceBox fx:id="tfNom" layoutX="589.0" layoutY="333.0" prefHeight="28.0" prefWidth="159.0" />
+                  <Label layoutX="506.0" layoutY="384.0" text="Activité" />
+                  <ChoiceBox fx:id="tfActivite" layoutX="589.0" layoutY="379.0" prefHeight="28.0" prefWidth="159.0" />
                   <ImageView fx:id="Im1" fitHeight="150.0" fitWidth="200.0" layoutX="560.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="a" layoutX="772.0" layoutY="242.0" text="Le score doit etre entre 0 et 20 !" visible="false" />
                </children></AnchorPane>

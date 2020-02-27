@@ -157,13 +157,20 @@ public class evaluationController implements Initializable {
         tfRemarque1.setItems(REMARQUES);
         
         try {
+            listCE = ser.readNomEnfantClasse();
+        } catch (SQLException ex) {
+            Logger.getLogger(evaluationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tfNom.setItems(listCE);
+        try {
             listA = ser.readAct();
             tfActivite.setItems(listA);
             tfActivite1.setItems(listA);
         } catch (Exception e) {
         }
         
-        try {
+        
+        /*try {
            listC = ser.readAllS();
            tfClasse.setItems(listC);
 
@@ -185,10 +192,10 @@ public class evaluationController implements Initializable {
 
 
 
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) {
             System.out.println(ex);
-        }
-
+        } */
     }
 
     @FXML
@@ -198,14 +205,14 @@ public class evaluationController implements Initializable {
             int score = parseInt(tfScore.getText());
             String remarque = (String) tfRemarque.getSelectionModel().getSelectedItem();
             String cl = (String) tfClasse.getSelectionModel().getSelectedItem();
-            int idc = ser.getIdClasse(cl);
+           // int idc = ser.getIdClasse(cl);
             String enf = (String) tfNom.getSelectionModel().getSelectedItem();
             int ide = ser.readNom(enf);
 
             String activite = (String) tfActivite.getSelectionModel().getSelectedItem();
             ServiceEvaluation sp = new ServiceEvaluation();
             
-            Evaluation p = new Evaluation(score, ide,idc, remarque,activite);
+            Evaluation p = new Evaluation(score,ide, remarque,activite);
             
             if ((score <= 20) && (score >= 0)) {
                 a.setVisible(false);
@@ -227,13 +234,13 @@ public class evaluationController implements Initializable {
         try {
             int score = parseInt(tfScore1.getText());
             int id = data.getId();
-            System.out.println(id);
+            System.out.println(score);
             String remarque = (String) tfRemarque1.getSelectionModel().getSelectedItem();
             String activite = (String) tfActivite1.getSelectionModel().getSelectedItem();
 
            
             ServiceEvaluation sp = new ServiceEvaluation();
-            Evaluation p = new Evaluation(score, id, remarque, activite);
+            Evaluation p = new Evaluation(score, remarque,id,activite);
             
             if ((score <= 20) && (score >= 0)) {
                 b.setVisible(false);

@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -134,9 +136,15 @@ public class SuiviController implements Initializable {
         tfSociabilite.setItems(SOCIABILITE);
         tfSociabilite1.setItems(SOCIABILITE);
         
-        
-        
         try {
+            listCE = ser.readNomEnfantClasse();
+        } catch (SQLException ex) {
+            Logger.getLogger(SuiviController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tfEnfant.setItems(listCE);
+        
+        /*
+       try {
            listC = ser.readAllS();
            tfClasse.setItems(listC);
 
@@ -161,6 +169,7 @@ public class SuiviController implements Initializable {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        */
 
     }    
 
@@ -173,12 +182,12 @@ public class SuiviController implements Initializable {
             String sommeil = (String) tfSommeil.getSelectionModel().getSelectedItem();
             String sociabilite = (String) tfSociabilite.getSelectionModel().getSelectedItem();
             String psychologie = tfPsy.getText();
-            String cl = (String) tfClasse.getSelectionModel().getSelectedItem();
-            int idc = ser.getIdClasse(cl);
+            //String cl = (String) tfClasse.getSelectionModel().getSelectedItem();
+           // int idc = ser.getIdClasse(cl);
             String enf = (String) tfEnfant.getSelectionModel().getSelectedItem();
             int ide = ser.readNom(enf);
             
-            Suivi p = new Suivi(idc , ide ,nutrition,sommeil,sociabilite,psychologie);
+            Suivi p = new Suivi(ide ,nutrition,sommeil,sociabilite,psychologie);
             ser.ajouter1(p);
             
 
@@ -224,7 +233,7 @@ public class SuiviController implements Initializable {
             String psychologie = tfPsy1.getText();
 
            
-            Suivi p = new Suivi(id,nutrition,sommeil,sociabilite,psychologie);
+            Suivi p = new Suivi(nutrition,id,sommeil,sociabilite,psychologie);
             ser.update(p);
 
         } catch (SQLException ex) {

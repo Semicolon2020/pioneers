@@ -34,13 +34,13 @@ public class ServiceSuivi implements IService<Suivi> {
     
     public void ajouter1(Suivi p) throws SQLException
     {
-    PreparedStatement pre=con.prepareStatement("INSERT INTO `pioneersapp`.`suivi` (`nutrition`, `sommeil`, `sociabilite`, `psychologie`, `id_e`, `id_c`) VALUES ( ?, ?, ?, ?, ?, ?);");
+    PreparedStatement pre=con.prepareStatement("INSERT INTO `pioneersapp`.`suivi` (`nutrition`, `sommeil`, `sociabilite`, `psychologie`, `id_e`) VALUES ( ?, ?, ?, ?, ?);");
     pre.setString(1, p.getNutrition());
     pre.setString(2, p.getSommeil());
     pre.setString(3, p.getSociabilite());
     pre.setString(4, p.getPsychologie());
     pre.setInt(5, p.getId_e());
-    pre.setInt(6, p.getId_c());
+    //pre.setInt(6, p.getId_c());
     pre.executeUpdate();
     }
             
@@ -107,7 +107,7 @@ public class ServiceSuivi implements IService<Suivi> {
     public ObservableList<Suivi> readAllV2() throws SQLException {
     ObservableList<Suivi> Data = FXCollections.observableArrayList();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("SELECT v.id, nutrition, sommeil, sociabilite, psychologie,(SELECT concat(e.nom,' ',e.prenom) WHERE e.id_e=v.id_e) nom, v.id_c FROM suivi v , enfant e WHERE e.id_e = v.id_e");
+    ResultSet rs=ste.executeQuery("SELECT v.id, nutrition, sommeil, sociabilite, psychologie,(SELECT concat(e.nom,' ',e.prenom) WHERE e.id_e=v.id_e) nom FROM suivi v , enfant e WHERE e.id_e = v.id_e");
      while (rs.next()) {                
                int id=rs.getInt(1);
                String nutrition=rs.getString(2);
@@ -115,8 +115,8 @@ public class ServiceSuivi implements IService<Suivi> {
                String sociabilite=rs.getString(4);
                String psychologie=rs.getString(5);
                String nom =rs.getString(6);
-               int id_c=rs.getInt(7);
-               Suivi p = new Suivi(id , nutrition,sommeil,sociabilite,psychologie,nom,id_c);
+              // int id_c=rs.getInt(7);
+               Suivi p = new Suivi(id , nutrition,sommeil,sociabilite,psychologie,nom);
      Data.add(p);
      }
     return Data;
@@ -125,7 +125,7 @@ public class ServiceSuivi implements IService<Suivi> {
     public ObservableList<Suivi> readAllV3() throws SQLException {
     ObservableList<Suivi> Data = FXCollections.observableArrayList();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select v.id , nutrition,sommeil,sociabilite,psychologie,(SELECT concat(e.nom,' ',e.prenom) FROM enfant e WHERE e.cin_p = 12121212 )nom , v.id_c, v.id_c FROM suivi v ");
+    ResultSet rs=ste.executeQuery("select v.id , nutrition,sommeil,sociabilite,psychologie,(SELECT concat(e.nom,' ',e.prenom) FROM enfant e WHERE e.cin_p = 12121212 )nom  FROM suivi v ");
      while (rs.next()) {                
                int id=rs.getInt(1);
                String nutrition=rs.getString(2);
@@ -133,25 +133,28 @@ public class ServiceSuivi implements IService<Suivi> {
                String sociabilite=rs.getString(4);
                String psychologie=rs.getString(5);
                String nom =rs.getString(6);
-               int id_c=rs.getInt(7);
-               Suivi p = new Suivi(id , nutrition,sommeil,sociabilite,psychologie,nom,id_c);
+               //int id_c=rs.getInt(7);
+               Suivi p = new Suivi(id , nutrition,sommeil,sociabilite,psychologie,nom);
      Data.add(p);
      }
     return Data;
     }
     
     
-    public ObservableList<String> readNomEnfantClasse(String nom) throws SQLException {
+    public ObservableList<String> readNomEnfantClasse() throws SQLException {
         ObservableList<String> arr = FXCollections.observableArrayList();
-        System.out.println("classe"+nom);
+        //System.out.println("classe"+nom);
         ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("SELECT Distinct e.nom FROM enfant e , classe c WHERE e.id_c = (SELECT id FROM classe WHERE nom ='"+nom+"')");
+        ResultSet rs=ste.executeQuery("SELECT Distinct nom FROM enfant ");
         while (rs.next()) {
             String Nom = rs.getString(1);
             arr.add(Nom);
          }
         return arr;
         }
+    
+    //"SELECT Distinct e.nom FROM enfant e , classe c WHERE e.id_c = (SELECT id FROM classe WHERE nom ='"+nom+"')"
+    
     
     public ObservableList<String> readAllS() throws SQLException {
     ObservableList<String> ClasseData = FXCollections.observableArrayList();

@@ -56,14 +56,17 @@ public class PdfController implements Initializable {
     private TableColumn<Suivi, String> Psychologie;
     @FXML
     private TableColumn<Suivi, String> ID;
-    
+   /* 
     TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
+    
     int row = pos.getRow();
 
-    
+    */
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -93,6 +96,7 @@ public class PdfController implements Initializable {
         }
     }
 
+    /*
     @FXML
     private void generatePDF(ActionEvent event) throws FileNotFoundException, DocumentException {
         
@@ -138,12 +142,12 @@ public class PdfController implements Initializable {
             tb1.addCell(p);
 
         }
-*/
+
         
        // doc.add(tb1);
         
         
         //doc.close();
-    }
+    } */
     
 }

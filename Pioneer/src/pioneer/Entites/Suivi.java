@@ -17,9 +17,18 @@ public class Suivi {
     public Suivi() {
     }
 
-    public Suivi(int id, String nutrition, String sommeil, String sociabilite, String psychologie) {
+    public Suivi(int id_e, String nutrition, String sommeil, String sociabilite, String psychologie) {
         
-        this.id = id;
+        this.id_e= id_e;
+        this.nutrition = nutrition;
+        this.sommeil = sommeil;
+        this.sociabilite = sociabilite;
+        this.psychologie = psychologie;
+    }
+    
+    public Suivi( String nutrition, int id,String sommeil, String sociabilite, String psychologie) {
+        
+        this.id= id;
         this.nutrition = nutrition;
         this.sommeil = sommeil;
         this.sociabilite = sociabilite;
@@ -42,9 +51,9 @@ public class Suivi {
         this.psychologie = psychologie;
     }
     
-    public Suivi(int id ,String nutrition, String sommeil, String sociabilite, String psychologie,String NomEnfant,int idc) { 
+    public Suivi(int id ,String nutrition, String sommeil, String sociabilite, String psychologie,String NomEnfant) { 
         this.id= id ;
-        this.id_c= idc ;
+       // this.id_c= idc ;
         this.NomEnfant=NomEnfant;
         this.nutrition = nutrition;
         this.sommeil = sommeil;

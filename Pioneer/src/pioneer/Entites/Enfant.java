@@ -82,15 +82,16 @@ public class Enfant {
         this.sexe = sexe;
     }
 
+    /*
     public void setId_c(int id_c) {
         this.id_c = id_c;
     }
-    
+    */
     
 
     @Override
     public String toString() {
-         return "Enfant{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", cin_p=" + cin_p + ", age=" + age + ", id_e=" + id_e + ", id_c=" + id_c +'}';
+         return "Enfant{" + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", cin_p=" + cin_p + ", age=" + age + ", id_e=" + id_e + '}';
     }
     
     

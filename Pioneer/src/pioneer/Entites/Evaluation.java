@@ -27,27 +27,26 @@ public class Evaluation {
     }
 
    
-    public Evaluation(int score, int id_e, int id_c, String remarque, String activite) {
-        this.score = score;
-        this.id_e = id_e;
-        this.id_c = id_c;
-        this.remarque = remarque;
-        this.activite = activite;
-    }
-    
-    public Evaluation(int score,int id, String remarque, String activite) {
+    public Evaluation(int score, String remarque, int id, String activite) {
         this.score = score;
         this.id = id;
         this.remarque = remarque;
         this.activite = activite;
-        System.out.println(score +" "+id +" "+remarque + activite);
+    }
+    
+    public Evaluation(int score,int id_e, String remarque, String activite) {
+        this.score = score;
+        this.id_e = id_e;
+        this.remarque = remarque;
+        this.activite = activite;
+       // System.out.println(score +" "+id +" "+remarque + activite);
     }
     
    
-    public Evaluation(int id ,int score, String nom,int id_c ,String remarque, String activite) {
+    public Evaluation(int id ,int score, String nom,String remarque, String activite) {
         this.id= id;
         this.score = score;
-        this.id_c = id_c;
+       // this.id_c = id_c;
         this.NomEnfant = nom;
         this.remarque = remarque;
         this.activite = activite;
