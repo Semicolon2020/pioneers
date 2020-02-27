@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MariemInterface.ReclamationController">
+   <children>
+      <ImageView fx:id="imgR" blendMode="MULTIPLY" disable="true" fitHeight="400.0" fitWidth="600.0" layoutX="526.0" layoutY="101.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../reclamation.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="561.0" layoutY="185.0" prefHeight="30.0" prefWidth="228.0" text="Nouvelle réclamation">
+         <font>
+            <Font name="Bell MT Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="rec" layoutX="496.0" layoutY="279.0" opacity="0.88" prefHeight="111.0" prefWidth="399.0" promptText="Taper ici votre réclamation..." />
+      <Label layoutX="506.0" layoutY="247.0" text="Réclamation" textFill="#2f2f2f">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="envoyer" layoutX="636.0" layoutY="403.0" mnemonicParsing="false" onAction="#AjouterReclamation" opacity="0.72" text="Envoyer">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="retourImg" fitHeight="111.0" fitWidth="172.0" layoutX="117.0" layoutY="578.0" onMouseClicked="#retourAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/retour-8.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

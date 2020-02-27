@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ParentMainController">
+   <children>
+      <Label fx:id="labelName" layoutX="1054.0" layoutY="29.0" prefHeight="41.0" prefWidth="222.0" text="Label" textFill="#22945f">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="recParentimg" fitHeight="111.0" fitWidth="190.0" layoutX="208.0" layoutY="521.0" onMouseClicked="#RecParentAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/RecParent-8.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="RappelBtnimg" fitHeight="111.0" fitWidth="190.0" layoutX="463.0" layoutY="521.0" onMouseClicked="#rappelAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/Rappel-8.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mailBtn" fitHeight="111.0" fitWidth="190.0" layoutX="725.0" layoutY="521.0" onMouseClicked="#mailBtnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/Email-8.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ActBtnimg" fitHeight="150.0" fitWidth="200.0" layoutX="203.0" layoutY="335.0" onMouseClicked="#ActBtnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/ActivImg-8.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OmarInterface.AddEvenementController">
+   <children>
+      <TabPane fx:id="TabGestion" layoutX="26.0" layoutY="-20.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="ajouter evenement">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="tfNiveau" layoutX="148.0" layoutY="218.0" />
+                        <Label layoutX="48.0" layoutY="222.0" text="niveau" />
+                        <Label layoutX="34.0" layoutY="176.0" text="description" />
+                        <TextField fx:id="tfDescription" layoutX="148.0" layoutY="163.0" prefHeight="18.0" prefWidth="152.0" />
+                        <TextField fx:id="tfInvite" layoutX="148.0" layoutY="128.0" />
+                        <Label layoutX="54.0" layoutY="130.0" text="invite" />
+                        <Label layoutX="57.0" layoutY="81.0" text="lieu" />
+                        <TextField fx:id="tfLieu" layoutX="148.0" layoutY="77.0" />
+                        <Label layoutX="56.0" layoutY="37.0" text="nom" />
+                        <TextField fx:id="tfNom" layoutX="148.0" layoutY="33.0" />
+                        <Button fx:id="Bajouter" layoutX="375.0" layoutY="260.0" mnemonicParsing="false" onAction="#ajouter" text="ajouter" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="afficher" onSelectionChanged="#AfficherEvenement" text="afficher evenement">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="Table" layoutX="61.0" prefHeight="340.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="AFnom" prefWidth="75.0" text="nom" />
+                            <TableColumn fx:id="AFlieu" prefWidth="75.0" text="lieu" />
+                              <TableColumn fx:id="AFinvite" prefWidth="75.0" text="invite" />
+                              <TableColumn fx:id="AFdescription" prefWidth="75.0" text="description" />
+                              <TableColumn fx:id="AFniveau" prefWidth="75.0" text="niveau" />
+                              <TableColumn fx:id="AFid" prefWidth="75.0" text="id" visible="false" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="modifierEvenement" text="modifier evenement">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="76.0" layoutY="21.0" text="nom" />
+                        <Label layoutX="76.0" layoutY="60.0" text="lieu" />
+                        <Label layoutX="76.0" layoutY="99.0" text="invite" />
+                        <Label layoutX="76.0" layoutY="144.0" text="description" />
+                        <Label layoutX="78.0" layoutY="197.0" text="niveau" />
+                        <TextField fx:id="MEnom" layoutX="171.0" layoutY="18.0" />
+                        <TextField fx:id="MElieu" layoutX="173.0" layoutY="57.0" />
+                        <TextField fx:id="MEinvite" layoutX="175.0" layoutY="96.0" />
+                        <TextField fx:id="MEdescription" layoutX="173.0" layoutY="141.0" />
+                        <TextField fx:id="MEniveau" layoutX="173.0" layoutY="193.0" />
+                        <Button fx:id="ModifierEvenement" layoutX="431.0" layoutY="276.0" mnemonicParsing="false" onAction="#ModifierEvenement" text="modifier" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

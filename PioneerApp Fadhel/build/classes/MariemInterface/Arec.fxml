@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MariemInterface.ArecController">
+    <children>
+      <TableView fx:id="TableRec" layoutX="313.0" layoutY="239.0" prefHeight="327.0" prefWidth="729.0">
+        <columns>
+            <TableColumn fx:id="tfDate" prefWidth="97.0" text="Date" />
+          <TableColumn fx:id="tfNom" prefWidth="81.0" text="Nom" />
+          <TableColumn fx:id="tfPrenom" prefWidth="82.0" text="Prénom" />
+            <TableColumn fx:id="tfReclamation" prefWidth="461.0" text="Reclamation" />
+        </columns>
+      </TableView>
+
+      <Label layoutX="471.0" layoutY="148.0" prefHeight="43.0" prefWidth="413.0" text="Les réclamation des parents ">
+         <font>
+            <Font size="29.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
