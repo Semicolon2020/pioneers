@@ -5,10 +5,13 @@
  */
 package MariemInterface;
 
+import GUI.InscriptionParentController;
+import GUI.TuteurMainController;
 import MariemEntite.Rappel;
 import MariemEntite.Reclamation;
 import MariemService.ServiceRappel;
 import MariemService.ServiceReclamation;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,12 +22,14 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -45,6 +50,8 @@ public class ArappelController implements Initializable {
     private TableColumn<Rappel, String> Rappel;
     @FXML
     private ImageView Rimg;
+    @FXML
+    private ImageView retour;
 
     /**
      * Initializes the controller class.
@@ -52,7 +59,7 @@ public class ArappelController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         Rimg.setImage(new Image("/Image/Wlcimage.jpg"));  
+         Rimg.setImage(new Image("/Image/bgmain.png"));
          ServiceRappel es = new ServiceRappel();
             ObservableList<Rappel> list = FXCollections.observableArrayList();
             
@@ -64,6 +71,7 @@ public class ArappelController implements Initializable {
             Rappel.setCellValueFactory(new PropertyValueFactory<>("Text"));
             date.setCellValueFactory(new PropertyValueFactory<>("date"));
             tabrappel.setItems(list);
+            retour.setImage(new Image("/Image/retour-8.png"));
     }    
 
     public void SetCin(String cin )
@@ -87,6 +95,26 @@ public class ArappelController implements Initializable {
                    list.add(new Rappel(arr.get(i).getDate(),arr.get(i).getNom(),arr.get(i).getPrenom(), arr.get(i).getText()));
                 }
 
-      return list;  }    }
+      return list;  }
+
+    @FXML
+    private void retourAction(MouseEvent event) {
+                                    FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/GUI/TuteurMain.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               TuteurMainController apc = loader.getController();
+                                               apc.SetCin(cin);
+                                              
+                                                 
+                                            retour.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+    }
+ }
     
 

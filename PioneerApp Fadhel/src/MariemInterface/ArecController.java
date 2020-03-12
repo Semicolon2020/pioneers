@@ -6,8 +6,11 @@
 package MariemInterface;
 
 //import com.employe.gui.AfficheEmployeController;
+import GUI.InscriptionParentController;
+import GUI.ResponsableMainController;
 import MariemEntite.Reclamation;
 import MariemService.ServiceReclamation;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.sql.SQLException;
@@ -20,10 +23,14 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -31,7 +38,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author User
  */
 public class ArecController implements Initializable {
-    private String cin="11121111";
+    private String cin;
     @FXML
     private TableView<Reclamation> TableRec;
     @FXML
@@ -42,6 +49,8 @@ public class ArecController implements Initializable {
     private TableColumn<Reclamation, String> tfPrenom;
     @FXML
     private TableColumn<Reclamation, String> tfReclamation;
+    @FXML
+    private ImageView retour;
 
     /**
      * Initializes the controller class.
@@ -61,8 +70,14 @@ public class ArecController implements Initializable {
             tfReclamation.setCellValueFactory(new PropertyValueFactory<>("Text"));
             tfDate.setCellValueFactory(new PropertyValueFactory<>("date"));
             TableRec.setItems(list);
+            
+            retour.setImage(new Image("/Image/retour-8.png"));
     }
     
+    public void SetCin(String cin )
+    {
+        this.cin=cin;
+    }
    
     public ObservableList<Reclamation> Getlist()
     {
@@ -81,6 +96,25 @@ public class ArecController implements Initializable {
                 }
 
       return list;  
+    }
+
+    @FXML
+    private void retourAction(MouseEvent event) {
+        
+                             FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/GUI/ResponsableMain.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               ResponsableMainController apc = loader.getController();
+                                              apc.setCin(cin);
+                                              
+                                            retour.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
     }
     }    
     

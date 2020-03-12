@@ -24,5 +24,7 @@ public interface IServiceParent <T> {
     void approve(T t,String cin) throws SQLException;
    public List<T> readRecherche(String Word) throws SQLException;
    public List<Integer> StatSexe() throws SQLException;
+   public boolean updateProfile(T t) throws SQLException ;
+
 
 }

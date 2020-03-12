@@ -6,6 +6,8 @@
 package GUI;
 
 import Entities.Responsable;
+import ImenInterface.AdminController;
+import gestiontransport.gui.AdminController1;
 import MariemInterface.ArecController;
 import Service.ServiceEnfant;
 import Service.ServiceParent;
@@ -23,12 +25,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -62,6 +67,10 @@ public class ResponsableMainController implements Initializable {
     private ImageView msgbtnimg;
     @FXML
     private ImageView profileChange;
+    @FXML
+    private ImageView LoisirsInterface;
+    @FXML
+    private ImageView transpInterface;
     
     /**
      * Initializes the controller class.
@@ -82,6 +91,8 @@ public class ResponsableMainController implements Initializable {
         nbrenfimg.setImage(new Image("/Image/nbEnf-8.png"));     
         msgbtnimg.setImage(new Image("/Image/RecParent-8.png"));  
         profileChange.setImage(new Image("/Image/profiileicon-8.png")); 
+        LoisirsInterface.setImage(new Image("/Image/AdminIcon-8.png")); 
+        transpInterface.setImage(new Image("/Image/transpIcon-8.png")); 
         
         Service.ServiceEnfant se=new ServiceEnfant();
         try {
@@ -208,7 +219,7 @@ public class ResponsableMainController implements Initializable {
                                            try {
                                                root = loader.load();
                                                ArecController apc = loader.getController();
-                                               
+                                               apc.SetCin(cin);
                                               
                                                  
                                             RespUI.getScene().setRoot(root);
@@ -239,6 +250,42 @@ public class ResponsableMainController implements Initializable {
                                                Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
                                            }
         
+    }
+
+    @FXML
+    private void LoisirsInterfaceAction(MouseEvent event) {
+        
+                                        FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/ImenInterface/Admin.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               AdminController apc = loader.getController();
+                                               apc.SetCin(cin);
+                                              
+                                                 
+                                            RespUI.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
+    }
+
+    @FXML
+    private void transpInterfaceAction(MouseEvent event) {
+        
+                        Stage stage = null;                                
+      try {    
+        Parent root = FXMLLoader.load(getClass().getResource("/gestiontransport.gui/Admin.fxml"));
+          Scene scene = new Scene(root);
+        //scene.getStylesheets().add("Styles.css");
+        stage.setTitle("Transport");
+        stage.setScene(scene);
+        stage.show(); } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }

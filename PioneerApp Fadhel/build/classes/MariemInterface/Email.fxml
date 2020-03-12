@@ -37,6 +37,7 @@
             <Image url="@../../../../JavaFx/1x/EnvoyerMail-8.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="retour" fitHeight="70.0" fitWidth="200.0" layoutX="159.0" layoutY="668.0" onMouseClicked="#retourAction" pickOnBounds="true" preserveRatio="true" />
       
    </children>
 </AnchorPane>

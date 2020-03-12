@@ -135,8 +135,7 @@ public class RespoParentApproveController implements Initializable {
     private Label labelErr;
     private String etatCompte;
     private String photopathEnfant;
-    @FXML
-    private ImageView PhotoEnfant;
+  //  private ImageView PhotoEnfant;
     @FXML
     private TextField nomModifEnf;
     @FXML
@@ -199,13 +198,17 @@ public class RespoParentApproveController implements Initializable {
         photo.setImage(new Image("/Image/photobtn.png"));
         suppbtn.setImage(new Image("/Image/suppbtn.png"));
         validerbtn.setImage(new Image("/Image/validerbtn.png"));
-        PhotoEnfant.setImage(new Image("/Image/photobtn.png"));
+       // PhotoEnfant.setImage(new Image("/Image/photobtn.png"));
         validbtnEnf.setImage(new Image("/Image/validerbtn.png"));
         suppbtnEnf.setImage(new Image("/Image/suppbtn.png"));
         parenticon.setImage(new Image("/Image/ParentInterface.png"));
          tuteuricon.setImage(new Image("/Image/tuteurInterface.png"));
          logouticon.setImage(new Image("/Image/logout.png"));
          homeicon.setImage(new Image("/Image/home.png"));
+         
+         validbtnEnf.setVisible(false);
+       //  PhotoEnfant.setVisible(false);
+         suppbtnEnf.setVisible(false);
         
     }    
     
@@ -344,7 +347,7 @@ public class RespoParentApproveController implements Initializable {
         nomModifEnf.setText(enf.getNom());
         prenomModifEnf.setText(enf.getPrenom());
         
-        PhotoEnfant.setVisible(true); /// show button to select new prfile pic 
+     //   PhotoEnfant.setVisible(true); /// show button to select new prfile pic 
         
         comboAgeEnf.setItems(listeAgeEnf);
         comboSexeEnf.setItems(listeSexeEnf);
@@ -482,7 +485,6 @@ public class RespoParentApproveController implements Initializable {
         }
     }
 
-    @FXML
     private void selectNewpdpEnfant(MouseEvent event) {
         
         JFileChooser file = new JFileChooser();

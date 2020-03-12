@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -21,5 +22,6 @@
          <font>
             <Font size="29.0" />
          </font></Label>
+      <ImageView fx:id="retour" fitHeight="94.0" fitWidth="200.0" layoutX="63.0" layoutY="622.0" onMouseClicked="#retourAction" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

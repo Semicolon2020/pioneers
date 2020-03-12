@@ -49,8 +49,8 @@ public class ServiceEnfant implements IService.IServiceEnfant<Enfant>{
 PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`, `sexe`, `cin_p`, `age`, `photo`)"
         + " VALUES (?,?,?,?,?,?);");
     
-        try {
-            InputStream is= new FileInputStream(new File(t.getPhoto()));
+        
+//            InputStream is= new FileInputStream(new File(t.getPhoto()));
         
     FTPUploader ftp=new FTPUploader();
     ftp.FTPTransfer(t.getFile());
@@ -64,10 +64,8 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
     
     pre.executeUpdate();
     
-        } 
-    catch (FileNotFoundException ex) {
-            Logger.getLogger(ServiceResponsable.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         
+   
     }
 
     @Override
@@ -88,8 +86,8 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
         PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`enfant` SET `nom`=?,`prenom`=?,"
                                                     + " `sexe`=?,`age`=?, `photo`=?  WHERE id_e=?;");
     
-            try {
-                InputStream is= new FileInputStream(new File(t.getPhoto()));
+           
+               
             
     FTPUploader ftp=new FTPUploader();
     ftp.FTPTransfer(t.getFile());
@@ -98,14 +96,12 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
     pre.setString(2, t.getPrenom());
     pre.setString(3, t.getSexe());
     pre.setString(4, t.getAge());
-    pre.setString(5, t.getFile().toURI().toString());
+    pre.setString(5, t.getPhoto());
     pre.setInt(6, t.getId_e());
       
      
     return pre.executeUpdate()==0;
-    } catch (FileNotFoundException ex) {
-                Logger.getLogger(ServiceEnfant.class.getName()).log(Level.SEVERE, null, ex);
-            }
+   
 }
         else
         {
@@ -114,8 +110,7 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
     
             
                
-   FTPUploader ftp=new FTPUploader();
-   ftp.FTPTransfer(t.getFile());         
+          
     
     pre.setString(1, t.getNom());
     pre.setString(2, t.getPrenom());
@@ -127,7 +122,7 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `enfant`(`nom`, `prenom`
     return pre.executeUpdate()==0;
     
         }
-        return false;
+        
     }
 
     @Override

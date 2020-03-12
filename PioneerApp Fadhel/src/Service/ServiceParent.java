@@ -105,7 +105,7 @@ PreparedStatement pre;
    
     pre.setString(10, t.getSexe());
     pre.setString(11, cin);
-    pre.setString(9, t.getFile().toURI().toString());
+    pre.setString(9, t.getPhoto());
      
     return pre.executeUpdate()==0;
    }
@@ -321,4 +321,28 @@ PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user`SET `etat
     return arr;
     
 }
+    
+     @Override
+    public boolean updateProfile(Parent t) throws SQLException {
+        
+    PreparedStatement     pre=con.prepareStatement("update `pionnersapp`.`user`SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,"
+                + "             `num_tel`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=? and role='P';");
+    
+    
+    pre.setString(1, t.getCin());  
+    pre.setString(2, t.getPassword());
+    
+    pre.setString(3, t.getNom());
+    pre.setString(4, t.getPrenom());
+    pre.setString(5, t.getEmail());
+    pre.setString(6, t.getNum_tel());
+    pre.setString(7, t.getEtat_civil());
+    pre.setString(8, t.getPhoto());
+    pre.setString(9, t.getSexe());
+    pre.setString(10, t.getCin());
+     
+    return pre.executeUpdate()==0;
+
+    }
+    
 }

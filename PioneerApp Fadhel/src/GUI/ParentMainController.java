@@ -6,6 +6,9 @@
 package GUI;
 
 import Entities.Responsable;
+import ImenInterface.LoisirController;
+import MahdiInterface.PdfController;
+import MahdiInterface.StatistiquesController;
 import MariemInterface.EmailController;
 import MariemInterface.RappelController;
 import MariemInterface.ReclamationController;
@@ -46,6 +49,12 @@ public class ParentMainController implements Initializable {
     private ImageView ActBtnimg;
     @FXML
     private ImageView pdpimg;
+    @FXML
+    private ImageView StatInterface;
+    @FXML
+    private ImageView pdfInterface;
+    @FXML
+    private ImageView loisitInterface;
     /**
      * Initializes the controller class.
      */
@@ -57,6 +66,12 @@ public class ParentMainController implements Initializable {
        recParentimg.setImage(new Image("/Image/RecParent-8.png"));   
        mailBtn.setImage(new Image("/Image/Email-8.png"));   
        ActBtnimg.setImage(new Image("/Image/ActivImg-8.png"));   
+       pdpimg.setImage(new Image("/Image/profiileicon-8.png"));  
+       StatInterface.setImage(new Image("/Image/statIcon-8.png"));  
+       pdfInterface.setImage(new Image("/Image/pdfIcon-8.png"));          
+       loisitInterface.setImage(new Image("/Image/CoursIcon-8.png"));          
+       
+               
     }    
     
     
@@ -175,6 +190,92 @@ public class ParentMainController implements Initializable {
 
     @FXML
     private void pdpChangeAction(MouseEvent event) {
+        
+                                        FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("ParentProfile.fxml"));
+
+                                                     
+                                           try {
+                                               javafx.scene.Parent root;
+                                               root = loader.load();
+                                               ParentProfileController apc = loader.getController();
+                                              
+                                               apc.SetCin(cin);
+                                              
+                                            recParentimg.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
+    }
+
+    @FXML
+    private void StatInterface(MouseEvent event) {
+        
+                                 FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/MahdiInterface/statistiques.fxml"));
+
+                                                     
+                                           try {
+                                               javafx.scene.Parent root;
+                                               root = loader.load();
+                                               StatistiquesController apc = loader.getController();
+                                              
+                                               apc.SetCin(cin);
+                                              
+                                            recParentimg.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
+        
+    }
+
+    @FXML
+    private void pdfInterfaceAction(MouseEvent event) {
+        
+                                           FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/MahdiInterface/pdf.fxml"));
+
+                                                     
+                                           try {
+                                               javafx.scene.Parent root;
+                                               root = loader.load();
+                                              PdfController apc = loader.getController();
+                                              
+                                               apc.SetCin(cin);
+                                              
+                                            recParentimg.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
+    }
+
+    @FXML
+    private void loisitInterface(MouseEvent event) {
+        
+                                                      FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/ImenInterface/Loisir.fxml"));
+
+                                                     
+                                           try {
+                                               javafx.scene.Parent root;
+                                               root = loader.load();
+                                              LoisirController apc = loader.getController();
+                                              
+                                               apc.SetCin(cin);
+                                              
+                                            recParentimg.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
+        
     }
     
     

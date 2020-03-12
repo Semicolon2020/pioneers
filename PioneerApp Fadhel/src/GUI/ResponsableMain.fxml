@@ -29,7 +29,7 @@
             <Image url="@../../../../JavaFx/1x/home.png" />
          </image>
       </ImageView>
-      <PieChart fx:id="piechart" layoutX="475.0" layoutY="103.0" title="Homme/Femme" />
+      <PieChart fx:id="piechart" layoutX="476.0" layoutY="94.0" title="Homme/Femme" />
       <ImageView fx:id="Homeicon" fitHeight="94.0" fitWidth="94.0" layoutX="20.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../JavaFx/1x/home.png" />
@@ -63,5 +63,25 @@
             <Image url="@../../../../JavaFx/1x/profiileicon-8.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="LoisirsInterface" fitHeight="105.0" fitWidth="179.0" layoutX="489.0" layoutY="581.0" onMouseClicked="#LoisirsInterfaceAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/AdminIcon-8.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="550.0" layoutY="689.0" text="Loisirs" textFill="#252121">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="transpInterface" fitHeight="150.0" fitWidth="200.0" layoutX="714.0" layoutY="574.0" onMouseClicked="#transpInterfaceAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/transpIcon-8.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="771.0" layoutY="689.0" text="Transport" textFill="#25b3d7">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

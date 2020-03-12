@@ -6,6 +6,8 @@
 package GUI;
 
 import Entities.Responsable;
+import MahdiInterface.SuiviController;
+import MahdiInterface.evaluationController;
 import MariemInterface.ArappelController;
 import MariemInterface.ReclamationController;
 import OmarInterface.AddActiviteController;
@@ -45,6 +47,10 @@ public class TuteurMainController implements Initializable {
     private ImageView eventBtnimg;
     @FXML
     private ImageView pdpimg;
+    @FXML
+    private ImageView InterfaceEval;
+    @FXML
+    private ImageView SuiviInterface;
 
     /**
      * Initializes the controller class.
@@ -56,8 +62,9 @@ public class TuteurMainController implements Initializable {
         logoutBtn.setImage(new Image("/Image/logout.png"));  
         AddActBtn.setImage(new Image("/Image/ActivImg-8.png"));  
         eventBtnimg.setImage(new Image("/Image/eventimg-8.png"));  
-        pdpimg.setImage(new Image("/Image/profiileicon-8.png"));  
-       
+        pdpimg.setImage(new Image("/Image/profiileicon-8.png")); 
+        InterfaceEval.setImage(new Image("/Image/EvalIcon-8.png")); 
+        SuiviInterface.setImage(new Image("/Image/SuiviICon-8.png")); 
     }    
 
     public void SetCin(String cin )
@@ -168,6 +175,47 @@ public class TuteurMainController implements Initializable {
                                            try {
                                                root = loader.load();
                                              TuteurProfileController apc = loader.getController();
+                                             apc.SetCin(cin);
+                                              
+                                            logoutBtn.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
+    }
+
+    @FXML
+    private void InterEvalAction(MouseEvent event) {
+        
+        
+                                             FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/MahdiInterface/evaluation.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                             evaluationController apc = loader.getController();
+                                             apc.SetCin(cin);
+                                              
+                                            logoutBtn.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
+    }
+
+    @FXML
+    private void SuiviInterfaceAction(MouseEvent event) {
+        
+                                              FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/MahdiInterface/suivi.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                             SuiviController apc = loader.getController();
                                              apc.SetCin(cin);
                                               
                                             logoutBtn.getScene().setRoot(root);

@@ -31,7 +31,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <ImageView fx:id="retourImg" fitHeight="111.0" fitWidth="172.0" layoutX="117.0" layoutY="578.0" onMouseClicked="#retourAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="retourImg" fitHeight="81.0" fitWidth="127.0" layoutX="117.0" layoutY="607.0" onMouseClicked="#retourAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../JavaFx/1x/retour-8.png" />
          </image>

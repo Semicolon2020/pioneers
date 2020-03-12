@@ -70,11 +70,6 @@
          </image>
       </ImageView>
       <Label fx:id="labelErr" layoutX="412.0" layoutY="641.0" prefHeight="21.0" prefWidth="187.0" text="Veuillez verifier les champs!" textFill="#d03535" />
-      <ImageView fx:id="PhotoEnfant" fitHeight="39.0" fitWidth="130.0" layoutX="730.0" layoutY="707.0" onMousePressed="#selectNewpdpEnfant" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../JavaFx/1x/photobtn.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="validbtnEnf" fitHeight="39.0" fitWidth="200.0" layoutX="904.0" layoutY="656.0" onMousePressed="#ModifierEnf" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../JavaFx/1x/validerbtn.png" />

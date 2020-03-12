@@ -58,5 +58,35 @@
             <Font name="AR CENA" size="25.0" />
          </font>
       </Label>
+      <ImageView fx:id="StatInterface" fitHeight="150.0" fitWidth="200.0" layoutX="463.0" layoutY="345.0" onMouseClicked="#StatInterface" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/statIcon-8.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="510.0" layoutY="463.0" prefHeight="35.0" prefWidth="104.0" text="Statisques" textFill="#d04242">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="799.0" layoutY="463.0" text="Suivi" textFill="#27b240">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="pdfInterface" fitHeight="150.0" fitWidth="200.0" layoutX="725.0" layoutY="345.0" onMouseClicked="#pdfInterfaceAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/pdfIcon-8.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="loisitInterface" fitHeight="150.0" fitWidth="200.0" layoutX="463.0" layoutY="160.0" onMouseClicked="#loisitInterface" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../JavaFx/1x/CoursIcon-8.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="534.0" layoutY="289.0" text="Loisirs" textFill="#da1313">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -69,6 +69,8 @@ public class InscriptionEnfantController implements Initializable {
     private String mail;
     @FXML
     private ImageView attendezimg;
+    @FXML
+    private ImageView bgImage;
     /**
      * Initializes the controller class.
      */
@@ -82,6 +84,7 @@ public class InscriptionEnfantController implements Initializable {
       
       attendezimg.setImage(new Image("/Image/Spinner.gif"));
       attendezimg.setVisible(false);
+      bgImage.setImage(new Image("/Image/bgmain.png"));
      
     }    
 

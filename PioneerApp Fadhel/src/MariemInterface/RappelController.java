@@ -39,6 +39,8 @@ public class RappelController implements Initializable {
     private Button ajout;
     @FXML
     private ImageView retourImg;
+    @FXML
+    private ImageView bgimg;
 
     /**
      * Initializes the controller class.
@@ -47,6 +49,7 @@ public class RappelController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         retourImg.setImage(new Image("/Image/retour-8.png"));
+        bgimg.setImage(new Image("/Image/bgmain.png"));
     }    
 
     @FXML

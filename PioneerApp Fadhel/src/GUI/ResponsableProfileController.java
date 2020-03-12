@@ -72,6 +72,8 @@ public class ResponsableProfileController implements Initializable {
     private ComboBox<String> comboetat;
     @FXML
     private Label labelerrenf;
+    @FXML
+    private ImageView bgimg;
 
     /**
      * Initializes the controller class.
@@ -83,6 +85,8 @@ public class ResponsableProfileController implements Initializable {
         KING.setImage(new Image("/Image/king-8.png"));
         validerbtn.setImage(new Image("/Image/validerbtn.png"));
         retourbtn.setImage(new Image("/Image/retour-8.png"));
+        bgimg.setImage(new Image("/Image/bgmain.png"));
+        
     }   
     
     public void SetCin(String cin )
