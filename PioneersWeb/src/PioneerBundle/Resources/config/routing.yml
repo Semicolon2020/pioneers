@@ -1,0 +1,19 @@
+pioneer_homepage:
+    path:     /
+    defaults: { _controller: PioneerBundle:Default:index }
+
+addBlogAdmin:
+    path:     /addblog
+    defaults: { _controller: PioneerBundle:Blog:add }
+
+listallBlogAdmin:
+    path:     /listallblog
+    defaults: { _controller: PioneerBundle:Blog:listblog }
+
+updateBlogAdmin:
+    path:     /updateblog/{id}
+    defaults: { _controller: PioneerBundle:Blog:updateblog }
+
+deleteBlogAdmin:
+    path:     /deleteblog/{id}
+    defaults: { _controller: PioneerBundle:Blog:deleteblog }
