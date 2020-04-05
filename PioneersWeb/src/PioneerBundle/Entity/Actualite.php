@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Actualite
  *
  * @ORM\Table(name="actualite", uniqueConstraints={@ORM\UniqueConstraint(name="titre", columns={"titre"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PioneerBundle\Repository\ActualiteRepository")
  */
 class Actualite
 {
@@ -28,6 +28,11 @@ class Actualite
      * @ORM\Column(name="date", type="date", nullable=false)
      */
     private $date;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment",mappedBy="actualite",cascade={"remove"}, orphanRemoval=true)
+     */
+    private $comment;
 
     /**
      * @var string

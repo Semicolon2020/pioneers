@@ -1,4 +1,6 @@
-<!doctype html>
+
+
+    <!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
@@ -54,7 +56,7 @@
                         <div class="main-menu  d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a class="active" href="index.html">home</a></li>
+                                    <li><a href="{{ path('back_homepage') }}">home</a></li>
                                     <li><a href="Courses.html">Courses</a></li>
                                     <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
@@ -63,7 +65,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="about.html">About</a></li>
-                                    <li><a href="blog.html">News <i class="ti-angle-down"></i></a>
+                                    <li><a href="{{ path('listallFront') }}">News <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                             <li><a href="blog.html">blog</a></li>
                                             <li><a href="single-blog.html">single-blog</a></li>
@@ -99,10 +101,17 @@
         </div>
     </div>
 </header>
-<!-- header-end -->
 
+
+
+<!-- header-end -->
+{% block content %}
 <div class="slider_area ">
+
     <div class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
+
+
+
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-xl-6 col-md-6">
@@ -120,9 +129,16 @@
                     </div>
                 </div>
             </div>
+
         </div>
+        {% endblock %}
+
     </div>
+
 </div>
+
+
+
 
 
 <!-- footer -->
@@ -172,14 +188,10 @@
                 <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
                     <div class="footer_widget">
                         <h3 class="footer_title">
-                            Courses
+
                         </h3>
                         <ul>
-                            <li><a href="#">Wordpress</a></li>
-                            <li><a href="#"> Photoshop</a></li>
-                            <li><a href="#">Illustrator</a></li>
-                            <li><a href="#">Adobe XD</a></li>
-                            <li><a href="#">UI/UX</a></li>
+
                         </ul>
 
                     </div>
@@ -187,14 +199,10 @@
                 <div class="col-xl-2 col-md-6 col-lg-2">
                     <div class="footer_widget">
                         <h3 class="footer_title">
-                            Resourches
+
                         </h3>
                         <ul>
-                            <li><a href="#">Free Adobe XD</a></li>
-                            <li><a href="#">Tutorials</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#"> About</a></li>
-                            <li><a href="#"> Contact</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -324,3 +332,5 @@
 </body>
 
 </html>
+
+

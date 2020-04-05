@@ -32,7 +32,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="cin", type="string", length=8, nullable=false)
+     * @ORM\Column(name="cin", type="string", length=8, nullable=true)
      * @Assert\Length(min=8,max=8,maxMessage="8 characters",maxMessage="8 characters")
      */
     protected $cin;
@@ -42,14 +42,14 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=1, nullable=false)
+     * @ORM\Column(name="role", type="string", length=1, nullable=true)
      */
     protected $role;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      * @Assert\Type("string")
      */
     protected $nom;
@@ -57,7 +57,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255, nullable=false)
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
      */
     protected $prenom;
 
@@ -66,7 +66,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="num_tel", type="string", length=8, nullable=false)
+     * @ORM\Column(name="num_tel", type="string", length=8, nullable=true)
      * @Assert\Length(min=8,max=8,maxMessage="8 characters",minMessage="8 characters")
      */
     protected $numTel;
@@ -81,7 +81,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="etat_civil", type="string", length=10, nullable=false)
+     * @ORM\Column(name="etat_civil", type="string", length=10, nullable=true)
      */
     protected $etatCivil;
 
@@ -95,7 +95,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="sexe", type="string", length=10, nullable=false)
+     * @ORM\Column(name="sexe", type="string", length=10, nullable=true)
      */
     protected $sexe;
 

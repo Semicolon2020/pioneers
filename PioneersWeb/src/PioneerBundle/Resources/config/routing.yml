@@ -17,3 +17,12 @@ updateBlogAdmin:
 deleteBlogAdmin:
     path:     /deleteblog/{id}
     defaults: { _controller: PioneerBundle:Blog:deleteblog }
+
+listallFront:
+    path:     /listview
+    defaults: { _controller: PioneerBundle:Blog:viewfront }
+
+singleblogFront:
+    path:     /singleblog/{id}/{idU}
+    defaults: { _controller: PioneerBundle:Blog:singleblog }
+
