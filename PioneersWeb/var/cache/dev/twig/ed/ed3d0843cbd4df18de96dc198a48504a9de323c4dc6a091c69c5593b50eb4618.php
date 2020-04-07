@@ -262,8 +262,8 @@ class __TwigTemplate_22ce9932db7486b6b08a90e793b7ba8f0b3af7da1df289c050d098c01e1
                                     <div class=\"image\">
                                         <img src=\"";
         // line 177
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
-        echo "images/icon/avatar-01.jpg\" alt=\"John Doe\" />
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(("uploads/post/" . $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "photo", []))), "html", null, true);
+        echo "\" alt=\"John Doe\" />
                                     </div>
                                     <div class=\"content\">
                                         <a class=\"js-acc-btn\" href=\"#\">";
@@ -277,8 +277,8 @@ class __TwigTemplate_22ce9932db7486b6b08a90e793b7ba8f0b3af7da1df289c050d098c01e1
                                                 <a href=\"#\">
                                                     <img src=\"";
         // line 186
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
-        echo "images/icon/avatar-01.jpg\" alt=\"John Doe\" />
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(("uploads/post/" . $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "photo", []))), "html", null, true);
+        echo "\" alt=\"John Doe\" />
                                                 </a>
                                             </div>
                                             <div class=\"content\">
@@ -758,7 +758,7 @@ class __TwigTemplate_22ce9932db7486b6b08a90e793b7ba8f0b3af7da1df289c050d098c01e1
                             <div class=\"account-wrap\">
                                 <div class=\"account-item clearfix js-item-menu\">
                                     <div class=\"image\">
-                                        <img src=\"{{ asset('back/') }}images/icon/avatar-01.jpg\" alt=\"John Doe\" />
+                                        <img src=\"{{ asset('uploads/post/' ~  app.user.photo) }}\" alt=\"John Doe\" />
                                     </div>
                                     <div class=\"content\">
                                         <a class=\"js-acc-btn\" href=\"#\">{{app.user.username}}</a>
@@ -767,7 +767,7 @@ class __TwigTemplate_22ce9932db7486b6b08a90e793b7ba8f0b3af7da1df289c050d098c01e1
                                         <div class=\"info clearfix\">
                                             <div class=\"image\">
                                                 <a href=\"#\">
-                                                    <img src=\"{{ asset('back/') }}images/icon/avatar-01.jpg\" alt=\"John Doe\" />
+                                                    <img src=\"{{ asset('uploads/post/' ~  app.user.photo) }}\" alt=\"John Doe\" />
                                                 </a>
                                             </div>
                                             <div class=\"content\">

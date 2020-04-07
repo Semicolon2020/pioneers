@@ -138,14 +138,27 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::addAction',  '_route' => 'addBlogAdmin',);
             }
 
-            // listallBlogAdmin
-            if ('/pioneer/listallblog' === $pathinfo) {
-                return array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::listblogAction',  '_route' => 'listallBlogAdmin',);
-            }
+            if (0 === strpos($pathinfo, '/pioneer/li')) {
+                // listallBlogAdmin
+                if ('/pioneer/listallblog' === $pathinfo) {
+                    return array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::listblogAction',  '_route' => 'listallBlogAdmin',);
+                }
 
-            // listallFront
-            if ('/pioneer/listview' === $pathinfo) {
-                return array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::viewfrontAction',  '_route' => 'listallFront',);
+                // listallFront
+                if ('/pioneer/listview' === $pathinfo) {
+                    return array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::viewfrontAction',  '_route' => 'listallFront',);
+                }
+
+                // LikeCmtFront
+                if (0 === strpos($pathinfo, '/pioneer/likeCmt') && preg_match('#^/pioneer/likeCmt/(?P<idc>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'LikeCmtFront']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::LikeCmtAction',));
+                }
+
+                // LikeReplyFront
+                if (0 === strpos($pathinfo, '/pioneer/likeReply') && preg_match('#^/pioneer/likeReply/(?P<idR>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'LikeReplyFront']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::LikeReplyAction',));
+                }
+
             }
 
             // updateBlogAdmin
@@ -153,9 +166,22 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'updateBlogAdmin']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::updateblogAction',));
             }
 
-            // deleteBlogAdmin
-            if (0 === strpos($pathinfo, '/pioneer/deleteblog') && preg_match('#^/pioneer/deleteblog/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteBlogAdmin']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::deleteblogAction',));
+            if (0 === strpos($pathinfo, '/pioneer/delete')) {
+                // deleteBlogAdmin
+                if (0 === strpos($pathinfo, '/pioneer/deleteblog') && preg_match('#^/pioneer/deleteblog/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteBlogAdmin']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::deleteblogAction',));
+                }
+
+                // deleteCmtFront
+                if (0 === strpos($pathinfo, '/pioneer/deleteCmt') && preg_match('#^/pioneer/deleteCmt/(?P<idc>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteCmtFront']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::deleteCmtAction',));
+                }
+
+                // deleteReplyFront
+                if (0 === strpos($pathinfo, '/pioneer/deleteReply') && preg_match('#^/pioneer/deleteReply/(?P<idR>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteReplyFront']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::deleteReplyAction',));
+                }
+
             }
 
             // singleblogFront

@@ -4,9 +4,11 @@ namespace PioneerBundle\Controller;
 
 use PioneerBundle\Entity\Actualite;
 use PioneerBundle\Entity\Comment;
+use PioneerBundle\Entity\Reply;
 use PioneerBundle\Entity\User;
 use PioneerBundle\Form\ActualiteType;
 use PioneerBundle\Form\CommentType;
+use PioneerBundle\Form\ReplyType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -97,35 +99,122 @@ class BlogController extends Controller
     public function singleblogAction(Request $request)
     {
         $cmt= new Comment();
+        $reply= new Reply();
 
         $idB = $request->get('id');
         $idU=$request->get('idU');
+        $idc = $request->get('commentid');
+        $TextReply = $request->get('reply');
 
-        $p=$this->getDoctrine()->getRepository(Actualite::class)->find($idB);
-        $U=$this->getDoctrine()->getRepository(User::class)->find($idU);
-        $C=$this->getDoctrine()->getRepository(Comment::class)->ShowCmtBlog($idB);
+        $session = $request->getSession();
+        if($idU != null && $idB !=null)
+        {
+            $session->set('idB',$idB);
+            $session->set('idU',$idU);
+        }
+
+
+        $U=$this->getDoctrine()->getRepository(User::class)->find($session->get('idU'));
+        $p=$this->getDoctrine()->getRepository(Actualite::class)->find($session->get('idB'));
+
 
         $form = $this->createForm(CommentType::class,$cmt);
+
+
         $form->handleRequest($request);
+
         if($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
-           // $cmt->setText("sd");
             $cmt->setUser($U);
             $cmt->setActualite($p);
             $cmt->setPoint(0);
             $cmt->setDate(new \DateTime('now'));
             $em->persist($cmt);
             $em->flush();
+        }
 
-          //return $this->redirectToRoute('singleblogFront',array("id"=>$idB,"f" =>$p));
+        if ($idc !=null)
+        {
+            $em = $this->getDoctrine()->getManager();
+            $cmtRR=$this->getDoctrine()->getRepository(Comment::class)->find($idc);
+            $reply->setText($TextReply);
+            $reply->setPoint(0);
+            $reply->setComment($cmtRR);
+            $reply->setUser($U);
+            $reply->setDate(new \DateTime('now'));
+            $em->persist($reply);
+            $em->flush($reply);
 
         }
-        $form->initialize();
+
+        $C=$this->getDoctrine()->getRepository(Comment::class)->ShowCmtBlog($session->get('idB'));
+        $nbC=$this->getDoctrine()->getRepository(Comment::class)->CountCmtBlog($session->get('idB'));
+        $cmtR=$this->getDoctrine()->getRepository(Reply::class)->FindLikeOrderBy();
+
         return $this->render('@Pioneer/Blog/singleblog.html.twig',array(
-            "f" =>$p,"cmt"=>$form->createView(),"c"=>$C
+            "f" =>$p,"cmt"=>$form->createView(),"c"=>$C,"nbC"=>$nbC,'id'=>$session->get('idB'),'idU'=>$session->get('idU'),
+            'reply'=>$cmtR
         ));
     }
 
+
+
+
+
+
+    public function deleteCmtAction(Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $idc = $request->get('idc');
+        $p=$this->getDoctrine()->getRepository(Comment::class)->find($idc);
+        $em->remove($p);
+        $em->flush();
+
+        $session = $request->getSession();
+
+        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')));
+    }
+
+    public function LikeCmtAction(Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $idc = $request->get('idc');
+        $p=$this->getDoctrine()->getRepository(Comment::class)->find($idc);
+        $p->setPoint($p->getPoint()+1);
+        $em->persist($p);
+        $em->flush();
+
+        $session = $request->getSession();
+
+        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')));
+    }
+
+    public function deleteReplyAction(Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $idR = $request->get('idR');
+        $p=$this->getDoctrine()->getRepository(Reply::class)->find($idR);
+        $em->remove($p);
+        $em->flush();
+
+        $session = $request->getSession();
+
+        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')));
+    }
+
+    public function LikeReplyAction(Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $idR = $request->get('idR');
+        $p=$this->getDoctrine()->getRepository(Reply::class)->find($idR);
+        $p->setPoint($p->getPoint()+1);
+        $em->persist($p);
+        $em->flush();
+
+        $session = $request->getSession();
+
+        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')));
+    }
 
 
 }

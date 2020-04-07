@@ -10,5 +10,10 @@ namespace PioneerBundle\Repository;
  */
 class ReplyRepository extends \Doctrine\ORM\EntityRepository
 {
+    function FindLikeOrderBy(){
+        $query=$this->getEntityManager()
+            ->createQuery("select c from PioneerBundle:Reply c ORDER BY c.point DESC  ");
+        return $query->getResult();
+    }
 
 }

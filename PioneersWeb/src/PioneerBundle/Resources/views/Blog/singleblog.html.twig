@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block content %}
 <div class="bradcam_area breadcam_bg overlay2">
-    <h3>Single Blog</h3>
+    <h3>{{ f.titre }}</h3>
 </div>
 <!-- bradcam_area_end -->
 
@@ -16,10 +16,7 @@
                     </div>
                     <div class="blog_details">
                         <h2>{{ f.titre }}</h2>
-                        <ul class="blog-info-link mt-3 mb-4">
 
-                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                        </ul>
                         <p class="excert">
                             {{ f.description }}
                         </p>
@@ -28,8 +25,7 @@
                 </div>
                 <div class="navigation-top">
                     <div class="d-sm-flex justify-content-between text-center">
-                        <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
-                            people like this</p>
+
                         <div class="col-sm-4 text-center my-2 my-sm-0">
                             <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
                         </div>
@@ -37,35 +33,19 @@
 
                         </ul>
                     </div>
-                    <div class="navigation-area">
-                        <div class="row">
-                            <div
-                                    class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                                <div class="thumb">
-                                    <a href="#">
-                                        <img class="img-fluid" src="img/post/preview.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="arrow">
-                                    <a href="#">
-                                        <span class="lnr text-white ti-arrow-left"></span>
-                                    </a>
-                                </div>
 
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
 
                 <div class="comments-area">
-                    <h4>05 Comments</h4>
+                    <li><a><i class="fa fa-comments"></i> </a><h4 >{{nbC}} Comments</h4 ></li>
+
                     {% for com in c %}
                     <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
+                        <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
-                                    <img src="img/comment/comment_1.png" alt="">
+                                    <img src="{{ asset('uploads/post/' ~  com.user.photo) }} " alt="">
                                 </div>
                                 <div class="desc">
                                     <p class="comment">
@@ -74,18 +54,115 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
                                             <h5>
-                                                <a href="#">{{ com.user.username }}</a>
+                                                <a>{{ com.user.username }}</a>
                                             </h5>
                                             <p class="date">{{com.date | date("d F Y")}}</p>
+
+                                        <div>
+
+
                                         </div>
-                                        <div class="reply-btn">
-                                            <a href="#" class="btn-reply text-uppercase">reply</a>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                         </div>
+                              {% if  com.user.id != app.user.id %}
+                             <span class="badge badge-pill badge-success"> <span class="badge">Likes {{ com.point }}</span>
+                              <a href="{{ path('LikeCmtFront',{'idc':com.id},true) }}"> <i class="fa fa-heart"></i></span> </a>
+                            </span>
+                            {% else %}
+                                <span class="badge badge-pill badge-success"> <span class="badge">Likes {{ com.point }}</span> </span>
+
+                                {% endif %}
+
+                            {% if  com.user.id == app.user.id %}
+                                <a href="{{ path('deleteCmtFront',{'idc':com.id},true) }}"> <span class="badge badge-pill badge-danger">Delete</span></a>
+                            {% endif %}
+                            <br><br>
+
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <button class="badge badge-dark" data-toggle="collapse" data-target="#{{com.id}}" aria-expanded="true" aria-controls="collapseOne">
+                                                Replies
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="{{com.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+
+                                            {% for R in reply %}
+                                                {% if R.comment.id == com.id %}
+                                                    <div class="shadow-none p-3 mb-5 bg-light rounded">
+                                                        <div class="single-comment justify-content-between d-flex">
+                                                            <div class="user justify-content-between d-flex">
+                                                        <div class="thumb">
+                                                            <img src="{{ asset('uploads/post/' ~  R.user.photo) }} " alt="">
+                                                        </div>
+                                                        <div class="desc">
+                                                            <p class="comment">
+                                                                {{ R.text }}
+                                                            </p>
+                                                            <div class="d-flex justify-content-between">
+                                                                <div class="d-flex align-items-center">
+                                                                    <h5>
+                                                                        <a>{{ R.user.username }}</a>
+                                                                    </h5>
+                                                                    <p class="date">{{R.date | date("d F Y")}}</p>
+
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        </div>
+                                                                {% if  R.user.id == app.user.id %}
+                                                                    <a href="{{ path('deleteReplyFront',{'idR':R.id},true) }}"> <span class="badge badge-pill badge-danger">Delete</span></a>
+                                                                {% endif %}
+
+                                                        {% if  R.user.id != app.user.id %}
+
+                                                            <span class="badge badge-pill badge-success"> <span class="badge">Likes {{ R.point }}</span>
+                                                            <a href="{{ path('LikeReplyFront',{'idR':R.id},true) }}"> <i class="fa fa-heart"></i></span> </a>
+                                                            </span>
+                                                        {% else %}
+                                                            <span class="badge badge-pill badge-success"> <span class="badge">Likes {{ R.point }}</span> </span>
+
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br><br>
+
+                            <form class="form-contact comment_form" action="{{ path('singleblogFront',{'id':id,'idU':idU})}}" id="commentForm">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <input name="commentid" value="{{ com.id }}" hidden>
+                              <textarea class="form-control w-100" name="reply" id="{{ com.id }}" cols="30" rows="2" required
+                                        placeholder="Write Reply"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="badge badge-pill badge-info"> <span class="badge badge-pill badge-info">Reply</span></button>
+                                </div>
+                            </form>
+
+                         </div>
+
                     </div>
+
                     {% endfor%}
                     </div>
 

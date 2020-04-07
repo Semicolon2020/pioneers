@@ -13,6 +13,7 @@ namespace FOS\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -64,6 +65,7 @@ class RegistrationFormType extends AbstractType
                 'second_options' => array('label' => 'Repeat password'),
                 'invalid_message' => 'password mismatch',
             ))
+            ->add('photo', FileType::class, array('data_class'=>null, 'required'=>false))
         ;
     }
 

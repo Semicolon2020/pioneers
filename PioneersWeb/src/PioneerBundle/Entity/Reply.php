@@ -57,7 +57,7 @@ class Reply
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cin", referencedColumnName="cin")
+     *   @ORM\JoinColumn(name="id_u", referencedColumnName="id")
      * })
      */
     private $user;

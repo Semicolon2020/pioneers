@@ -69,7 +69,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../symf0.0" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
   </component>
   <component name="RecentsManager">
@@ -118,7 +118,9 @@
       <workItem from="1585845881049" duration="8233000" />
       <workItem from="1585903467432" duration="1904000" />
       <workItem from="1586027567436" duration="17751000" />
-      <workItem from="1586094196895" duration="5900000" />
+      <workItem from="1586094196895" duration="12424000" />
+      <workItem from="1586172646512" duration="20318000" />
+      <workItem from="1586257137358" duration="17197000" />
     </task>
     <servers />
   </component>
@@ -134,18 +136,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="554" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1585856413364" />
-    <state x="499" y="168" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586052523574">
+    <state x="499" y="168" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586214627568">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="168" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1586052523574" />
+    <state x="499" y="168" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1586214627568" />
     <state x="478" y="283" key="ComposerCompositePathDialog" timestamp="1584929971795">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="478" y="283" key="ComposerCompositePathDialog/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1584929971795" />
-    <state x="548" y="155" key="FileChooserDialogImpl" timestamp="1586031408467">
+    <state x="548" y="155" key="FileChooserDialogImpl" timestamp="1586268995595">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="548" y="155" key="FileChooserDialogImpl/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1586031408467" />
+    <state x="548" y="155" key="FileChooserDialogImpl/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1586268995595" />
     <state width="1493" height="77" key="GridCell.Tab.0.bottom" timestamp="1586053005389">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -174,10 +176,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="515" y="310" key="SymfonyPathDialog/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1584929675728" />
-    <state x="409" y="110" width="672" height="677" key="run.anything.popup" timestamp="1586046476814">
+    <state x="409" y="110" width="672" height="677" key="run.anything.popup" timestamp="1586285989153">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="409" y="110" width="672" height="677" key="run.anything.popup/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1586046476814" />
+    <state x="409" y="110" width="672" height="677" key="run.anything.popup/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1586285989153" />
     <state x="491" y="318" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1585342708122">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -33,24 +33,26 @@ class __TwigTemplate_8e95d1d59d49a7794a6abfee6d89375400ca841ec47bc7c0d6b311b0aa1
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "@FOSUser/Registration/register_content.html.twig"));
 
         // line 2
-        echo "
+        echo "<div class=\"bradcam_area breadcam_bg overlay2\">
+    <h3>Register</h3>
+</div>
 ";
-        // line 3
+        // line 5
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_start', ["method" => "post", "action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_registration_register"), "attr" => ["class" => "fos_user_registration_register"]]);
         echo "
     ";
-        // line 4
+        // line 6
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(($context["form"] ?? $this->getContext($context, "form")), 'widget');
         echo "
     <div>
         <input type=\"submit\" value=\"";
-        // line 6
+        // line 8
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Register", [], "FOSUserBundle"), "html", null, true);
         echo "\" />
     </div>
 
 ";
-        // line 9
+        // line 11
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_end');
         echo "
 ";
@@ -74,7 +76,7 @@ class __TwigTemplate_8e95d1d59d49a7794a6abfee6d89375400ca841ec47bc7c0d6b311b0aa1
 
     public function getDebugInfo()
     {
-        return array (  54 => 9,  48 => 6,  43 => 4,  39 => 3,  36 => 2,);
+        return array (  56 => 11,  50 => 8,  45 => 6,  41 => 5,  36 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -88,7 +90,9 @@ class __TwigTemplate_8e95d1d59d49a7794a6abfee6d89375400ca841ec47bc7c0d6b311b0aa1
     public function getSourceContext()
     {
         return new Source("{% trans_default_domain 'FOSUserBundle' %}
-
+<div class=\"bradcam_area breadcam_bg overlay2\">
+    <h3>Register</h3>
+</div>
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
     <div>

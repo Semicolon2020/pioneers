@@ -58,7 +58,10 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
 
         // line 3
         echo "<div class=\"bradcam_area breadcam_bg overlay2\">
-    <h3>Single Blog</h3>
+    <h3>";
+        // line 4
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "titre", []), "html", null, true);
+        echo "</h3>
 </div>
 <!-- bradcam_area_end -->
 
@@ -81,13 +84,10 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
         // line 18
         echo twig_escape_filter($this->env, $this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "titre", []), "html", null, true);
         echo "</h2>
-                        <ul class=\"blog-info-link mt-3 mb-4\">
 
-                            <li><a href=\"#\"><i class=\"fa fa-comments\"></i> 03 Comments</a></li>
-                        </ul>
                         <p class=\"excert\">
                             ";
-        // line 24
+        // line 21
         echo twig_escape_filter($this->env, $this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "description", []), "html", null, true);
         echo "
                         </p>
@@ -96,8 +96,7 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
                 </div>
                 <div class=\"navigation-top\">
                     <div class=\"d-sm-flex justify-content-between text-center\">
-                        <p class=\"like-info\"><span class=\"align-middle\"><i class=\"fa fa-heart\"></i></span> Lily and 4
-                            people like this</p>
+
                         <div class=\"col-sm-4 text-center my-2 my-sm-0\">
                             <!-- <p class=\"comment-count\"><span class=\"align-middle\"><i class=\"fa fa-comment\"></i></span> 06 Comments</p> -->
                         </div>
@@ -105,81 +104,252 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
 
                         </ul>
                     </div>
-                    <div class=\"navigation-area\">
-                        <div class=\"row\">
-                            <div
-                                    class=\"col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center\">
-                                <div class=\"thumb\">
-                                    <a href=\"#\">
-                                        <img class=\"img-fluid\" src=\"img/post/preview.png\" alt=\"\">
-                                    </a>
-                                </div>
-                                <div class=\"arrow\">
-                                    <a href=\"#\">
-                                        <span class=\"lnr text-white ti-arrow-left\"></span>
-                                    </a>
-                                </div>
 
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
 
                 <div class=\"comments-area\">
-                    <h4>05 Comments</h4>
+                    <li><a><i class=\"fa fa-comments\"></i> </a><h4 >";
+        // line 40
+        echo twig_escape_filter($this->env, ($context["nbC"] ?? $this->getContext($context, "nbC")), "html", null, true);
+        echo " Comments</h4 ></li>
+
                     ";
-        // line 63
+        // line 42
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["c"] ?? $this->getContext($context, "c")));
         foreach ($context['_seq'] as $context["_key"] => $context["com"]) {
-            // line 64
+            // line 43
             echo "                    <div class=\"comment-list\">
-                        <div class=\"single-comment justify-content-between d-flex\">
+                        <div class=\"shadow-sm p-3 mb-5 bg-white rounded\">
+                         <div class=\"single-comment justify-content-between d-flex\">
                             <div class=\"user justify-content-between d-flex\">
                                 <div class=\"thumb\">
-                                    <img src=\"img/comment/comment_1.png\" alt=\"\">
+                                    <img src=\"";
+            // line 48
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(("uploads/post/" . $this->getAttribute($this->getAttribute($context["com"], "user", []), "photo", []))), "html", null, true);
+            echo " \" alt=\"\">
                                 </div>
                                 <div class=\"desc\">
                                     <p class=\"comment\">
                                         ";
-            // line 72
+            // line 52
             echo twig_escape_filter($this->env, $this->getAttribute($context["com"], "text", []), "html", null, true);
             echo "
                                     </p>
                                     <div class=\"d-flex justify-content-between\">
                                         <div class=\"d-flex align-items-center\">
                                             <h5>
-                                                <a href=\"#\">";
-            // line 77
+                                                <a>";
+            // line 57
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["com"], "user", []), "username", []), "html", null, true);
             echo "</a>
                                             </h5>
                                             <p class=\"date\">";
-            // line 79
+            // line 59
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["com"], "date", []), "d F Y"), "html", null, true);
             echo "</p>
+
+                                        <div>
+
+
                                         </div>
-                                        <div class=\"reply-btn\">
-                                            <a href=\"#\" class=\"btn-reply text-uppercase\">reply</a>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                         </div>
+                              ";
+            // line 71
+            if (($this->getAttribute($this->getAttribute($context["com"], "user", []), "id", []) != $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "id", []))) {
+                // line 72
+                echo "                             <span class=\"badge badge-pill badge-success\"> <span class=\"badge\">Likes ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["com"], "point", []), "html", null, true);
+                echo "</span>
+                              <a href=\"";
+                // line 73
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("LikeCmtFront", ["idc" => $this->getAttribute($context["com"], "id", [])], true), "html", null, true);
+                echo "\"> <i class=\"fa fa-heart\"></i></span> </a>
+                            </span>
+                            ";
+            } else {
+                // line 76
+                echo "                                <span class=\"badge badge-pill badge-success\"> <span class=\"badge\">Likes ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["com"], "point", []), "html", null, true);
+                echo "</span> </span>
+
+                                ";
+            }
+            // line 79
+            echo "
+                            ";
+            // line 80
+            if (($this->getAttribute($this->getAttribute($context["com"], "user", []), "id", []) == $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "id", []))) {
+                // line 81
+                echo "                                <a href=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("deleteCmtFront", ["idc" => $this->getAttribute($context["com"], "id", [])], true), "html", null, true);
+                echo "\"> <span class=\"badge badge-pill badge-danger\">Delete</span></a>
+                            ";
+            }
+            // line 83
+            echo "                            <br><br>
+
+                            <div id=\"accordion\">
+                                <div class=\"card\">
+                                    <div class=\"card-header\" id=\"headingOne\">
+                                        <h5 class=\"mb-0\">
+                                            <button class=\"badge badge-dark\" data-toggle=\"collapse\" data-target=\"#";
+            // line 89
+            echo twig_escape_filter($this->env, $this->getAttribute($context["com"], "id", []), "html", null, true);
+            echo "\" aria-expanded=\"true\" aria-controls=\"collapseOne\">
+                                                Replies
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id=\"";
+            // line 94
+            echo twig_escape_filter($this->env, $this->getAttribute($context["com"], "id", []), "html", null, true);
+            echo "\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordion\">
+                                        <div class=\"card-body\">
+
+                                            ";
+            // line 97
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["reply"] ?? $this->getContext($context, "reply")));
+            foreach ($context['_seq'] as $context["_key"] => $context["R"]) {
+                // line 98
+                echo "                                                ";
+                if (($this->getAttribute($this->getAttribute($context["R"], "comment", []), "id", []) == $this->getAttribute($context["com"], "id", []))) {
+                    // line 99
+                    echo "                                                    <div class=\"shadow-none p-3 mb-5 bg-light rounded\">
+                                                        <div class=\"single-comment justify-content-between d-flex\">
+                                                            <div class=\"user justify-content-between d-flex\">
+                                                        <div class=\"thumb\">
+                                                            <img src=\"";
+                    // line 103
+                    echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(("uploads/post/" . $this->getAttribute($this->getAttribute($context["R"], "user", []), "photo", []))), "html", null, true);
+                    echo " \" alt=\"\">
+                                                        </div>
+                                                        <div class=\"desc\">
+                                                            <p class=\"comment\">
+                                                                ";
+                    // line 107
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["R"], "text", []), "html", null, true);
+                    echo "
+                                                            </p>
+                                                            <div class=\"d-flex justify-content-between\">
+                                                                <div class=\"d-flex align-items-center\">
+                                                                    <h5>
+                                                                        <a>";
+                    // line 112
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["R"], "user", []), "username", []), "html", null, true);
+                    echo "</a>
+                                                                    </h5>
+                                                                    <p class=\"date\">";
+                    // line 114
+                    echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["R"], "date", []), "d F Y"), "html", null, true);
+                    echo "</p>
+
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        </div>
+                                                                ";
+                    // line 123
+                    if (($this->getAttribute($this->getAttribute($context["R"], "user", []), "id", []) == $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "id", []))) {
+                        // line 124
+                        echo "                                                                    <a href=\"";
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("deleteReplyFront", ["idR" => $this->getAttribute($context["R"], "id", [])], true), "html", null, true);
+                        echo "\"> <span class=\"badge badge-pill badge-danger\">Delete</span></a>
+                                                                ";
+                    }
+                    // line 126
+                    echo "
+                                                        ";
+                    // line 127
+                    if (($this->getAttribute($this->getAttribute($context["R"], "user", []), "id", []) != $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "id", []))) {
+                        // line 128
+                        echo "
+                                                            <span class=\"badge badge-pill badge-success\"> <span class=\"badge\">Likes ";
+                        // line 129
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["R"], "point", []), "html", null, true);
+                        echo "</span>
+                                                            <a href=\"";
+                        // line 130
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("LikeReplyFront", ["idR" => $this->getAttribute($context["R"], "id", [])], true), "html", null, true);
+                        echo "\"> <i class=\"fa fa-heart\"></i></span> </a>
+                                                            </span>
+                                                        ";
+                    } else {
+                        // line 133
+                        echo "                                                            <span class=\"badge badge-pill badge-success\"> <span class=\"badge\">Likes ";
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["R"], "point", []), "html", null, true);
+                        echo "</span> </span>
+
+                                                        ";
+                    }
+                    // line 136
+                    echo "                                                    </div>
+                                                ";
+                }
+                // line 138
+                echo "                                            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['R'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 139
+            echo "
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br><br>
+
+                            <form class=\"form-contact comment_form\" action=\"";
+            // line 147
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("singleblogFront", ["id" => ($context["id"] ?? $this->getContext($context, "id")), "idU" => ($context["idU"] ?? $this->getContext($context, "idU"))]), "html", null, true);
+            echo "\" id=\"commentForm\">
+                                <div class=\"row\">
+                                    <div class=\"col-12\">
+                                        <div class=\"form-group\">
+                                            <input name=\"commentid\" value=\"";
+            // line 151
+            echo twig_escape_filter($this->env, $this->getAttribute($context["com"], "id", []), "html", null, true);
+            echo "\" hidden>
+                              <textarea class=\"form-control w-100\" name=\"reply\" id=\"";
+            // line 152
+            echo twig_escape_filter($this->env, $this->getAttribute($context["com"], "id", []), "html", null, true);
+            echo "\" cols=\"30\" rows=\"2\" required
+                                        placeholder=\"Write Reply\"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=\"form-group\">
+                                    <button type=\"submit\" class=\"badge badge-pill badge-info\"> <span class=\"badge badge-pill badge-info\">Reply</span></button>
+                                </div>
+                            </form>
+
+                         </div>
+
                     </div>
+
                     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['com'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 90
+        // line 167
         echo "                    </div>
 
                 <div class=\"comment-form\">
                     <h4>Leave a Comment</h4>
                     ";
-        // line 94
+        // line 171
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["cmt"] ?? $this->getContext($context, "cmt")), 'form_start');
         echo "
                         <div class=\"row\">
@@ -187,7 +357,7 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
                                 <div class=\"form-group\">
 
                                     ";
-        // line 99
+        // line 176
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["cmt"] ?? $this->getContext($context, "cmt")), "text", []), 'widget', ["attr" => ["class" => "form-control w-100"]]);
         echo "
                                 </div>
@@ -198,14 +368,14 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
                             <div>
 
                               ";
-        // line 107
+        // line 184
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["cmt"] ?? $this->getContext($context, "cmt")), "Submit", []), 'widget', ["attr" => ["class" => "button button-contactForm btn_1 boxed-btn"]]);
         echo "
 
                             </div>
                         </div>
                     ";
-        // line 111
+        // line 188
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["cmt"] ?? $this->getContext($context, "cmt")), 'form_end');
         echo "
                 </div>
@@ -255,7 +425,7 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
 
     public function getDebugInfo()
     {
-        return array (  209 => 111,  202 => 107,  191 => 99,  183 => 94,  177 => 90,  160 => 79,  155 => 77,  147 => 72,  137 => 64,  133 => 63,  91 => 24,  82 => 18,  74 => 15,  60 => 3,  51 => 2,  29 => 1,);
+        return array (  379 => 188,  372 => 184,  361 => 176,  353 => 171,  347 => 167,  326 => 152,  322 => 151,  315 => 147,  305 => 139,  299 => 138,  295 => 136,  288 => 133,  282 => 130,  278 => 129,  275 => 128,  273 => 127,  270 => 126,  264 => 124,  262 => 123,  250 => 114,  245 => 112,  237 => 107,  230 => 103,  224 => 99,  221 => 98,  217 => 97,  211 => 94,  203 => 89,  195 => 83,  189 => 81,  187 => 80,  184 => 79,  177 => 76,  171 => 73,  166 => 72,  164 => 71,  149 => 59,  144 => 57,  136 => 52,  129 => 48,  122 => 43,  118 => 42,  113 => 40,  91 => 21,  85 => 18,  77 => 15,  63 => 4,  60 => 3,  51 => 2,  29 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -271,7 +441,7 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
         return new Source("{% extends \"base.html.twig\" %}
 {% block content %}
 <div class=\"bradcam_area breadcam_bg overlay2\">
-    <h3>Single Blog</h3>
+    <h3>{{ f.titre }}</h3>
 </div>
 <!-- bradcam_area_end -->
 
@@ -286,10 +456,7 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
                     </div>
                     <div class=\"blog_details\">
                         <h2>{{ f.titre }}</h2>
-                        <ul class=\"blog-info-link mt-3 mb-4\">
 
-                            <li><a href=\"#\"><i class=\"fa fa-comments\"></i> 03 Comments</a></li>
-                        </ul>
                         <p class=\"excert\">
                             {{ f.description }}
                         </p>
@@ -298,8 +465,7 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
                 </div>
                 <div class=\"navigation-top\">
                     <div class=\"d-sm-flex justify-content-between text-center\">
-                        <p class=\"like-info\"><span class=\"align-middle\"><i class=\"fa fa-heart\"></i></span> Lily and 4
-                            people like this</p>
+
                         <div class=\"col-sm-4 text-center my-2 my-sm-0\">
                             <!-- <p class=\"comment-count\"><span class=\"align-middle\"><i class=\"fa fa-comment\"></i></span> 06 Comments</p> -->
                         </div>
@@ -307,35 +473,19 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
 
                         </ul>
                     </div>
-                    <div class=\"navigation-area\">
-                        <div class=\"row\">
-                            <div
-                                    class=\"col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center\">
-                                <div class=\"thumb\">
-                                    <a href=\"#\">
-                                        <img class=\"img-fluid\" src=\"img/post/preview.png\" alt=\"\">
-                                    </a>
-                                </div>
-                                <div class=\"arrow\">
-                                    <a href=\"#\">
-                                        <span class=\"lnr text-white ti-arrow-left\"></span>
-                                    </a>
-                                </div>
 
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
 
                 <div class=\"comments-area\">
-                    <h4>05 Comments</h4>
+                    <li><a><i class=\"fa fa-comments\"></i> </a><h4 >{{nbC}} Comments</h4 ></li>
+
                     {% for com in c %}
                     <div class=\"comment-list\">
-                        <div class=\"single-comment justify-content-between d-flex\">
+                        <div class=\"shadow-sm p-3 mb-5 bg-white rounded\">
+                         <div class=\"single-comment justify-content-between d-flex\">
                             <div class=\"user justify-content-between d-flex\">
                                 <div class=\"thumb\">
-                                    <img src=\"img/comment/comment_1.png\" alt=\"\">
+                                    <img src=\"{{ asset('uploads/post/' ~  com.user.photo) }} \" alt=\"\">
                                 </div>
                                 <div class=\"desc\">
                                     <p class=\"comment\">
@@ -344,18 +494,115 @@ class __TwigTemplate_09e9628c3409dba8aa8346cc69eb6937826957a512fe77bcc8e147c8247
                                     <div class=\"d-flex justify-content-between\">
                                         <div class=\"d-flex align-items-center\">
                                             <h5>
-                                                <a href=\"#\">{{ com.user.username }}</a>
+                                                <a>{{ com.user.username }}</a>
                                             </h5>
                                             <p class=\"date\">{{com.date | date(\"d F Y\")}}</p>
+
+                                        <div>
+
+
                                         </div>
-                                        <div class=\"reply-btn\">
-                                            <a href=\"#\" class=\"btn-reply text-uppercase\">reply</a>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                         </div>
+                              {% if  com.user.id != app.user.id %}
+                             <span class=\"badge badge-pill badge-success\"> <span class=\"badge\">Likes {{ com.point }}</span>
+                              <a href=\"{{ path('LikeCmtFront',{'idc':com.id},true) }}\"> <i class=\"fa fa-heart\"></i></span> </a>
+                            </span>
+                            {% else %}
+                                <span class=\"badge badge-pill badge-success\"> <span class=\"badge\">Likes {{ com.point }}</span> </span>
+
+                                {% endif %}
+
+                            {% if  com.user.id == app.user.id %}
+                                <a href=\"{{ path('deleteCmtFront',{'idc':com.id},true) }}\"> <span class=\"badge badge-pill badge-danger\">Delete</span></a>
+                            {% endif %}
+                            <br><br>
+
+                            <div id=\"accordion\">
+                                <div class=\"card\">
+                                    <div class=\"card-header\" id=\"headingOne\">
+                                        <h5 class=\"mb-0\">
+                                            <button class=\"badge badge-dark\" data-toggle=\"collapse\" data-target=\"#{{com.id}}\" aria-expanded=\"true\" aria-controls=\"collapseOne\">
+                                                Replies
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id=\"{{com.id}}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordion\">
+                                        <div class=\"card-body\">
+
+                                            {% for R in reply %}
+                                                {% if R.comment.id == com.id %}
+                                                    <div class=\"shadow-none p-3 mb-5 bg-light rounded\">
+                                                        <div class=\"single-comment justify-content-between d-flex\">
+                                                            <div class=\"user justify-content-between d-flex\">
+                                                        <div class=\"thumb\">
+                                                            <img src=\"{{ asset('uploads/post/' ~  R.user.photo) }} \" alt=\"\">
+                                                        </div>
+                                                        <div class=\"desc\">
+                                                            <p class=\"comment\">
+                                                                {{ R.text }}
+                                                            </p>
+                                                            <div class=\"d-flex justify-content-between\">
+                                                                <div class=\"d-flex align-items-center\">
+                                                                    <h5>
+                                                                        <a>{{ R.user.username }}</a>
+                                                                    </h5>
+                                                                    <p class=\"date\">{{R.date | date(\"d F Y\")}}</p>
+
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        </div>
+                                                                {% if  R.user.id == app.user.id %}
+                                                                    <a href=\"{{ path('deleteReplyFront',{'idR':R.id},true) }}\"> <span class=\"badge badge-pill badge-danger\">Delete</span></a>
+                                                                {% endif %}
+
+                                                        {% if  R.user.id != app.user.id %}
+
+                                                            <span class=\"badge badge-pill badge-success\"> <span class=\"badge\">Likes {{ R.point }}</span>
+                                                            <a href=\"{{ path('LikeReplyFront',{'idR':R.id},true) }}\"> <i class=\"fa fa-heart\"></i></span> </a>
+                                                            </span>
+                                                        {% else %}
+                                                            <span class=\"badge badge-pill badge-success\"> <span class=\"badge\">Likes {{ R.point }}</span> </span>
+
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br><br>
+
+                            <form class=\"form-contact comment_form\" action=\"{{ path('singleblogFront',{'id':id,'idU':idU})}}\" id=\"commentForm\">
+                                <div class=\"row\">
+                                    <div class=\"col-12\">
+                                        <div class=\"form-group\">
+                                            <input name=\"commentid\" value=\"{{ com.id }}\" hidden>
+                              <textarea class=\"form-control w-100\" name=\"reply\" id=\"{{ com.id }}\" cols=\"30\" rows=\"2\" required
+                                        placeholder=\"Write Reply\"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=\"form-group\">
+                                    <button type=\"submit\" class=\"badge badge-pill badge-info\"> <span class=\"badge badge-pill badge-info\">Reply</span></button>
+                                </div>
+                            </form>
+
+                         </div>
+
                     </div>
+
                     {% endfor%}
                     </div>
 

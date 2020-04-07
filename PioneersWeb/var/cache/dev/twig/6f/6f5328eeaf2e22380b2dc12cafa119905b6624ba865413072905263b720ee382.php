@@ -57,17 +57,21 @@ class __TwigTemplate_bd6f358c2b0e9f451e4040c1975a116e37fb69469115e4e8e6afd1e62a8
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 6
-        echo "    <p>";
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("registration.confirmed", ["%username%" => $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "username", [])], "FOSUserBundle"), "html", null, true);
+        echo "    <div class=\"bradcam_area breadcam_bg overlay2\">
+        <h3>Welcome</h3>
+    </div>
+    <p>";
+        // line 9
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("", ["%username%" => $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "username", [])], "FOSUserBundle"), "html", null, true);
         echo "</p>
     ";
-        // line 7
+        // line 10
         if (($context["targetUrl"] ?? $this->getContext($context, "targetUrl"))) {
-            // line 8
+            // line 11
             echo "    <p><a href=\"";
             echo twig_escape_filter($this->env, ($context["targetUrl"] ?? $this->getContext($context, "targetUrl")), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("registration.back", [], "FOSUserBundle"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Back", [], "FOSUserBundle"), "html", null, true);
             echo "</a></p>
     ";
         }
@@ -91,7 +95,7 @@ class __TwigTemplate_bd6f358c2b0e9f451e4040c1975a116e37fb69469115e4e8e6afd1e62a8
 
     public function getDebugInfo()
     {
-        return array (  67 => 8,  65 => 7,  60 => 6,  51 => 5,  29 => 1,);
+        return array (  71 => 11,  69 => 10,  65 => 9,  60 => 6,  51 => 5,  29 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -109,9 +113,12 @@ class __TwigTemplate_bd6f358c2b0e9f451e4040c1975a116e37fb69469115e4e8e6afd1e62a8
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <div class=\"bradcam_area breadcam_bg overlay2\">
+        <h3>Welcome</h3>
+    </div>
+    <p>{{ ''|trans({'%username%': user.username}) }}</p>
     {% if targetUrl %}
-    <p><a href=\"{{ targetUrl }}\">{{ 'registration.back'|trans }}</a></p>
+    <p><a href=\"{{ targetUrl }}\">{{ 'Back'|trans }}</a></p>
     {% endif %}
 {% endblock fos_user_content %}
 ", "@FOSUser/Registration/confirmed.html.twig", "D:\\programs\\wamp64\\www\\Web2.0\\PioneersWeb\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\Registration\\confirmed.html.twig");

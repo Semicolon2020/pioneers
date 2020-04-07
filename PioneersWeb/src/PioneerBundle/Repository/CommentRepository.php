@@ -19,4 +19,12 @@ class CommentRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+    function CountCmtBlog($idB){
+        $query=$this->getEntityManager()
+            ->createQuery("select count(c.id) from PioneerBundle:Comment c where c.actualite=:idB  ORDER BY c.point DESC  ")
+            ->setParameter('idB',$idB);
+
+        return $query->getSingleScalarResult();
+    }
+
 }
