@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Reply
  *
- * @ORM\Table(name="reply", indexes={@ORM\Index(name="id_cmt", columns={"id_cmt"}), @ORM\Index(name="cin", columns={"cin"})})
+ * @ORM\Table(name="reply", indexes={@ORM\Index(name="id_cmt", columns={"id_cmt"}), @ORM\Index(name="id_u", columns={"id_u"})})
  * @ORM\Entity(repositoryClass="PioneerBundle\Repository\ReplyRepository")
  */
 class Reply

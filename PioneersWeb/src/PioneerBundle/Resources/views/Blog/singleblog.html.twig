@@ -71,7 +71,7 @@
                               {% if  com.user.id != app.user.id %}
                              <span class="badge badge-pill badge-success"> <span class="badge">Likes {{ com.point }}</span>
                               <a href="{{ path('LikeCmtFront',{'idc':com.id},true) }}"> <i class="fa fa-heart"></i></span> </a>
-                            </span>
+
                             {% else %}
                                 <span class="badge badge-pill badge-success"> <span class="badge">Likes {{ com.point }}</span> </span>
 
@@ -82,16 +82,16 @@
                             {% endif %}
                             <br><br>
 
-                            <div id="accordion">
+                            <div  id="accordion">
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
                                         <h5 class="mb-0">
-                                            <button class="badge badge-dark" data-toggle="collapse" data-target="#{{com.id}}" aria-expanded="true" aria-controls="collapseOne">
+                                            <button class="badge badge-dark" data-toggle="collapse" type="button" data-target="#{{com.id}}" aria-expanded="true" aria-controls="collapseOne">
                                                 Replies
                                             </button>
                                         </h5>
                                     </div>
-                                    <div id="{{com.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div id="{{com.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#">
                                         <div class="card-body">
 
                                             {% for R in reply %}
@@ -120,10 +120,6 @@
                                                         </div>
                                                     </div>
                                                         </div>
-                                                                {% if  R.user.id == app.user.id %}
-                                                                    <a href="{{ path('deleteReplyFront',{'idR':R.id},true) }}"> <span class="badge badge-pill badge-danger">Delete</span></a>
-                                                                {% endif %}
-
                                                         {% if  R.user.id != app.user.id %}
 
                                                             <span class="badge badge-pill badge-success"> <span class="badge">Likes {{ R.point }}</span>
@@ -132,6 +128,10 @@
                                                         {% else %}
                                                             <span class="badge badge-pill badge-success"> <span class="badge">Likes {{ R.point }}</span> </span>
 
+                                                        {% endif %}
+
+                                                        {% if  R.user.id == app.user.id %}
+                                                            <a href="{{ path('deleteReplyFront',{'idR':R.id},true) }}"> <span class="badge badge-pill badge-danger">Delete</span></a>
                                                         {% endif %}
                                                     </div>
                                                 {% endif %}

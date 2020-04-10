@@ -2,6 +2,7 @@
 
 namespace PioneerBundle\Controller;
 
+use Mgilet\NotificationBundle\Entity\NotifiableNotification;
 use PioneerBundle\Entity\Actualite;
 use PioneerBundle\Entity\Comment;
 use PioneerBundle\Entity\Reply;
@@ -87,12 +88,14 @@ class BlogController extends Controller
         return $this->redirectToRoute('listallBlogAdmin');
     }
 
-    public function viewfrontAction()
+    public function viewfrontAction(Request $request)
     {
+        $session = $request->getSession();
 
+        $em= $session->get('notif');
         $posts=$this->getDoctrine()->getRepository(Actualite::class)->findAllOrderby();
         return $this->render('@Pioneer/Blog/viewfront.html.twig', array(
-            "Formlist" =>$posts
+            "Formlist" =>$posts,'notif'=>$em
         ));
     }
 
@@ -107,6 +110,7 @@ class BlogController extends Controller
         $TextReply = $request->get('reply');
 
         $session = $request->getSession();
+        $em= $session->get('notif');
         if($idU != null && $idB !=null)
         {
             $session->set('idB',$idB);
@@ -153,7 +157,7 @@ class BlogController extends Controller
 
         return $this->render('@Pioneer/Blog/singleblog.html.twig',array(
             "f" =>$p,"cmt"=>$form->createView(),"c"=>$C,"nbC"=>$nbC,'id'=>$session->get('idB'),'idU'=>$session->get('idU'),
-            'reply'=>$cmtR
+            'reply'=>$cmtR,'notif'=>$em
         ));
     }
 
@@ -171,22 +175,33 @@ class BlogController extends Controller
         $em->flush();
 
         $session = $request->getSession();
+        $em= $session->get('notif');
 
-        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')));
+        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU'),'notif'=>$em));
     }
 
     public function LikeCmtAction(Request $request)
-    {
+    { $session = $request->getSession();
         $em=$this->getDoctrine()->getManager();
         $idc = $request->get('idc');
         $p=$this->getDoctrine()->getRepository(Comment::class)->find($idc);
         $p->setPoint($p->getPoint()+1);
         $em->persist($p);
         $em->flush();
+        $lien ="http://localhost/Web2.0/PioneersWeb/web/app_dev.php/pioneer/singleblog/".$session->get('idB')  ."/".$session->get('idU');
+        /// Notification
+        $manager = $this->get('mgilet.notification');
+        $notif = $manager->createNotification($p->getActualite()->getTitre());
+        $notif->setMessage($this->getUser().' Liked your comment');
+        $notif->setLink( $lien);
+        $manager->addNotification(array($p->getUser()), $notif, true);
+        /////
 
-        $session = $request->getSession();
 
-        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')));
+
+        $em= $session->get('notif');
+        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')
+        ,'notif'=>$em));
     }
 
     public function deleteReplyAction(Request $request)
@@ -199,11 +214,14 @@ class BlogController extends Controller
 
         $session = $request->getSession();
 
-        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')));
+        $em= $session->get('notif');
+
+        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU'),'notif'=>$em));
     }
 
     public function LikeReplyAction(Request $request)
     {
+        $session = $request->getSession();
         $em=$this->getDoctrine()->getManager();
         $idR = $request->get('idR');
         $p=$this->getDoctrine()->getRepository(Reply::class)->find($idR);
@@ -211,9 +229,41 @@ class BlogController extends Controller
         $em->persist($p);
         $em->flush();
 
+        //////
+        /// Notification
+        $lien ="http://localhost/Web2.0/PioneersWeb/web/app_dev.php/pioneer/singleblog/".$session->get('idB')  ."/".$session->get('idU');
+        $manager = $this->get('mgilet.notification');
+        $notif = $manager->createNotification($p->getComment()->getActualite()->getTitre());
+        $notif->setMessage($this->getUser().' Liked your Reply');
+        $notif->setLink( $lien);
+        $manager->addNotification(array($p->getUser()), $notif, true);
+        /////
+        ///
+
+        $em= $session->get('notif');
+
+
         $session = $request->getSession();
 
-        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')));
+        return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')
+        ,'notif'=>$em));
+    }
+
+    function MarkSeenAction(Request $request,$idNotif)
+
+    {
+        $em=$this->getDoctrine()->getManager();
+
+        $p=$this->getDoctrine()->getRepository(NotifiableNotification::class)->find($idNotif);
+        $em->remove($p);
+        $em->flush();
+
+        $session = $request->getSession();
+
+        $em= $session->get('notif');
+
+        return $this->redirectToRoute('back_homepage',array('notif'=>$em));
+
     }
 
 

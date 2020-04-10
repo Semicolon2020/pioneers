@@ -41,3 +41,8 @@ deleteReplyFront:
 LikeReplyFront:
     path:     /likeReply/{idR}
     defaults: { _controller: PioneerBundle:Blog:LikeReply }
+
+
+MarkSeen:
+    path:     /markseen/{idNotif}
+    defaults: { _controller: PioneerBundle:Blog:MarkSeen }

@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new PioneerBundle\PioneerBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new BackBundle\BackBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

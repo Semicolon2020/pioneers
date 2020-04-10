@@ -89,11 +89,9 @@
                                 <a href="{{ path('addBlogAdmin') }}">Add</a>
                             </li>
                             <li>
-                                <a href="register.html">View</a>
+                                <a href="{{ path('listallBlogAdmin') }}">View</a>
                             </li>
-                            <li>
-                                <a href="forget-pass.html">Forget Password</a>
-                            </li>
+
                         </ul>
                     </li>
 
@@ -148,9 +146,6 @@
                             <li>
                                 <a href="{{ path('listallBlogAdmin') }}">View</a>
                             </li>
-                            <li>
-                                <a href="forget-pass.html">Forget Password</a>
-                            </li>
                         </ul>
                     </li>
 
@@ -178,7 +173,7 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="{{ asset('back/') }}images/icon/avatar-01.jpg" alt="John Doe" />
+                                        <img src="{{ asset('uploads/post/' ~  app.user.photo) }}" alt="{{app.user.username}}" />
                                     </div>
                                     <div class="content">
                                         <a class="js-acc-btn" href="#">{{app.user.username}}</a>
@@ -187,7 +182,7 @@
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
-                                                    <img src="{{ asset('back/') }}images/icon/avatar-01.jpg" alt="John Doe" />
+                                                    <img src="{{ asset('uploads/post/' ~  app.user.photo) }}" alt="{{app.user.username}}" />
                                                 </a>
                                             </div>
                                             <div class="content">
@@ -229,7 +224,43 @@
         <div class="main-content">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
-                    {{ form(formupdate) }}
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Add News</strong>
+                            </div>
+
+                            <div class="card-body card-block">
+                                {{ form_start((formupdate) ) }}
+
+
+                                <div class="row form-group">
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Titre</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        {{ form_widget(formupdate.titre,{'attr':{'class':'form-control'}})}}
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="textarea-input" class=" form-control-label">Description</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        {{ form_widget(formupdate.description,{'attr':{'class':'form-control'}})}}
+                                    </div>
+                                </div>
+                                {{ form_widget(formupdate.photo) }}
+                                <div class="card-footer">
+                                    {{ form_widget(formupdate.Submit,{'attr':{'class':'btn btn-primary btn-sm'}})}}
+                                </div>
+
+
+                                {{ form_end(formupdate) }}
+                            </div>
+                        </div>
 
 
                     <!-- END MAIN CONTENT-->

@@ -100,10 +100,7 @@
                                 <a href="{{ path('addBlogAdmin') }}">Add</a>
                             </li>
                             <li>
-                                <a href="register.html">View</a>
-                            </li>
-                            <li>
-                                <a href="forget-pass.html">Forget Password</a>
+                                <a href="{{ path('listallBlogAdmin') }}">View</a>
                             </li>
                         </ul>
                     </li>
@@ -157,11 +154,9 @@
                                 <a href="{{ path('addBlogAdmin') }}">Add</a>
                             </li>
                             <li>
-                                <a href="register.html">View</a>
+                                <a href="{{ path('listallBlogAdmin') }}">View</a>
                             </li>
-                            <li>
-                                <a href="forget-pass.html">Forget Password</a>
-                            </li>
+
                         </ul>
                     </li>
 
@@ -189,16 +184,16 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="{{ asset('back/') }}images/icon/avatar-01.jpg" alt="John Doe" />
+                                        <img src="{{ asset('uploads/post/' ~  app.user.photo) }}" alt="{{app.user.username}}" />
                                     </div>
                                     <div class="content">
-                                        <a class="js-acc-btn" href="#">{{app.user.username}}</a>
+                                        <a class="js-acc-btn" href="{{ asset('uploads/post/' ~  app.user.photo) }}">{{app.user.username}}</a>
                                     </div>
                                     <div class="account-dropdown js-dropdown">
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
-                                                    <img src="{{ asset('back/') }}images/icon/avatar-01.jpg" alt="John Doe" />
+                                                    <img src="{{ asset('uploads/post/' ~  app.user.photo) }}" alt="{{app.user.username}}" />
                                                 </a>
                                             </div>
                                             <div class="content">
@@ -265,7 +260,7 @@
 
                                                     <li> <a href="{{ path('updateBlogAdmin',{'id':f.id}) }}" class="btn btn-warning" > <h6 style="color:black;">Update</h6> </a></li>
                                                     <li> <a href="{{ path('deleteBlogAdmin',{'id':f.id}) }}" class="btn btn-danger" ><h6 style="color:whitesmoke;">Delete</h6></a></li>
-                                                    <li> <a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+
 
                                                 </ul>
                                             </div>
@@ -297,25 +292,6 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="blog_right_sidebar">
-                                        <aside class="single_sidebar_widget search_widget">
-                                            <form action="#">
-                                                <div class="form-group">
-                                                    <div class="input-group mb-3">
-                                                        <input type="text" class="form-control" placeholder='Search Keyword'
-                                                               onfocus="this.placeholder = ''"
-                                                               onblur="this.placeholder = 'Search Keyword'">
-                                                        <div class="input-group-append">
-                                                            <button class="btn" type="button"><i class="ti-search"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                                        type="submit">Search</button>
-                                            </form>
-                                        </aside>
-
-
-
 
 
                                     </div>

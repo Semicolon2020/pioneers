@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Comment
  *
- * @ORM\Table(name="comment", indexes={@ORM\Index(name="cin", columns={"cin"}), @ORM\Index(name="id_act", columns={"id_act"})})
+ * @ORM\Table(name="comment", indexes={@ORM\Index(name="id_u", columns={"id_u"}), @ORM\Index(name="id_act", columns={"id_act"})})
  * @ORM\Entity(repositoryClass="PioneerBundle\Repository\CommentRepository")
  */
 class Comment
@@ -162,6 +162,22 @@ class Comment
     public function setDate()
     {
         $this->date = new \DateTime('now');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReply()
+    {
+        return $this->reply;
+    }
+
+    /**
+     * @param mixed $reply
+     */
+    public function setReply($reply)
+    {
+        $this->reply = $reply;
     }
 
 

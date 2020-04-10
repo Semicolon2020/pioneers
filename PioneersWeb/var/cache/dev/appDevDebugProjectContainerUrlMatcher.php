@@ -189,6 +189,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'singleblogFront']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::singleblogAction',));
             }
 
+            // MarkSeen
+            if (0 === strpos($pathinfo, '/pioneer/markseen') && preg_match('#^/pioneer/markseen/(?P<idNotif>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'MarkSeen']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::MarkSeenAction',));
+            }
+
         }
 
         elseif (0 === strpos($pathinfo, '/profile')) {
@@ -402,6 +407,29 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $ret;
             }
             not_fos_user_resetting_check_email:
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/notifications')) {
+            // notification_list
+            if (preg_match('#^/notifications/(?P<notifiable>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'notification_list']), array (  '_controller' => 'Mgilet\\NotificationBundle\\Controller\\NotificationController::listAction',));
+            }
+
+            // notification_mark_as_seen
+            if (preg_match('#^/notifications/(?P<notifiable>[^/]++)/mark_as_seen/(?P<notification>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'notification_mark_as_seen']), array (  '_controller' => 'Mgilet\\NotificationBundle\\Controller\\NotificationController::markAsSeenAction',));
+            }
+
+            // notification_mark_as_unseen
+            if (preg_match('#^/notifications/(?P<notifiable>[^/]++)/mark_as_unseen/(?P<notification>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'notification_mark_as_unseen']), array (  '_controller' => 'Mgilet\\NotificationBundle\\Controller\\NotificationController::markAsUnSeenAction',));
+            }
+
+            // notification_mark_all_as_seen
+            if (preg_match('#^/notifications/(?P<notifiable>[^/]++)/markAllAsSeen$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'notification_mark_all_as_seen']), array (  '_controller' => 'Mgilet\\NotificationBundle\\Controller\\NotificationController::markAllAsSeenAction',));
+            }
 
         }
 

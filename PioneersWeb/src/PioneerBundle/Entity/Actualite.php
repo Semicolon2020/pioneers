@@ -4,14 +4,17 @@ namespace PioneerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Mgilet\NotificationBundle\Annotation\Notifiable;
+use Mgilet\NotificationBundle\NotifiableInterface;
 
 /**
  * Actualite
  *
  * @ORM\Table(name="actualite", uniqueConstraints={@ORM\UniqueConstraint(name="titre", columns={"titre"})})
  * @ORM\Entity(repositoryClass="PioneerBundle\Repository\ActualiteRepository")
+ * @Notifiable(name="Actualite")
  */
-class Actualite
+class Actualite implements NotifiableInterface
 {
     /**
      * @var integer

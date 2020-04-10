@@ -5,13 +5,16 @@ namespace PioneerBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
+use Mgilet\NotificationBundle\Annotation\Notifiable;
+use Mgilet\NotificationBundle\NotifiableInterface;
 /**
  * User
  *
  * @ORM\Table(name="`user`", uniqueConstraints={@ORM\UniqueConstraint(name="cin", columns={"cin"}), @ORM\UniqueConstraint(name="email", columns={"email", "num_tel"})})
  * @ORM\Entity
+ * @Notifiable(name="User")
  */
-class User extends BaseUser
+class User extends BaseUser  implements NotifiableInterface
 {
     public function __construct()
     {
