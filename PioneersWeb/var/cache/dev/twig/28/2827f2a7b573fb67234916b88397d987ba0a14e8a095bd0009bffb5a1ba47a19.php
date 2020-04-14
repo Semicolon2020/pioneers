@@ -196,6 +196,6 @@ class __TwigTemplate_4e69492566abf9b3d7f07b7a5d7dcaf3fb71c188837e2bacff7c0605637
             {% endblock fos_user_content %}
         </div>
 
-{% endblock %}", "@FOSUser/layout.html.twig", "D:\\programs\\wamp64\\www\\Web2.0\\PioneersWeb\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\layout.html.twig");
+{% endblock %}", "@FOSUser/layout.html.twig", "D:\\wamp64\\www\\pioneerss\\PioneersWeb\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\layout.html.twig");
     }
 }

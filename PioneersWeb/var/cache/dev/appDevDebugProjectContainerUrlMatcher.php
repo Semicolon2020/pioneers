@@ -107,6 +107,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // back_homepage
+        if ('/index' === $pathinfo) {
+            return array (  '_controller' => 'BackBundle\\Controller\\DefaultController::indexAction',  '_route' => 'back_homepage',);
+        }
+
         // admin_dashboard
         if ('/admin' === $pathinfo) {
             return array (  '_controller' => 'BackBundle\\Controller\\BackController::indexAction',  '_route' => 'admin_dashboard',);
@@ -270,9 +275,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
-            // back_homepage
+            // backk_homepage
             if ('/transport/back' === $pathinfo) {
-                return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::backAction',  '_route' => 'back_homepage',);
+                return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::backAction',  '_route' => 'backk_homepage',);
             }
 
             if (0 === strpos($pathinfo, '/transport/add')) {
