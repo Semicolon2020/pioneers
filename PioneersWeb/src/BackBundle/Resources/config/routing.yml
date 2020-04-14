@@ -1,0 +1,7 @@
+back_homepage:
+    path:     /index
+    defaults: { _controller: BackBundle:Default:index }
+
+admin_dashboard:
+    path:     /admin
+    defaults: { _controller: BackBundle:Back:index }

@@ -1,0 +1,13 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="bradcam_area breadcam_bg overlay2">
+        <h3>Welcome</h3>
+    </div>
+    <p>{{ ''|trans({'%username%': user.username}) }}</p>
+    {% if targetUrl %}
+    <p><a href="{{ targetUrl }}">{{ 'Back'|trans }}</a></p>
+    {% endif %}
+{% endblock fos_user_content %}
