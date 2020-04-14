@@ -107,11 +107,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // back_homepage
-        if ('/index' === $pathinfo) {
-            return array (  '_controller' => 'BackBundle\\Controller\\DefaultController::indexAction',  '_route' => 'back_homepage',);
-        }
-
         // admin_dashboard
         if ('/admin' === $pathinfo) {
             return array (  '_controller' => 'BackBundle\\Controller\\BackController::indexAction',  '_route' => 'admin_dashboard',);
@@ -240,6 +235,132 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $ret;
             }
             not_fos_user_change_password:
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/transport')) {
+            if (0 === strpos($pathinfo, '/transport/t')) {
+                // transport_homepage
+                if ('/transport/t1' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::indexAction',  '_route' => 'transport_homepage',);
+                }
+
+                // trajet_homepage
+                if ('/transport/trajet' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::trajetAction',  '_route' => 'trajet_homepage',);
+                }
+
+                // Transport2_homepage
+                if ('/transport/t2' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::transportespaceAction',  '_route' => 'Transport2_homepage',);
+                }
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/transport/bus')) {
+                // bus_homepage
+                if ('/transport/bus' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\BusController::afficherAction',  '_route' => 'bus_homepage',);
+                }
+
+                // busf
+                if ('/transport/busf' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\BusetcovController::afficherfAction',  '_route' => 'busf',);
+                }
+
+            }
+
+            // back_homepage
+            if ('/transport/back' === $pathinfo) {
+                return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::backAction',  '_route' => 'back_homepage',);
+            }
+
+            if (0 === strpos($pathinfo, '/transport/add')) {
+                // add_bus
+                if ('/transport/add' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\BusController::ajouterAction',  '_route' => 'add_bus',);
+                }
+
+                // add_trajet
+                if ('/transport/addtr' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::ajoutertrAction',  '_route' => 'add_trajet',);
+                }
+
+                // add_station
+                if (0 === strpos($pathinfo, '/transport/addst') && preg_match('#^/transport/addst/(?P<id>[^/]++)/(?P<m>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'add_station']), array (  '_controller' => 'TransportBundle\\Controller\\StationController::ajouterstAction',));
+                }
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/transport/affiche')) {
+                // afficherdetails
+                if ('/transport/affiche' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\BusController::afficherAction',  '_route' => 'afficherdetails',);
+                }
+
+                // afficherdetailstr
+                if ('/transport/affichetr' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::affichertrAction',  '_route' => 'afficherdetailstr',);
+                }
+
+                // afficherdetailsst
+                if (0 === strpos($pathinfo, '/transport/affichest') && preg_match('#^/transport/affichest/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'afficherdetailsst']), array (  '_controller' => 'TransportBundle\\Controller\\StationController::afficherstAction',));
+                }
+
+                // afficherbuss
+                if ('/transport/afficherbuss' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\BusetcovController::afficherbussAction',  '_route' => 'afficherbuss',);
+                }
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/transport/edit')) {
+                // editdetails
+                if (preg_match('#^/transport/edit/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'editdetails']), array (  '_controller' => 'TransportBundle\\Controller\\BusController::modifierAction',));
+                }
+
+                // editdetailstr
+                if (0 === strpos($pathinfo, '/transport/edittr') && preg_match('#^/transport/edittr/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'editdetailstr']), array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::modifiertrAction',));
+                }
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/transport/delete')) {
+                // deletedetails
+                if (preg_match('#^/transport/delete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deletedetails']), array (  '_controller' => 'TransportBundle\\Controller\\BusController::deleteAction',));
+                }
+
+                // deletedetailstr
+                if (0 === strpos($pathinfo, '/transport/deletetr') && preg_match('#^/transport/deletetr/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deletedetailstr']), array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::deletetrAction',));
+                }
+
+                // deletedetailsst
+                if (0 === strpos($pathinfo, '/transport/deletest') && preg_match('#^/transport/deletest/(?P<id>[^/]++)/(?P<id2>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deletedetailsst']), array (  '_controller' => 'TransportBundle\\Controller\\StationController::deletestAction',));
+                }
+
+            }
+
+            // demande
+            if ('/transport/demande' === $pathinfo) {
+                return array (  '_controller' => 'TransportBundle\\Controller\\BusetcovController::afficherdemandeAction',  '_route' => 'demande',);
+            }
+
+            // co
+            if ('/transport/co' === $pathinfo) {
+                return array (  '_controller' => 'TransportBundle\\Controller\\BusetcovController::affichercoAction',  '_route' => 'co',);
+            }
+
+            // offre
+            if ('/transport/offre' === $pathinfo) {
+                return array (  '_controller' => 'TransportBundle\\Controller\\BusetcovController::afficheroffreAction',  '_route' => 'offre',);
+            }
 
         }
 

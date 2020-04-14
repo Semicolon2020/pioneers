@@ -603,6 +603,6 @@ class __TwigTemplate_ca419aa42b4f7b31c474f1337e75ad206db5731f6b3feebfe3b430a91ed
         }())
     </script>
 {% endblock %}
-", "@WebProfiler/Profiler/layout.html.twig", "D:\\programs\\wamp64\\www\\Web2.0\\PioneersWeb\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle\\Resources\\views\\Profiler\\layout.html.twig");
+", "@WebProfiler/Profiler/layout.html.twig", "D:\\wamp64\\www\\pioneerss\\PioneersWeb\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle\\Resources\\views\\Profiler\\layout.html.twig");
     }
 }

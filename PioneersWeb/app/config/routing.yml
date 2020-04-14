@@ -5,7 +5,9 @@ back:
 pioneer:
     resource: "@PioneerBundle/Resources/config/routing.yml"
     prefix:   /pioneer
-
+transport:
+    resource: "@TransportBundle/Resources/config/routing.yml"
+    prefix:   /transport
 
 app:
     resource: '@AppBundle/Controller/'
