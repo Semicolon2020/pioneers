@@ -1,0 +1,78 @@
+{% extends 'base2.html.twig'  %}
+{% block content %}
+    <div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- LEFT BLOCK -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <strong><a href="{{ path('afficherdetailstr')}}"><button class="btn btn-primary btn-sm">
+                                <i class="fa fa-ban"></i> Sauvegardez et Retournez au Menu Trajet
+                            </button></a></strong>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="user-data m-b-30">
+                            <h3 class="title-3 m-b-30">
+                                <i class="zmdi zmdi-account-calendar"></i>Table de Station</h3>
+                            {% set m=0 %}
+                            <form action="{{ path("add_station",{"id":id,"m":m})}}">
+                                <center> <button class="au-btn au-btn-load">Ajouter Station</button></center></form>
+
+                            <div class="table-responsive table-data">
+                                <table class="table">
+
+                                    <thead>
+                                    <tr>
+
+                                        <td>Nom</td>
+                                        <td>Longtitude</td>
+                                        <td>Laltitude</td>
+                                        <td>Option</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <br>
+                                        {% if tab | length ==0 %}
+                                        <center>Pas de Station Affecté au Trajet</center>
+                                        {% else %}
+                                        {% for t in tab %}
+                                        <td>
+                                            <div class="table-data__info">
+                                                <h6>{{ t.name}} </h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="table-data__info">
+                                                <h6>{{ t.longtitude}}</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="table-data__info">
+                                                <h6>{{ t.altitude}}</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="table-data-feature">
+
+                                                <form action="{{ path("deletedetailsst",{"id": t.id,"id2": t.idtrajet})}}"><button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </button></form></div>
+                                        </td>
+
+                                    </tr>
+
+                                    {% endfor %}
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div></div></div></div></div>
+
+{% endblock %}

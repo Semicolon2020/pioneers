@@ -1,0 +1,20 @@
+{% extends 'base.html.twig'  %}
+
+
+
+{%  block content %}
+
+
+
+    <div class="bradcam_area breadcam_bg overlay2">
+
+        <div class="button-group-area mt-40">
+            <a href="{{ path('offre')}}" class="genric-btn default circle arrow"><h2>Offre</h2><span class="lnr lnr-arrow-right"></span></a></div>
+        <div class="button-group-area mt-40">
+            <a href="{{ path('demande')}}" class="genric-btn default circle arrow"><h2>Demande</h2><span class="lnr lnr-arrow-right"></span></a></div>
+        <div class="button-group-area mt-40">
+            <a href="{{ path('transport_homepage')}}" class="genric-btn default circle arrow"><h2>Retour</h2><span class="lnr lnr-arrow-right"></span></a></div>
+
+    </div>
+    <!-- End Button -->
+{% endblock %}

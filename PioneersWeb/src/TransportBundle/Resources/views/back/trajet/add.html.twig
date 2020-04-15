@@ -1,0 +1,54 @@
+{% extends 'base2.html.twig'  %}
+{% block content %}
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header"></div>
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3 class="text-center title-2">Ajouter Trajet</h3>
+                                </div>
+                                <hr>
+                                <form action="" method="post">
+                                    {{ form_start(form) }}
+                                    <div class="form-group">
+                                        <label  class="control-label mb-1">Nom du Trajet</label>
+                                        {{ form_widget(form.name, {'attr': {'class': 'form-control','maxlength':'30','pattern': '^[a-zA-Z ]+[-][a-zA-Z ]+'}}) }}
+                                        Example: Tunis-Bardo<br>{{ no }}
+                                    </div>
+                                    <div class="form-group">
+                                        {% if ta|length==0 %}
+                                        <center>  <a href="{{ path('add_bus') }}"> <button class="au-btn au-btn-load">Add Bus</button></center></a>
+                                        {% else %}
+                                        <label  class="control-label mb-1">Nom de bus</label>
+                                        {% do form.idbus.setRendered() %}
+                                        <select class="form-control" name="idbus"  required>
+<option></option>
+
+                                            {% for i in ta %}
+                                                <option value="{{ i.id }}">{{ i.name }} </option>
+                                            {% endfor %}
+
+                                        </select>
+
+                                        {% endif %}
+                                        <span class="help-block field-validation-valid" data-valmsg-replace="true"></span>
+                                    </div>
+
+
+                                    <div>
+                                        <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                            <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                            <span id="payment-button-amount"> Sauvegarder</span>
+                                        </button>
+                                    </div>
+                                    {{ form_end(form) }}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div></div></div></div>
+{% endblock %}

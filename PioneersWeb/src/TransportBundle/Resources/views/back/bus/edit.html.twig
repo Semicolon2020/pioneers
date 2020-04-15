@@ -1,0 +1,46 @@
+{% extends 'base2.html.twig'  %}
+{% block content %}
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"></div>
+                        <div class="card-body">
+                            <div class="card-title">
+
+                                <h3 class="text-center title-2">Edit Bus</h3>
+                            </div>
+                            <hr>
+                            <form action="" method="post">
+                                {{ form_start(form) }}
+                                <div class="form-group">
+                                    <label  class="control-label mb-1">Name</label>
+                                    {{ form_widget(form.name, {'attr': {'class': 'form-control',
+                                        'pattern': '^[a-zA-Z ]+[0-9]*[a-zA-Z ]*','readonly':''}})}}  </div>
+                                <div class="form-group has-success">
+                                    <label  class="control-label mb-1">Capacity</label>
+
+                                    {{ form_widget(form.capacite, {'attr': {'class': 'form-control'}})}}
+                                    <span class="help-block field-validation-valid" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="control-label mb-1">Bus rider</label>
+                                    {{form_widget(form.chauffeur, {'attr': {'class': 'form-control','maxlength':'20','pattern': '^[a-zA-Z]+[ ]*[a-zA-Z]*'}})}}
+                                    <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                </div><center>{{ noo }}</center>
+                                <div>
+                                    <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                        <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                        <span id="payment-button-amount">Modifier et Sauvegardez</span>
+                                   </button>
+                                </div>
+                                {{ form_end(form) }}
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div></div></div></div>
+{% endblock %}

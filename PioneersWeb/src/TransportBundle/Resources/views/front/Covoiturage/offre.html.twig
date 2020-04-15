@@ -1,0 +1,127 @@
+{% extends 'base.html.twig'  %}
+
+
+
+{%  block content %}
+
+
+
+    <div class="bradcam_area breadcam_bg overlay2">
+        <h3>Demande de Covoiturage Proposes par les parents</h3>
+        <br>
+
+
+        <div id="map_wrapper">
+            <div id="map_canvas" class="mapping"></div>
+        </div>
+        <div class="button-group-area mt-40">
+            <a href="{{ path('co')}}" class="genric-btn default circle arrow"><h2>Retour</h2><span class="lnr lnr-arrow-right"></span></a></div>
+
+
+    </div>
+    <!-- End Button -->
+{% endblock %}
+
+{% block Javascript %}
+    <script src="{{ asset('js/vendor/modernizr-3.5.0.min.js')}}" ></script>
+    <script src="{{ asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{ asset('js/popper.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{ asset('js/ajax-form.js')}}"></script>
+    <script src="{{ asset('js/waypoints.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.counterup.min.js')}}"></script>
+    <script src="{{ asset('js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{ asset('js/scrollIt.js')}}"></script>
+    <script src="{{ asset('js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{ asset('js/wow.min.js')}}"></script>
+    <script src="{{ asset('js/nice-select.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.slicknav.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('js/plugins.js')}}"></script>
+    <script src="{{ asset('js/gijgo.min.js')}}"></script>
+    <!--contact js-->
+    <script src="{{ asset('js/contact.js')}}"></script>
+    <script src="{{ asset('js/jquery.ajaxchimp.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.form.js')}}"></script>
+    <script src="{{ asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{ asset('js/mail-script.js')}}"></script>
+    <script src="{{ asset('js/main.js')}}"></script>
+    <script type="text/javascript">
+        jQuery(function($) {
+            // Asynchronously Load the map API
+            var script = document.createElement('script');
+            script.src = "https://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+            document.body.appendChild(script);
+        });
+
+        function initialize() {
+            var map;
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                // mapTypeId: 'hybrid'
+                // mapTypeId: 'satellite'
+                // mapTypeId: 'roadmap'
+                mapTypeId: 'terrain'
+            };
+
+
+
+
+            // Display a map on the page
+            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            map.setTilt(45);
+
+            var markers=[] ;
+            for(var f=0; f<0; f++){
+                markers[f] = new Array(3);
+            }
+
+            {% for t in tab %}
+            var t="";
+            var x=0;
+            var c=5;
+            t={{ t.laltitude }};
+            x={{ t.longitude }};
+            c="{{ t.nomparent }} {{ t.num }}";
+            console.log(t);
+            var item= [c, t, x];
+            markers.push(item);
+            {% endfor %}
+
+
+
+            // Display multiple markers on a map
+            var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+            // Loop through our array of markers & place each one on the map
+            for( i = 0; i < markers.length; i++ ) {
+                var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: markers[i][0]
+                });
+
+                // Allow each marker to have an info window
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infoWindow.setContent(infoWindowContent[i][0]);
+                        infoWindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                // Automatically center the map fitting all markers on the screen
+                map.fitBounds(bounds);
+            }
+
+            // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+            var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+                this.setZoom(7);
+                google.maps.event.removeListener(boundsListener);
+            });
+
+        }</script>
+{% endblock %}

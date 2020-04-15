@@ -1,0 +1,67 @@
+transport_homepage:
+    path:     /t1
+    defaults: { _controller: TransportBundle:Default:index }
+bus_homepage:
+    path:     /bus
+    defaults: { _controller: TransportBundle:Bus:afficher }
+add_bus:
+    path:     /add
+    defaults: { _controller: TransportBundle:Bus:ajouter }
+trajet_homepage:
+    path:     /trajet
+    defaults: { _controller: TransportBundle:Default:trajet }
+backk_homepage:
+    path:     /back
+    defaults: { _controller: TransportBundle:Default:back }
+Transport2_homepage:
+    path:     /t2
+    defaults: { _controller: TransportBundle:Default:transportespace }
+editdetails:
+    path:     /edit/{id}
+    defaults: { _controller: TransportBundle:Bus:modifier }
+deletedetails:
+    path:     /delete/{id}
+    defaults: { _controller: TransportBundle:Bus:delete }
+editdetailstr:
+  path:     /edittr/{id}
+  defaults: { _controller: TransportBundle:Trajet:modifiertr }
+deletedetailstr:
+  path:     /deletetr/{id}
+  defaults: { _controller: TransportBundle:Trajet:deletetr }
+afficherdetails:
+    path:     /affiche
+    defaults: { _controller: TransportBundle:Bus:afficher }
+add_trajet:
+  path:     /addtr
+  defaults: { _controller: TransportBundle:Trajet:ajoutertr }
+afficherdetailstr:
+  path:     /affichetr
+  defaults: { _controller: TransportBundle:Trajet:affichertr }
+add_station:
+  path:     /addst/{id}/{m}
+  defaults: { _controller: TransportBundle:Station:ajouterst }
+afficherdetailsst:
+  path:     /affichest/{id}
+  defaults: { _controller: TransportBundle:Station:afficherst }
+deletedetailsst:
+  path:     /deletest/{id}/{id2}
+  defaults: { _controller: TransportBundle:Station:deletest }
+
+busf:
+  path:     /busf
+  defaults: { _controller: TransportBundle:Busetcov:afficherf }
+co:
+  path:     /co
+  defaults: { _controller: TransportBundle:Busetcov:afficherco }
+demande:
+  path:     /demande
+  defaults: { _controller: TransportBundle:Busetcov:afficherdemande }
+offre:
+  path:     /offre
+  defaults: { _controller: TransportBundle:Busetcov:afficheroffre }
+afficherbuss:
+  path:     /afficherbuss
+  defaults: { _controller: TransportBundle:Busetcov:afficherbuss }
+
+
+

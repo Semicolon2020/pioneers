@@ -1,0 +1,64 @@
+{% extends 'base2.html.twig'  %}
+{% block content %}
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header"></div>
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3 class="text-center title-2">Ajouter Station</h3>
+                                </div>
+                                <hr>
+                                <form action="" method="post">
+                                    {{ form_start(form) }}
+                                    <div class="form-group">
+                                        <label  class="control-label mb-1">Nom du Station</label>
+                                        {{ form_widget(form.name, {'attr': {'class': 'form-control','maxlength':'80','pattern':'^[a-zA-Z,]*'}}) }}
+                                        Example: Avenue,Bir,Kasaa,Bardo,Tunis<br>
+                                        {{ no }}
+                                    </div>
+                                    {% do form.idtrajet.setRendered() %}
+                                    {% do form.longtitude.setRendered() %}
+                                    {% do form.altitude.setRendered() %}
+                                    <div>
+                                        {% if n==1 and m==1 %}
+                                        <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                            <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                            <span id="payment-button-amount">check</span>
+                                        </button> {{ form_end(form) }} </form>
+                                {% elseif n==1 and m==2 %}
+                                    <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+
+                                        <span id="payment-button-amount">sauvegarder</span>
+                                    </button> {{ form_end(form) }} </form>
+
+
+                                        {% elseif n==2 %}
+                                            {% set m=1 %}
+                                    <form action="{{ path("add_station",{"id":id,"m":m})}}">   <button id="payment-button"  class="btn btn-lg btn-info btn-block">
+
+                                        <span id="payment-button-amount">Recheck</span>
+                                        </button> {{ form_end(form) }}</form><br>
+                                            {% set m=2 %}
+                                    <form action="{{ path("add_station",{"id":id,"m":m})}}">  <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+
+                                    <span id="payment-button-amount">Aller pour l'ajout</span>
+                                </button> {{ form_end(form) }} </form>
+                                             {% endif %}
+
+
+
+                                    </div>
+
+
+                            </div>
+                        </div>
+                        <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q='+{{name}}+'&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                                </iframe>Google Maps Generator by <a href="https://www.embedgooglemap.org">embedgooglemap.org</a>
+                            </div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
+                    </div>
+                </div></div></div></div>
+{% endblock %}
