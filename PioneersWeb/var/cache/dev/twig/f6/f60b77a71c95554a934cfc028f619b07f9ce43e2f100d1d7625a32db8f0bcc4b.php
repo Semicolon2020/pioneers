@@ -36,25 +36,140 @@ class __TwigTemplate_3492e5298faa4b1293fdb211be4510d3be8a02111cf1c5b6bfdc0f15f49
         echo "<div class=\"bradcam_area breadcam_bg overlay2\">
     <h3>Register</h3>
 </div>
-";
-        // line 5
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_start', ["method" => "post", "action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_registration_register"), "attr" => ["class" => "fos_user_registration_register"]]);
-        echo "
-    ";
-        // line 6
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(($context["form"] ?? $this->getContext($context, "form")), 'widget');
-        echo "
-    <div>
-        <input type=\"submit\" value=\"";
-        // line 8
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Register", [], "FOSUserBundle"), "html", null, true);
-        echo "\" />
-    </div>
 
 ";
-        // line 11
+        // line 6
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_start', ["method" => "post", "action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_registration_register")]);
+        echo "
+<section class=\"contact-section\">
+    <div class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-12\">
+                <h2 class=\"contact-title\">Register</h2>
+            </div>
+            <div class=\"col-lg-8\">
+                    <div class=\"row\">
+
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 18
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "cin", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 23
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "nom", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 28
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "prenom", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 33
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "numTel", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 38
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "etatCivil", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 43
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "email", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 48
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "username", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                            </div>
+                        </div>
+
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 54
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "plainPassword", []), "first", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 59
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "plainPassword", []), "second", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            ";
+        // line 63
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "roles", []), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                ";
+        // line 67
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "photo", []), 'widget');
+        echo "
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class=\"form-group mt-3\">
+                        <input type=\"submit\"  class=\"button button-contactForm boxed-btn\"  value=\"";
+        // line 74
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Register", [], "FOSUserBundle"), "html", null, true);
+        echo "\" />
+                    </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+";
+        // line 82
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_end');
         echo "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -76,7 +191,7 @@ class __TwigTemplate_3492e5298faa4b1293fdb211be4510d3be8a02111cf1c5b6bfdc0f15f49
 
     public function getDebugInfo()
     {
-        return array (  56 => 11,  50 => 8,  45 => 6,  41 => 5,  36 => 2,);
+        return array (  157 => 82,  146 => 74,  136 => 67,  129 => 63,  122 => 59,  114 => 54,  105 => 48,  97 => 43,  89 => 38,  81 => 33,  73 => 28,  65 => 23,  57 => 18,  42 => 6,  36 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -93,13 +208,98 @@ class __TwigTemplate_3492e5298faa4b1293fdb211be4510d3be8a02111cf1c5b6bfdc0f15f49
 <div class=\"bradcam_area breadcam_bg overlay2\">
     <h3>Register</h3>
 </div>
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type=\"submit\" value=\"{{ 'Register'|trans }}\" />
-    </div>
 
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register')}) }}
+<section class=\"contact-section\">
+    <div class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-12\">
+                <h2 class=\"contact-title\">Register</h2>
+            </div>
+            <div class=\"col-lg-8\">
+                    <div class=\"row\">
+
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.cin,{'attr':{'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.nom,{'attr':{'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.prenom,{'attr':{'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.numTel,{'attr':{'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.etatCivil,{'attr':{'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.email,{'attr':{'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.username,{'attr':{'class':'form-control'}})}}
+                            </div>
+                        </div>
+
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            {{ form_widget(form.roles,{'attr':{'class':'form-control'}})}}
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"form-group\">
+                                {{ form_widget(form.photo)}}
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class=\"form-group mt-3\">
+                        <input type=\"submit\"  class=\"button button-contactForm boxed-btn\"  value=\"{{ 'Register'|trans }}\" />
+                    </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
 {{ form_end(form) }}
-", "@FOSUser/Registration/register_content.html.twig", "D:\\programs\\wamp64\\www\\Web2.0\\PioneersWeb\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\Registration\\register_content.html.twig");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+", "@FOSUser/Registration/register_content.html.twig", "D:\\programs\\wamp64\\www\\Web2.0\\INT\\PioneersWeb\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\Registration\\register_content.html.twig");
     }
 }

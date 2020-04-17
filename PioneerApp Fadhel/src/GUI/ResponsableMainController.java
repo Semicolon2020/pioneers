@@ -71,6 +71,8 @@ public class ResponsableMainController implements Initializable {
     private ImageView LoisirsInterface;
     @FXML
     private ImageView transpInterface;
+    @FXML
+    private ImageView newsinterface;
     
     /**
      * Initializes the controller class.
@@ -84,6 +86,7 @@ public class ResponsableMainController implements Initializable {
         RespUI.setSmooth(true);
         //RespUI.setPreserveRatio(false);
         
+        newsinterface.setImage(new Image("/Image/News-8.png"));
         ParentIcon.setImage(new Image("/Image/ParentInterface.png"));
         tuteuricon.setImage(new Image("/Image/tuteurInterface.png"));
         logout.setImage(new Image("/Image/logout.png"));
@@ -286,6 +289,28 @@ public class ResponsableMainController implements Initializable {
         stage.show(); } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void AffNEws(MouseEvent event) {
+        
+        
+                                        FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("NewsAff.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               NewsAffController apc = loader.getController();
+                                               
+                                              
+                                                 
+                                            RespUI.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
     }
     
 }

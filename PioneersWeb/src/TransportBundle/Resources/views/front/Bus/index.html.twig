@@ -4,80 +4,89 @@
 
 {%  block content %}
 
-
-
+    <!-- bradcam_area_start -->
     <div class="bradcam_area breadcam_bg overlay2">
-        <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="section-top-border">
+        <h3>Transport</h3>
+    </div>
 
-                            <div class="col-lg-8 col-md-8">
-                                <form action="#">
-                                    <div class="row form-group">
-                                        <div class="col col-md-6">
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <form action="{{ path("busf")}}" method="get" >
-                                                <center> <select name="id" id="id" class="form-control-lg form-control">
-                                                        <option>Please select</option>
-                                                        {% if tab | length ==0 %}
-                                                        Pas de Trajet Disponible !!!
-                                                        {% else %}
-                                                        {% for t in tab %}
-                                                        <option value="{{ t.id}}">{{ t.name}}</option>
-                                                        {% endfor %}{% endif %}
-                                                    </select></center>&nbsp;
-                                                <button type="submit" class="btn btn-lg btn-info btn-block">
-                                                    <span id="payment-button-amount">Afficher le Trajet</span>
-                                                </button></form>
-                                        </div>
-                                    </div>
-                                </form> </div></div></div></div></header></div>
+    <!-- popular_courses_start -->
+    <div class="popular_courses plus_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-100">
+
+                        <form action="{{ path("busf")}}" method="get" >
+                            <center> <select name="id" id="id" class="form-control-lg form-control">
+                                    <option>Please select</option>
+                                    {% if tab | length ==0 %}
+                                        Pas de Trajet Disponible !!!
+                                    {% else %}
+                                        {% for t in tab %}
+                                            <option value="{{ t.id}}">{{ t.name}}</option>
+                                        {% endfor %}{% endif %}
+                                </select></center>&nbsp;
+                            <button type="submit" class="btn btn-lg btn-info btn-block">
+                                <span id="payment-button-amount">Afficher le Trajet</span>
+                            </button></form>
+                    </div>
+                    <div class="button-group-area mt-40">
+                        <a href="{{ path('transport_homepage')}}" class="genric-btn default circle arrow"><h2>Retour</h2><span class="lnr lnr-arrow-right"></span></a></div>
+                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- popular_courses_end-->
+
+
+
+
     <div id="map_wrapper">
         <div id="map_canvas" class="mapping">
 
-
-        </div>
-        <div class="button-group-area mt-40">
-            <a href="{{ path('co')}}" class="genric-btn default circle arrow"><h2>Retour</h2><span class="lnr lnr-arrow-right"></span></a></div>
-
     </div>
 
 
 
-    </div>
     <!-- End Button -->
 {% endblock %}
 
 {% block Javascript %}
-    <script src="{{ asset('js/vendor/modernizr-3.5.0.min.js')}}" ></script>
-    <script src="{{ asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
-    <script src="{{ asset('js/popper.min.js')}}"></script>
-    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('js/owl.carousel.min.js')}}"></script>
-    <script src="{{ asset('js/isotope.pkgd.min.js')}}"></script>
-    <script src="{{ asset('js/ajax-form.js')}}"></script>
-    <script src="{{ asset('js/waypoints.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.counterup.min.js')}}"></script>
-    <script src="{{ asset('js/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{ asset('js/scrollIt.js')}}"></script>
-    <script src="{{ asset('js/jquery.scrollUp.min.js')}}"></script>
-    <script src="{{ asset('js/wow.min.js')}}"></script>
-    <script src="{{ asset('js/nice-select.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.slicknav.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('front/js/vendor/modernizr-3.5.0.min.js')}}" ></script>
+    <script src="{{ asset('front/js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{ asset('front/js/popper.min.js')}}"></script>
+    <script src="{{ asset('front/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('front/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('front/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{ asset('front/js/ajax-form.js')}}"></script>
+    <script src="{{ asset('front/js/waypoints.min.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{ asset('front/js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{ asset('front/js/scrollIt.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{ asset('front/js/wow.min.js')}}"></script>
+    <script src="{{ asset('front/js/nice-select.min.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.slicknav.min.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{ asset('js/plugins.js')}}"></script>
-    <script src="{{ asset('js/gijgo.min.js')}}"></script>
+    <script src="{{ asset('front/js/gijgo.min.js')}}"></script>
     <!--contact js-->
-    <script src="{{ asset('js/contact.js')}}"></script>
-    <script src="{{ asset('js/jquery.ajaxchimp.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.form.js')}}"></script>
-    <script src="{{ asset('js/jquery.validate.min.js')}}"></script>
-    <script src="{{ asset('js/mail-script.js')}}"></script>
-    <script src="{{ asset('js/main.js')}}"></script>
+    <script src="{{ asset('front/js/contact.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.ajaxchimp.min.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.form.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.validate.min.js')}}"></script>
+    <script src="{{ asset('front/js/mail-script.js')}}"></script>
+    <script src="{{ asset('front/js/main.js')}}"></script>
     <script type="text/javascript">
         jQuery(function($) {
             // Asynchronously Load the map API

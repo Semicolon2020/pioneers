@@ -83,5 +83,15 @@
             <Font name="AR CENA" size="25.0" />
          </font>
       </Label>
+      <ImageView fx:id="newsinterface" fitHeight="105.0" fitWidth="179.0" layoutX="950.0" layoutY="581.0" onMouseClicked="#AffNEws" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../JavaFx/News-8.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="1006.0" layoutY="689.0" text="Actualite" textFill="#d76d34">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

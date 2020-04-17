@@ -22,6 +22,7 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
 
         $this->blocks = [
             'content' => [$this, 'block_content'],
+            'Javascript' => [$this, 'block_Javascript'],
         ];
     }
 
@@ -34,9 +35,7 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "base.html.twig"));
 
         // line 1
-        echo "
-
-    <!doctype html>
+        echo "<!doctype html>
 <html class=\"no-js\" lang=\"zxx\">
 
 <head>
@@ -48,56 +47,59 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
 
     <!-- <link rel=\"manifest\" href=\"site.webmanifest\"> -->
     <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"";
-        // line 14
+        // line 12
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "img/favicon.png\">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-
+    <link rel=\"stylesheet\" href=\"";
+        // line 16
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/css/hbib.css"), "html", null, true);
+        echo "\">
     <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">
     <link rel=\"stylesheet\" href=\"";
-        // line 20
+        // line 18
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/bootstrap.min.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 21
+        // line 19
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/owl.carousel.min.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 22
+        // line 20
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/magnific-popup.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 23
+        // line 21
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/font-awesome.min.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 24
+        // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/themify-icons.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 25
+        // line 23
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/nice-select.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 26
+        // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/flaticon.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 27
+        // line 25
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/gijgo.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 28
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/animate.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 29
+        // line 27
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/slicknav.css\">
     <link rel=\"stylesheet\" href=\"";
-        // line 30
+        // line 28
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "css/style.css\">
     <!-- <link rel=\"stylesheet\" href=\"css/responsive.css\"> -->
@@ -105,61 +107,61 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
     <script src=\"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js\" integrity=\"sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\" crossorigin=\"anonymous\"></script>
     <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js\" integrity=\"sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6\" crossorigin=\"anonymous\"></script>
     <link href=\"";
-        // line 35
+        // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "css/font-face.css\" rel=\"stylesheet\" media=\"all\">
     <link href=\"";
-        // line 36
+        // line 34
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/font-awesome-4.7/css/font-awesome.min.css\" rel=\"stylesheet\" media=\"all\">
     <link href=\"";
-        // line 37
+        // line 35
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/font-awesome-5/css/fontawesome-all.min.css\" rel=\"stylesheet\" media=\"all\">
     <link href=\"";
-        // line 38
+        // line 36
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/mdi-font/css/material-design-iconic-font.min.css\" rel=\"stylesheet\" media=\"all\">
 
     <!-- Bootstrap CSS-->
     <link href=\"";
-        // line 41
+        // line 39
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/bootstrap-4.1/bootstrap.min.css\" rel=\"stylesheet\" media=\"all\">
 
     <!-- Vendor CSS-->
     <link href=\"";
-        // line 44
+        // line 42
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/animsition/animsition.min.css\" rel=\"stylesheet\" media=\"all\">
     <link href=\"";
-        // line 45
+        // line 43
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css\" rel=\"stylesheet\" media=\"all\">
     <link href=\"";
-        // line 46
+        // line 44
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/wow/animate.css\" rel=\"stylesheet\" media=\"all\">
     <link href=\"";
-        // line 47
+        // line 45
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/css-hamburgers/hamburgers.min.css\" rel=\"stylesheet\" media=\"all\">
     <link href=\"";
-        // line 48
+        // line 46
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/slick/slick.css\" rel=\"stylesheet\" media=\"all\">
     <link href=\"";
-        // line 49
+        // line 47
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/select2/select2.min.css\" rel=\"stylesheet\" media=\"all\">
     <link href=\"";
-        // line 50
+        // line 48
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "vendor/perfect-scrollbar/perfect-scrollbar.css\" rel=\"stylesheet\" media=\"all\">
 
     <!-- Main CSS-->
     <link href=\"";
-        // line 53
+        // line 51
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "css/theme.css\" rel=\"stylesheet\" media=\"all\">
 </head>
@@ -177,12 +179,12 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
                 <div class=\"row align-items-center no-gutters\">
                     <div class=\"col-xl-2 col-lg-2\">
                         <div class=\"";
-        // line 68
+        // line 66
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "logo-img\">
                             <a href=\"#\">
                                 <img src=\"";
-        // line 70
+        // line 68
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/"), "html", null, true);
         echo "img/logo.png\" alt=\"\">
                             </a>
@@ -193,31 +195,49 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
                             <nav>
                                 <ul id=\"navigation\">
                                     <li><a href=\"";
-        // line 78
+        // line 76
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("back_homepage");
         echo "\">home</a></li>
-                                    <li><a href=\"Courses.html\">Courses</a></li>
-                                    <li><a href=\"#\">pages <i class=\"ti-angle-down\"></i></a>
-                                        <ul class=\"submenu\">
-                                            <li><a href=\"course_details.html\">course details</a></li>
-                                            <li><a href=\"";
+                                    <li><a href=\"#\">Courses</a></li>
+                                    <li><a href=
+                                                 ";
+        // line 79
+        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_FULLY")) {
+            echo " \"";
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("transport_homepage");
+            echo "\"
+                                                ";
+        } elseif ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_ANONYMOUSLY")) {
+            // line 81
+            echo "                                                    ";
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_login");
+            echo "
+                                                ";
+        }
         // line 83
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("transport_homepage");
-        echo "\">Transport</a></li>
-                                        </ul>
-                                    </li>
+        echo "                                            >Transport </a></li>
                                     <li><a href=\"about.html\">About</a></li>
-                                    <li><a href=\"";
-        // line 87
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("listallFront");
-        echo "\">News </a>
-
-                                    </li>
-                                    <li><a href=\"contact.html\">Contact</a></li>
+                                    <li><a href=
+                                      ";
+        // line 86
+        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_FULLY")) {
+            echo " \"";
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("listallFront");
+            echo "\"
+                                        ";
+        } elseif ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_ANONYMOUSLY")) {
+            // line 88
+            echo "                                            ";
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_login");
+            echo "
+                                        ";
+        }
+        // line 90
+        echo "                                        >News </a></li>
+                                    <li><a href=\"#\">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
-
                     </div>
 
                     <div class=\"col-xl-3 col-lg-3 d-none d-lg-block\">
@@ -232,7 +252,7 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
                             <a href=\"";
             // line 101
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
-            echo "\" class=\"login popup\">  <span>  log out</span> </a>
+            echo "\" class=\"login popup\">  <span> log out</span> </a>
 
                          ";
         } elseif ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_ANONYMOUSLY")) {
@@ -251,7 +271,7 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
         }
         // line 109
         echo "                            ";
-        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_FULLY")) {
+        if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_FULLY") && (isset($context["notif"]) || array_key_exists("notif", $context)))) {
             // line 110
             echo "                            <div class=\"noti__item js-item-menu\">
                                 <i class=\"zmdi zmdi-notifications\"></i>
@@ -688,6 +708,12 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
         // line 407
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("back/"), "html", null, true);
         echo "js/main.js\"></script>
+";
+        // line 408
+        $this->displayBlock('Javascript', $context, $blocks);
+        // line 435
+        echo "
+
 </body>
 
 </html>
@@ -752,6 +778,121 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
 
     }
 
+    // line 408
+    public function block_Javascript($context, array $blocks = [])
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "Javascript"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "Javascript"));
+
+        // line 409
+        echo "<script src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/vendor/modernizr-3.5.0.min.js"), "html", null, true);
+        echo "\" ></script>
+<script src=\"";
+        // line 410
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/vendor/jquery-1.12.4.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 411
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/popper.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 412
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/bootstrap.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 413
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/owl.carousel.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 414
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/isotope.pkgd.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 415
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/ajax-form.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 416
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/waypoints.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 417
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/jquery.counterup.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 418
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/imagesloaded.pkgd.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 419
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/scrollIt.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 420
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/jquery.scrollUp.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 421
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/wow.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 422
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/nice-select.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 423
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/jquery.slicknav.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 424
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/jquery.magnific-popup.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 425
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/plugins.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 426
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/gijgo.min.js"), "html", null, true);
+        echo "\"></script>
+<!--contact js-->
+<script src=\"";
+        // line 428
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/contact.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 429
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/jquery.ajaxchimp.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 430
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/jquery.form.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 431
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/jquery.validate.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 432
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/mail-script.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 433
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("front/js/main.js"), "html", null, true);
+        echo "\"></script>
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
     public function getTemplateName()
     {
         return "base.html.twig";
@@ -764,7 +905,7 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
 
     public function getDebugInfo()
     {
-        return array (  730 => 172,  726 => 171,  715 => 162,  706 => 161,  689 => 407,  682 => 403,  678 => 402,  674 => 401,  670 => 400,  665 => 398,  661 => 397,  656 => 395,  652 => 394,  648 => 393,  643 => 391,  638 => 389,  634 => 388,  629 => 386,  625 => 385,  620 => 383,  616 => 382,  612 => 381,  608 => 380,  604 => 379,  598 => 376,  594 => 375,  590 => 374,  586 => 373,  582 => 372,  578 => 371,  574 => 370,  570 => 369,  566 => 368,  562 => 367,  558 => 366,  554 => 365,  550 => 364,  546 => 363,  542 => 362,  538 => 361,  534 => 360,  530 => 359,  500 => 332,  467 => 302,  368 => 206,  348 => 188,  346 => 161,  330 => 147,  323 => 142,  317 => 141,  304 => 131,  299 => 129,  295 => 128,  291 => 127,  287 => 126,  279 => 120,  276 => 119,  272 => 118,  266 => 115,  260 => 112,  256 => 110,  253 => 109,  247 => 106,  243 => 105,  240 => 104,  234 => 101,  229 => 100,  227 => 99,  212 => 87,  205 => 83,  197 => 78,  186 => 70,  181 => 68,  163 => 53,  157 => 50,  153 => 49,  149 => 48,  145 => 47,  141 => 46,  137 => 45,  133 => 44,  127 => 41,  121 => 38,  117 => 37,  113 => 36,  109 => 35,  101 => 30,  97 => 29,  93 => 28,  89 => 27,  85 => 26,  81 => 25,  77 => 24,  73 => 23,  69 => 22,  65 => 21,  61 => 20,  52 => 14,  37 => 1,);
+        return array (  885 => 433,  881 => 432,  877 => 431,  873 => 430,  869 => 429,  865 => 428,  860 => 426,  856 => 425,  852 => 424,  848 => 423,  844 => 422,  840 => 421,  836 => 420,  832 => 419,  828 => 418,  824 => 417,  820 => 416,  816 => 415,  812 => 414,  808 => 413,  804 => 412,  800 => 411,  796 => 410,  791 => 409,  782 => 408,  756 => 172,  752 => 171,  741 => 162,  732 => 161,  715 => 435,  713 => 408,  709 => 407,  702 => 403,  698 => 402,  694 => 401,  690 => 400,  685 => 398,  681 => 397,  676 => 395,  672 => 394,  668 => 393,  663 => 391,  658 => 389,  654 => 388,  649 => 386,  645 => 385,  640 => 383,  636 => 382,  632 => 381,  628 => 380,  624 => 379,  618 => 376,  614 => 375,  610 => 374,  606 => 373,  602 => 372,  598 => 371,  594 => 370,  590 => 369,  586 => 368,  582 => 367,  578 => 366,  574 => 365,  570 => 364,  566 => 363,  562 => 362,  558 => 361,  554 => 360,  550 => 359,  520 => 332,  487 => 302,  388 => 206,  368 => 188,  366 => 161,  350 => 147,  343 => 142,  337 => 141,  324 => 131,  319 => 129,  315 => 128,  311 => 127,  307 => 126,  299 => 120,  296 => 119,  292 => 118,  286 => 115,  280 => 112,  276 => 110,  273 => 109,  267 => 106,  263 => 105,  260 => 104,  254 => 101,  249 => 100,  247 => 99,  236 => 90,  230 => 88,  223 => 86,  218 => 83,  212 => 81,  205 => 79,  199 => 76,  188 => 68,  183 => 66,  165 => 51,  159 => 48,  155 => 47,  151 => 46,  147 => 45,  143 => 44,  139 => 43,  135 => 42,  129 => 39,  123 => 36,  119 => 35,  115 => 34,  111 => 33,  103 => 28,  99 => 27,  95 => 26,  91 => 25,  87 => 24,  83 => 23,  79 => 22,  75 => 21,  71 => 20,  67 => 19,  63 => 18,  58 => 16,  51 => 12,  38 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -777,9 +918,7 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
 
     public function getSourceContext()
     {
-        return new Source("
-
-    <!doctype html>
+        return new Source("<!doctype html>
 <html class=\"no-js\" lang=\"zxx\">
 
 <head>
@@ -794,7 +933,7 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-
+    <link rel=\"stylesheet\" href=\"{{ asset('front/css/hbib.css')}}\">
     <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">
     <link rel=\"stylesheet\" href=\"{{ asset('front/') }}css/bootstrap.min.css\">
     <link rel=\"stylesheet\" href=\"{{ asset('front/') }}css/owl.carousel.min.css\">
@@ -855,29 +994,31 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
                             <nav>
                                 <ul id=\"navigation\">
                                     <li><a href=\"{{ path('back_homepage') }}\">home</a></li>
-                                    <li><a href=\"Courses.html\">Courses</a></li>
-                                    <li><a href=\"#\">pages <i class=\"ti-angle-down\"></i></a>
-                                        <ul class=\"submenu\">
-                                            <li><a href=\"course_details.html\">course details</a></li>
-                                            <li><a href=\"{{ path('transport_homepage') }}\">Transport</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href=\"#\">Courses</a></li>
+                                    <li><a href=
+                                                 {% if is_granted('IS_AUTHENTICATED_FULLY')  %} \"{{ path('transport_homepage') }}\"
+                                                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                                    {{ path('fos_user_security_login') }}
+                                                {% endif %}
+                                            >Transport </a></li>
                                     <li><a href=\"about.html\">About</a></li>
-                                    <li><a href=\"{{ path('listallFront') }}\">News </a>
-
-                                    </li>
-                                    <li><a href=\"contact.html\">Contact</a></li>
+                                    <li><a href=
+                                      {% if is_granted('IS_AUTHENTICATED_FULLY')  %} \"{{ path('listallFront') }}\"
+                                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                            {{ path('fos_user_security_login') }}
+                                        {% endif %}
+                                        >News </a></li>
+                                    <li><a href=\"#\">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
-
                     </div>
 
                     <div class=\"col-xl-3 col-lg-3 d-none d-lg-block\">
                         <div class=\"log_chat_area d-flex align-items-center\">
                          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                              <h5 class=\"login popup\"><i class=\"flaticon-user\"></i> {{app.user.username}}  </h5>
-                            <a href=\"{{ path('fos_user_security_logout') }}\" class=\"login popup\">  <span>  log out</span> </a>
+                            <a href=\"{{ path('fos_user_security_logout') }}\" class=\"login popup\">  <span> log out</span> </a>
 
                          {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
 
@@ -885,7 +1026,7 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
                             <a href=\"{{ path('fos_user_registration_register') }}\" class=\"login popup\"><span>Register</span></a>
 
                         {% endif %}
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') and notif is defined  %}
                             <div class=\"noti__item js-item-menu\">
                                 <i class=\"zmdi zmdi-notifications\"></i>
                                 <span class=\"quantity\">{{ mgilet_notification_unseen_count(app.user) }}</span>
@@ -1184,11 +1325,40 @@ class __TwigTemplate_f038bac1a262a5455aa48f864b82cc7d0cca6788813337177d2061aa1fe
 
 <!-- Main JS-->
 <script src=\"{{ asset('back/') }}js/main.js\"></script>
+{% block Javascript %}
+<script src=\"{{ asset('front/js/vendor/modernizr-3.5.0.min.js')}}\" ></script>
+<script src=\"{{ asset('front/js/vendor/jquery-1.12.4.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/popper.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/bootstrap.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/owl.carousel.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/isotope.pkgd.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/ajax-form.js')}}\"></script>
+<script src=\"{{ asset('front/js/waypoints.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/jquery.counterup.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/imagesloaded.pkgd.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/scrollIt.js')}}\"></script>
+<script src=\"{{ asset('front/js/jquery.scrollUp.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/wow.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/nice-select.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/jquery.slicknav.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/jquery.magnific-popup.min.js')}}\"></script>
+<script src=\"{{ asset('js/plugins.js')}}\"></script>
+<script src=\"{{ asset('front/js/gijgo.min.js')}}\"></script>
+<!--contact js-->
+<script src=\"{{ asset('front/js/contact.js')}}\"></script>
+<script src=\"{{ asset('front/js/jquery.ajaxchimp.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/jquery.form.js')}}\"></script>
+<script src=\"{{ asset('front/js/jquery.validate.min.js')}}\"></script>
+<script src=\"{{ asset('front/js/mail-script.js')}}\"></script>
+<script src=\"{{ asset('front/js/main.js')}}\"></script>
+{% endblock %}
+
+
 </body>
 
 </html>
 
 
-", "base.html.twig", "D:\\wamp64\\www\\pioneerss\\PioneersWeb\\app\\Resources\\views\\base.html.twig");
+", "base.html.twig", "D:\\programs\\wamp64\\www\\Web2.0\\INT\\PioneersWeb\\app\\Resources\\views\\base.html.twig");
     }
 }

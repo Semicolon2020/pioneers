@@ -71,8 +71,10 @@ public class ServiceActualite implements IService.IServiceActualite<Actualite>{
                int id=rs.getInt(1);
                String date=rs.getDate(2).toString();
                String description=rs.getString(3);
+               String titre=rs.getString(4);
                
-               Actualite c =new Actualite(id, date, description);
+               
+               Actualite c =new Actualite(id, date, description,titre);
      arr.add(c);
      }
     return arr;

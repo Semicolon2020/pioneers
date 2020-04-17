@@ -10,13 +10,22 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request )
     {
-        $N= new NotifiableNotification();
 
-        $em = $this->getDoctrine()->getRepository(NotifiableNotification::class)
-            ->findAllForNotifiable($this->getUser()->getId(),'PioneerBundle\Entity\User');
-        $session = $request->getSession();
-        $session->set('notif',$em);
 
-        return $this->render('base.html.twig',array('notif'=>$em));
+        if($this->getUser() !=null)
+        {
+            $em = $this->getDoctrine()->getRepository(NotifiableNotification::class)
+                ->findAllForNotifiable($this->getUser()->getId(),'PioneerBundle\Entity\User');
+            $session = $request->getSession();
+            $session->set('notif',$em);
+
+            return $this->render('base.html.twig',array('notif'=>$em));
+        }
+        else
+        {
+            return $this->render('base.html.twig');
+        }
+
+
     }
 }

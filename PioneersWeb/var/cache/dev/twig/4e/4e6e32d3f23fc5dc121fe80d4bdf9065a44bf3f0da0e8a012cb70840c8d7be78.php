@@ -652,6 +652,6 @@ class __TwigTemplate_c3218f6d86f2dc48fdc9a863cf7880d2c9e0f18092a17eafe4f86ed5f4d
     </div>
 </section>
 
-{% endblock %}", "@Pioneer/Blog/singleblog.html.twig", "D:\\wamp64\\www\\pioneerss\\PioneersWeb\\src\\PioneerBundle\\Resources\\views\\Blog\\singleblog.html.twig");
+{% endblock %}", "@Pioneer/Blog/singleblog.html.twig", "D:\\programs\\wamp64\\www\\Web2.0\\INT\\PioneersWeb\\src\\PioneerBundle\\Resources\\views\\Blog\\singleblog.html.twig");
     }
 }

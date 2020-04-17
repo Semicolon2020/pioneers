@@ -188,7 +188,7 @@ class BlogController extends Controller
         $p->setPoint($p->getPoint()+1);
         $em->persist($p);
         $em->flush();
-        $lien ="http://localhost/Web2.0/PioneersWeb/web/app_dev.php/pioneer/singleblog/".$session->get('idB')  ."/".$session->get('idU');
+        $lien ="http://localhost/Web2.0/INT/PioneersWeb/web/app_dev.php/pioneer/singleblog/".$session->get('idB')  ."/".$session->get('idU');
         /// Notification
         $manager = $this->get('mgilet.notification');
         $notif = $manager->createNotification($p->getActualite()->getTitre());
@@ -231,7 +231,7 @@ class BlogController extends Controller
 
         //////
         /// Notification
-        $lien ="http://localhost/Web2.0/PioneersWeb/web/app_dev.php/pioneer/singleblog/".$session->get('idB')  ."/".$session->get('idU');
+        $lien ="http://localhost/Web2.0/INT/PioneersWeb/web/app_dev.php/pioneer/singleblog/".$session->get('idB')  ."/".$session->get('idU');
         $manager = $this->get('mgilet.notification');
         $notif = $manager->createNotification($p->getComment()->getActualite()->getTitre());
         $notif->setMessage($this->getUser().' Liked your Reply');

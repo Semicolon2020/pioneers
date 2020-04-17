@@ -13,16 +13,26 @@ public class Actualite {
     
     private int id;
     private String date;
+    private String titre;
     private String description;
 
     public Actualite(String description) {
         this.description = description;
     }
     
-    public Actualite(int id,String date, String description) {
+    public Actualite(int id,String date, String description,String titre) {
+        this.titre=titre;
         this.date=date;
         this.id=id;
         this.description = description;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
     
 

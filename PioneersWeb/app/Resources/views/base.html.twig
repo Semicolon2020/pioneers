@@ -1,6 +1,4 @@
-
-
-    <!doctype html>
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
@@ -15,7 +13,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-
+    <link rel="stylesheet" href="{{ asset('front/css/hbib.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('front/') }}css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('front/') }}css/owl.carousel.min.css">
@@ -76,29 +74,31 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a href="{{ path('back_homepage') }}">home</a></li>
-                                    <li><a href="Courses.html">Courses</a></li>
-                                    <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                        <ul class="submenu">
-                                            <li><a href="course_details.html">course details</a></li>
-                                            <li><a href="{{ path('transport_homepage') }}">Transport</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="#">Courses</a></li>
+                                    <li><a href=
+                                                 {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('transport_homepage') }}"
+                                                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                                    {{ path('fos_user_security_login') }}
+                                                {% endif %}
+                                            >Transport </a></li>
                                     <li><a href="about.html">About</a></li>
-                                    <li><a href="{{ path('listallFront') }}">News </a>
-
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href=
+                                      {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('listallFront') }}"
+                                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                            {{ path('fos_user_security_login') }}
+                                        {% endif %}
+                                        >News </a></li>
+                                    <li><a href="#">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
-
                     </div>
 
                     <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                         <div class="log_chat_area d-flex align-items-center">
                          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                              <h5 class="login popup"><i class="flaticon-user"></i> {{app.user.username}}  </h5>
-                            <a href="{{ path('fos_user_security_logout') }}" class="login popup">  <span>  log out</span> </a>
+                            <a href="{{ path('fos_user_security_logout') }}" class="login popup">  <span> log out</span> </a>
 
                          {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
 
@@ -106,7 +106,7 @@
                             <a href="{{ path('fos_user_registration_register') }}" class="login popup"><span>Register</span></a>
 
                         {% endif %}
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') and notif is defined  %}
                             <div class="noti__item js-item-menu">
                                 <i class="zmdi zmdi-notifications"></i>
                                 <span class="quantity">{{ mgilet_notification_unseen_count(app.user) }}</span>
@@ -405,6 +405,35 @@
 
 <!-- Main JS-->
 <script src="{{ asset('back/') }}js/main.js"></script>
+{% block Javascript %}
+<script src="{{ asset('front/js/vendor/modernizr-3.5.0.min.js')}}" ></script>
+<script src="{{ asset('front/js/vendor/jquery-1.12.4.min.js')}}"></script>
+<script src="{{ asset('front/js/popper.min.js')}}"></script>
+<script src="{{ asset('front/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('front/js/owl.carousel.min.js')}}"></script>
+<script src="{{ asset('front/js/isotope.pkgd.min.js')}}"></script>
+<script src="{{ asset('front/js/ajax-form.js')}}"></script>
+<script src="{{ asset('front/js/waypoints.min.js')}}"></script>
+<script src="{{ asset('front/js/jquery.counterup.min.js')}}"></script>
+<script src="{{ asset('front/js/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{ asset('front/js/scrollIt.js')}}"></script>
+<script src="{{ asset('front/js/jquery.scrollUp.min.js')}}"></script>
+<script src="{{ asset('front/js/wow.min.js')}}"></script>
+<script src="{{ asset('front/js/nice-select.min.js')}}"></script>
+<script src="{{ asset('front/js/jquery.slicknav.min.js')}}"></script>
+<script src="{{ asset('front/js/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{ asset('js/plugins.js')}}"></script>
+<script src="{{ asset('front/js/gijgo.min.js')}}"></script>
+<!--contact js-->
+<script src="{{ asset('front/js/contact.js')}}"></script>
+<script src="{{ asset('front/js/jquery.ajaxchimp.min.js')}}"></script>
+<script src="{{ asset('front/js/jquery.form.js')}}"></script>
+<script src="{{ asset('front/js/jquery.validate.min.js')}}"></script>
+<script src="{{ asset('front/js/mail-script.js')}}"></script>
+<script src="{{ asset('front/js/main.js')}}"></script>
+{% endblock %}
+
+
 </body>
 
 </html>

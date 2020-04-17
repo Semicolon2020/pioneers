@@ -59,6 +59,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
       <path value="$PROJECT_DIR$/vendor/mgilet/notification-bundle" />
+      <path value="$PROJECT_DIR$/vendor/opencage/geocode" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZVeDohF5DsIXjJgtlcZftAbKFX" />
@@ -127,6 +128,7 @@
       <workItem from="1586436209971" duration="600000" />
       <workItem from="1586457006227" duration="16293000" />
       <workItem from="1586508892663" duration="2873000" />
+      <workItem from="1587131607303" duration="13474000" />
     </task>
     <servers />
   </component>
@@ -143,9 +145,10 @@
     </state>
     <state x="-1074" y="192" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1680.34.1680.1010@-1680.34.1680.1010" timestamp="1586298933546" />
     <state x="554" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1586377341413" />
-    <state x="499" y="168" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586457964471">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="-1134" y="240" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587140020975">
+      <screen x="-1680" y="34" width="1680" height="1010" />
     </state>
+    <state x="-1134" y="240" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1680.34.1680.1010@-1680.34.1680.1010" timestamp="1587140020975" />
     <state x="499" y="168" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1586457964471" />
     <state x="478" y="283" key="ComposerCompositePathDialog" timestamp="1584929971795">
       <screen x="0" y="0" width="1536" height="824" />
@@ -183,6 +186,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="515" y="310" key="SymfonyPathDialog/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1584929675728" />
+    <state x="193" y="-17" width="1249" height="851" key="dock-window-1" timestamp="1587144848578">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="193" y="-17" width="1249" height="851" key="dock-window-1/0.0.1536.824/-1680.34.1680.1010@-1680.34.1680.1010" timestamp="1587144848578" />
+    <state x="-1154" y="113" width="627" height="852" key="find.popup" timestamp="1587132209249">
+      <screen x="-1680" y="34" width="1680" height="1010" />
+    </state>
+    <state x="-1154" y="113" width="627" height="852" key="find.popup/0.0.1536.824/-1680.34.1680.1010@-1680.34.1680.1010" timestamp="1587132209249" />
     <state x="409" y="110" width="672" height="677" key="run.anything.popup" timestamp="1586285989153">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

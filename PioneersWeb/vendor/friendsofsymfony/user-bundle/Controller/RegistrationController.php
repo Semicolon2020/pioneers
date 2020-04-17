@@ -74,6 +74,7 @@ class RegistrationController extends Controller
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
 
+
                 $file = $user->getPhoto();
                 $filename= md5(uniqid(rand(), true))  . '.' . $file->guessExtension();
                 $file->move($this->getParameter('photos_directory'), $filename);

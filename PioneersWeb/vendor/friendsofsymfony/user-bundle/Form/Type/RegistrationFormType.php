@@ -16,6 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -41,18 +43,22 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cin')
-            ->add('nom')
-            ->add('prenom')
-            ->add('numTel')
-            ->add('roles', ChoiceType::class, array('label' => 'Role ',
+            ->add('cin',TextType::class,array(
+                'attr' => array(
+                    'placeholder' => 'Cin...','maxlength' => 255
+                )))
+            ->add('nom',TextType::class,array('attr' => array('placeholder' => 'Nom...')))
+            ->add('prenom',TextType::class,array('attr' => array('placeholder' => 'Prenom...')))
+            ->add('numTel',TextType::class,array('attr' => array('placeholder' => 'Numero...')))
+            ->add('roles', ChoiceType::class, array(
                 'choices' => array('Parent' => 'P',
                                     'Admin' => 'R',
                                     'Tutor' => 'T'),
                 'required' => true, 'multiple' => true,))
-            ->add('etatCivil')
-            ->add('email', EmailType::class, array('label' => 'email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('username', null, array('label' => 'Username', 'translation_domain' => 'FOSUserBundle'))
+
+            ->add('etatCivil',TextType::class,array('attr' => array('placeholder' => 'Etat civil...')))
+            ->add('email', EmailType::class, array('attr'=>array('placeholder'=>'E-mail...'),'label' => 'email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('username', null, array('attr'=>array('placeholder'=>'Username...'),'label' => 'Username', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'options' => array(
@@ -61,8 +67,8 @@ class RegistrationFormType extends AbstractType
                         'autocomplete' => 'new-password',
                     ),
                 ),
-                'first_options' => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat password'),
+                'first_options' => array('attr'=>array('placeholder'=>'Password...')),
+                'second_options' => array('attr'=>array('placeholder'=>'Repeat password...')),
                 'invalid_message' => 'password mismatch',
             ))
             ->add('photo', FileType::class, array('data_class'=>null, 'required'=>false))

@@ -296,6 +296,6 @@ class __TwigTemplate_c948186df05c20b79be5df80d3d8423927a4272ee9b79b7afd23ad02eee
     <!-- our_latest_blog_end -->
 
 {% endblock %}
-", "@Pioneer/Blog/viewfront.html.twig", "D:\\wamp64\\www\\pioneerss\\PioneersWeb\\src\\PioneerBundle\\Resources\\views\\Blog\\viewfront.html.twig");
+", "@Pioneer/Blog/viewfront.html.twig", "D:\\programs\\wamp64\\www\\Web2.0\\INT\\PioneersWeb\\src\\PioneerBundle\\Resources\\views\\Blog\\viewfront.html.twig");
     }
 }

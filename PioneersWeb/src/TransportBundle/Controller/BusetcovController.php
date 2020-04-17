@@ -18,7 +18,7 @@ class BusetcovController extends Controller
     public function afficherfAction( Request $request){
 
               $ids = $request->get("id");
-        $club=$this->getDoctrine()->getRepository(Trajet::class)->findAll();
+        $club=$this->getDoctrine()->getRepository(Trajet::class)->findByIdbus3();
         $club1=$this->getDoctrine()->getRepository(Station::class)->findBytrajet($ids);
         return $this->render('@Transport/front/Bus/index.html.twig',array('tab'=>$club,'tabb'=>$club1));}
 

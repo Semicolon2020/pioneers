@@ -45,4 +45,12 @@ class TrajetRepository extends \Doctrine\ORM\EntityRepository
             "SELECT b.id,b.name from TransportBundle:Bus b where b.id IN (SELECT t.idbus From TransportBundle:Trajet t where t.id='$id') " );
         return $q->getResult();
     }
+
+    public function findByIdbus3()
+    {
+        $q=$this->getEntityManager()->createQuery(   "SELECT t.id, t.name,t.idbus,(SELECT b.name FROM TransportBundle:Bus b  where  t.idbus = b.id )nombus FROM TransportBundle:Trajet t Where t.id  IN (Select s.idtrajet FROM TransportBundle:Station s) "         );
+        return $q->getResult();
+    }
+
+
 }
