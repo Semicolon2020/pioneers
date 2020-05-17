@@ -4,7 +4,11 @@
 namespace TransportBundle\Controller;
 
 use OpenCage\Geocoder\Geocoder;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use TransportBundle\Entity\Station;
+use TransportBundle\Entity\Trajet;
 use TransportBundle\Form\StationType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,6 +88,49 @@ class StationController extends Controller
         return  $this->redirectToRoute('afficherdetailsst',['id' => $id]);
     }
 
+    public function stationaddAction(Request $request) {
+
+        $club = new Station();
+        $club->setName($request->get('name'));
+        $in1=$request->get('name');
+        $url = "https://api.opencagedata.com/geocode/v1/json?q=".$in1."&key=298b7f9be7d54d9ab21c3e365567b3f0&language=en&pretty=1";
+        $json = file_get_contents($url);
+        $json = json_decode($json);
+        $lat = $json->results[0]->geometry->lat;
+        $lng = $json->results[0]->geometry->lng;
+        $club->setAltitude($lat);
+        $club->setLongtitude($lng);
+        $club->setIdtrajet($request->get('id'));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($club);
+        $em->flush();
+        $serializer=new SeriaLizer([ new ObjectNormaLizer()]);
+        $formatted=$serializer->normalize($club);
+        return new JsonResponse($formatted);
+    }
+
+
+
+    public function stationdelAction(Request  $request)
+    {
+
+
+        $club=$this->getDoctrine()->getRepository(Station::class)->find($request->get('id'));
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($club);
+        $em->flush();
+        $serializer=new SeriaLizer([ new ObjectNormaLizer()]);
+        $formatted=$serializer->normalize($club);
+        return new JsonResponse($formatted);
+    }
+
+    public function stationallAction($id)
+    {
+        $club=$this->getDoctrine()->getRepository(Station::class)->findByTrajet($id);
+        $serializer=new SeriaLizer([ new ObjectNormaLizer()]);
+        $formatted=$serializer->normalize($club);
+        return new JsonResponse($formatted);
+    }
 
 
 

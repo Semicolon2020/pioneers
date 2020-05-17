@@ -107,14 +107,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // back_homepage
-        if ('/index' === $pathinfo) {
-            return array (  '_controller' => 'BackBundle\\Controller\\DefaultController::indexAction',  '_route' => 'back_homepage',);
+        elseif (0 === strpos($pathinfo, '/api')) {
+            // esprit_api_homepage
+            if ('/api' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::indexAction',  '_route' => 'esprit_api_homepage',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_esprit_api_homepage;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'esprit_api_homepage'));
+                }
+
+                return $ret;
+            }
+            not_esprit_api_homepage:
+
+            if (0 === strpos($pathinfo, '/api/list')) {
+                // listBlogMobile
+                if ('/api/listblogs' === $pathinfo) {
+                    return array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::listblogAction',  '_route' => 'listBlogMobile',);
+                }
+
+                // listCmtMobile
+                if (0 === strpos($pathinfo, '/api/listCmt') && preg_match('#^/api/listCmt/(?P<idB>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'listCmtMobile']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::listCmtAction',));
+                }
+
+                // AffReply
+                if (0 === strpos($pathinfo, '/api/listrep') && preg_match('#^/api/listrep/(?P<idC>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AffReply']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::listReplyAction',));
+                }
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/api/a')) {
+                // AuthMobile
+                if (0 === strpos($pathinfo, '/api/auth') && preg_match('#^/api/auth/(?P<username>[^/]++)/(?P<password>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AuthMobile']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AuthAction',));
+                }
+
+                // AddCmt
+                if (0 === strpos($pathinfo, '/api/addCmt') && preg_match('#^/api/addCmt/(?P<idB>[^/]++)/(?P<idU>[^/]++)/(?P<text>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddCmt']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addCmtAction',));
+                }
+
+                // AddReply
+                if (0 === strpos($pathinfo, '/api/addReply') && preg_match('#^/api/addReply/(?P<idC>[^/]++)/(?P<idU>[^/]++)/(?P<text>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddReply']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addReplyAction',));
+                }
+
+            }
+
         }
 
         // admin_dashboard
         if ('/admin' === $pathinfo) {
             return array (  '_controller' => 'BackBundle\\Controller\\BackController::indexAction',  '_route' => 'admin_dashboard',);
+        }
+
+        // back_homepage
+        if ('/index' === $pathinfo) {
+            return array (  '_controller' => 'BackBundle\\Controller\\DefaultController::indexAction',  '_route' => 'back_homepage',);
         }
 
         if (0 === strpos($pathinfo, '/pioneer')) {
@@ -250,9 +304,45 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::indexAction',  '_route' => 'transport_homepage',);
                 }
 
-                // trajet_homepage
-                if ('/transport/trajet' === $pathinfo) {
-                    return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::trajetAction',  '_route' => 'trajet_homepage',);
+                if (0 === strpos($pathinfo, '/transport/trajet')) {
+                    // trajet_homepage
+                    if ('/transport/trajet' === $pathinfo) {
+                        return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::trajetAction',  '_route' => 'trajet_homepage',);
+                    }
+
+                    if (0 === strpos($pathinfo, '/transport/trajetid')) {
+                        // mobile2
+                        if (preg_match('#^/transport/trajetid/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobile2']), array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::trajetfindAction',));
+                        }
+
+                        // mobile55
+                        if ('/transport/trajetidzz' === $pathinfo) {
+                            return array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::trajetfindbusAction',  '_route' => 'mobile55',);
+                        }
+
+                    }
+
+                    // mobile3
+                    if ('/transport/trajetall' === $pathinfo) {
+                        return array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::allAction',  '_route' => 'mobile3',);
+                    }
+
+                    // mobile13
+                    if (0 === strpos($pathinfo, '/transport/trajetadd') && preg_match('#^/transport/trajetadd/(?P<name>[^/]++)/(?P<idbus>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobile13']), array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::trajetaddAction',));
+                    }
+
+                    // mobile51188
+                    if (0 === strpos($pathinfo, '/transport/trajetdel') && preg_match('#^/transport/trajetdel/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobile51188']), array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::trajetdelAction',));
+                    }
+
+                    // mobile588
+                    if (0 === strpos($pathinfo, '/transport/trajeteditt') && preg_match('#^/transport/trajeteditt/(?P<name>[^/]++)/(?P<idbus>[^/]++)/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobile588']), array (  '_controller' => 'TransportBundle\\Controller\\TrajetController::trajetedittAction',));
+                    }
+
                 }
 
                 // Transport2_homepage
@@ -273,11 +363,34 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return array (  '_controller' => 'TransportBundle\\Controller\\BusetcovController::afficherfAction',  '_route' => 'busf',);
                 }
 
+                // mobile
+                if ('/transport/busall' === $pathinfo) {
+                    return array (  '_controller' => 'TransportBundle\\Controller\\BusController::allAction',  '_route' => 'mobile',);
+                }
+
+                if (0 === strpos($pathinfo, '/transport/busmobile')) {
+                    // mobile4
+                    if (preg_match('#^/transport/busmobile/(?P<id>[^/]++)/(?P<name>[^/]++)/(?P<capacite>[^/]++)/(?P<chauffeur>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobile4']), array (  '_controller' => 'TransportBundle\\Controller\\BusController::editmobileAction',));
+                    }
+
+                    // mobil4
+                    if (0 === strpos($pathinfo, '/transport/busmobile3') && preg_match('#^/transport/busmobile3/(?P<name>[^/]++)/(?P<capacite>[^/]++)/(?P<chauffeur>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobil4']), array (  '_controller' => 'TransportBundle\\Controller\\BusController::addmobileAction',));
+                    }
+
+                    // mobile5
+                    if (0 === strpos($pathinfo, '/transport/busmobile2') && preg_match('#^/transport/busmobile2/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobile5']), array (  '_controller' => 'TransportBundle\\Controller\\BusController::deletemobileAction',));
+                    }
+
+                }
+
             }
 
-            // backk_homepage
+            // Tback_homepage
             if ('/transport/back' === $pathinfo) {
-                return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::backAction',  '_route' => 'backk_homepage',);
+                return array (  '_controller' => 'TransportBundle\\Controller\\DefaultController::backAction',  '_route' => 'Tback_homepage',);
             }
 
             if (0 === strpos($pathinfo, '/transport/add')) {
@@ -365,6 +478,24 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // offre
             if ('/transport/offre' === $pathinfo) {
                 return array (  '_controller' => 'TransportBundle\\Controller\\BusetcovController::afficheroffreAction',  '_route' => 'offre',);
+            }
+
+            if (0 === strpos($pathinfo, '/transport/station')) {
+                // mobile511288
+                if (0 === strpos($pathinfo, '/transport/stationdel') && preg_match('#^/transport/stationdel/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobile511288']), array (  '_controller' => 'TransportBundle\\Controller\\StationController::stationdelAction',));
+                }
+
+                // mobile5818
+                if (0 === strpos($pathinfo, '/transport/stationadd') && preg_match('#^/transport/stationadd/(?P<name>[^/]++)/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobile5818']), array (  '_controller' => 'TransportBundle\\Controller\\StationController::stationaddAction',));
+                }
+
+                // mobile58148
+                if (0 === strpos($pathinfo, '/transport/stationall') && preg_match('#^/transport/stationall/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'mobile58148']), array (  '_controller' => 'TransportBundle\\Controller\\StationController::stationallAction',));
+                }
+
             }
 
         }

@@ -10,7 +10,7 @@ add_bus:
 trajet_homepage:
     path:     /trajet
     defaults: { _controller: TransportBundle:Default:trajet }
-backk_homepage:
+Tback_homepage:
     path:     /back
     defaults: { _controller: TransportBundle:Default:back }
 Transport2_homepage:
@@ -63,5 +63,43 @@ afficherbuss:
   path:     /afficherbuss
   defaults: { _controller: TransportBundle:Busetcov:afficherbuss }
 
+mobile:
+  path:     /busall
+  defaults: { _controller: TransportBundle:Bus:all }
+mobile2:
+  path:     /trajetid/{id}
+  defaults: { _controller: TransportBundle:Trajet:trajetfind }
+mobile55:
+  path:     /trajetidzz
+  defaults: { _controller: TransportBundle:Trajet:trajetfindbus }
+mobile3:
+  path:     /trajetall
+  defaults: { _controller: TransportBundle:Trajet:all }
+mobile13:
+  path:     /trajetadd/{name}/{idbus}
+  defaults: { _controller: TransportBundle:Trajet:trajetadd }
+mobile4:
+  path:     /busmobile/{id}/{name}/{capacite}/{chauffeur}
+  defaults: { _controller: TransportBundle:Bus:editmobile }
+mobil4:
+  path:     /busmobile3/{name}/{capacite}/{chauffeur}
+  defaults: { _controller: TransportBundle:Bus:addmobile }
+mobile5:
+  path:     /busmobile2/{id}
+  defaults: { _controller: TransportBundle:Bus:deletemobile }
+mobile51188:
+  path:     /trajetdel/{id}
+  defaults: { _controller: TransportBundle:Trajet:trajetdel }
+mobile588:
+  path:     /trajeteditt/{name}/{idbus}/{id}
+  defaults: { _controller: TransportBundle:Trajet:trajeteditt }
 
-
+mobile511288:
+  path:     /stationdel/{id}
+  defaults: { _controller: TransportBundle:Station:stationdel }
+mobile5818:
+  path:     /stationadd/{name}/{id}
+  defaults: { _controller: TransportBundle:Station:stationadd}
+mobile58148:
+  path:     /stationall/{id}
+  defaults: { _controller: TransportBundle:Station:stationall}

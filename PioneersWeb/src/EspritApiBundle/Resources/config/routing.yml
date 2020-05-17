@@ -1,0 +1,28 @@
+esprit_api_homepage:
+    path:     /
+    defaults: { _controller: EspritApiBundle:Default:index }
+
+listBlogMobile:
+    path:     /listblogs
+    defaults: { _controller: EspritApiBundle:Default:listblog }
+
+listCmtMobile:
+    path:     /listCmt/{idB}
+    defaults: { _controller: EspritApiBundle:Default:listCmt }
+
+AuthMobile:
+    path:     /auth/{username}/{password}
+    defaults: { _controller: EspritApiBundle:Default:Auth }
+
+
+AddCmt:
+    path:     /addCmt/{idB}/{idU}/{text}
+    defaults: { _controller: EspritApiBundle:Default:addCmt }
+
+AffReply:
+    path:     /listrep/{idC}
+    defaults: { _controller: EspritApiBundle:Default:listReply }
+
+AddReply:
+    path:     /addReply/{idC}/{idU}/{text}
+    defaults: { _controller: EspritApiBundle:Default:addReply }

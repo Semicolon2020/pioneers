@@ -55,7 +55,7 @@
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
-
+{% block header %}
 <!-- header-start -->
 <header>
     <div class="header-area ">
@@ -156,7 +156,7 @@
     </div>
 </header>
 
-
+{% endblock %}
 <!-- header-end -->
 {% block content %}
 <div class="slider_area ">
@@ -192,7 +192,7 @@
 
 
 
-
+{% block footer %}
 
 <!-- footer -->
 <footer class="footer footer_bg_1">
@@ -291,6 +291,7 @@
     </div>
 </footer>
 <!-- footer -->
+{% endblock %}
 
 
 <!-- form itself end-->

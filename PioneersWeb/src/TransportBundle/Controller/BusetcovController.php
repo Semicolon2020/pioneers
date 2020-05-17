@@ -20,20 +20,20 @@ class BusetcovController extends Controller
               $ids = $request->get("id");
         $club=$this->getDoctrine()->getRepository(Trajet::class)->findByIdbus3();
         $club1=$this->getDoctrine()->getRepository(Station::class)->findBytrajet($ids);
-        return $this->render('@Transport/front/Bus/index.html.twig',array('tab'=>$club,'tabb'=>$club1));}
+        return $this->render('@Transport/front/Bus/index2.html.twig',array('tab'=>$club,'tabb'=>$club1));}
 
 public function affichercoAction(){
     return $this->render('@Transport/front/Covoiturage/index.html.twig');}
     public function afficheroffreAction(){
 
         $club=$this->getDoctrine()->getRepository(Busetcov::class)->findByNames();
-        return $this->render('@Transport/front/Covoiturage/offre.html.twig',array('tab'=>$club));}
+        return $this->render('@Transport/front/Covoiturage/offre2.html.twig',array('tab'=>$club));}
 
     public function afficherdemandeAction(){
 
         $club=$this->getDoctrine()->getRepository(Busetcov::class)->findByName();
 
-        return $this->render('@Transport/front/Covoiturage/demande.html.twig',array('tab'=>$club));}
+        return $this->render('@Transport/front/Covoiturage/demande2.html.twig',array('tab'=>$club));}
 
     public function afficherbussAction(Request $request){
         $ids = $request->get("id");

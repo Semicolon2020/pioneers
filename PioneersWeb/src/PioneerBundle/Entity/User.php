@@ -11,7 +11,7 @@ use Mgilet\NotificationBundle\NotifiableInterface;
  * User
  *
  * @ORM\Table(name="`user`", uniqueConstraints={@ORM\UniqueConstraint(name="cin", columns={"cin"}), @ORM\UniqueConstraint(name="email", columns={"email", "num_tel"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PioneerBundle\Repository\UserRepository")
  * @Notifiable(name="User")
  */
 class User extends BaseUser  implements NotifiableInterface
@@ -133,6 +133,14 @@ class User extends BaseUser  implements NotifiableInterface
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 
@@ -281,6 +289,7 @@ class User extends BaseUser  implements NotifiableInterface
     {
         $this->sexe = $sexe;
     }
+
 
 
 

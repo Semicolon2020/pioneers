@@ -37,17 +37,19 @@ class PasswordUpdater implements PasswordUpdaterInterface
             return;
         }
 
-        $encoder = $this->encoderFactory->getEncoder($user);
+    //    $encoder = $this->encoderFactory->getEncoder($user);
 
-        if ($encoder instanceof BCryptPasswordEncoder) {
+     /*   if ($encoder instanceof BCryptPasswordEncoder) {
             $user->setSalt(null);
         } else {
             $salt = rtrim(str_replace('+', '.', base64_encode(random_bytes(32))), '=');
             $user->setSalt($salt);
-        }
+        }*/
 
-        $hashedPassword = $encoder->encodePassword($plainPassword, $user->getSalt());
-        $user->setPassword($hashedPassword);
+       // $hashedPassword = $encoder->encodePassword($plainPassword, $user->getSalt());
+     //   $user->setPassword($hashedPassword);
+        $user->setPassword($plainPassword);
+
         $user->eraseCredentials();
     }
 }

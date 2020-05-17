@@ -99,26 +99,26 @@
                                                     <div class="shadow-none p-3 mb-5 bg-light rounded">
                                                         <div class="single-comment justify-content-between d-flex">
                                                             <div class="user justify-content-between d-flex">
-                                                        <div class="thumb">
-                                                            <img src="{{ asset('uploads/post/' ~  R.user.photo) }} " alt="">
-                                                        </div>
-                                                        <div class="desc">
-                                                            <p class="comment">
-                                                                {{ R.text }}
-                                                            </p>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div class="d-flex align-items-center">
-                                                                    <h5>
-                                                                        <a>{{ R.user.username }}</a>
-                                                                    </h5>
-                                                                    <p class="date">{{R.date | date("d F Y")}}</p>
+                                                                <div class="thumb">
+                                                                    <img src="{{ asset('uploads/post/' ~  R.user.photo) }} " alt="">
+                                                                </div>
+                                                                <div class="desc">
+                                                                    <p class="comment">
+                                                                        {{ R.text }}
+                                                                    </p>
+                                                                    <div class="d-flex justify-content-between">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <h5>
+                                                                                <a>{{ R.user.username }}</a>
+                                                                            </h5>
+                                                                            <p class="date">{{R.date | date("d F Y")}}</p>
 
-                                                                    <div>
+                                                                            <div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
                                                         </div>
                                                         {% if  R.user.id != app.user.id %}
 
@@ -211,5 +211,6 @@
         </div>
     </div>
 </section>
+
 
 {% endblock %}

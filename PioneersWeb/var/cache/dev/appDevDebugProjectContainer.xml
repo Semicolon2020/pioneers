@@ -22,6 +22,7 @@
       <parameter key="BackBundle">BackBundle\BackBundle</parameter>
       <parameter key="MgiletNotificationBundle">Mgilet\NotificationBundle\MgiletNotificationBundle</parameter>
       <parameter key="TransportBundle">TransportBundle\TransportBundle</parameter>
+      <parameter key="EspritApiBundle">EspritApiBundle\EspritApiBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -93,6 +94,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\TransportBundle</parameter>
         <parameter key="namespace">TransportBundle</parameter>
+      </parameter>
+      <parameter key="EspritApiBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\EspritApiBundle</parameter>
+        <parameter key="namespace">EspritApiBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -2271,14 +2277,7 @@
       <argument>none</argument>
     </service>
     <service id="security.encoder_factory.generic" class="Symfony\Component\Security\Core\Encoder\EncoderFactory" public="false">
-      <argument type="collection">
-        <argument key="FOS\UserBundle\Model\UserInterface" type="collection">
-          <argument key="class">Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder</argument>
-          <argument key="arguments" type="collection">
-            <argument>13</argument>
-          </argument>
-        </argument>
-      </argument>
+      <argument type="collection"/>
     </service>
     <service id="security.user_password_encoder.generic" class="Symfony\Component\Security\Core\Encoder\UserPasswordEncoder" public="false">
       <argument type="service" id="security.encoder_factory.generic"/>
@@ -2911,9 +2910,7 @@
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
       <argument type="service" id="security.encoder_factory.generic"/>
-      <argument type="collection">
-        <argument>FOS\UserBundle\Model\UserInterface</argument>
-      </argument>
+      <argument type="collection"/>
       <call method="setName">
         <argument>security:encode-password</argument>
       </call>
@@ -3107,6 +3104,14 @@
       <call method="addPath">
         <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\TransportBundle/Resources/views</argument>
         <argument>!Transport</argument>
+      </call>
+      <call method="addPath">
+        <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\EspritApiBundle/Resources/views</argument>
+        <argument>EspritApi</argument>
+      </call>
+      <call method="addPath">
+        <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\EspritApiBundle/Resources/views</argument>
+        <argument>!EspritApi</argument>
       </call>
       <call method="addPath">
         <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>

@@ -10,9 +10,24 @@ namespace PioneerBundle\Repository;
  */
 class ReplyRepository extends \Doctrine\ORM\EntityRepository
 {
-    function FindLikeOrderBy(){
+    public function FindLikeOrderBy(){
         $query=$this->getEntityManager()
-            ->createQuery("select c from PioneerBundle:Reply c ORDER BY c.point DESC  ");
+            ->createQuery('select c from PioneerBundle:Reply c ORDER BY c.point DESC  ');
+        return $query->getResult();
+    }
+
+    public function CountReply($idC){
+        $query=$this->getEntityManager()
+            ->createQuery('select count(c.id) from PioneerBundle:Reply c where c.comment=:idC    ')
+            ->setParameter('idC',$idC);
+
+        return $query->getSingleScalarResult();
+    }
+
+    public function FindRep($idc){
+        $query=$this->getEntityManager()
+            ->createQuery('select c from PioneerBundle:Reply c where c.comment=:idC ORDER BY c.point DESC  ')
+            ->setParameter('idC',$idc);
         return $query->getResult();
     }
 

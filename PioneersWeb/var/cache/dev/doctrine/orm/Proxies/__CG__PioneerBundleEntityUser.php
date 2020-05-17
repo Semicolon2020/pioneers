@@ -209,6 +209,21 @@ class User extends \PioneerBundle\Entity\User implements \Doctrine\ORM\Proxy\Pro
     /**
      * {@inheritDoc}
      */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getRole()
     {
 
@@ -457,21 +472,6 @@ class User extends \PioneerBundle\Entity\User implements \Doctrine\ORM\Proxy\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'eraseCredentials', []);
 
         return parent::eraseCredentials();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getId()
-    {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getId();
-        }
-
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
-
-        return parent::getId();
     }
 
     /**

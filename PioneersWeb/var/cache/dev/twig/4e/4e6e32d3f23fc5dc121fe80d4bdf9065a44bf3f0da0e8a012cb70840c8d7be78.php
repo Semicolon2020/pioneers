@@ -224,38 +224,38 @@ class __TwigTemplate_c3218f6d86f2dc48fdc9a863cf7880d2c9e0f18092a17eafe4f86ed5f4d
                     echo "                                                    <div class=\"shadow-none p-3 mb-5 bg-light rounded\">
                                                         <div class=\"single-comment justify-content-between d-flex\">
                                                             <div class=\"user justify-content-between d-flex\">
-                                                        <div class=\"thumb\">
-                                                            <img src=\"";
+                                                                <div class=\"thumb\">
+                                                                    <img src=\"";
                     // line 103
                     echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(("uploads/post/" . $this->getAttribute($this->getAttribute($context["R"], "user", []), "photo", []))), "html", null, true);
                     echo " \" alt=\"\">
-                                                        </div>
-                                                        <div class=\"desc\">
-                                                            <p class=\"comment\">
-                                                                ";
+                                                                </div>
+                                                                <div class=\"desc\">
+                                                                    <p class=\"comment\">
+                                                                        ";
                     // line 107
                     echo twig_escape_filter($this->env, $this->getAttribute($context["R"], "text", []), "html", null, true);
                     echo "
-                                                            </p>
-                                                            <div class=\"d-flex justify-content-between\">
-                                                                <div class=\"d-flex align-items-center\">
-                                                                    <h5>
-                                                                        <a>";
+                                                                    </p>
+                                                                    <div class=\"d-flex justify-content-between\">
+                                                                        <div class=\"d-flex align-items-center\">
+                                                                            <h5>
+                                                                                <a>";
                     // line 112
                     echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["R"], "user", []), "username", []), "html", null, true);
                     echo "</a>
-                                                                    </h5>
-                                                                    <p class=\"date\">";
+                                                                            </h5>
+                                                                            <p class=\"date\">";
                     // line 114
                     echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["R"], "date", []), "d F Y"), "html", null, true);
                     echo "</p>
 
-                                                                    <div>
+                                                                            <div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
                                                         </div>
                                                         ";
                     // line 123
@@ -404,6 +404,7 @@ class __TwigTemplate_c3218f6d86f2dc48fdc9a863cf7880d2c9e0f18092a17eafe4f86ed5f4d
     </div>
 </section>
 
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -539,26 +540,26 @@ class __TwigTemplate_c3218f6d86f2dc48fdc9a863cf7880d2c9e0f18092a17eafe4f86ed5f4d
                                                     <div class=\"shadow-none p-3 mb-5 bg-light rounded\">
                                                         <div class=\"single-comment justify-content-between d-flex\">
                                                             <div class=\"user justify-content-between d-flex\">
-                                                        <div class=\"thumb\">
-                                                            <img src=\"{{ asset('uploads/post/' ~  R.user.photo) }} \" alt=\"\">
-                                                        </div>
-                                                        <div class=\"desc\">
-                                                            <p class=\"comment\">
-                                                                {{ R.text }}
-                                                            </p>
-                                                            <div class=\"d-flex justify-content-between\">
-                                                                <div class=\"d-flex align-items-center\">
-                                                                    <h5>
-                                                                        <a>{{ R.user.username }}</a>
-                                                                    </h5>
-                                                                    <p class=\"date\">{{R.date | date(\"d F Y\")}}</p>
+                                                                <div class=\"thumb\">
+                                                                    <img src=\"{{ asset('uploads/post/' ~  R.user.photo) }} \" alt=\"\">
+                                                                </div>
+                                                                <div class=\"desc\">
+                                                                    <p class=\"comment\">
+                                                                        {{ R.text }}
+                                                                    </p>
+                                                                    <div class=\"d-flex justify-content-between\">
+                                                                        <div class=\"d-flex align-items-center\">
+                                                                            <h5>
+                                                                                <a>{{ R.user.username }}</a>
+                                                                            </h5>
+                                                                            <p class=\"date\">{{R.date | date(\"d F Y\")}}</p>
 
-                                                                    <div>
+                                                                            <div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
                                                         </div>
                                                         {% if  R.user.id != app.user.id %}
 
@@ -651,6 +652,7 @@ class __TwigTemplate_c3218f6d86f2dc48fdc9a863cf7880d2c9e0f18092a17eafe4f86ed5f4d
         </div>
     </div>
 </section>
+
 
 {% endblock %}", "@Pioneer/Blog/singleblog.html.twig", "D:\\programs\\wamp64\\www\\Web2.0\\INT\\PioneersWeb\\src\\PioneerBundle\\Resources\\views\\Blog\\singleblog.html.twig");
     }

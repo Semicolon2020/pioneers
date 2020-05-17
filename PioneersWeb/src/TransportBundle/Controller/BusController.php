@@ -4,6 +4,9 @@
 namespace TransportBundle\Controller;
 
 
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use TransportBundle\Entity\Bus;
 use TransportBundle\Form\BusType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -35,7 +38,6 @@ class BusController extends Controller
             return  $this->redirectToRoute('afficherdetails');
         }}
         return $this->render('@Transport/back/bus/edit.html.twig',array('form'=>$form->createView(),"tab"=>$club,'noo'=>$no2));
-
     }
     public function ajouterAction(Request $request)
     {
@@ -83,5 +85,57 @@ class BusController extends Controller
 
     }
 
+    public function allAction() {
+      $tasks=$this->getDoctrine()->getManager()->getRepository(Bus::class)->findAll();
+      $serializer=new SeriaLizer([ new ObjectNormaLizer()]);
+      $formatted=$serializer->normalize($tasks);
+      return new JsonResponse($formatted);
+    }
 
+    public function editmobileAction(Request  $request)
+{
+
+    $club=$this->getDoctrine()->getRepository(Bus::class)->find($request->get('id'));
+    $club->setId($request->get('id'));
+    $club->setName($request->get('name'));
+    $club->setCapacite($request->get('capacite'));
+    $club->setChauffeur($request->get('chauffeur'));
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($club);
+    $em->flush();
+    $serializer=new SeriaLizer([ new ObjectNormaLizer()]);
+    $formatted=$serializer->normalize($club);
+    return new JsonResponse($formatted);
 }
+
+    public function addmobileAction(Request  $request)
+    {
+        $club = new Bus();
+        $club->setName($request->get('name'));
+        $club->setCapacite($request->get('capacite'));
+        $club->setChauffeur($request->get('chauffeur'));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($club);
+        $em->flush();
+        $serializer=new SeriaLizer([ new ObjectNormaLizer()]);
+        $formatted=$serializer->normalize($club);
+        return new JsonResponse($formatted);
+    }
+
+
+
+
+    public function deletemobileAction(Request  $request)
+    {
+
+
+        $club=$this->getDoctrine()->getRepository(Bus::class)->find($request->get('id'));
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($club);
+        $em->flush();
+        $serializer=new SeriaLizer([ new ObjectNormaLizer()]);
+        $formatted=$serializer->normalize($club);
+        return new JsonResponse($formatted);
+    }
+
+        }
