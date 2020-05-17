@@ -18,4 +18,6 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('p',$password);
         return $query->getResult();
     }
+
+
 }

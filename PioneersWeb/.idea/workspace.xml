@@ -152,7 +152,11 @@
       <workItem from="1589314856097" duration="2095000" />
       <workItem from="1589320596699" duration="640000" />
       <workItem from="1589378123807" duration="600000" />
-      <workItem from="1589460759287" duration="3167000" />
+      <workItem from="1589460759287" duration="7721000" />
+      <workItem from="1589523353725" duration="2307000" />
+      <workItem from="1589596124390" duration="600000" />
+      <workItem from="1589641524442" duration="5310000" />
+      <workItem from="1589725932112" duration="236000" />
     </task>
     <servers />
   </component>
@@ -164,10 +168,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="522" y="203" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1585371952673" />
-    <state x="554" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1589066611384">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="-1074" y="192" key="#com.intellij.ide.util.MemberChooser" timestamp="1589511064999">
+      <screen x="-1680" y="34" width="1680" height="1010" />
     </state>
-    <state x="-1074" y="192" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1680.34.1680.1010@-1680.34.1680.1010" timestamp="1586298933546" />
+    <state x="-1074" y="192" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1680.34.1680.1010@-1680.34.1680.1010" timestamp="1589511064999" />
     <state x="554" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1680.34.1680.1010@0.0.1536.824" timestamp="1589066611384" />
     <state x="297" y="233" width="941" height="358" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog" timestamp="1589067541238">
       <screen x="0" y="0" width="1536" height="824" />

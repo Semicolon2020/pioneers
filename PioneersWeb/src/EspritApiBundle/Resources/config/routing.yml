@@ -26,3 +26,23 @@ AffReply:
 AddReply:
     path:     /addReply/{idC}/{idU}/{text}
     defaults: { _controller: EspritApiBundle:Default:addReply }
+
+AddUser:
+    path:     /addUser/{cin}/{nom}/{prenom}/{etat}/{mail}/{username}/{password}/{num}
+    defaults: { _controller: EspritApiBundle:Default:addUser }
+
+AddEnf:
+    path:     /addEnfant/{cin}/{nom}/{prenom}/{age}/{sexe}
+    defaults: { _controller: EspritApiBundle:Default:addEnfant }
+
+ChangePass:
+    path:     /chgPass/{id}/{password}
+    defaults: { _controller: EspritApiBundle:Default:ChangePass }
+
+AddLikeR:
+    path:     /addliker/{id}
+    defaults: { _controller: EspritApiBundle:Default:AddLikeR }
+
+AddLikeC:
+    path:     /addlikec/{id}
+    defaults: { _controller: EspritApiBundle:Default:AddLikeC }

@@ -4,6 +4,7 @@ namespace EspritApiBundle\Controller;
 
 use PioneerBundle\Entity\Actualite;
 use PioneerBundle\Entity\Comment;
+use PioneerBundle\Entity\Enfant;
 use PioneerBundle\Entity\Reply;
 use PioneerBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -153,5 +154,113 @@ class DefaultController extends Controller
 
 
     }
+
+    public function addUserAction($cin,$nom,$prenom,$etat,$mail,$username,$password,$num)
+    {
+       
+        
+        $user = new User();
+        $user->setCin($cin);
+        $user->setPassword($password);
+        $user->setNom($nom);
+        $user->setPrenom($prenom);
+        $user->setEtatCivil($etat);
+        $user->setEtatCompte(1);
+        $user->setEmail($mail);
+        $user->setUsername($username);
+        $user->setNumTel($num);
+        $user->setRole("P");
+        $user->setRoles([0,1,"P"]);
+        $user->setDateEmbauche(new \DateTime('now'));
+        $user->setEnabled(true);
+        $user->setPhoto("default.png");
+        
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($user);
+        return new JsonResponse($formatted);
+
+
+    }
+
+    public function addEnfantAction($cin,$nom,$prenom,$age,$sexe)
+    {
+
+
+        $enfant = new Enfant();
+        $enfant->setNom($nom);
+        $enfant->setPrenom($prenom);
+        $enfant->setAge($age);
+        $enfant->setCinP($cin);
+        $enfant->SetSexe($sexe);
+        $enfant->setPhoto("default.png");
+
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($enfant);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($enfant);
+        return new JsonResponse($formatted);
+
+
+    }
+
+    public function ChangePassAction($id,$password)
+    {
+
+
+        $User=$this->getDoctrine()->getRepository(User::class)->find($id);
+        $User->setPassword($password);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($User);
+        $em->flush();
+
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($User);
+        return new JsonResponse($formatted);
+
+
+    }
+
+    public function AddLikeRAction($id)
+    {
+
+
+        $reply=$this->getDoctrine()->getRepository(Reply::class)->find($id);
+        $reply->setPoint($reply->getPoint()+1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($reply);
+        $em->flush();
+
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($reply->getPoint());
+        return new JsonResponse($formatted);
+
+
+    }
+
+    public function AddLikeCAction($id)
+    {
+
+        $C=$this->getDoctrine()->getRepository(Comment::class)->find($id);
+        $C->setPoint($C->getPoint()+1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($C);
+        $em->flush();
+
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($C->getPoint());
+        return new JsonResponse($formatted);
+
+
+    }
+
 
 }

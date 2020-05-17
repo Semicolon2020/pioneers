@@ -141,12 +141,12 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
-            elseif (0 === strpos($pathinfo, '/api/a')) {
-                // AuthMobile
-                if (0 === strpos($pathinfo, '/api/auth') && preg_match('#^/api/auth/(?P<username>[^/]++)/(?P<password>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AuthMobile']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AuthAction',));
-                }
+            // AuthMobile
+            if (0 === strpos($pathinfo, '/api/auth') && preg_match('#^/api/auth/(?P<username>[^/]++)/(?P<password>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'AuthMobile']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AuthAction',));
+            }
 
+            if (0 === strpos($pathinfo, '/api/add')) {
                 // AddCmt
                 if (0 === strpos($pathinfo, '/api/addCmt') && preg_match('#^/api/addCmt/(?P<idB>[^/]++)/(?P<idU>[^/]++)/(?P<text>[^/]++)$#sD', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddCmt']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addCmtAction',));
@@ -157,6 +157,31 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddReply']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addReplyAction',));
                 }
 
+                // AddUser
+                if (0 === strpos($pathinfo, '/api/addUser') && preg_match('#^/api/addUser/(?P<cin>[^/]++)/(?P<nom>[^/]++)/(?P<prenom>[^/]++)/(?P<etat>[^/]++)/(?P<mail>[^/]++)/(?P<username>[^/]++)/(?P<password>[^/]++)/(?P<num>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddUser']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addUserAction',));
+                }
+
+                // AddEnf
+                if (0 === strpos($pathinfo, '/api/addEnfant') && preg_match('#^/api/addEnfant/(?P<cin>[^/]++)/(?P<nom>[^/]++)/(?P<prenom>[^/]++)/(?P<age>[^/]++)/(?P<sexe>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddEnf']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addEnfantAction',));
+                }
+
+                // AddLikeR
+                if (0 === strpos($pathinfo, '/api/addliker') && preg_match('#^/api/addliker/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddLikeR']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AddLikeRAction',));
+                }
+
+                // AddLikeC
+                if (0 === strpos($pathinfo, '/api/addlikec') && preg_match('#^/api/addlikec/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddLikeC']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AddLikeCAction',));
+                }
+
+            }
+
+            // ChangePass
+            if (0 === strpos($pathinfo, '/api/chgPass') && preg_match('#^/api/chgPass/(?P<id>[^/]++)/(?P<password>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'ChangePass']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::ChangePassAction',));
             }
 
         }
