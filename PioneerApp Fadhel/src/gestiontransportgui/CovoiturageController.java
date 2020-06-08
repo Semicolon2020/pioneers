@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestiontransport.gui;
+package gestiontransportgui;
 
 import com.teamdev.jxmaps.LatLng;
 import gestiontransport.Entite.Listmap;
 import DB.DataBase;
+import GUI.InscriptionParentController;
+import GUI.ParentMainController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,8 +49,6 @@ import javafx.stage.Stage;
  */
 public class CovoiturageController implements Initializable {
  private String id2;
-  @FXML
-    private ImageView  loginimage2;
   
   @FXML
   private TextField adresse;
@@ -60,6 +60,8 @@ public class CovoiturageController implements Initializable {
   private Button offre;
   @FXML
   private Button cherche;
+    @FXML
+    private Button Retour;
     /**
      * Initializes the controller class.
      */
@@ -224,19 +226,30 @@ int d_o=1;
        
        {alert.setText("adresse vide");}}
 
-     public void  retour(ActionEvent event) throws IOException {
-          
-       
-    Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-        
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(tableViewScene);
-        window.show();
-            
-        } 
+    @FXML
+    private void Retour(ActionEvent event) {
+                                                  FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("Transport.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               TransportController apc = loader.getController();
+                                                try {
+                                                    apc.SetEverything(id2);
+                                                    alert.getScene().setRoot(root);
+                                                } catch (SQLException ex) {
+                                                    Logger.getLogger(CovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                                }
+                                              
+                                            
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+    }
+
+     
      
      
      

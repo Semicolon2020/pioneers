@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestiontransport.gui;
+package gestiontransportgui;
 
 import com.sun.xml.internal.ws.api.pipe.Engine;
 import java.awt.Image;

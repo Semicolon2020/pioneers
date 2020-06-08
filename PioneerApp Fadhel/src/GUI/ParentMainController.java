@@ -9,6 +9,7 @@ import Entities.Responsable;
 import ImenInterface.LoisirController;
 import MahdiInterface.PdfController;
 import MahdiInterface.StatistiquesController;
+import gestiontransportgui.TransportController;
 import MariemInterface.EmailController;
 import MariemInterface.RappelController;
 import MariemInterface.ReclamationController;
@@ -55,6 +56,8 @@ public class ParentMainController implements Initializable {
     private ImageView pdfInterface;
     @FXML
     private ImageView loisitInterface;
+    @FXML
+    private ImageView transportInterf;
     /**
      * Initializes the controller class.
      */
@@ -70,7 +73,7 @@ public class ParentMainController implements Initializable {
        StatInterface.setImage(new Image("/Image/statIcon-8.png"));  
        pdfInterface.setImage(new Image("/Image/pdfIcon-8.png"));          
        loisitInterface.setImage(new Image("/Image/CoursIcon-8.png"));          
-       
+       transportInterf.setImage(new Image("/Image/transpIcon-8.png")); 
                
     }    
     
@@ -275,6 +278,33 @@ public class ParentMainController implements Initializable {
                                                Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
                                            }
         
+        
+    }
+
+    @FXML
+    private void TranspInterfButton(MouseEvent event) {
+        
+                                                   FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/gestiontransportgui/Transport.fxml"));
+
+                                                     
+                                           try {
+                                               javafx.scene.Parent root;
+                                               root = loader.load();
+                                               TransportController apc = loader.getController();
+                                              
+                                                       try {
+                                                           apc.SetEverything(cin);
+                                                           recParentimg.getScene().setRoot(root);
+                                                       } catch (SQLException ex) {
+                                                           Logger.getLogger(ParentMainController.class.getName()).log(Level.SEVERE, null, ex);
+                                                       }
+                                               
+                                                      
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
         
     }
     

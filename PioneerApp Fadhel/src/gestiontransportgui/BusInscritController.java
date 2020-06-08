@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestiontransport.gui;
+package gestiontransportgui;
 
 import com.teamdev.jxmaps.LatLng;
 import gestiontransport.Entite.Listmap;
 import gestiontransport.Entite.Station;
 import gestiontransport.Entite.Trajet;
 import DB.DataBase;
+import GUI.InscriptionParentController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -139,14 +140,25 @@ public class BusInscritController implements Initializable {
           
            
           
-       Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-        
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(tableViewScene);
-        window.show();
+                                                 FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("Transport.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               TransportController apc = loader.getController();
+                                                try {
+                                                    apc.SetEverything(id2);
+                                                    alerte.getScene().setRoot(root);
+                                                } catch (SQLException ex) {
+                                                    Logger.getLogger(CovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                                }
+                                              
+                                            
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
             
         } 
       

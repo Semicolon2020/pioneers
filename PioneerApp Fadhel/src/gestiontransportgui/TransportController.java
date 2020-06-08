@@ -3,11 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestiontransport.gui;
+package gestiontransportgui;
 
+import DB.DataBase;
+import GUI.InscriptionParentController;
+import GUI.ParentMainController;
+import GUI.ResponsableMainController;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +60,44 @@ public class TransportController implements Initializable {
     {
         this.id2=id2;
     }
+     
+     
+     public void SetEverything(String id) throws SQLException
+     {
+         
+         this.id=id;
+         
+          Connection  con = DataBase.getInstance().getConnection();
+          PreparedStatement pt;
+String nom=null,num=null;
+      pt = con.prepareStatement("select nom,num_tel,prenom FROM user WHERE cin='"+id+"';");
+            ResultSet rs = pt.executeQuery();
+            while (rs.next()) {
+            
+            nom=rs.getString(1)+rs.getString(3);
+            num=rs.getString(2);
+            
+            }
+            
+            PreparedStatement pt3;
+            String cin=null;
+      pt3 = con.prepareStatement("select cin_p FROM busetcov WHERE cin_p='"+id+"';");
+            ResultSet rs3 = pt3.executeQuery();
+            while (rs3.next()) {
+            
+            cin=rs3.getString(1);
+            
+            }
+            
+            if(cin==null){
+            
+             Statement stm1= con.createStatement();
+       String requeteInsert2 = "INSERT INTO `pionnersapp`.`busetcov` (`nomparent`, `num`,`cin_p`) VALUES ('"+nom+"','"+num+"','"+id+"');";
+       stm1.executeUpdate(requeteInsert2);}
+     }
+     
+     
+     
     
       public void  afficherco(ActionEvent event) throws IOException {
     id2=id.substring(0,id.length());
@@ -98,14 +147,20 @@ public class TransportController implements Initializable {
           
           
           
-       Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-        
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(tableViewScene);
-        window.show();
+                                                     FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/GUI/ParentMain.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               ParentMainController apc = loader.getController();
+                                              apc.setCin(id);
+                                              
+                                            loginimage2.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
             
         } 
       

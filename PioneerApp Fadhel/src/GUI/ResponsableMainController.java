@@ -7,7 +7,7 @@ package GUI;
 
 import Entities.Responsable;
 import ImenInterface.AdminController;
-import gestiontransport.gui.AdminController1;
+import gestiontransportgui.AdminController1;
 import MariemInterface.ArecController;
 import Service.ServiceEnfant;
 import Service.ServiceParent;
@@ -25,6 +25,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
@@ -126,7 +127,6 @@ public class ResponsableMainController implements Initializable {
                 
       
     }    
-    
     
     public void setCin(String cin)
     {
@@ -277,18 +277,27 @@ public class ResponsableMainController implements Initializable {
     }
 
     @FXML
-    private void transpInterfaceAction(MouseEvent event) {
-        
-                        Stage stage = null;                                
-      try {    
-        Parent root = FXMLLoader.load(getClass().getResource("/gestiontransport.gui/Admin.fxml"));
-          Scene scene = new Scene(root);
-        //scene.getStylesheets().add("Styles.css");
-        stage.setTitle("Transport");
-        stage.setScene(scene);
-        stage.show(); } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+    private void transpInterfaceAction(MouseEvent event) throws IOException {
+       
+
+                                                    FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/gestiontransportgui/Admin.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               AdminController1 apc = loader.getController();
+                                               apc.SetCinR(cin);
+                                              
+                                                 
+                                            RespUI.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+
+
+
     }
 
     @FXML

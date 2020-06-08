@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/GUI/NewsAff.fxml</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/GUI/NewsAffController.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/Entities/Actualite.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/Service/ServiceActualite.java</file>
-            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/IService/IServiceActualite.java</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/GUI/ResponsableMainController.java</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/gestiontransportgui/AdminController1.java</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/gestiontransportgui/Admin.fxml</file>
             <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/GUI/RespoParentApproveController.java</file>
+            <file>file:/C:/Users/Alfa%20Shel/Desktop/3A11/PioneerApp%20Desktop/PioneersAppRep/pioneers/PioneerApp%20Fadhel/src/GUI/RespoParentApprove.fxml</file>
         </group>
     </open-files>
 </project-private>

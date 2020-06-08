@@ -1,4 +1,4 @@
-package gestiontransport.gui;
+package gestiontransportgui;
 
 import com.byteowls.jopencage.JOpenCageGeocoder;
 import com.byteowls.jopencage.model.JOpenCageForwardRequest;

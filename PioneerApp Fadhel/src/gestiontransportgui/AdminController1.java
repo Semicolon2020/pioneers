@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestiontransport.gui;
+package gestiontransportgui;
 
 import gestiontransport.Entite.Bus;
 import gestiontransport.Entite.ListTrajet;
@@ -13,6 +13,8 @@ import gestiontransport.Service.ServiceBus;
 import gestiontransport.Service.ServiceTrajet;
 import gestiontransport.Service.TrayIconDemo;
 import DB.DataBase;
+import GUI.InscriptionParentController;
+import GUI.ResponsableMainController;
 import java.awt.AWTException;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,6 +50,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import jdk.nashorn.internal.runtime.Debug;
 
@@ -79,14 +82,6 @@ public class AdminController1 implements Initializable {
         @FXML
     private Button suppbb;
     
-    @FXML
-    private Button ajoutbus;
-       
-    @FXML
-    private Button modifbus;
-       
-    @FXML
-    private Button suppbus;
       
          @FXML
     private Label alerte;
@@ -155,7 +150,10 @@ public class AdminController1 implements Initializable {
    
      
      private Statement ste;
-    
+    private Button retour;
+    private String cin;
+    @FXML
+    private Button Retour;
    
 
     
@@ -187,6 +185,11 @@ public class AdminController1 implements Initializable {
                 Sname.setDisable(true);
                 
   
+    }
+    
+     public void SetCinR(String cin)
+    {
+        this.cin=cin;
     }
     
      @FXML
@@ -234,6 +237,7 @@ public class AdminController1 implements Initializable {
        emptybus();
       }
       
+    @FXML
        public void userClickedOnTablebus()
     {
          Bus b = tabb.getSelectionModel().getSelectedItem();    
@@ -242,6 +246,7 @@ public class AdminController1 implements Initializable {
          bcapacite.setText(""+b.getCapacite()+"");
          bchauffeur.setText(b.getChauffeur());      
     }
+    @FXML
        public void userClickedOnTablestation()
     {
          ObservableList<Station> selectedRows, allPeople;
@@ -252,6 +257,7 @@ public class AdminController1 implements Initializable {
         Sname.setText(S.getName());     
     }
        
+    @FXML
           public void userClickedOnTabletrajet() throws SQLException
     {
           refreshstation();
@@ -279,7 +285,6 @@ public class AdminController1 implements Initializable {
       
       
       
-      @FXML
       public ObservableList<Bus>  afficherbus()
     {
          // DataBase mdb = new DataBase();
@@ -303,7 +308,6 @@ public class AdminController1 implements Initializable {
         return buss;
     } 
       
-      @FXML
       public ObservableList<String>  afficherbus2() throws SQLException
     { ObservableList<String> buss = FXCollections.observableArrayList();
         Connection  con = DataBase.getInstance().getConnection();
@@ -356,6 +360,7 @@ public class AdminController1 implements Initializable {
        }
      
      
+    @FXML
       public void ajouttrajet(ActionEvent event) throws SQLException, AWTException{
              
           if(Tname.getText().equals("") || Tname1.getText().equals("")){alerte.setText("champ vide");}
@@ -403,6 +408,7 @@ public class AdminController1 implements Initializable {
        }}
       
       
+    @FXML
     public void ajoutstation(ActionEvent event) throws SQLException, IOException{
         
         if(finajout.isDisable()==false){
@@ -536,6 +542,7 @@ Matcher m = p.matcher(line) ;
     }
     
     
+    @FXML
       public void suppstation() throws SQLException{
            if(finajout.isDisable()==true){
        
@@ -608,7 +615,6 @@ Matcher m = p.matcher(line) ;
     
  
     
-     @FXML
       public ObservableList<Station>  afficherstation() throws SQLException
     {
         
@@ -648,7 +654,6 @@ Matcher m = p.matcher(line) ;
         return buss;
     } 
       
-      @FXML
       public ObservableList<ListTrajet>  affichertrajet()
     {
         //  DataBase mdb = new DataBase();
@@ -673,6 +678,7 @@ Matcher m = p.matcher(line) ;
         return buss;
     }
       
+    @FXML
        public void supptrajet() throws SQLException {
            
            
@@ -704,6 +710,7 @@ Matcher m = p.matcher(line) ;
       }
        
        
+    @FXML
         public void modifiertrajet(ActionEvent event) throws IOException, SQLException{
        Cbus.setItems(null);
            tabb.setDisable(true);
@@ -743,6 +750,7 @@ Matcher m = p.matcher(line) ;
        
       
       
+    @FXML
        public void finajout() {
            
            
@@ -779,7 +787,6 @@ Matcher m = p.matcher(line) ;
        
        }
        
-     @FXML
      public ObservableList<Station>  afficherstationmodif(int id) throws SQLException
     {
         //  DataBase mdb = new DataBase();
@@ -807,6 +814,7 @@ Matcher m = p.matcher(line) ;
      
         return buss;
     } 
+    @FXML
      public void modiftrajet(ActionEvent event) throws SQLException{
        
            if(!Tname1.getText().equals("") && !Tname.getText().equals("") && !Cbus.getValue().equals("")){
@@ -909,13 +917,28 @@ Matcher m = p.matcher(line) ;
         
         
    }
-    
-    
-    
-    
-    
-    
 
+    @FXML
+    private void RetourAction(ActionEvent event) {
+        
+                                       FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/GUI/ResponsableMain.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               ResponsableMainController apc = loader.getController();
+                                              apc.setCin(cin);
+                                              
+                                            Retour.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
+    }
+
+ 
       
 }
 

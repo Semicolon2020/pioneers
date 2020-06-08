@@ -88,5 +88,15 @@
             <Font name="AR CENA" size="25.0" />
          </font>
       </Label>
+      <ImageView fx:id="transportInterf" fitHeight="150.0" fitWidth="200.0" layoutX="725.0" layoutY="160.0" onMouseClicked="#TranspInterfButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../JavaFx/1x/transpIcon-8.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="777.0" layoutY="289.0" text="Transport" textFill="#2d95e4">
+         <font>
+            <Font name="AR CENA" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
