@@ -11,23 +11,34 @@ package MariemEntite;
  */
 public class Rappel {
      private String date;
-
-    public Rappel(String cin, String Text) {
-        this.Text = Text;
-        this.cin = cin;
-    }
     private String nom;
     private String prenom;
     private String Text;
+    private String enfant;
+    private String objet;
     private String cin;
-
-    public Rappel(String date, String nom, String prenom, String Text, String cin) {
-        this.date = date;
-        this.nom = nom;
-        this.prenom = prenom;
+    
+    public Rappel(String cin, String Text)
+    {
         this.Text = Text;
         this.cin = cin;
     }
+    
+    public Rappel(String objet, String enfant, String Text)
+    {
+        this.Text =Text;
+        this.objet =objet ;
+        this.enfant = enfant;  
+    }
+
+    public Rappel(String date, String objet, String enfant, String Text) {
+        this.date = date;
+        this.objet = objet;
+        this.enfant = enfant;
+        this.Text = Text;
+       
+    }
+    
 
     public String getCin() {
         return cin;
@@ -37,11 +48,22 @@ public class Rappel {
         this.cin = cin;
     }
 
-    public Rappel(String nom, String prenom, String Text) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.Text = Text;
+    public String getEnfant() {
+        return enfant;
     }
+
+    public void setEnfant(String enfant) {
+        this.enfant = enfant;
+    }
+
+    public String getObjet() {
+        return objet;
+    }
+
+    public void setObjet(String objet) {
+        this.objet = objet;
+    }
+
 
     
 
@@ -82,11 +104,6 @@ public class Rappel {
         this.Text = Text;
     }
 
-    public Rappel(String date, String nom, String prenom, String Text) {
-        this.date = date;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.Text = Text;
-    }
+    
     
 }

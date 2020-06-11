@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MariemInterface.ReclamationController">
    <children>
-      <ImageView fx:id="imgR" blendMode="MULTIPLY" disable="true" fitHeight="400.0" fitWidth="600.0" layoutX="526.0" layoutY="101.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgR" blendMode="MULTIPLY" disable="true" fitHeight="400.0" fitWidth="600.0" layoutX="452.0" layoutY="101.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../reclamation.png" />
          </image>
@@ -20,13 +20,13 @@
             <Font name="Bell MT Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="rec" layoutX="496.0" layoutY="279.0" opacity="0.88" prefHeight="111.0" prefWidth="399.0" promptText="Taper ici votre réclamation..." />
-      <Label layoutX="506.0" layoutY="247.0" text="Réclamation" textFill="#2f2f2f">
+      <TextField fx:id="rec" layoutX="496.0" layoutY="308.0" opacity="0.88" prefHeight="111.0" prefWidth="399.0" promptText="Taper ici votre réclamation..." />
+      <Label layoutX="506.0" layoutY="244.0" text="Réclamation" textFill="#2f2f2f">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="envoyer" layoutX="636.0" layoutY="403.0" mnemonicParsing="false" onAction="#AjouterReclamation" opacity="0.72" text="Envoyer">
+      <Button fx:id="envoyer" layoutX="636.0" layoutY="432.0" mnemonicParsing="false" onAction="#AjouterReclamation" opacity="0.72" text="Envoyer">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -36,5 +36,6 @@
             <Image url="@../../../../JavaFx/1x/retour-8.png" />
          </image>
       </ImageView>
+      <TextField fx:id="objet" layoutX="506.0" layoutY="270.0" promptText="objet..." />
    </children>
 </AnchorPane>

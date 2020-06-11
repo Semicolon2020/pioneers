@@ -44,7 +44,8 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
     @Override
     public void ajouter(Parent t) throws SQLException {
         
-          PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user` (`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
+          PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user` "
+                  + "(`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
                  + "    VALUES (?,?,'P',?,?,?,?,'0',?,?,?,now());");
     
    FTPUploader ftp=new FTPUploader();

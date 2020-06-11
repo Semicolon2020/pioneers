@@ -13,7 +13,7 @@
         <columns>
             <TableColumn fx:id="tfDate" prefWidth="97.0" text="Date" />
           <TableColumn fx:id="tfNom" prefWidth="81.0" text="Nom" />
-          <TableColumn fx:id="tfPrenom" prefWidth="82.0" text="Prénom" />
+          <TableColumn fx:id="tfPrenom" prefWidth="82.0" text="Objet" />
             <TableColumn fx:id="tfReclamation" prefWidth="461.0" text="Reclamation" />
         </columns>
       </TableView>

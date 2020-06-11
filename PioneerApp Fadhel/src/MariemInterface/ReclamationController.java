@@ -5,10 +5,12 @@
  */
 package MariemInterface;
 
+import Entities.Responsable;
 import GUI.InscriptionParentController;
 import GUI.ParentMainController;
 import MariemEntite.Reclamation;
 import MariemService.ServiceReclamation;
+import Service.ServiceResponsable;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -42,6 +44,9 @@ public class ReclamationController implements Initializable {
     private ImageView imgR;
     @FXML
     private ImageView retourImg;
+    @FXML
+    private TextField objet;
+    
 
     /**
      * Initializes the controller class.
@@ -54,7 +59,18 @@ public class ReclamationController implements Initializable {
     
     public void SetCin(String cin)
     {
-        this.cin=cin;
+        try {
+
+            Responsable resp = new Responsable();
+            resp.setCin(cin);
+            
+            ServiceResponsable r = new ServiceResponsable();
+            resp= r.readUser(resp);
+            this.cin = resp.getId();
+        } catch (SQLException ex) {
+            Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     
@@ -62,7 +78,7 @@ public class ReclamationController implements Initializable {
   public void AjouterReclamation(ActionEvent event)  { 
         try {
             ServiceReclamation es = new ServiceReclamation();
-            es.ajouter(new Reclamation(cin,rec.getText()));
+            es.ajouter(new Reclamation(cin,rec.getText(),objet.getText()));
             JOptionPane.showMessageDialog(null,"reclamation ajoutée");
         } catch (SQLException ex) {
             Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);

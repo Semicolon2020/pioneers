@@ -13,8 +13,8 @@
       <TableView fx:id="tabrappel" layoutX="158.0" layoutY="133.0" prefHeight="601.0" prefWidth="1038.0">
         <columns>
           <TableColumn fx:id="date" prefWidth="46.0" text="Date" />
-          <TableColumn fx:id="nom" prefWidth="140.0" text="Nom" />
-            <TableColumn fx:id="prenom" prefWidth="183.0" text="Prénom" />
+          <TableColumn fx:id="nom" prefWidth="140.0" text="Objet" />
+            <TableColumn fx:id="prenom" prefWidth="183.0" text="Enfant" />
             <TableColumn fx:id="Rappel" prefWidth="668.0" text="Rappel" />
         </columns>
       </TableView>

@@ -66,7 +66,7 @@ public class ArecController implements Initializable {
             TableRec.setItems(list);
             
             tfNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-            tfPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+            tfPrenom.setCellValueFactory(new PropertyValueFactory<>("objet"));
             tfReclamation.setCellValueFactory(new PropertyValueFactory<>("Text"));
             tfDate.setCellValueFactory(new PropertyValueFactory<>("date"));
             TableRec.setItems(list);
@@ -92,7 +92,7 @@ public class ArecController implements Initializable {
         
         for(int i=0;i< arr.size();i++)
                 {
-                   list.add(new Reclamation(arr.get(i).getDate(),arr.get(i).getNom(),arr.get(i).getPrenom(), arr.get(i).getText()));
+                   list.add(new Reclamation(arr.get(i).getDate(),arr.get(i).getNom(),arr.get(i).getObjet(), arr.get(i).getText()));
                 }
 
       return list;  

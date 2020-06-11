@@ -16,6 +16,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Responsable {
      
+    private String id;
     private String cin;
     private String nom;
     private String prenom;
@@ -34,6 +35,7 @@ public class Responsable {
     public Responsable(String cin){this.cin=cin;}
     public Responsable(String cin , String password){this.cin=cin;this.password=password;}
     public Responsable(String cin, String nom, String prenom, String email,String sexe, String password, String num_tel,String etat_civil,String photo) {
+        
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -57,7 +59,8 @@ public class Responsable {
        
     }
 
-    public Responsable(String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
+    public Responsable(String id,String cin, String nom, String prenom,String sexe,String dateEmbauche , String email, String password, String num_tel, Image icon,String etat_compte,String etat_civil) {
+        this.id=id;
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -171,6 +174,14 @@ public class Responsable {
     @Override
     public String toString() {
         return "Responsable{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", sexe=" + sexe + ", password=" + password + ", num_tel=" + num_tel + ", photo=" + photo + ", icon=" + icon + ", dateEmbauche=" + dateEmbauche + ", etat_compte=" + etat_compte + ", etat_civil=" + etat_civil + '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
    

@@ -69,9 +69,17 @@ public class PioneerApp {
         }*/
     
     
-        WeatherDoc weth= new WeatherDoc("1580913", "c");
-        WeatherDisplay wd = new WeatherDisplay();
-        System.out.println(wd.getTemperature());
+   String name = "sdfsd";
+   
+    if (!name.matches("[a-zA-Z_]+")) {
+    System.out.println("Invalid name"); // "[0-9]+"
+}
+    else 
+    {
+        System.out.println("name");
+    }
+    
+      
 		
 
 	

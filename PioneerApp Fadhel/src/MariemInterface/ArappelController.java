@@ -66,8 +66,8 @@ public class ArappelController implements Initializable {
             list=Getlist();
             tabrappel.setItems(list);
             
-            nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-            prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+            nom.setCellValueFactory(new PropertyValueFactory<>("objet"));
+            prenom.setCellValueFactory(new PropertyValueFactory<>("enfant"));
             Rappel.setCellValueFactory(new PropertyValueFactory<>("Text"));
             date.setCellValueFactory(new PropertyValueFactory<>("date"));
             tabrappel.setItems(list);
@@ -92,7 +92,7 @@ public class ArappelController implements Initializable {
         
         for(int i=0;i< arr.size();i++)
                 {
-                   list.add(new Rappel(arr.get(i).getDate(),arr.get(i).getNom(),arr.get(i).getPrenom(), arr.get(i).getText()));
+                   list.add(new Rappel(arr.get(i).getDate(),arr.get(i).getObjet(),arr.get(i).getEnfant(), arr.get(i).getText()));
                 }
 
       return list;  }

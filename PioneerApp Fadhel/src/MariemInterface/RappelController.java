@@ -41,6 +41,10 @@ public class RappelController implements Initializable {
     private ImageView retourImg;
     @FXML
     private ImageView bgimg;
+    @FXML
+    private TextField text;
+    @FXML
+    private TextField objet;
 
     /**
      * Initializes the controller class.
@@ -56,7 +60,9 @@ public class RappelController implements Initializable {
     private void ajoutRappel(ActionEvent event) {
                 try {
             ServiceRappel es = new ServiceRappel();
-            es.ajouter(new Rappel(cin,info.getText()));
+            
+            es.ajouter(new Rappel(objet.getText(),info.getText(),text.getText()));
+            
             JOptionPane.showMessageDialog(null,"rappel ajoutée");
         } catch (SQLException ex) {
             Logger.getLogger(RappelController.class.getName()).log(Level.SEVERE, null, ex);

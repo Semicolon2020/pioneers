@@ -19,6 +19,7 @@ public class Reclamation {
     private String prenom;
     private String Text;
     private String nom;
+    private String objet;
 
     @Override
     public String toString() {
@@ -41,24 +42,20 @@ public class Reclamation {
         this.cin = cin;
     }
 
-    public Reclamation(String date, String nom, String prenom,String Text) {
-        this.prenom = prenom;
+    public Reclamation(String date, String nom, String objet,String Text) {
+        this.objet = objet;
         this.Text = Text;
         this.nom = nom;
         this.date=date;
     }
 
-    public Reclamation(String cin, String Text) {
+    public Reclamation(String cin, String Text,String objet) {
         this.cin = cin;
         this.Text = Text;
+        this.objet= objet;
     }
     
-    public Reclamation( String nom, String prenom,String Text) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.Text = Text;
-        
-    }
+    
   
     public String getDate() {
         return date;
@@ -91,6 +88,14 @@ public class Reclamation {
 
     private String Format$(Date date, String yyyymmdd) {
         return null;
+    }
+
+    public String getObjet() {
+        return objet;
+    }
+
+    public void setObjet(String objet) {
+        this.objet = objet;
     }
 
    

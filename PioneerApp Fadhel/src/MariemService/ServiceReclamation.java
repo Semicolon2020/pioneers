@@ -35,7 +35,7 @@ public class ServiceReclamation implements IService<Reclamation> {
     public void ajouter(Reclamation t) throws SQLException {
        
         ste = con.createStatement();
-        String requeteInsert ="INSERT INTO `reclamations` (`cin`, `date`, `text`) VALUES ( '"+t.getCin()+"', current_timestamp(), '"+t.getText()+"')";
+        String requeteInsert ="INSERT INTO `rec` (`user`, `date`, `text`, `objet`) VALUES ( '"+t.getCin()+"', current_timestamp(), '"+t.getText()+"', '"+t.getObjet()+"')";
         ste.executeUpdate(requeteInsert);
         
     }
@@ -58,7 +58,7 @@ public class ServiceReclamation implements IService<Reclamation> {
     
    public List<Reclamation> trieReclamation(String o ) 
     {
-        String requete = "SELECT * FROM reclamations order by "+o;
+        String requete = "SELECT * FROM rec order by "+o;
         PreparedStatement pst;
             List<Reclamation> list = new ArrayList<>();
 
@@ -121,16 +121,16 @@ public class ServiceReclamation implements IService<Reclamation> {
     public List<Reclamation> readAll() throws SQLException {
     List<Reclamation> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("SELECT    nom , prenom, text , date\n" +
-"from reclamations r inner JOIN user u\n" +
-"on r.cin= u.cin");
+    ResultSet rs=ste.executeQuery("SELECT u.nom, objet, text , date\n" +
+"from rec r inner JOIN user u\n" +
+"on r.user= u.id");
      while (rs.next()) {                
                
                String nom=rs.getString("nom");
-               String prenom=rs.getString("prenom");
+               String objet=rs.getString("objet");
                String date=rs.getString("date");
                String Text=rs.getString("text");
-               Reclamation r=new Reclamation(date,nom,prenom,Text);
+               Reclamation r=new Reclamation(date,nom,objet,Text);
      arr.add(r);
      }
     return arr;

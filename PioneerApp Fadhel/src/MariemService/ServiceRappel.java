@@ -31,7 +31,7 @@ public class ServiceRappel implements IService<Rappel>{
     @Override
     public void ajouter(Rappel t) throws SQLException {
         ste = con.createStatement();
-        String requeteInsert ="INSERT INTO `rappel` (`cin`, `date`, `text`) VALUES ( '"+t.getCin()+"', current_timestamp(), '"+t.getText()+"')";
+        String requeteInsert ="INSERT INTO `rap` (`objet`, `date`, `text`,`enfant`) VALUES ( '"+t.getObjet()+"', current_timestamp(), '"+t.getText()+"','"+t.getEnfant()+"')";
         ste.executeUpdate(requeteInsert);
     }
 
@@ -41,16 +41,15 @@ public class ServiceRappel implements IService<Rappel>{
     public List<Rappel> readAll() throws SQLException {
         List<Rappel> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("SELECT    nom , prenom, text , date\n" +
-"from rappel r inner JOIN user u\n" +
-"on r.cin= u.cin");
+    ResultSet rs=ste.executeQuery("SELECT    objet , enfant, text , date\n" +
+"from rap ");
      while (rs.next()) {                
                
-               String nom=rs.getString("nom");
-               String prenom=rs.getString("prenom");
+               String objet=rs.getString("objet");
+               String enfant=rs.getString("enfant");
                String date=rs.getString("date");
                String Text=rs.getString("text");
-               Rappel r=new Rappel(date,nom,prenom,Text);
+               Rappel r=new Rappel(date,objet,enfant,Text);
      arr.add(r);
      }
     return arr;

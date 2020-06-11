@@ -107,7 +107,9 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
     List<Responsable> arr=new ArrayList<>();
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from user where role='R' ");
-     while (rs.next()) {                
+     while (rs.next()) {   
+                
+               
                String cin=rs.getString(2);
                String nom=rs.getString(5);
                String prenom=rs.getString(6);
@@ -131,7 +133,7 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
                
                */
                
-               Responsable c =new Responsable (cin, nom, prenom,sexe,date,email,password,num_tel,im,etat_compte,etat_civil);
+               Responsable c =new Responsable (rs.getString(1),cin, nom, prenom,sexe,date,email,password,num_tel,im,etat_compte,etat_civil);
      arr.add(c);
      }
     return arr;
@@ -200,7 +202,9 @@ public class ServiceResponsable implements  IService.IServiceResponsable<Respons
          pre.setString(1, t.getCin());
        Responsable c=new Responsable();  
     ResultSet rs=pre.executeQuery();
-     while (rs.next()) {                
+     while (rs.next()) {    
+               
+               c.setId(rs.getString(1));
                c.setCin(rs.getString(2));
                c.setNom(rs.getString(5));
                c.setPrenom(rs.getString(6));
