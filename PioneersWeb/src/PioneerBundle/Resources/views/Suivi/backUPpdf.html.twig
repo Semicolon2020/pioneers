@@ -1,0 +1,31 @@
+
+<h3>LES SUIVIS</h3>
+<table>
+    <thread>
+        <tr>
+            <th>Nom et Prenom</th>
+            <th>Nutrition</th>
+            <th>Sommeil</th>
+            <th>Sociabilité</th>
+            <th>Psychologie</th>
+        </tr>
+    </thread>
+    <tbody>
+
+    {% for f in Formlist %}
+        <tr>
+            <td>{{ f.idE.nom ~' '~ f.idE.prenom }}</td>
+            <td>{{ f.nutrition }}</td>
+            <td>{{ f.sommeil }}</td>
+            <td>{{ f.sociabilite }}</td>
+            <td>{{ f.psychologie }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td>Pas de Suivis trouvés!</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</div>

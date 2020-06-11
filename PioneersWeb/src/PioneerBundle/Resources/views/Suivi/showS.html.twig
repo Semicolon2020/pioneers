@@ -1,0 +1,49 @@
+{% extends "base2.html.twig" %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <h3>LES SUIVIS</h3>
+        <table class="table table-striped table-hover">
+            <thread>
+                <tr>
+                    <th>Nom et Prenom</th>
+                    <th>Nutrition</th>
+                    <th>Sommeil</th>
+                    <th>Sociabilité</th>
+                    <th>Psychologie</th>
+                    <th>Action</th>
+                </tr>
+            </thread>
+            <tbody>
+
+            {% for f in Formlist %}
+                <tr>
+                    <td>{{ f.idE.nom ~' '~ f.idE.prenom }}</td>
+                    <td>{{ f.nutrition }}</td>
+                    <td>{{ f.sommeil }}</td>
+                    <td>{{ f.sociabilite }}</td>
+                    <td>{{ f.psychologie }}</td>
+                    <td>
+                        <a href="{{ path('deleteSuivi',{'id':f.id}) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ path('updateSuivi',{'id':f.id}) }}" class="btn btn-success">Update</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>Pas de Suivis trouvés!</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+{% endblock %}

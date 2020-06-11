@@ -5,3 +5,7 @@ back_homepage:
 admin_dashboard:
     path:     /admin
     defaults: { _controller: BackBundle:Back:index }
+
+Email:
+    path:     /email
+    defaults: { _controller: BackBundle:Default:email }

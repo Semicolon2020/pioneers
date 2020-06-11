@@ -73,23 +73,81 @@
                         <div class="main-menu  d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="{{ path('back_homepage') }}">home</a></li>
-                                    <li><a href="#">Courses</a></li>
+                                 <!--   <li><a href="{{ path('back_homepage') }}">home</a></li>  -->
+
+                                    <li><a href="#">Enfants <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href={% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('StatEval') }}"
+                                                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                                            {{ path('fos_user_security_login') }}
+                                                        {% endif %}
+                                                >Evaluation</a></li>
+
+                                            <li><a href={% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('showSuiviF') }}"
+                                                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                                            {{ path('fos_user_security_login') }}
+                                                        {% endif %}
+                                                >PDF Suivis</a></li>
+                                        </ul>
+                                    </li>
+
                                     <li><a href=
                                                  {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('transport_homepage') }}"
                                                 {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
                                                     {{ path('fos_user_security_login') }}
                                                 {% endif %}
                                             >Transport </a></li>
-                                    <li><a href="about.html">About</a></li>
+
+                                    <li><a href="#">Rappel<i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href=
+                                                   {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('rappel_ajouter') }}"
+                                                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                                            {{ path('fos_user_security_login') }}
+                                                        {% endif %}
+                                                >Ajouter Rappel</a></li>
+                                            <li><a href=
+                                                   {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('listRappelAdmin') }}"
+                                                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                                            {{ path('fos_user_security_login') }}
+                                                        {% endif %}
+                                                >Affichage des Rappels</a></li>
+                                        </ul>
+                                    </li>
+
                                     <li><a href=
                                       {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('listallFront') }}"
                                         {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
                                             {{ path('fos_user_security_login') }}
                                         {% endif %}
                                         >News </a></li>
-                                    <li><a href="#">Contact</a></li>
+
+                                    <li><a href=
+                                           {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('listRecAdmin') }}"
+                                                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                                    {{ path('fos_user_security_login') }}
+                                                {% endif %}
+                                        >Réclamation<i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href=
+                                                   {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('rec_ajouter') }}"
+                                                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                                            {{ path('fos_user_security_login') }}
+                                                        {% endif %}
+                                                >Ajouter Réclamations</a></li>
+                                            <li><a href=
+                                                   {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('mail') }}"
+                                                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                                                            {{ path('fos_user_security_login') }}
+                                                        {% endif %}
+                                                >Mail</a></li>
+                                        </ul>
+                                    </li>
+
                                 </ul>
+
+
+
                             </nav>
                         </div>
                     </div>

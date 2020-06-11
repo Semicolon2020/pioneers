@@ -1,0 +1,50 @@
+{% extends 'base2.html.twig' %}
+{% block content %}
+
+        <!-- MAIN CONTENT-->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Company</strong>
+                    <small> Form</small>
+                </div>
+                <div class="card-body card-block">
+
+                    {{ form_start(activite) }}
+
+
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Nom</label>
+                        {{ form_widget(activite.nom,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Niveau</label>
+                        {{ form_widget(activite.niveau,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Type</label>
+                        {{ form_widget(activite.type,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Lieu</label>
+                        {{ form_widget(activite.lieu,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Description</label>
+                        {{ form_widget(activite.description,{'attr':{'class':'form-control'}}) }}
+                    </div>
+
+
+                    {{ form_end(activite) }}
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+{%  endblock %}

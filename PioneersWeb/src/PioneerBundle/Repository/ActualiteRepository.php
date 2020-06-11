@@ -10,7 +10,6 @@ namespace PioneerBundle\Repository;
  */
 class ActualiteRepository extends \Doctrine\ORM\EntityRepository
 {
-
     function findAllOrderby(){
         $query=$this->getEntityManager()
             ->createQuery("select d from PioneerBundle:Actualite d ORDER BY d.id DESC  ");

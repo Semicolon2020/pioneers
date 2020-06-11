@@ -107,88 +107,213 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/api')) {
-            // esprit_api_homepage
-            if ('/api' === $trimmedPathinfo) {
-                $ret = array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::indexAction',  '_route' => 'esprit_api_homepage',);
-                if ('/' === substr($pathinfo, -1)) {
-                    // no-op
-                } elseif ('GET' !== $canonicalMethod) {
-                    goto not_esprit_api_homepage;
-                } else {
-                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'esprit_api_homepage'));
+        elseif (0 === strpos($pathinfo, '/a')) {
+            if (0 === strpos($pathinfo, '/api')) {
+                // esprit_api_homepage
+                if ('/api' === $trimmedPathinfo) {
+                    $ret = array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::indexAction',  '_route' => 'esprit_api_homepage',);
+                    if ('/' === substr($pathinfo, -1)) {
+                        // no-op
+                    } elseif ('GET' !== $canonicalMethod) {
+                        goto not_esprit_api_homepage;
+                    } else {
+                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'esprit_api_homepage'));
+                    }
+
+                    return $ret;
+                }
+                not_esprit_api_homepage:
+
+                if (0 === strpos($pathinfo, '/api/list')) {
+                    // listBlogMobile
+                    if ('/api/listblogs' === $pathinfo) {
+                        return array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::listblogAction',  '_route' => 'listBlogMobile',);
+                    }
+
+                    // listCmtMobile
+                    if (0 === strpos($pathinfo, '/api/listCmt') && preg_match('#^/api/listCmt/(?P<idB>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'listCmtMobile']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::listCmtAction',));
+                    }
+
+                    // AffReply
+                    if (0 === strpos($pathinfo, '/api/listrep') && preg_match('#^/api/listrep/(?P<idC>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'AffReply']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::listReplyAction',));
+                    }
+
                 }
 
-                return $ret;
+                // AuthMobile
+                if (0 === strpos($pathinfo, '/api/auth') && preg_match('#^/api/auth/(?P<username>[^/]++)/(?P<password>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AuthMobile']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AuthAction',));
+                }
+
+                if (0 === strpos($pathinfo, '/api/add')) {
+                    // AddCmt
+                    if (0 === strpos($pathinfo, '/api/addCmt') && preg_match('#^/api/addCmt/(?P<idB>[^/]++)/(?P<idU>[^/]++)/(?P<text>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddCmt']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addCmtAction',));
+                    }
+
+                    // AddReply
+                    if (0 === strpos($pathinfo, '/api/addReply') && preg_match('#^/api/addReply/(?P<idC>[^/]++)/(?P<idU>[^/]++)/(?P<text>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddReply']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addReplyAction',));
+                    }
+
+                    // AddUser
+                    if (0 === strpos($pathinfo, '/api/addUser') && preg_match('#^/api/addUser/(?P<cin>[^/]++)/(?P<nom>[^/]++)/(?P<prenom>[^/]++)/(?P<etat>[^/]++)/(?P<mail>[^/]++)/(?P<username>[^/]++)/(?P<password>[^/]++)/(?P<num>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddUser']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addUserAction',));
+                    }
+
+                    // AddEnf
+                    if (0 === strpos($pathinfo, '/api/addEnfant') && preg_match('#^/api/addEnfant/(?P<cin>[^/]++)/(?P<nom>[^/]++)/(?P<prenom>[^/]++)/(?P<age>[^/]++)/(?P<sexe>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddEnf']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addEnfantAction',));
+                    }
+
+                    // AddLikeR
+                    if (0 === strpos($pathinfo, '/api/addliker') && preg_match('#^/api/addliker/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddLikeR']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AddLikeRAction',));
+                    }
+
+                    // AddLikeC
+                    if (0 === strpos($pathinfo, '/api/addlikec') && preg_match('#^/api/addlikec/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddLikeC']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AddLikeCAction',));
+                    }
+
+                }
+
+                // ChangePass
+                if (0 === strpos($pathinfo, '/api/chgPass') && preg_match('#^/api/chgPass/(?P<id>[^/]++)/(?P<password>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'ChangePass']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::ChangePassAction',));
+                }
+
+                if (0 === strpos($pathinfo, '/api1')) {
+                    // rappel_homepage
+                    if ('/api1' === $trimmedPathinfo) {
+                        $ret = array (  '_controller' => 'rappelBundle\\Controller\\DefaultController::indexAction',  '_route' => 'rappel_homepage',);
+                        if ('/' === substr($pathinfo, -1)) {
+                            // no-op
+                        } elseif ('GET' !== $canonicalMethod) {
+                            goto not_rappel_homepage;
+                        } else {
+                            return array_replace($ret, $this->redirect($rawPathinfo.'/', 'rappel_homepage'));
+                        }
+
+                        return $ret;
+                    }
+                    not_rappel_homepage:
+
+                    if (0 === strpos($pathinfo, '/api1/rappel')) {
+                        // allRape
+                        if ('/api1/rappel' === $pathinfo) {
+                            return array (  '_controller' => 'rappelBundle\\Controller\\rappelController::allAction',  '_route' => 'allRape',);
+                        }
+
+                        // find_rappel
+                        if (0 === strpos($pathinfo, '/api1/rappel/find') && preg_match('#^/api1/rappel/find/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, ['_route' => 'find_rappel']), array (  '_controller' => 'rappelBundle\\Controller\\rappelController::findAction',));
+                        }
+
+                        // create_rappel
+                        if ('/api1/rappel/new' === $pathinfo) {
+                            return array (  '_controller' => 'rappelBundle\\Controller\\rappelController::newAction',  '_route' => 'create_rappel',);
+                        }
+
+                        // add_rappel
+                        if (0 === strpos($pathinfo, '/api1/rappel/add') && preg_match('#^/api1/rappel/add/(?P<text>[^/]++)/(?P<Objet>[^/]++)/(?P<enfant>[^/]++)$#sD', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, ['_route' => 'add_rappel']), array (  '_controller' => 'rappelBundle\\Controller\\rappelController::AddrappelAction',));
+                        }
+
+                    }
+
+                    // rappel_ajouter
+                    if ('/api1/ajout' === $pathinfo) {
+                        return array (  '_controller' => 'rappelBundle\\Controller\\rappelController::ajouterRappelAction',  '_route' => 'rappel_ajouter',);
+                    }
+
+                    // listRappelAdmin
+                    if ('/api1/listRappel' === $pathinfo) {
+                        return array (  '_controller' => 'rappelBundle\\Controller\\rappelController::listRappelAction',  '_route' => 'listRappelAdmin',);
+                    }
+
+                    // deleteRappelAdmin
+                    if (0 === strpos($pathinfo, '/api1/deleteRappel') && preg_match('#^/api1/deleteRappel/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteRappelAdmin']), array (  '_controller' => 'rappelBundle\\Controller\\rappelController::deleteRappelAction',));
+                    }
+
+                }
+
             }
-            not_esprit_api_homepage:
 
-            if (0 === strpos($pathinfo, '/api/list')) {
-                // listBlogMobile
-                if ('/api/listblogs' === $pathinfo) {
-                    return array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::listblogAction',  '_route' => 'listBlogMobile',);
+            // admin_dashboard
+            if ('/admin' === $pathinfo) {
+                return array (  '_controller' => 'BackBundle\\Controller\\BackController::indexAction',  '_route' => 'admin_dashboard',);
+            }
+
+            if (0 === strpos($pathinfo, '/activite')) {
+                // activite_homepage
+                if ('/activite/index' === $pathinfo) {
+                    return array (  '_controller' => 'activiteBundle\\Controller\\DefaultController::indexAction',  '_route' => 'activite_homepage',);
                 }
 
-                // listCmtMobile
-                if (0 === strpos($pathinfo, '/api/listCmt') && preg_match('#^/api/listCmt/(?P<idB>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'listCmtMobile']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::listCmtAction',));
+                // activite_ajoutActivite
+                if ('/activite/AjouterActivite' === $pathinfo) {
+                    return array (  '_controller' => 'activiteBundle\\Controller\\activiteController::AjouterAction',  '_route' => 'activite_ajoutActivite',);
                 }
 
-                // AffReply
-                if (0 === strpos($pathinfo, '/api/listrep') && preg_match('#^/api/listrep/(?P<idC>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AffReply']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::listReplyAction',));
+                // evenement_ajoutEvenement
+                if ('/activite/AjouterEvenement' === $pathinfo) {
+                    return array (  '_controller' => 'activiteBundle\\Controller\\evenementController::AjouterAction',  '_route' => 'evenement_ajoutEvenement',);
+                }
+
+                if (0 === strpos($pathinfo, '/activite/a')) {
+                    // activite_afficherActivite
+                    if ('/activite/a' === $pathinfo) {
+                        return array (  '_controller' => 'activiteBundle\\Controller\\activiteController::AfficherAction',  '_route' => 'activite_afficherActivite',);
+                    }
+
+                    // evenement_afficherEvenement
+                    if ('/activite/aevenement' === $pathinfo) {
+                        return array (  '_controller' => 'activiteBundle\\Controller\\evenementController::AfficherAction',  '_route' => 'evenement_afficherEvenement',);
+                    }
+
+                    // Ajouter_ActiviteApi
+                    if ('/activite/ajouterActivite' === $pathinfo) {
+                        return array (  '_controller' => 'activiteBundle\\Controller\\ActiviteApiController::newAction',  '_route' => 'Ajouter_ActiviteApi',);
+                    }
+
+                    // Afficher_ActiviteApi
+                    if ('/activite/afficheractivite' === $pathinfo) {
+                        return array (  '_controller' => 'activiteBundle\\Controller\\ActiviteApiController::afficherAction',  '_route' => 'Afficher_ActiviteApi',);
+                    }
+
+                }
+
+                // activite_modifierActivite
+                if (0 === strpos($pathinfo, '/activite/ModifierActivite') && preg_match('#^/activite/ModifierActivite/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'activite_modifierActivite']), array (  '_controller' => 'activiteBundle\\Controller\\activiteController::ModifierAction',));
+                }
+
+                // evenement_modifierEvenement
+                if (0 === strpos($pathinfo, '/activite/Modifierevenement') && preg_match('#^/activite/Modifierevenement/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'evenement_modifierEvenement']), array (  '_controller' => 'activiteBundle\\Controller\\evenementController::ModifierAction',));
+                }
+
+                // activite_supprimerActivite
+                if (0 === strpos($pathinfo, '/activite/SupprimerActivite') && preg_match('#^/activite/SupprimerActivite/(?P<qdt>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'activite_supprimerActivite']), array (  '_controller' => 'activiteBundle\\Controller\\activiteController::SupprimerAction',));
+                }
+
+                // evenement_supprimerEvenement
+                if (0 === strpos($pathinfo, '/activite/Supprimerevenement') && preg_match('#^/activite/Supprimerevenement/(?P<qdt>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'evenement_supprimerEvenement']), array (  '_controller' => 'activiteBundle\\Controller\\evenementController::SupprimerAction',));
+                }
+
+                // Supprimer_ActiviteApi
+                if ('/activite/supprimeractivite' === $pathinfo) {
+                    return array (  '_controller' => 'activiteBundle\\Controller\\ActiviteApiController::supprimerAction',  '_route' => 'Supprimer_ActiviteApi',);
                 }
 
             }
 
-            // AuthMobile
-            if (0 === strpos($pathinfo, '/api/auth') && preg_match('#^/api/auth/(?P<username>[^/]++)/(?P<password>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'AuthMobile']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AuthAction',));
-            }
-
-            if (0 === strpos($pathinfo, '/api/add')) {
-                // AddCmt
-                if (0 === strpos($pathinfo, '/api/addCmt') && preg_match('#^/api/addCmt/(?P<idB>[^/]++)/(?P<idU>[^/]++)/(?P<text>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddCmt']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addCmtAction',));
-                }
-
-                // AddReply
-                if (0 === strpos($pathinfo, '/api/addReply') && preg_match('#^/api/addReply/(?P<idC>[^/]++)/(?P<idU>[^/]++)/(?P<text>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddReply']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addReplyAction',));
-                }
-
-                // AddUser
-                if (0 === strpos($pathinfo, '/api/addUser') && preg_match('#^/api/addUser/(?P<cin>[^/]++)/(?P<nom>[^/]++)/(?P<prenom>[^/]++)/(?P<etat>[^/]++)/(?P<mail>[^/]++)/(?P<username>[^/]++)/(?P<password>[^/]++)/(?P<num>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddUser']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addUserAction',));
-                }
-
-                // AddEnf
-                if (0 === strpos($pathinfo, '/api/addEnfant') && preg_match('#^/api/addEnfant/(?P<cin>[^/]++)/(?P<nom>[^/]++)/(?P<prenom>[^/]++)/(?P<age>[^/]++)/(?P<sexe>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddEnf']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::addEnfantAction',));
-                }
-
-                // AddLikeR
-                if (0 === strpos($pathinfo, '/api/addliker') && preg_match('#^/api/addliker/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddLikeR']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AddLikeRAction',));
-                }
-
-                // AddLikeC
-                if (0 === strpos($pathinfo, '/api/addlikec') && preg_match('#^/api/addlikec/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'AddLikeC']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::AddLikeCAction',));
-                }
-
-            }
-
-            // ChangePass
-            if (0 === strpos($pathinfo, '/api/chgPass') && preg_match('#^/api/chgPass/(?P<id>[^/]++)/(?P<password>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'ChangePass']), array (  '_controller' => 'EspritApiBundle\\Controller\\DefaultController::ChangePassAction',));
-            }
-
-        }
-
-        // admin_dashboard
-        if ('/admin' === $pathinfo) {
-            return array (  '_controller' => 'BackBundle\\Controller\\BackController::indexAction',  '_route' => 'admin_dashboard',);
         }
 
         // back_homepage
@@ -196,7 +321,75 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'BackBundle\\Controller\\DefaultController::indexAction',  '_route' => 'back_homepage',);
         }
 
-        if (0 === strpos($pathinfo, '/pioneer')) {
+        if (0 === strpos($pathinfo, '/email')) {
+            // Email
+            if ('/email' === $pathinfo) {
+                return array (  '_controller' => 'BackBundle\\Controller\\DefaultController::emailAction',  '_route' => 'Email',);
+            }
+
+            // mail_homepage
+            if ('/email' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'mailBundle\\Controller\\DefaultController::indexAction',  '_route' => 'mail_homepage',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_mail_homepage;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'mail_homepage'));
+                }
+
+                return $ret;
+            }
+            not_mail_homepage:
+
+            // mail1
+            if ('/email' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'mailBundle\\Controller\\DefaultController::sendAction',  '_route' => 'mail1',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_mail1;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'mail1'));
+                }
+
+                return $ret;
+            }
+            not_mail1:
+
+            // mail
+            if ('/email/mail' === $pathinfo) {
+                return array (  '_controller' => 'mailBundle\\Controller\\mailController::sendAction',  '_route' => 'mail',);
+            }
+
+            // repondre
+            if (0 === strpos($pathinfo, '/email/rep') && preg_match('#^/email/rep/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'repondre']), array (  '_controller' => 'mailBundle\\Controller\\mailController::repondreAction',));
+            }
+
+            // listmail
+            if ('/email/listmail' === $pathinfo) {
+                return array (  '_controller' => 'mailBundle\\Controller\\mailController::showmailsAction',  '_route' => 'listmail',);
+            }
+
+            // a
+            if ('/email' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'mailBundle\\Controller\\DefaultController::homeAction',  '_route' => 'a',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_a;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'a'));
+                }
+
+                return $ret;
+            }
+            not_a:
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/pioneer')) {
             // pioneer_homepage
             if ('/pioneer' === $trimmedPathinfo) {
                 $ret = array (  '_controller' => 'PioneerBundle\\Controller\\DefaultController::indexAction',  '_route' => 'pioneer_homepage',);
@@ -212,12 +405,64 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
             not_pioneer_homepage:
 
-            // addBlogAdmin
-            if ('/pioneer/addblog' === $pathinfo) {
-                return array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::addAction',  '_route' => 'addBlogAdmin',);
+            if (0 === strpos($pathinfo, '/pioneer/add')) {
+                // addBlogAdmin
+                if ('/pioneer/addblog' === $pathinfo) {
+                    return array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::addAction',  '_route' => 'addBlogAdmin',);
+                }
+
+                // addEvaluation
+                if ('/pioneer/addEvaluation' === $pathinfo) {
+                    return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationController::addEvaluationAction',  '_route' => 'addEvaluation',);
+                }
+
+                // addSuivi
+                if ('/pioneer/addSuivi' === $pathinfo) {
+                    return array (  '_controller' => 'PioneerBundle\\Controller\\SuiviController::addSuiviAction',  '_route' => 'addSuivi',);
+                }
+
             }
 
-            if (0 === strpos($pathinfo, '/pioneer/li')) {
+            elseif (0 === strpos($pathinfo, '/pioneer/afficher')) {
+                if (0 === strpos($pathinfo, '/pioneer/afficherEval')) {
+                    // afficherEvalMobile
+                    if ('/pioneer/afficherEval' === $pathinfo) {
+                        return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::afficherEvalAction',  '_route' => 'afficherEvalMobile',);
+                    }
+
+                    // afficherEvalSMobile
+                    if (0 === strpos($pathinfo, '/pioneer/afficherEvalS') && preg_match('#^/pioneer/afficherEvalS/(?P<prenom>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'afficherEvalSMobile']), array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::afficherEvalSAction',));
+                    }
+
+                    // afficherSuiMobile
+                    if ('/pioneer/afficherEval' === $pathinfo) {
+                        return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::afficherSuiAction',  '_route' => 'afficherSuiMobile',);
+                    }
+
+                }
+
+                elseif (0 === strpos($pathinfo, '/pioneer/afficherEnf')) {
+                    // afficherEnfEMobile
+                    if ('/pioneer/afficherEnf' === $pathinfo) {
+                        return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::afficherEnfantAction',  '_route' => 'afficherEnfEMobile',);
+                    }
+
+                    // afficherEnfSMobile
+                    if ('/pioneer/afficherEnfS' === $pathinfo) {
+                        return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::afficherEnfantAction',  '_route' => 'afficherEnfSMobile',);
+                    }
+
+                }
+
+                // afficherActMobile
+                if ('/pioneer/afficherAct' === $pathinfo) {
+                    return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::afficherActiviteAction',  '_route' => 'afficherActMobile',);
+                }
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/pioneer/li')) {
                 // listallBlogAdmin
                 if ('/pioneer/listallblog' === $pathinfo) {
                     return array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::listblogAction',  '_route' => 'listallBlogAdmin',);
@@ -240,12 +485,25 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
-            // updateBlogAdmin
-            if (0 === strpos($pathinfo, '/pioneer/updateblog') && preg_match('#^/pioneer/updateblog/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'updateBlogAdmin']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::updateblogAction',));
+            elseif (0 === strpos($pathinfo, '/pioneer/update')) {
+                // updateBlogAdmin
+                if (0 === strpos($pathinfo, '/pioneer/updateblog') && preg_match('#^/pioneer/updateblog/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'updateBlogAdmin']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::updateblogAction',));
+                }
+
+                // updateEvaluation
+                if (0 === strpos($pathinfo, '/pioneer/updateEvaluation') && preg_match('#^/pioneer/updateEvaluation/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'updateEvaluation']), array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationController::updateEvaluationAction',));
+                }
+
+                // updateSuivi
+                if (0 === strpos($pathinfo, '/pioneer/updateSuivi') && preg_match('#^/pioneer/updateSuivi/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'updateSuivi']), array (  '_controller' => 'PioneerBundle\\Controller\\SuiviController::updateSuiviAction',));
+                }
+
             }
 
-            if (0 === strpos($pathinfo, '/pioneer/delete')) {
+            elseif (0 === strpos($pathinfo, '/pioneer/delete')) {
                 // deleteBlogAdmin
                 if (0 === strpos($pathinfo, '/pioneer/deleteblog') && preg_match('#^/pioneer/deleteblog/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteBlogAdmin']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::deleteblogAction',));
@@ -261,16 +519,77 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteReplyFront']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::deleteReplyAction',));
                 }
 
+                // deleteEvaluation
+                if (0 === strpos($pathinfo, '/pioneer/deleteEvaluation') && preg_match('#^/pioneer/deleteEvaluation/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteEvaluation']), array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationController::deleteEvaluationAction',));
+                }
+
+                // deleteSuivi
+                if (0 === strpos($pathinfo, '/pioneer/deleteSuivi') && preg_match('#^/pioneer/deleteSuivi/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteSuivi']), array (  '_controller' => 'PioneerBundle\\Controller\\SuiviController::deleteSuiviAction',));
+                }
+
             }
 
-            // singleblogFront
-            if (0 === strpos($pathinfo, '/pioneer/singleblog') && preg_match('#^/pioneer/singleblog/(?P<id>[^/]++)/(?P<idU>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'singleblogFront']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::singleblogAction',));
+            elseif (0 === strpos($pathinfo, '/pioneer/s')) {
+                // singleblogFront
+                if (0 === strpos($pathinfo, '/pioneer/singleblog') && preg_match('#^/pioneer/singleblog/(?P<id>[^/]++)/(?P<idU>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'singleblogFront']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::singleblogAction',));
+                }
+
+                // showEvaluation
+                if ('/pioneer/showEvaluation' === $pathinfo) {
+                    return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationController::showEvaluationAction',  '_route' => 'showEvaluation',);
+                }
+
+                if (0 === strpos($pathinfo, '/pioneer/showSuivi')) {
+                    // showSuivi
+                    if ('/pioneer/showSuivi' === $pathinfo) {
+                        return array (  '_controller' => 'PioneerBundle\\Controller\\SuiviController::showSuiviAction',  '_route' => 'showSuivi',);
+                    }
+
+                    // showSuiviF
+                    if ('/pioneer/showSuiviF' === $pathinfo) {
+                        return array (  '_controller' => 'PioneerBundle\\Controller\\SuiviController::showSuiviFAction',  '_route' => 'showSuiviF',);
+                    }
+
+                }
+
+                // StatEval
+                if ('/pioneer/statsEvaluation' === $pathinfo) {
+                    return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationController::statsEvaluationAction',  '_route' => 'StatEval',);
+                }
+
+                // supprimerEvalMobile
+                if ('/pioneer/supprimerEval' === $pathinfo) {
+                    return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::supprimerAction',  '_route' => 'supprimerEvalMobile',);
+                }
+
             }
 
             // MarkSeen
             if (0 === strpos($pathinfo, '/pioneer/markseen') && preg_match('#^/pioneer/markseen/(?P<idNotif>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'MarkSeen']), array (  '_controller' => 'PioneerBundle\\Controller\\BlogController::MarkSeenAction',));
+            }
+
+            // modifierEvalMobile
+            if ('/pioneer/modifierEval' === $pathinfo) {
+                return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::modifierAction',  '_route' => 'modifierEvalMobile',);
+            }
+
+            // newEvalMobile
+            if ('/pioneer/newEval' === $pathinfo) {
+                return array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::newEvalAction',  '_route' => 'newEvalMobile',);
+            }
+
+            // enfantStatMobile
+            if (0 === strpos($pathinfo, '/pioneer/enfantStat') && preg_match('#^/pioneer/enfantStat/(?P<cin>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'enfantStatMobile']), array (  '_controller' => 'PioneerBundle\\Controller\\EvaluationApiController::enfantStatAction',));
+            }
+
+            // pdfAction
+            if ('/pioneer/pdf' === $pathinfo) {
+                return array (  '_controller' => 'PioneerBundle\\Controller\\SuiviController::pdfAction',  '_route' => 'pdfAction',);
             }
 
         }
@@ -579,116 +898,152 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_fos_user_security_logout:
 
-        if (0 === strpos($pathinfo, '/register')) {
-            // fos_user_registration_register
-            if ('/register' === $trimmedPathinfo) {
-                $ret = array (  '_controller' => 'fos_user.registration.controller:registerAction',  '_route' => 'fos_user_registration_register',);
-                if ('/' === substr($pathinfo, -1)) {
-                    // no-op
-                } elseif ('GET' !== $canonicalMethod) {
-                    goto not_fos_user_registration_register;
-                } else {
-                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_registration_register'));
-                }
+        if (0 === strpos($pathinfo, '/re')) {
+            if (0 === strpos($pathinfo, '/register')) {
+                // fos_user_registration_register
+                if ('/register' === $trimmedPathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.registration.controller:registerAction',  '_route' => 'fos_user_registration_register',);
+                    if ('/' === substr($pathinfo, -1)) {
+                        // no-op
+                    } elseif ('GET' !== $canonicalMethod) {
+                        goto not_fos_user_registration_register;
+                    } else {
+                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_registration_register'));
+                    }
 
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_fos_user_registration_register;
-                }
-
-                return $ret;
-            }
-            not_fos_user_registration_register:
-
-            // fos_user_registration_check_email
-            if ('/register/check-email' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.registration.controller:checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_fos_user_registration_check_email;
-                }
-
-                return $ret;
-            }
-            not_fos_user_registration_check_email:
-
-            if (0 === strpos($pathinfo, '/register/confirm')) {
-                // fos_user_registration_confirm
-                if (preg_match('#^/register/confirm/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
-                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_registration_confirm']), array (  '_controller' => 'fos_user.registration.controller:confirmAction',));
-                    if (!in_array($canonicalMethod, ['GET'])) {
-                        $allow = array_merge($allow, ['GET']);
-                        goto not_fos_user_registration_confirm;
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_fos_user_registration_register;
                     }
 
                     return $ret;
                 }
-                not_fos_user_registration_confirm:
+                not_fos_user_registration_register:
 
-                // fos_user_registration_confirmed
-                if ('/register/confirmed' === $pathinfo) {
-                    $ret = array (  '_controller' => 'fos_user.registration.controller:confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
+                // fos_user_registration_check_email
+                if ('/register/check-email' === $pathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.registration.controller:checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
                     if (!in_array($canonicalMethod, ['GET'])) {
                         $allow = array_merge($allow, ['GET']);
-                        goto not_fos_user_registration_confirmed;
+                        goto not_fos_user_registration_check_email;
                     }
 
                     return $ret;
                 }
-                not_fos_user_registration_confirmed:
+                not_fos_user_registration_check_email:
 
-            }
+                if (0 === strpos($pathinfo, '/register/confirm')) {
+                    // fos_user_registration_confirm
+                    if (preg_match('#^/register/confirm/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
+                        $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_registration_confirm']), array (  '_controller' => 'fos_user.registration.controller:confirmAction',));
+                        if (!in_array($canonicalMethod, ['GET'])) {
+                            $allow = array_merge($allow, ['GET']);
+                            goto not_fos_user_registration_confirm;
+                        }
 
-        }
+                        return $ret;
+                    }
+                    not_fos_user_registration_confirm:
 
-        elseif (0 === strpos($pathinfo, '/resetting')) {
-            // fos_user_resetting_request
-            if ('/resetting/request' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.resetting.controller:requestAction',  '_route' => 'fos_user_resetting_request',);
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_fos_user_resetting_request;
+                    // fos_user_registration_confirmed
+                    if ('/register/confirmed' === $pathinfo) {
+                        $ret = array (  '_controller' => 'fos_user.registration.controller:confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
+                        if (!in_array($canonicalMethod, ['GET'])) {
+                            $allow = array_merge($allow, ['GET']);
+                            goto not_fos_user_registration_confirmed;
+                        }
+
+                        return $ret;
+                    }
+                    not_fos_user_registration_confirmed:
+
                 }
 
-                return $ret;
             }
-            not_fos_user_resetting_request:
 
-            // fos_user_resetting_reset
-            if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_resetting_reset']), array (  '_controller' => 'fos_user.resetting.controller:resetAction',));
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_fos_user_resetting_reset;
+            elseif (0 === strpos($pathinfo, '/resetting')) {
+                // fos_user_resetting_request
+                if ('/resetting/request' === $pathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.resetting.controller:requestAction',  '_route' => 'fos_user_resetting_request',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_fos_user_resetting_request;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_resetting_request:
+
+                // fos_user_resetting_reset
+                if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_resetting_reset']), array (  '_controller' => 'fos_user.resetting.controller:resetAction',));
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_fos_user_resetting_reset;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_resetting_reset:
+
+                // fos_user_resetting_send_email
+                if ('/resetting/send-email' === $pathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.resetting.controller:sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
+                    if (!in_array($requestMethod, ['POST'])) {
+                        $allow = array_merge($allow, ['POST']);
+                        goto not_fos_user_resetting_send_email;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_resetting_send_email:
+
+                // fos_user_resetting_check_email
+                if ('/resetting/check-email' === $pathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.resetting.controller:checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_fos_user_resetting_check_email;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_resetting_check_email:
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/recaa')) {
+                // rec_homepage
+                if ('/recaa' === $trimmedPathinfo) {
+                    $ret = array (  '_controller' => 'RecBundle\\Controller\\DefaultController::indexAction',  '_route' => 'rec_homepage',);
+                    if ('/' === substr($pathinfo, -1)) {
+                        // no-op
+                    } elseif ('GET' !== $canonicalMethod) {
+                        goto not_rec_homepage;
+                    } else {
+                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'rec_homepage'));
+                    }
+
+                    return $ret;
+                }
+                not_rec_homepage:
+
+                // rec_ajouter
+                if ('/recaa/Reclamation' === $pathinfo) {
+                    return array (  '_controller' => 'RecBundle\\Controller\\ReclamationController::ajouterReclamationAction',  '_route' => 'rec_ajouter',);
                 }
 
-                return $ret;
-            }
-            not_fos_user_resetting_reset:
-
-            // fos_user_resetting_send_email
-            if ('/resetting/send-email' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.resetting.controller:sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
-                if (!in_array($requestMethod, ['POST'])) {
-                    $allow = array_merge($allow, ['POST']);
-                    goto not_fos_user_resetting_send_email;
+                // listRecAdmin
+                if ('/recaa/listRec' === $pathinfo) {
+                    return array (  '_controller' => 'RecBundle\\Controller\\ReclamationController::listRecAction',  '_route' => 'listRecAdmin',);
                 }
 
-                return $ret;
-            }
-            not_fos_user_resetting_send_email:
-
-            // fos_user_resetting_check_email
-            if ('/resetting/check-email' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.resetting.controller:checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_fos_user_resetting_check_email;
+                // deleteRecAdmin
+                if (0 === strpos($pathinfo, '/recaa/deleteRec') && preg_match('#^/recaa/deleteRec/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteRecAdmin']), array (  '_controller' => 'RecBundle\\Controller\\ReclamationController::deleteRecAction',));
                 }
 
-                return $ret;
             }
-            not_fos_user_resetting_check_email:
 
         }
 

@@ -1,0 +1,28 @@
+rappel_homepage:
+    path:     /
+    defaults: { _controller: rappelBundle:Default:index }
+allRape:
+    path:     /rappel
+    defaults: { _controller: rappelBundle:rappel:all}
+
+find_rappel:
+    path:     /rappel/find/{id}
+    defaults: { _controller: rappelBundle:rappel:find}
+
+create_rappel:
+    path:     /rappel/new
+    defaults: { _controller: rappelBundle:rappel:new}
+
+add_rappel:
+    path:     /rappel/add/{text}/{Objet}/{enfant}
+    defaults: { _controller: rappelBundle:rappel:Addrappel}
+rappel_ajouter:
+    path:     /ajout
+    defaults: { _controller: rappelBundle:rappel:ajouterRappel }
+listRappelAdmin:
+    path:     /listRappel
+    defaults: { _controller: rappelBundle:rappel:listRappel }
+deleteRappelAdmin:
+    path:     /deleteRappel/{id}
+    defaults: { _controller: rappelBundle:rappel:deleteRappel }
+

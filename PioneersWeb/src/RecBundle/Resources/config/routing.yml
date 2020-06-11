@@ -1,0 +1,15 @@
+rec_homepage:
+    path:     /
+    defaults: { _controller: RecBundle:Default:index }
+
+rec_ajouter:
+    path:     /Reclamation
+    defaults: { _controller: RecBundle:Reclamation:ajouterReclamation }
+listRecAdmin:
+        path:     /listRec
+        defaults: { _controller: RecBundle:Reclamation:listRec }
+deleteRecAdmin:
+    path:     /deleteRec/{id}
+    defaults: { _controller: RecBundle:Reclamation:deleteRec }
+
+

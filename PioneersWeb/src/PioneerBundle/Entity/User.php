@@ -71,6 +71,7 @@ class User extends BaseUser  implements NotifiableInterface
      *
      * @ORM\Column(name="num_tel", type="string", length=8, nullable=true)
      * @Assert\Length(min=8,max=8,maxMessage="8 characters",minMessage="8 characters")
+     *
      */
     protected $numTel;
 

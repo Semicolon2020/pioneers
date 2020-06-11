@@ -1,0 +1,47 @@
+{% extends "base2.html.twig" %}
+{% block content %}
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <h3>LES RECLAMATIONS</h3>
+        <table class="table table-striped table-hover">
+            <thread>
+                <tr>
+                    <th>Nom et Prenom</th>
+                    <th>Score</th>
+                    <th>Remarque</th>
+                    <th>Activite</th>
+                    <th>Action</th>
+                </tr>
+            </thread>
+            <tbody>
+
+            {% for f in Formlist %}
+            <tr>
+                <td>{{ f.idE.nom ~' '~ f.idE.prenom }}</td>
+                <td>{{ f.score }}</td>
+                <td>{{ f.remarque }}</td>
+                <td>{{ f.idAc.nom }}</td>
+                <td>
+                    <a href="{{ path('deleteEvaluation',{'id':f.id}) }}" class="btn btn-danger">Delete</a>
+                    <a href="{{ path('updateEvaluation',{'id':f.id}) }}" class="btn btn-success">Update</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>Pas de Suivis trouvés!</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+{% endblock %}

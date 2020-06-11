@@ -8,10 +8,105 @@ use Doctrine\ORM\Mapping as ORM;
  * Suivi
  *
  * @ORM\Table(name="suivi", indexes={@ORM\Index(name="id_e", columns={"id_e"})})
- * @ORM\Entity
+ *  @ORM\Entity(repositoryClass="PioneerBundle\Repository\SuiviRepository")
  */
 class Suivi
 {
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNutrition()
+    {
+        return $this->nutrition;
+    }
+
+    /**
+     * @param string $nutrition
+     */
+    public function setNutrition($nutrition)
+    {
+        $this->nutrition = $nutrition;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSommeil()
+    {
+        return $this->sommeil;
+    }
+
+    /**
+     * @param string $sommeil
+     */
+    public function setSommeil($sommeil)
+    {
+        $this->sommeil = $sommeil;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSociabilite()
+    {
+        return $this->sociabilite;
+    }
+
+    /**
+     * @param string $sociabilite
+     */
+    public function setSociabilite($sociabilite)
+    {
+        $this->sociabilite = $sociabilite;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPsychologie()
+    {
+        return $this->psychologie;
+    }
+
+    /**
+     * @param string $psychologie
+     */
+    public function setPsychologie($psychologie)
+    {
+        $this->psychologie = $psychologie;
+    }
+
+    /**
+     * @return \Enfant
+     */
+    public function getIdE()
+    {
+        return $this->idE;
+    }
+
+    /**
+     * @param \Enfant $idE
+     */
+    public function setIdE($idE)
+    {
+        $this->idE = $idE;
+    }
     /**
      * @var integer
      *

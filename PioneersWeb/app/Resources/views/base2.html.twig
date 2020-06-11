@@ -84,10 +84,40 @@
                         <a href="form.html">
                             <i class="far fa-check-square"></i>Pages</a>
                     </li>
-                    <li>
-                        <a href="calendar.html">
-                            <i class="fas fa-calendar-alt"></i>Calendar</a>
+
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-calendar-alt"></i>Activite</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a class="nav-link "href="{{ path('activite_ajoutActivite')}}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Ajouter Activite
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link "href="{{ path('activite_afficherActivite')}}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Afficher Activite
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-calendar-alt"></i>Evenement</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a class="nav-link "href="{{ path('evenement_ajoutEvenement')}}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Ajouter Evenement
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link "href="{{ path('evenement_afficherEvenement')}}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Afficher Evenement
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li>
                         <a href="{{ path('Transport2_homepage') }}">
                             <i class="fas fa-map-marker-alt"></i>Maps</a>
@@ -131,17 +161,73 @@
                         <a href="chart.html">
                             <i class="fas fa-chart-bar"></i>Charts</a>
                     </li>
-                    <li>
-                        <a href="table.html">
-                            <i class="fas fa-table"></i>Tables</a>
+
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-table"></i>Evaluations</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a class="nav-link "href="{{ path('addEvaluation') }}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Add
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link "href="{{ path('showEvaluation') }}" >
+                                    <i class="ni ni-single-02 text-yellow"></i>View
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="form.html">
-                            <i class="far fa-check-square"></i>Pages</a>
+
+
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="far fa-check-square"></i>Suivis</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a class="nav-link "href="{{ path('addSuivi') }}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Add
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link "href="{{ path('showSuivi') }}" >
+                                    <i class="ni ni-single-02 text-yellow"></i>View
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="calendar.html">
-                            <i class="fas fa-calendar-alt"></i>Calendar</a>
+
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-calendar-alt"></i>Activite</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a class="nav-link "href="{{ path('activite_ajoutActivite')}}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Ajouter Activite
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link "href="{{ path('activite_afficherActivite')}}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Afficher Activite
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-calendar-alt"></i>Evenement</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a class="nav-link "href="{{ path('evenement_ajoutEvenement')}}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Ajouter Evenement
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link "href="{{ path('evenement_afficherEvenement')}}" >
+                                    <i class="ni ni-single-02 text-yellow"></i> Afficher Evenement
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{{ path('Transport2_homepage') }}">

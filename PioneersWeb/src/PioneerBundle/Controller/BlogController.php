@@ -46,13 +46,13 @@ class BlogController extends Controller
     }
 
     public function listblogAction(Request $request )
-    {
+{
 
-        $posts=$this->getDoctrine()->getRepository(Actualite::class)->findAllOrderby();
-        return $this->render('@Pioneer/Blog/listallblog.html.twig', array(
-            "Formlist" =>$posts
-        ));
-    }
+    $posts=$this->getDoctrine()->getRepository(Actualite::class)->findAllOrderby();
+    return $this->render('@Pioneer/Blog/listallblog.html.twig', array(
+        "Formlist" =>$posts
+    ));
+}
 
     public function updateblogAction(Request $request, $id)
     {
@@ -122,6 +122,7 @@ class BlogController extends Controller
         $p=$this->getDoctrine()->getRepository(Actualite::class)->find($session->get('idB'));
 
 
+
         $form = $this->createForm(CommentType::class,$cmt);
 
 
@@ -164,8 +165,6 @@ class BlogController extends Controller
 
 
 
-
-
     public function deleteCmtAction(Request $request)
     {
         $em=$this->getDoctrine()->getManager();
@@ -181,22 +180,22 @@ class BlogController extends Controller
     }
 
     public function LikeCmtAction(Request $request)
-    { $session = $request->getSession();
+    {
+        $session = $request->getSession();
         $em=$this->getDoctrine()->getManager();
         $idc = $request->get('idc');
         $p=$this->getDoctrine()->getRepository(Comment::class)->find($idc);
         $p->setPoint($p->getPoint()+1);
         $em->persist($p);
         $em->flush();
-        $lien ="http://localhost/Web2.0/INT/PioneersWeb/web/app_dev.php/pioneer/singleblog/".$session->get('idB')  ."/".$session->get('idU');
         /// Notification
+        $lien ="http://localhost/Web2.0/INT/PioneersWeb/web/app_dev.php/pioneer/singleblog/".$session->get('idB')  ."/".$session->get('idU');
         $manager = $this->get('mgilet.notification');
         $notif = $manager->createNotification($p->getActualite()->getTitre());
         $notif->setMessage($this->getUser().' Liked your comment');
         $notif->setLink( $lien);
         $manager->addNotification(array($p->getUser()), $notif, true);
         /////
-
 
 
         $em= $session->get('notif');
@@ -242,8 +241,6 @@ class BlogController extends Controller
 
         $em= $session->get('notif');
 
-
-        $session = $request->getSession();
 
         return $this->redirectToRoute('singleblogFront',array('id'=> $session->get('idB'),'idU'=>$session->get('idU')
         ,'notif'=>$em));

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="bradcam_area breadcam_bg overlay2">
+        <h3></h3>
+    </div>
+    <div class="createForm"style=" margin-top:-20px;margin-left:250px;width:60%">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <center style="color:#2ddab8"><h1>Envoyer un message!</h1></center>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                {{ form_widget(form) }}
+                <button type="submit" class="btn btn-success" style="margin-left:72%;width: 30%" data-toggle="modal" data-backdrop="false" data-target="#infos" >Create</button>
+                <div class="modal fade" id="infos">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Success</h4>
+                            </div>
+                            <div class="modal-body">
+                                Message envoyé avec success, merci
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"  >Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{{ path('rec_homepage') }}"><button type="button" class="btn btn-info"style="margin-left:280px;width: 30%;margin-top:-65px">Cancel</button></a>
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

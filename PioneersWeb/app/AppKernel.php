@@ -23,6 +23,13 @@ class AppKernel extends Kernel
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new TransportBundle\TransportBundle(),
             new EspritApiBundle\EspritApiBundle(),
+            new activiteBundle\activiteBundle(),
+            new RecBundle\RecBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+            new rappelBundle\rappelBundle(),
+            new mailBundle\mailBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

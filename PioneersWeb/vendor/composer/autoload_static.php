@@ -60,6 +60,11 @@ class ComposerStaticInit730758553d42668e9116277214eb1ad1
             'Monolog\\' => 8,
             'Mgilet\\NotificationBundle\\' => 26,
         ),
+        'K' => 
+        array (
+            'Knp\\Snappy\\' => 11,
+            'Knp\\Bundle\\SnappyBundle\\' => 24,
+        ),
         'I' => 
         array (
             'Incenteev\\ParameterHandler\\' => 27,
@@ -82,6 +87,7 @@ class ComposerStaticInit730758553d42668e9116277214eb1ad1
         'C' => 
         array (
             'Composer\\CaBundle\\' => 18,
+            'CMEN\\GoogleChartsBundle\\' => 24,
         ),
     );
 
@@ -198,6 +204,14 @@ class ComposerStaticInit730758553d42668e9116277214eb1ad1
         array (
             0 => __DIR__ . '/..' . '/mgilet/notification-bundle',
         ),
+        'Knp\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy',
+        ),
+        'Knp\\Bundle\\SnappyBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy-bundle',
+        ),
         'Incenteev\\ParameterHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
@@ -241,6 +255,10 @@ class ComposerStaticInit730758553d42668e9116277214eb1ad1
         'Composer\\CaBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
+        'CMEN\\GoogleChartsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cmen/google-charts-bundle',
         ),
     );
 

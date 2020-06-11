@@ -55,7 +55,7 @@ class Actualite implements NotifiableInterface
      *
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=false)
-     * @Assert\File(maxSize="500k", mimeTypes={"image/jpeg", "image/jpg", "image/png", "image/GIF"})
+     * @Assert\File(maxSize="2000k", mimeTypes={"image/jpeg", "image/jpg", "image/png", "image/GIF"})
      */
     private $photo;
 

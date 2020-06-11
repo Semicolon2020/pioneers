@@ -170,7 +170,7 @@ class DefaultController extends Controller
         $user->setUsername($username);
         $user->setNumTel($num);
         $user->setRole("P");
-        $user->setRoles([0,1,"P"]);
+        $user->addRole("P");
         $user->setDateEmbauche(new \DateTime('now'));
         $user->setEnabled(true);
         $user->setPhoto("default.png");

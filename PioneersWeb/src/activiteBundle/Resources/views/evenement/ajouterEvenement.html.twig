@@ -1,0 +1,51 @@
+{% extends 'base2.html.twig' %}
+{% block content %}
+
+        <!-- MAIN CONTENT-->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Company</strong>
+                    <small> Form</small>
+                </div>
+                <div class="card-body card-block">
+
+                    {{ form_start(evenement) }}
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">lieu</label>
+                        {{ form_widget(evenement.lieu,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Invite</label>
+                        {{ form_widget(evenement.invite,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Description</label>
+                        {{ form_widget(evenement.description,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Nom</label>
+                        {{ form_widget(evenement.nom,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Niveau</label>
+                        {{ form_widget(evenement.niveau,{'attr':{'class':'form-control'}}) }}
+                    </div>
+
+
+                    {{ form_end(evenement) }}
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+{%  endblock %}

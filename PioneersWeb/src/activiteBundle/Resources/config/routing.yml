@@ -1,0 +1,44 @@
+activite_homepage:
+    path: /index
+    defaults: { _controller: activiteBundle:Default:index }
+
+activite_ajoutActivite:
+    path:     /AjouterActivite
+    defaults: { _controller: activiteBundle:activite:Ajouter }
+
+activite_afficherActivite:
+    path:     /a
+    defaults: { _controller: activiteBundle:activite:Afficher }
+
+activite_modifierActivite:
+    path:     /ModifierActivite/{id}
+    defaults: { _controller: activiteBundle:activite:Modifier }
+
+activite_supprimerActivite:
+    path:     /SupprimerActivite/{qdt}
+    defaults: { _controller: activiteBundle:activite:Supprimer }
+
+evenement_ajoutEvenement:
+    path:     /AjouterEvenement
+    defaults: { _controller: activiteBundle:evenement:Ajouter }
+
+evenement_afficherEvenement:
+    path:     /aevenement
+    defaults: { _controller: activiteBundle:evenement:Afficher }
+
+evenement_modifierEvenement:
+    path:     /Modifierevenement/{id}
+    defaults: { _controller: activiteBundle:evenement:Modifier }
+
+evenement_supprimerEvenement:
+    path:     /Supprimerevenement/{qdt}
+    defaults: { _controller: activiteBundle:evenement:Supprimer }
+Ajouter_ActiviteApi:
+    path:    /ajouterActivite
+    defaults: { _controller: activiteBundle:ActiviteApi:new }
+Afficher_ActiviteApi:
+    path:    /afficheractivite
+    defaults: { _controller: activiteBundle:ActiviteApi:afficher }
+Supprimer_ActiviteApi:
+  path:    /supprimeractivite
+  defaults: { _controller: activiteBundle:ActiviteApi:supprimer }

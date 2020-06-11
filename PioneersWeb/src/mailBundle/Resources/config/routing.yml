@@ -1,0 +1,18 @@
+mail_homepage:
+    path:     /
+    defaults: { _controller: mailBundle:Default:index }
+mail1:
+    path:     /
+    defaults: { _controller: mailBundle:Default:send }
+mail:
+    path:     /mail
+    defaults: { _controller: mailBundle:mail:send }
+repondre:
+    path:     /rep/{id}
+    defaults: { _controller: mailBundle:mail:repondre }
+listmail:
+    path:     /listmail
+    defaults: { _controller: mailBundle:mail:showmails }
+a:
+        path:     /
+        defaults: { _controller: mailBundle:Default:home }

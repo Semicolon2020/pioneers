@@ -42,7 +42,100 @@ LikeReplyFront:
     path:     /likeReply/{idR}
     defaults: { _controller: PioneerBundle:Blog:LikeReply }
 
-
 MarkSeen:
     path:     /markseen/{idNotif}
     defaults: { _controller: PioneerBundle:Blog:MarkSeen }
+
+
+
+
+
+
+addEvaluation:
+    path:     /addEvaluation
+    defaults: { _controller: PioneerBundle:Evaluation:addEvaluation }
+
+showEvaluation:
+    path:     /showEvaluation
+    defaults: { _controller: PioneerBundle:Evaluation:showEvaluation }
+
+updateEvaluation:
+    path:     /updateEvaluation/{id}
+    defaults: { _controller: PioneerBundle:Evaluation:updateEvaluation }
+
+deleteEvaluation:
+    path:     /deleteEvaluation/{id}
+    defaults: { _controller: PioneerBundle:Evaluation:deleteEvaluation }
+
+StatEval:
+    path:     /statsEvaluation
+    defaults: { _controller: PioneerBundle:Evaluation:statsEvaluation }
+
+afficherEvalMobile:
+    path: /afficherEval
+    defaults: { _controller: PioneerBundle:EvaluationApi:afficherEval }
+
+afficherActMobile:
+    path: /afficherAct
+    defaults: { _controller: PioneerBundle:EvaluationApi:afficherActivite }
+
+afficherEnfEMobile:
+    path: /afficherEnf
+    defaults: { _controller: PioneerBundle:EvaluationApi:afficherEnfant }
+
+supprimerEvalMobile:
+    path: /supprimerEval
+    defaults: { _controller: PioneerBundle:EvaluationApi:supprimer }
+
+modifierEvalMobile:
+    path: /modifierEval
+    defaults: { _controller: PioneerBundle:EvaluationApi:modifier }
+
+newEvalMobile:
+    path: /newEval
+    defaults: { _controller: PioneerBundle:EvaluationApi:newEval }
+
+enfantStatMobile:
+    path: /enfantStat/{cin}
+    defaults: { _controller: PioneerBundle:EvaluationApi:enfantStat }
+
+afficherEvalSMobile:
+    path: /afficherEvalS/{prenom}
+    defaults: { _controller: PioneerBundle:EvaluationApi:afficherEvalS }
+
+
+addSuivi:
+    path:     /addSuivi
+    defaults: { _controller: PioneerBundle:Suivi:addSuivi }
+
+showSuivi:
+    path:     /showSuivi
+    defaults: { _controller: PioneerBundle:Suivi:showSuivi }
+
+updateSuivi:
+    path:     /updateSuivi/{id}
+    defaults: { _controller: PioneerBundle:Suivi:updateSuivi }
+
+deleteSuivi:
+    path:     /deleteSuivi/{id}
+    defaults: { _controller: PioneerBundle:Suivi:deleteSuivi }
+
+showSuiviF:
+    path:     /showSuiviF
+    defaults: { _controller: PioneerBundle:Suivi:showSuiviF }
+
+pdfAction:
+    path:     /pdf
+    defaults: { _controller: PioneerBundle:Suivi:pdf }
+
+afficherSuiMobile:
+    path: /afficherEval
+    defaults: { _controller: PioneerBundle:EvaluationApi:afficherSui }
+
+afficherEnfSMobile:
+    path: /afficherEnfS
+    defaults: { _controller: PioneerBundle:EvaluationApi:afficherEnfant }
+
+
+
+

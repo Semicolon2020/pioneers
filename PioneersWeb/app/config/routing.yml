@@ -23,3 +23,18 @@ fos_user:
 mgilet_notification:
     resource: "@MgiletNotificationBundle/Controller/"
     prefix: /notifications
+
+activite:
+    resource: "@activiteBundle/Resources/config/routing.yml"
+    prefix:   /activite
+
+esprit_e5e:
+    resource: "@RecBundle/Resources/config/routing.yml"
+    prefix:   /recaa
+
+mail:
+    resource: "@mailBundle/Resources/config/routing.yml"
+    prefix:   /email
+api1:
+    resource: "@rappelBundle/Resources/config/routing.yml"
+    prefix:   /api1

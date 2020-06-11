@@ -1,0 +1,72 @@
+{% extends 'base2.html.twig' %}
+{% block content %}
+        <!-- HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                        <div class="col-lg-15">
+                            <h2 class="title-1 m-b-25">Les Activités proposées:</h2>
+                            <div class="table-responsive table--no-card m-b-40">
+                                <table class="table table-borderless table-striped table-earning">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nom</th>
+                                        <th>Niveau</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                        <th>Lieu</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
+
+
+                                    </tr>
+                                    </thead>
+
+
+                                            <tbody>
+                                            {%for activite in activite %}
+                                            <tr>
+                                            <td>{{ activite.id }}</td>
+                                            <td>{{ activite.nom }}</td>
+                                            <td>{{ activite.niveau }}</td>
+                                            <td>{{ activite.type }}</td>
+                                            <td>{{ activite.description }}</td>
+                                            <td>{{ activite.lieu }}</td>
+
+
+
+                                            <td><a href="{{ path('activite_modifierActivite',{'id': activite.id }) }}"> Modifier </a></td>
+
+                                            <td><a href="{{ path('activite_supprimerActivite',{'qdt': activite.id }) }}"> Supprimer </a></td>
+                                            </tr>
+                                            </tbody>
+                                            {% endfor %}
+
+                                        </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- END MAIN CONTENT-->
+        <!-- END PAGE CONTAINER-->
+    </div>
+
+</div>
+
+{% endblock  %}
+
+
