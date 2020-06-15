@@ -859,46 +859,144 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_homepage:
 
-        if (0 === strpos($pathinfo, '/login')) {
-            // fos_user_security_login
-            if ('/login' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.security.controller:loginAction',  '_route' => 'fos_user_security_login',);
+        if (0 === strpos($pathinfo, '/lo')) {
+            if (0 === strpos($pathinfo, '/login')) {
+                // fos_user_security_login
+                if ('/login' === $pathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.security.controller:loginAction',  '_route' => 'fos_user_security_login',);
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_fos_user_security_login;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_security_login:
+
+                // fos_user_security_check
+                if ('/login_check' === $pathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.security.controller:checkAction',  '_route' => 'fos_user_security_check',);
+                    if (!in_array($requestMethod, ['POST'])) {
+                        $allow = array_merge($allow, ['POST']);
+                        goto not_fos_user_security_check;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_security_check:
+
+            }
+
+            // fos_user_security_logout
+            if ('/logout' === $pathinfo) {
+                $ret = array (  '_controller' => 'fos_user.security.controller:logoutAction',  '_route' => 'fos_user_security_logout',);
                 if (!in_array($canonicalMethod, ['GET', 'POST'])) {
                     $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_fos_user_security_login;
+                    goto not_fos_user_security_logout;
                 }
 
                 return $ret;
             }
-            not_fos_user_security_login:
+            not_fos_user_security_logout:
 
-            // fos_user_security_check
-            if ('/login_check' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.security.controller:checkAction',  '_route' => 'fos_user_security_check',);
-                if (!in_array($requestMethod, ['POST'])) {
-                    $allow = array_merge($allow, ['POST']);
-                    goto not_fos_user_security_check;
+            if (0 === strpos($pathinfo, '/loisirs')) {
+                // loisirs_homepage
+                if ('/loisirs' === $trimmedPathinfo) {
+                    $ret = array (  '_controller' => 'LoisirsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'loisirs_homepage',);
+                    if ('/' === substr($pathinfo, -1)) {
+                        // no-op
+                    } elseif ('GET' !== $canonicalMethod) {
+                        goto not_loisirs_homepage;
+                    } else {
+                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'loisirs_homepage'));
+                    }
+
+                    return $ret;
+                }
+                not_loisirs_homepage:
+
+                if (0 === strpos($pathinfo, '/loisirs/a')) {
+                    // ajoutercours
+                    if ('/loisirs/ajoutercours' === $pathinfo) {
+                        return array (  '_controller' => 'LoisirsBundle\\Controller\\CoursController::ajoutercoursAction',  '_route' => 'ajoutercours',);
+                    }
+
+                    // ajouterlivre
+                    if ('/loisirs/ajouterlivre' === $pathinfo) {
+                        return array (  '_controller' => 'LoisirsBundle\\Controller\\LivreController::ajouterlivreAction',  '_route' => 'ajouterlivre',);
+                    }
+
+                    if (0 === strpos($pathinfo, '/loisirs/afficher')) {
+                        // afficher
+                        if ('/loisirs/afficher' === $pathinfo) {
+                            return array (  '_controller' => 'LoisirsBundle\\Controller\\CoursController::afficherAction',  '_route' => 'afficher',);
+                        }
+
+                        if (0 === strpos($pathinfo, '/loisirs/afficherl')) {
+                            // afficherl
+                            if ('/loisirs/afficherl' === $pathinfo) {
+                                return array (  '_controller' => 'LoisirsBundle\\Controller\\LivreController::afficherlAction',  '_route' => 'afficherl',);
+                            }
+
+                            // afficherlfront
+                            if ('/loisirs/afficherlfront' === $pathinfo) {
+                                return array (  '_controller' => 'LoisirsBundle\\Controller\\LivreController::afficherlfrontAction',  '_route' => 'afficherlfront',);
+                            }
+
+                        }
+
+                        // afficherfront
+                        if ('/loisirs/afficherfront' === $pathinfo) {
+                            return array (  '_controller' => 'LoisirsBundle\\Controller\\CoursController::afficherfrontAction',  '_route' => 'afficherfront',);
+                        }
+
+                    }
+
+                    // allC
+                    if ('/loisirs/allC' === $pathinfo) {
+                        return array (  '_controller' => 'LoisirsBundle\\Controller\\CoursController::allCAction',  '_route' => 'allC',);
+                    }
+
+                    // allL
+                    if ('/loisirs/allL' === $pathinfo) {
+                        return array (  '_controller' => 'LoisirsBundle\\Controller\\LivreController::allLAction',  '_route' => 'allL',);
+                    }
+
                 }
 
-                return $ret;
+                // delete
+                if (0 === strpos($pathinfo, '/loisirs/delete') && preg_match('#^/loisirs/delete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete']), array (  '_controller' => 'LoisirsBundle\\Controller\\CoursController::deleteAction',));
+                }
+
+                if (0 === strpos($pathinfo, '/loisirs/update')) {
+                    // update
+                    if (preg_match('#^/loisirs/update/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'update']), array (  '_controller' => 'LoisirsBundle\\Controller\\CoursController::updateAction',));
+                    }
+
+                    // updatel
+                    if (0 === strpos($pathinfo, '/loisirs/updatel') && preg_match('#^/loisirs/updatel/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'updatel']), array (  '_controller' => 'LoisirsBundle\\Controller\\LivreController::updatelAction',));
+                    }
+
+                }
+
+                // recherche
+                if ('/loisirs/recherche' === $pathinfo) {
+                    return array (  '_controller' => 'LoisirsBundle\\Controller\\CoursController::rechercheAction',  '_route' => 'recherche',);
+                }
+
+                // back
+                if ('/loisirs/back' === $pathinfo) {
+                    return array (  '_controller' => 'LoisirsBundle\\Controller\\CoursController::backAction',  '_route' => 'back',);
+                }
+
             }
-            not_fos_user_security_check:
 
         }
 
-        // fos_user_security_logout
-        if ('/logout' === $pathinfo) {
-            $ret = array (  '_controller' => 'fos_user.security.controller:logoutAction',  '_route' => 'fos_user_security_logout',);
-            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                $allow = array_merge($allow, ['GET', 'POST']);
-                goto not_fos_user_security_logout;
-            }
-
-            return $ret;
-        }
-        not_fos_user_security_logout:
-
-        if (0 === strpos($pathinfo, '/re')) {
+        elseif (0 === strpos($pathinfo, '/re')) {
             if (0 === strpos($pathinfo, '/register')) {
                 // fos_user_registration_register
                 if ('/register' === $trimmedPathinfo) {

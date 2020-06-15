@@ -82,7 +82,8 @@ public class PioneerApp {
       
 		
 
-	
+//	|| !cin.getText().matches("[0-9]+") || !Num.getText().matches("[0-9]+") ||  !Nom.getText().matches("[a-zA-Z_]+") ||  !Prenom.getText().matches("[a-zA-Z_]+")
+//                       ||  !Etat.getText().matches("[a-zA-Z_]+")
         
             
             

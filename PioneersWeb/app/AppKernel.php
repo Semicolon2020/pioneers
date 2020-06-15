@@ -29,6 +29,8 @@ class AppKernel extends Kernel
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new rappelBundle\rappelBundle(),
             new mailBundle\mailBundle(),
+            new LoisirsBundle\LoisirsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
         ];
 

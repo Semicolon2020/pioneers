@@ -63,6 +63,8 @@
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy-bundle" />
       <path value="$PROJECT_DIR$/vendor/cmen/google-charts-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZVeDohF5DsIXjJgtlcZftAbKFX" />
@@ -170,6 +172,8 @@
       <workItem from="1591720961388" duration="9663000" />
       <workItem from="1591812060536" duration="19166000" />
       <workItem from="1591856659732" duration="499000" />
+      <workItem from="1591950190039" duration="736000" />
+      <workItem from="1592221939258" duration="6782000" />
     </task>
     <servers />
   </component>

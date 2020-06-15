@@ -64,7 +64,7 @@
                 <div class="row align-items-center no-gutters">
                     <div class="col-xl-2 col-lg-2">
                         <div class="{{ asset('front/') }}logo-img">
-                            <a href="#">
+                            <a href="{{ path('back_homepage') }}">
                                 <img src="{{ asset('front/') }}img/logo.png" alt="">
                             </a>
                         </div>
@@ -121,7 +121,6 @@
                                             {{ path('fos_user_security_login') }}
                                         {% endif %}
                                         >News </a></li>
-
                                     <li><a href=
                                            {% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('listRecAdmin') }}"
                                                 {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
@@ -235,10 +234,31 @@
                         <h3>Stay <br>
                             Connected   <br>
                             with your kids</h3>
-                        <a href="#" class="boxed_btn">Browse Our Courses</a>
+
+
 
                     </div>
                 </div>
+
+                <a href={% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('afficherfront') }}"
+                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                    {{ path('fos_user_security_login') }}
+                {% endif %} class="boxed_btn">Cours</a>
+
+                <a href={% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ path('afficherlfront') }}"
+                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                    {{ path('fos_user_security_login') }}
+                {% endif %} class="boxed_btn">Livres</a>
+
+                <a href={% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ asset('memory/index.html') }}"
+                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                    {{ path('fos_user_security_login') }}
+                {% endif %} class="boxed_btn">Memory</a>
+
+                <a href={% if is_granted('IS_AUTHENTICATED_FULLY')  %} "{{ asset('casse/casse.html') }}"
+                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                    {{ path('fos_user_security_login') }}
+                {% endif %} class="boxed_btn">Casse</a>
             </div>
 
         </div>

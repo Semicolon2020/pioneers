@@ -1,0 +1,68 @@
+{% extends 'base.html.twig'  %}
+{% block content %}
+
+    <!-- bradcam_area_start -->
+    <div class="bradcam_area breadcam_bg overlay2">
+        <h3>Cours</h3>
+    </div>
+
+    <form method="POST">
+
+
+         &nbsp;<button class="btn" type="button"><i class="ti-search"></i></button> &nbsp;<input name="tuteur"  onblur="this.placeholder = 'Tuteur'" type="text" >
+
+        &nbsp; &nbsp; </button><input type="submit" name="submit" value="recherche" class="genric-btn info circle">
+    </form>
+    <br>
+
+    <center><h1><i>Listes des cours </i></h1></center><br><br><br>
+
+
+    <div border="2" class="table-responsive table-responsive-data2">
+        <table class="table table-data2">
+            <thead>
+            <tr>
+
+
+                <th>titre</th>
+                <th>date</th>
+                <th>tuteur</th>
+                <th>file</th>
+                <th>livre</th>
+
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="tr-shadow">
+
+                {% for cours in course %}
+            <tr>
+
+                <td>
+                    <span class="block-email">{{ cours.titre}}</span>
+                </td>
+                <td class="desc">{{ cours.date|date("m/d/y") }}</td>
+                <td>{{ cours.tuteur}}</td>
+                <td>
+                    <span class="status--process"><a href="{{asset('uploads/brochures/' ~ cours.file)}}"class="btn btn-success">Voir Cours</a></span>
+                </td>
+                <td>{{ cours.livre.titrel}}</td>
+
+
+                {% endfor %} </tr>
+
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+<br><br>
+    <br>
+    <div class="navigator">
+        {{ knp_pagination_render(course) }}
+    </div><br><br><br>
+
+{% endblock %}

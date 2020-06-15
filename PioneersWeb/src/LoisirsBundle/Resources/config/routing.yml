@@ -1,0 +1,64 @@
+loisirs_homepage:
+    path:     /
+    defaults: { _controller: LoisirsBundle:Default:index }
+
+ajoutercours:
+    path:     /ajoutercours
+    defaults: { _controller: LoisirsBundle:Cours:ajoutercours }
+
+afficher:
+    path:     /afficher
+    defaults: { _controller: LoisirsBundle:Cours:afficher }
+
+
+delete:
+    path:     /delete/{id}
+    defaults: { _controller: LoisirsBundle:Cours:delete }
+
+update:
+    path:     /update/{id}
+    defaults: { _controller: LoisirsBundle:Cours:update }
+
+recherche:
+    path:     /recherche
+    defaults: { _controller: LoisirsBundle:Cours:recherche }
+
+ajouterlivre:
+    path:     /ajouterlivre
+    defaults: { _controller: LoisirsBundle:Livre:ajouterlivre }
+
+afficherl:
+    path:     /afficherl
+    defaults: { _controller: LoisirsBundle:Livre:afficherl }
+
+
+
+updatel:
+    path:     /updatel/{id}
+    defaults: { _controller: LoisirsBundle:Livre:updatel }
+
+allC:
+    path:     /allC
+    defaults: { _controller: LoisirsBundle:Cours:allC }
+
+allL:
+    path:     /allL
+    defaults: { _controller: LoisirsBundle:Livre:allL }
+
+afficherfront:
+    path:     /afficherfront
+    defaults: { _controller: LoisirsBundle:Cours:afficherfront }
+
+afficherlfront:
+    path:     /afficherlfront
+    defaults: { _controller: LoisirsBundle:Livre:afficherlfront }
+
+
+back:
+    path:     /back
+    defaults: { _controller: LoisirsBundle:Cours:back }
+
+
+
+
+

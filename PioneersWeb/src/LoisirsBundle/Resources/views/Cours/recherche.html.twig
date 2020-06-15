@@ -1,0 +1,46 @@
+{% extends 'base.html.twig'  %}
+{% block container %}
+<h1> rechercher</h1>
+
+<form method="POST">
+    Tuteur<input type="text" name="tuteur">
+    <input type="submit" name="submit" value="recherche">
+
+
+
+</form>
+<h1>Listes des cours</h1>
+
+<table border="4">
+    <tr>
+        <td>id</td>
+        <td>titre</td>
+        <td>date</td>
+        <td>tuteur</td>
+        <td>file</td>
+        <td>livre</td>
+        <td>supprimerC</td>
+        <td>modifierC</td>
+
+    </tr>
+
+    {% for cours in course  %}
+        <tr>
+            <td>{{ cours.id }}</td>
+            <td>{{ cours.titre }}</td>
+            <td>{{ cours.date|date("m/d/y") }}</td>
+            <td>{{ cours.tuteur }}</td>
+            <td>{{ cours.file }}</td>
+            <td>{{ cours.livre.titrel}}</td>
+            <td><a href="{{  path("delete",{'id':cours.id}) }}">supprimer </a></td>
+            <td><a href="{{  path("update",{'id':cours.id}) }}">modifier</a></td>
+
+
+
+
+
+        </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

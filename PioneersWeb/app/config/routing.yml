@@ -38,3 +38,7 @@ mail:
 api1:
     resource: "@rappelBundle/Resources/config/routing.yml"
     prefix:   /api1
+
+loisirs:
+    resource: "@LoisirsBundle/Resources/config/routing.yml"
+    prefix:   /loisirs

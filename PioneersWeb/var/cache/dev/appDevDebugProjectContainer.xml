@@ -29,6 +29,8 @@
       <parameter key="CMENGoogleChartsBundle">CMEN\GoogleChartsBundle\CMENGoogleChartsBundle</parameter>
       <parameter key="rappelBundle">rappelBundle\rappelBundle</parameter>
       <parameter key="mailBundle">mailBundle\mailBundle</parameter>
+      <parameter key="LoisirsBundle">LoisirsBundle\LoisirsBundle</parameter>
+      <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -136,6 +138,16 @@
         <parameter key="path">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\mailBundle</parameter>
         <parameter key="namespace">mailBundle</parameter>
       </parameter>
+      <parameter key="LoisirsBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\LoisirsBundle</parameter>
+        <parameter key="namespace">LoisirsBundle</parameter>
+      </parameter>
+      <parameter key="KnpPaginatorBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\vendor\knplabs\knp-paginator-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
+      </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
         <parameter key="path">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle</parameter>
@@ -178,6 +190,9 @@
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="photos_directory">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\app/../web/uploads/post</parameter>
+    <parameter key="brochures_directory">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb/web/uploads/brochures</parameter>
+    <parameter key="livre_directory">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb/web/web/livres</parameter>
+    <parameter key="fichiers_directory">D:\programs\wamp64\www\Web2.0\INT\PioneersWeb/web/audio/sound</parameter>
     <parameter key="fragment.renderer.hinclude.global_template"></parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">ThisTokenIsNotSoSecretChangeIt</parameter>
@@ -466,6 +481,12 @@
     <parameter key="knp_snappy.pdf.env" type="collection"/>
     <parameter key="cmen_google_charts.version">current</parameter>
     <parameter key="cmen_google_charts.language"></parameter>
+    <parameter key="knp_paginator.class">Knp\Component\Pager\Paginator</parameter>
+    <parameter key="knp_paginator.helper.processor.class">Knp\Bundle\PaginatorBundle\Helper\Processor</parameter>
+    <parameter key="knp_paginator.template.pagination">@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig</parameter>
+    <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
+    <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
+    <parameter key="knp_paginator.page_range">5</parameter>
     <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -1641,6 +1662,14 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
           <argument type="service" id="response_listener"/>
@@ -2103,6 +2132,46 @@
           <argument>onKernelResponse</argument>
         </argument>
         <argument>-128</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument>before</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sortable"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.filtration"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>1</argument>
       </call>
     </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver">
@@ -3028,6 +3097,9 @@
         <argument type="service" id="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension"/>
       </call>
       <call method="addExtension">
+        <argument type="service" id="knp_paginator.twig.extension.pagination"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="twig.extension.webprofiler"/>
       </call>
       <call method="addGlobal">
@@ -3199,6 +3271,22 @@
       <call method="addPath">
         <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\mailBundle/Resources/views</argument>
         <argument>!mail</argument>
+      </call>
+      <call method="addPath">
+        <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\LoisirsBundle/Resources/views</argument>
+        <argument>Loisirs</argument>
+      </call>
+      <call method="addPath">
+        <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\LoisirsBundle/Resources/views</argument>
+        <argument>!Loisirs</argument>
+      </call>
+      <call method="addPath">
+        <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\vendor\knplabs\knp-paginator-bundle/Resources/views</argument>
+        <argument>KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\vendor\knplabs\knp-paginator-bundle/Resources/views</argument>
+        <argument>!KnpPaginator</argument>
       </call>
       <call method="addPath">
         <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
@@ -3801,6 +3889,7 @@
           <argument key="RecBundle">RecBundle\Entity</argument>
           <argument key="rappelBundle">rappelBundle\Entity</argument>
           <argument key="mailBundle">mailBundle\Entity</argument>
+          <argument key="LoisirsBundle">LoisirsBundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCacheImpl">
@@ -3853,6 +3942,7 @@
         <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\RecBundle\Entity</argument>
         <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\rappelBundle\Entity</argument>
         <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\mailBundle\Entity</argument>
+        <argument>D:\programs\wamp64\www\Web2.0\INT\PioneersWeb\src\LoisirsBundle\Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_metadata_driver" class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
@@ -3883,6 +3973,10 @@
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
         <argument>mailBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+        <argument>LoisirsBundle\Entity</argument>
       </call>
       <call method="addDriver">
         <argument type="service">
@@ -4281,6 +4375,47 @@
     <service id="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension" class="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput"/>
+    </service>
+    <service id="knp_paginator" class="Knp\Component\Pager\Paginator" public="true" lazy="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <call method="setDefaultPaginatorOptions">
+        <argument type="collection">
+          <argument key="pageParameterName">page</argument>
+          <argument key="sortFieldParameterName">sort</argument>
+          <argument key="sortDirectionParameterName">direction</argument>
+          <argument key="filterFieldParameterName">filterField</argument>
+          <argument key="filterValueParameterName">filterValue</argument>
+          <argument key="distinct">true</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="knp_paginator.subscriber.paginate" class="Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sortable" class="Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.filtration" class="Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sliding_pagination" class="Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="container.hot_path"/>
+      <argument type="collection">
+        <argument key="defaultPaginationTemplate">@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig</argument>
+        <argument key="defaultSortableTemplate">@KnpPaginator/Pagination/sortable_link.html.twig</argument>
+        <argument key="defaultFiltrationTemplate">@KnpPaginator/Pagination/filtration.html.twig</argument>
+        <argument key="defaultPageRange">5</argument>
+      </argument>
+    </service>
+    <service id="knp_paginator.helper.processor" class="Knp\Bundle\PaginatorBundle\Helper\Processor">
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="knp_paginator.twig.extension.pagination" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
     </service>
     <service id="twig.extension.dump" class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
       <tag name="twig.extension"/>
@@ -4921,6 +5056,7 @@
     <service id="fos_user.mailer" alias="fos_user.mailer.twig_swift"/>
     <service id="fos_user.session" alias="session" public="false"/>
     <service id="Knp\Snappy\Pdf" alias="knp_snappy.pdf"/>
+    <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="service_locator._fpuy7b" alias="2_ServiceLocator~z1gqk73" public="false"/>
