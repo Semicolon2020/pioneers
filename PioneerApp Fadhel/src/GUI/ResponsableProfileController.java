@@ -105,7 +105,8 @@ public class ResponsableProfileController implements Initializable {
         }
         
         photopath=r.getPhoto();
-        pdp.setImage(new Image(r.getPhoto()));  
+        String pdpm ="file:/D:/programs/wamp64/www/Web2.0/INT/PioneersWeb/web/uploads/post/"+r.getPhoto();
+        pdp.setImage(new Image(pdpm));  
         cinTextField.setText(r.getCin());
         nomTextField.setText(r.getNom());
         prenomTextField.setText(r.getPrenom());
@@ -138,11 +139,9 @@ public class ResponsableProfileController implements Initializable {
             
             photoFile = file.getSelectedFile();
             Image image;
-            photopath="file:/D:/programs/wamp64/www/Pioneers/images/"+photoFile.getName();
             
+            photopath=photoFile.getName(); 
             
-            
-            //file:/D:/programs/wamp64/www/Pioneers/images/image4.jpeg
             image = new Image(photoFile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);
             pdp.setImage(image);

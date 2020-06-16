@@ -102,7 +102,8 @@ public class InscriptionEnfantController implements Initializable {
             Image image;
            
             
-             photopath="file:/D:/programs/wamp64/www/Pioneers/images/"+photofile.getName();
+             
+             photopath="file:/D:/programs/wamp64/www/Web2.0/INT/PioneersWeb/web/uploads/post/"+photofile.getName(); 
             
              image = new Image(photofile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);

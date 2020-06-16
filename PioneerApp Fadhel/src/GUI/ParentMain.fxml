@@ -98,5 +98,6 @@
             <Font name="AR CENA" size="25.0" />
          </font>
       </Label>
+      <ImageView fx:id="logoutBtn" fitHeight="86.0" fitWidth="86.0" layoutX="41.0" layoutY="633.0" onMouseClicked="#LogoutBtnAction" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

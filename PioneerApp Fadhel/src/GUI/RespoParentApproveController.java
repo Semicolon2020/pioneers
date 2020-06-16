@@ -293,7 +293,8 @@ public class RespoParentApproveController implements Initializable {
         
         
         try {
-             pdpParent.setImage(new Image(sp.read(parent).getPhoto(),270,280,true,true)); 
+             String pdpm ="file:/D:/programs/wamp64/www/Web2.0/INT/PioneersWeb/web/uploads/post/"+sp.read(parent).getPhoto();
+             pdpParent.setImage(new Image(pdpm,270,280,true,true)); 
         } catch (SQLException ex) {
             Logger.getLogger(RespoParentApproveController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -339,7 +340,8 @@ public class RespoParentApproveController implements Initializable {
                 ServiceEnfant se=new ServiceEnfant();
                 
         try {
-            pdpEnfant.setImage(new Image(se.read(enf).getPhoto()));
+            String pdpm ="file:/D:/programs/wamp64/www/Web2.0/INT/PioneersWeb/web/uploads/post/"+se.read(enf).getPhoto();
+            pdpEnfant.setImage(new Image(pdpm));
         } catch (SQLException ex) {
             Logger.getLogger(RespoParentApproveController.class.getName()).log(Level.SEVERE, null, ex);
         }

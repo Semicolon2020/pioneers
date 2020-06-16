@@ -57,7 +57,7 @@ public class FTPUploader {
            
          
             InputStream is= new FileInputStream(new File(selectedFile.getAbsolutePath()));      
-            ftpClient.storeFile("images/"+selectedFile.getName(), is);
+            ftpClient.storeFile(selectedFile.getName(), is);
             ftpClient.disconnect();
          //   ftpClient.deleteFile(selectedFile.getName());
            

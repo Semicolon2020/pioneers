@@ -45,8 +45,11 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
     @Override
     public void ajouter(Tuteur t) throws SQLException {
 
-         PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user`  (`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
-                 + "    VALUES (?,?,'T',?,?,?,?,'2',?,?,?,now());");
+         PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user` "
+                  + "(`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`"
+                  + ", `username` , `username_canonical`, `email_canonical`,`enabled`,`roles`) "
+                 + "    VALUES (?,?,'T',?,?,?,?,'0',?,?,?,now()"
+                  + ",?,?,?,1,?);");
     
       
             
@@ -63,7 +66,12 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
     pre.setString(5, t.getEmail());
     pre.setString(6, t.getNum_tel());
     pre.setString(7, t.getEtat_civil());    
-    pre.setString(8, t.getPhoto());
+    pre.setString(8, t.getFile().getName());
+    
+    pre.setString(10, t.getPrenom());
+    pre.setString(11, t.getPrenom());
+    pre.setString(12, t.getEmail());
+    pre.setString(13, "a:1:{i:0;s:1:\"T\";}"); 
     
     pre.executeUpdate();
     
@@ -74,7 +82,7 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
 
     @Override
     public boolean delete(Tuteur t) throws SQLException {
-    PreparedStatement pre=con.prepareStatement(" delete from `pionnersapp`.`user` where cin =? and role='T';");
+    PreparedStatement pre=con.prepareStatement(" delete from `pionnersapp`.`user` where cin =? ");
     
     pre.setString(1, t.getCin());
     
@@ -86,6 +94,8 @@ public class ServiceTuteur implements IService.IServiceTuteur<Tuteur> {
         
     PreparedStatement     pre=con.prepareStatement("update `pionnersapp`.`user`SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,"
                 + "             `num_tel`=?,`etat_compte`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=? and role='T';");
+    
+    
     
     
     pre.setString(1, t.getCin());  

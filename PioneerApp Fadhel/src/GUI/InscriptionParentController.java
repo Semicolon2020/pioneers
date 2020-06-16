@@ -197,12 +197,12 @@ public class InscriptionParentController implements Initializable {
             Image image;
            
             
-             photopath="file:/D:/programs/wamp64/www/Pioneers/images/"+photoFile.getName();
+             photopath=photoFile.getName();
             
             
             
             //file:/D:/programs/wamp64/www/Pioneers/images/image4.jpeg
-            
+            System.out.println(photoFile.toURI().toString());
             image = new Image(photoFile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);
             System.out.println(photoFile.toURI().toString());

@@ -166,12 +166,14 @@ public class ParentProfileController implements Initializable {
        
         try { 
             r=sr.read(r);
+            String pdpm ="file:/D:/programs/wamp64/www/Web2.0/INT/PioneersWeb/web/uploads/post/"+r.getPhoto();
+            pdp.setImage(new Image(pdpm));  
+            
         } catch (SQLException ex) {
             Logger.getLogger(ResponsableMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         photopath=r.getPhoto();
-        pdp.setImage(new Image(r.getPhoto()));  
+       
         cinTextField.setText(r.getCin());
         nomTextField.setText(r.getNom());
         prenomTextField.setText(r.getPrenom());
@@ -211,13 +213,11 @@ public class ParentProfileController implements Initializable {
             
             photoFile = file.getSelectedFile();
             Image image;
-            photopath="file:/D:/programs/wamp64/www/Pioneers/images/"+photoFile.getName();
+            photopath=photoFile.getName();
             
             
             
-            //file:/D:/programs/wamp64/www/Pioneers/images/image4.jpeg
             image = new Image(photoFile.toURI().toString(),270,280,true,true); 
-           // imagepdp=new ImageView(image);
             pdp.setImage(image);
             pdp.setFitHeight(270);
            pdp.setFitHeight(280);
@@ -241,8 +241,9 @@ public class ParentProfileController implements Initializable {
 
              Parent r= new Parent(cinTextField.getText(), nomTextField.getText(), prenomTextField.getText(), mailTextField.getText() , comboxSex.getValue(), mdpTextField.getText(), tlfTextField.getText(), comboetat.getValue(),photopath);
              ServiceParent  se=new ServiceParent();
-             
+              r.setFile(photoFile);
              try {
+                
                  se.updateProfile(r);
              } catch (SQLException ex) {
                  Logger.getLogger(RespoParentApproveController.class.getName()).log(Level.SEVERE, null, ex);
@@ -295,7 +296,8 @@ public class ParentProfileController implements Initializable {
                 ServiceEnfant se=new ServiceEnfant();
                 
         try {
-            pdpEnfant.setImage(new Image(se.read(enf).getPhoto()));
+             String pdpm ="file:/D:/programs/wamp64/www/Web2.0/INT/PioneersWeb/web/uploads/post/"+se.read(enf).getPhoto();
+            pdpEnfant.setImage(new Image(pdpm));
         } catch (SQLException ex) {
             Logger.getLogger(RespoParentApproveController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -327,16 +329,12 @@ public class ParentProfileController implements Initializable {
         {
              photoFileEnf = file.getSelectedFile();
             
-    
-           photopathEnfant="file:/D:/programs/wamp64/www/Pioneers/images/"+photoFileEnf.getName();
+             photopathEnfant=photoFileEnf.getName(); 
             
             
-            
-            //file:/D:/programs/wamp64/www/Pioneers/images/image4.jpeg
            
             
           Image  image = new Image(photoFileEnf.toURI().toString(),270,280,true,true); 
-           // imagepdp=new ImageView(image);
             pdpEnfant.setImage(image);
             pdpEnfant.setFitHeight(270);
            pdpEnfant.setFitHeight(280);

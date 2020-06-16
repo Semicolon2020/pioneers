@@ -58,6 +58,8 @@ public class ParentMainController implements Initializable {
     private ImageView loisitInterface;
     @FXML
     private ImageView transportInterf;
+    @FXML
+    private ImageView logoutBtn;
     /**
      * Initializes the controller class.
      */
@@ -74,6 +76,7 @@ public class ParentMainController implements Initializable {
        pdfInterface.setImage(new Image("/Image/pdfIcon-8.png"));          
        loisitInterface.setImage(new Image("/Image/CoursIcon-8.png"));          
        transportInterf.setImage(new Image("/Image/transpIcon-8.png")); 
+       logoutBtn.setImage(new Image("/Image/logout.png"));  
                
     }    
     
@@ -305,6 +308,26 @@ public class ParentMainController implements Initializable {
                                            } catch (IOException ex) {
                                                Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
                                            }
+        
+    }
+
+    @FXML
+    private void LogoutBtnAction(MouseEvent event) {
+                                                     FXMLLoader loader = new FXMLLoader
+                                                    (getClass()
+                                                     .getResource("/GUI/Login.fxml"));
+
+                                                     javafx.scene.Parent root;
+                                           try {
+                                               root = loader.load();
+                                               LoginController apc = loader.getController();
+                                              
+                                              
+                                            logoutBtn.getScene().setRoot(root);
+                                           } catch (IOException ex) {
+                                               Logger.getLogger(InscriptionParentController.class.getName()).log(Level.SEVERE, null, ex);
+                                           }
+        
         
     }
     

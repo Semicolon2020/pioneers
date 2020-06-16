@@ -194,7 +194,8 @@ public class InscriptionTuteurController implements Initializable {
         
         
         try {
-             pdptuteur.setImage(new Image(sp.read(tuteur).getPhoto(),270,280,true,true)); 
+             String pdpm ="file:/D:/programs/wamp64/www/Web2.0/INT/PioneersWeb/web/uploads/post/"+sp.read(tuteur).getPhoto();
+             pdptuteur.setImage(new Image(pdpm,270,280,true,true)); 
         } catch (SQLException ex) {
             Logger.getLogger(RespoParentApproveController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -260,11 +261,10 @@ public class InscriptionTuteurController implements Initializable {
             
             photoFile = file.getSelectedFile();
             Image image;
-            photopath="file:/D:/programs/wamp64/www/Pioneers/images/"+photoFile.getName();
+           
+            photopath=photoFile.getName(); 
             
             
-            
-            //file:/D:/programs/wamp64/www/Pioneers/images/image4.jpeg
             image = new Image(photoFile.toURI().toString(),270,280,true,true); 
            // imagepdp=new ImageView(image);
             pdptuteur.setImage(image);

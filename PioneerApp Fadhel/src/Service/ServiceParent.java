@@ -45,8 +45,10 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
     public void ajouter(Parent t) throws SQLException {
         
           PreparedStatement pre=con.prepareStatement("INSERT INTO `pionnersapp`.`user` "
-                  + "(`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`) "
-                 + "    VALUES (?,?,'P',?,?,?,?,'0',?,?,?,now());");
+                  + "(`cin`, `password`, `role`, `nom`, `prenom`, `email`, `num_tel`, `etat_compte`, `etat_civil`, `photo`, `sexe`, `date_embauche`"
+                  + ", `username` , `username_canonical`, `email_canonical`,`enabled`,`roles`) "
+                 + "    VALUES (?,?,'P',?,?,?,?,'0',?,?,?,now()"
+                  + ",?,?,?,1,?);");
     
    FTPUploader ftp=new FTPUploader();
    ftp.FTPTransfer(t.getFile());
@@ -59,7 +61,12 @@ public class ServiceParent implements IService.IServiceParent<Parent>{
     pre.setString(5, t.getEmail());
     pre.setString(6, t.getNum_tel());
     pre.setString(7, t.getEtat_civil());    
-    pre.setString(8, t.getPhoto());
+    pre.setString(8, t.getFile().getName());
+    
+    pre.setString(10, t.getPrenom());
+    pre.setString(11, t.getPrenom());
+    pre.setString(12, t.getEmail());
+    pre.setString(13, "a:1:{i:0;s:1:\"P\";}"); 
     
     pre.executeUpdate();
     
@@ -90,6 +97,8 @@ PreparedStatement pre;
    {
        pre=con.prepareStatement("update `pionnersapp`.`user` SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,`num_tel`=?,`etat_compte`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=?;");
 
+       
+       System.out.println("sdsd");
    FTPUploader ftp=new FTPUploader();
    ftp.FTPTransfer(t.getFile());
   
@@ -106,7 +115,7 @@ PreparedStatement pre;
    
     pre.setString(10, t.getSexe());
     pre.setString(11, cin);
-    pre.setString(9, t.getPhoto());
+    pre.setString(9,t.getFile().getName());
      
     return pre.executeUpdate()==0;
    }
@@ -328,6 +337,12 @@ PreparedStatement pre=con.prepareStatement("update `pionnersapp`.`user`SET `etat
         
     PreparedStatement     pre=con.prepareStatement("update `pionnersapp`.`user`SET `cin`=?,`password`=?,`nom`=?,`prenom`=?,`email`=?,"
                 + "             `num_tel`=?,`etat_civil`=?,`photo`=?,`sexe`=? WHERE cin=? and role='P';");
+    
+    if(t.getFile()!=null)
+    {
+    FTPUploader ftp=new FTPUploader();
+    ftp.FTPTransfer(t.getFile());
+    }
     
     
     pre.setString(1, t.getCin());  
